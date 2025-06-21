@@ -1,43 +1,65 @@
 {
-  "name": "electron-app",
+  "name": "your-electron-app",
   "version": "1.0.0",
-  "description": "Electron app with Next.js frontend and FastAPI backend",
   "main": "electron/main.js",
   "scripts": {
-    "start": "electron .",
-    "dev": "cross-env NODE_ENV=development ELECTRON_IS_DEV=1 electron .",
-    "electron:dev": "cross-env NODE_ENV=development ELECTRON_IS_DEV=1 electron .",
-    "electron:prod": "cross-env NODE_ENV=production electron .",
-    "build": "electron-builder",
-    "pack": "electron-builder --dir",
-    "dist": "electron-builder --publish=never"
+    "dev": "NODE_ENV=development electron .",
+    "build": "npm run build:prepare && electron-builder",
+    "build:prepare": "npm run build:frontend && npm run copy:assets",
+    "build:frontend": "cd frontend && npm run build",
+    "copy:assets": "node scripts/copy-assets.js",
+    "dist": "npm run build"
   },
   "devDependencies": {
-    "cross-env": "^7.0.3",
-    "electron": "^25.9.8",
-    "electron-builder": "^24.13.3"
+    "electron": "^latest",
+    "electron-builder": "^24.0.0"
   },
   "build": {
-  "appId": "com.yourcompany.yourapp",
-  "productName": "WAZA PAYROLL DISTRIBUTOR",
-  "directories": {
-    "output": "dist"
-  },
-  "files": [
-    "electron/main.js",
-    "icons/**/*"
-  ],
-  "extraResources": [
-    {
-      "from": "../backend/dist/",
-      "to": "backend/dist/",
-      "filter": ["**/*"]
+    "appId": "com.yourcompany.yourapp",
+    "productName": "Your App Name",
+    "directories": {
+      "output": "dist"
     },
-    {
-      "from": "../frontend/.next/standalone/",
-      "to": "frontend/",
-      "filter": ["**/*"]
+    "files": [
+      "electron/**/*",
+      "!electron/node_modules",
+      "resources/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "frontend/out",
+        "to": "frontend",
+        "filter": ["**/*"]
+      },
+      {
+        "from": "frontend/server.js",
+        "to": "frontend/server.js"
+      },
+      {
+        "from": "frontend/package.json",
+        "to": "frontend/package.json"
+      },
+      {
+        "from": "backend/dist",
+        "to": "backend",
+        "filter": ["**/*"]
+      }
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icon.ico"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "assets/icon.icns"
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "assets/icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
     }
-  ]
-}
+  }
 }
