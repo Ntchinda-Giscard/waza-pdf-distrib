@@ -1,0 +1,6 @@
+adlp aqvr qxek htdh
+
+#google app password
+
+
+and dont foget that this new generated app should take into consiferation the bakend/dist/main.exe for its backend code instead of passing a commande

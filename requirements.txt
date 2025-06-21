@@ -1,0 +1,6 @@
+fastapi
+pyinstaller
+uvicorn[standard]
+sqlalchemy
+pyMuPDF
+pyodbc

@@ -1,0 +1,3930 @@
+(['C:\\Users\\DIGITAL MARKET\\Documents\\eletronApp\\backend\\main.py'],
+ ['C:\\Users\\DIGITAL MARKET\\Documents\\eletronApp\\backend'],
+ [],
+ [('C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks',
+   -1000),
+  ('C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\_pyinstaller_hooks_contrib',
+   -1000)],
+ {},
+ [],
+ [],
+ False,
+ {},
+ 0,
+ [],
+ [],
+ '3.13.3 (tags/v3.13.3:6280bb5, Apr  8 2025, 14:47:33) [MSC v.1943 64 bit '
+ '(AMD64)]',
+ [('pyi_rth_inspect',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_inspect.py',
+   'PYSOURCE'),
+  ('pyi_rth_pkgutil',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_pkgutil.py',
+   'PYSOURCE'),
+  ('pyi_rth_multiprocessing',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_multiprocessing.py',
+   'PYSOURCE'),
+  ('pyi_rth_setuptools',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_setuptools.py',
+   'PYSOURCE'),
+  ('main',
+   'C:\\Users\\DIGITAL MARKET\\Documents\\eletronApp\\backend\\main.py',
+   'PYSOURCE')],
+ [('_distutils_hack',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\_distutils_hack\\__init__.py',
+   'PYMODULE'),
+  ('importlib.util', 'C:\\Python313\\Lib\\importlib\\util.py', 'PYMODULE'),
+  ('threading', 'C:\\Python313\\Lib\\threading.py', 'PYMODULE'),
+  ('_threading_local', 'C:\\Python313\\Lib\\_threading_local.py', 'PYMODULE'),
+  ('contextlib', 'C:\\Python313\\Lib\\contextlib.py', 'PYMODULE'),
+  ('_strptime', 'C:\\Python313\\Lib\\_strptime.py', 'PYMODULE'),
+  ('datetime', 'C:\\Python313\\Lib\\datetime.py', 'PYMODULE'),
+  ('_pydatetime', 'C:\\Python313\\Lib\\_pydatetime.py', 'PYMODULE'),
+  ('calendar', 'C:\\Python313\\Lib\\calendar.py', 'PYMODULE'),
+  ('argparse', 'C:\\Python313\\Lib\\argparse.py', 'PYMODULE'),
+  ('textwrap', 'C:\\Python313\\Lib\\textwrap.py', 'PYMODULE'),
+  ('shutil', 'C:\\Python313\\Lib\\shutil.py', 'PYMODULE'),
+  ('zipfile', 'C:\\Python313\\Lib\\zipfile\\__init__.py', 'PYMODULE'),
+  ('zipfile._path',
+   'C:\\Python313\\Lib\\zipfile\\_path\\__init__.py',
+   'PYMODULE'),
+  ('zipfile._path.glob',
+   'C:\\Python313\\Lib\\zipfile\\_path\\glob.py',
+   'PYMODULE'),
+  ('pathlib', 'C:\\Python313\\Lib\\pathlib\\__init__.py', 'PYMODULE'),
+  ('pathlib._local', 'C:\\Python313\\Lib\\pathlib\\_local.py', 'PYMODULE'),
+  ('urllib.parse', 'C:\\Python313\\Lib\\urllib\\parse.py', 'PYMODULE'),
+  ('urllib', 'C:\\Python313\\Lib\\urllib\\__init__.py', 'PYMODULE'),
+  ('ipaddress', 'C:\\Python313\\Lib\\ipaddress.py', 'PYMODULE'),
+  ('glob', 'C:\\Python313\\Lib\\glob.py', 'PYMODULE'),
+  ('pathlib._abc', 'C:\\Python313\\Lib\\pathlib\\_abc.py', 'PYMODULE'),
+  ('py_compile', 'C:\\Python313\\Lib\\py_compile.py', 'PYMODULE'),
+  ('importlib.machinery',
+   'C:\\Python313\\Lib\\importlib\\machinery.py',
+   'PYMODULE'),
+  ('struct', 'C:\\Python313\\Lib\\struct.py', 'PYMODULE'),
+  ('tarfile', 'C:\\Python313\\Lib\\tarfile.py', 'PYMODULE'),
+  ('gzip', 'C:\\Python313\\Lib\\gzip.py', 'PYMODULE'),
+  ('_compression', 'C:\\Python313\\Lib\\_compression.py', 'PYMODULE'),
+  ('lzma', 'C:\\Python313\\Lib\\lzma.py', 'PYMODULE'),
+  ('bz2', 'C:\\Python313\\Lib\\bz2.py', 'PYMODULE'),
+  ('fnmatch', 'C:\\Python313\\Lib\\fnmatch.py', 'PYMODULE'),
+  ('copy', 'C:\\Python313\\Lib\\copy.py', 'PYMODULE'),
+  ('gettext', 'C:\\Python313\\Lib\\gettext.py', 'PYMODULE'),
+  ('importlib._bootstrap_external',
+   'C:\\Python313\\Lib\\importlib\\_bootstrap_external.py',
+   'PYMODULE'),
+  ('importlib.metadata',
+   'C:\\Python313\\Lib\\importlib\\metadata\\__init__.py',
+   'PYMODULE'),
+  ('csv', 'C:\\Python313\\Lib\\csv.py', 'PYMODULE'),
+  ('importlib.metadata._adapters',
+   'C:\\Python313\\Lib\\importlib\\metadata\\_adapters.py',
+   'PYMODULE'),
+  ('importlib.metadata._text',
+   'C:\\Python313\\Lib\\importlib\\metadata\\_text.py',
+   'PYMODULE'),
+  ('email.message', 'C:\\Python313\\Lib\\email\\message.py', 'PYMODULE'),
+  ('email.policy', 'C:\\Python313\\Lib\\email\\policy.py', 'PYMODULE'),
+  ('email.contentmanager',
+   'C:\\Python313\\Lib\\email\\contentmanager.py',
+   'PYMODULE'),
+  ('email.quoprimime', 'C:\\Python313\\Lib\\email\\quoprimime.py', 'PYMODULE'),
+  ('string', 'C:\\Python313\\Lib\\string.py', 'PYMODULE'),
+  ('email.headerregistry',
+   'C:\\Python313\\Lib\\email\\headerregistry.py',
+   'PYMODULE'),
+  ('email._header_value_parser',
+   'C:\\Python313\\Lib\\email\\_header_value_parser.py',
+   'PYMODULE'),
+  ('email.iterators', 'C:\\Python313\\Lib\\email\\iterators.py', 'PYMODULE'),
+  ('email.generator', 'C:\\Python313\\Lib\\email\\generator.py', 'PYMODULE'),
+  ('random', 'C:\\Python313\\Lib\\random.py', 'PYMODULE'),
+  ('statistics', 'C:\\Python313\\Lib\\statistics.py', 'PYMODULE'),
+  ('decimal', 'C:\\Python313\\Lib\\decimal.py', 'PYMODULE'),
+  ('_pydecimal', 'C:\\Python313\\Lib\\_pydecimal.py', 'PYMODULE'),
+  ('contextvars', 'C:\\Python313\\Lib\\contextvars.py', 'PYMODULE'),
+  ('fractions', 'C:\\Python313\\Lib\\fractions.py', 'PYMODULE'),
+  ('numbers', 'C:\\Python313\\Lib\\numbers.py', 'PYMODULE'),
+  ('hashlib', 'C:\\Python313\\Lib\\hashlib.py', 'PYMODULE'),
+  ('logging', 'C:\\Python313\\Lib\\logging\\__init__.py', 'PYMODULE'),
+  ('pickle', 'C:\\Python313\\Lib\\pickle.py', 'PYMODULE'),
+  ('pprint', 'C:\\Python313\\Lib\\pprint.py', 'PYMODULE'),
+  ('dataclasses', 'C:\\Python313\\Lib\\dataclasses.py', 'PYMODULE'),
+  ('_compat_pickle', 'C:\\Python313\\Lib\\_compat_pickle.py', 'PYMODULE'),
+  ('bisect', 'C:\\Python313\\Lib\\bisect.py', 'PYMODULE'),
+  ('email._encoded_words',
+   'C:\\Python313\\Lib\\email\\_encoded_words.py',
+   'PYMODULE'),
+  ('base64', 'C:\\Python313\\Lib\\base64.py', 'PYMODULE'),
+  ('getopt', 'C:\\Python313\\Lib\\getopt.py', 'PYMODULE'),
+  ('email.charset', 'C:\\Python313\\Lib\\email\\charset.py', 'PYMODULE'),
+  ('email.encoders', 'C:\\Python313\\Lib\\email\\encoders.py', 'PYMODULE'),
+  ('email.base64mime', 'C:\\Python313\\Lib\\email\\base64mime.py', 'PYMODULE'),
+  ('email._policybase',
+   'C:\\Python313\\Lib\\email\\_policybase.py',
+   'PYMODULE'),
+  ('email.header', 'C:\\Python313\\Lib\\email\\header.py', 'PYMODULE'),
+  ('email.errors', 'C:\\Python313\\Lib\\email\\errors.py', 'PYMODULE'),
+  ('email.utils', 'C:\\Python313\\Lib\\email\\utils.py', 'PYMODULE'),
+  ('socket', 'C:\\Python313\\Lib\\socket.py', 'PYMODULE'),
+  ('selectors', 'C:\\Python313\\Lib\\selectors.py', 'PYMODULE'),
+  ('email._parseaddr', 'C:\\Python313\\Lib\\email\\_parseaddr.py', 'PYMODULE'),
+  ('quopri', 'C:\\Python313\\Lib\\quopri.py', 'PYMODULE'),
+  ('typing', 'C:\\Python313\\Lib\\typing.py', 'PYMODULE'),
+  ('importlib.metadata._itertools',
+   'C:\\Python313\\Lib\\importlib\\metadata\\_itertools.py',
+   'PYMODULE'),
+  ('importlib.metadata._functools',
+   'C:\\Python313\\Lib\\importlib\\metadata\\_functools.py',
+   'PYMODULE'),
+  ('importlib.metadata._collections',
+   'C:\\Python313\\Lib\\importlib\\metadata\\_collections.py',
+   'PYMODULE'),
+  ('importlib.metadata._meta',
+   'C:\\Python313\\Lib\\importlib\\metadata\\_meta.py',
+   'PYMODULE'),
+  ('inspect', 'C:\\Python313\\Lib\\inspect.py', 'PYMODULE'),
+  ('token', 'C:\\Python313\\Lib\\token.py', 'PYMODULE'),
+  ('dis', 'C:\\Python313\\Lib\\dis.py', 'PYMODULE'),
+  ('opcode', 'C:\\Python313\\Lib\\opcode.py', 'PYMODULE'),
+  ('_opcode_metadata', 'C:\\Python313\\Lib\\_opcode_metadata.py', 'PYMODULE'),
+  ('ast', 'C:\\Python313\\Lib\\ast.py', 'PYMODULE'),
+  ('email', 'C:\\Python313\\Lib\\email\\__init__.py', 'PYMODULE'),
+  ('email.parser', 'C:\\Python313\\Lib\\email\\parser.py', 'PYMODULE'),
+  ('email.feedparser', 'C:\\Python313\\Lib\\email\\feedparser.py', 'PYMODULE'),
+  ('json', 'C:\\Python313\\Lib\\json\\__init__.py', 'PYMODULE'),
+  ('json.encoder', 'C:\\Python313\\Lib\\json\\encoder.py', 'PYMODULE'),
+  ('json.decoder', 'C:\\Python313\\Lib\\json\\decoder.py', 'PYMODULE'),
+  ('json.scanner', 'C:\\Python313\\Lib\\json\\scanner.py', 'PYMODULE'),
+  ('__future__', 'C:\\Python313\\Lib\\__future__.py', 'PYMODULE'),
+  ('importlib.readers',
+   'C:\\Python313\\Lib\\importlib\\readers.py',
+   'PYMODULE'),
+  ('importlib.resources.readers',
+   'C:\\Python313\\Lib\\importlib\\resources\\readers.py',
+   'PYMODULE'),
+  ('importlib.resources._itertools',
+   'C:\\Python313\\Lib\\importlib\\resources\\_itertools.py',
+   'PYMODULE'),
+  ('importlib.resources.abc',
+   'C:\\Python313\\Lib\\importlib\\resources\\abc.py',
+   'PYMODULE'),
+  ('importlib.resources',
+   'C:\\Python313\\Lib\\importlib\\resources\\__init__.py',
+   'PYMODULE'),
+  ('importlib.resources._functional',
+   'C:\\Python313\\Lib\\importlib\\resources\\_functional.py',
+   'PYMODULE'),
+  ('importlib.resources._common',
+   'C:\\Python313\\Lib\\importlib\\resources\\_common.py',
+   'PYMODULE'),
+  ('importlib.resources._adapters',
+   'C:\\Python313\\Lib\\importlib\\resources\\_adapters.py',
+   'PYMODULE'),
+  ('tempfile', 'C:\\Python313\\Lib\\tempfile.py', 'PYMODULE'),
+  ('tokenize', 'C:\\Python313\\Lib\\tokenize.py', 'PYMODULE'),
+  ('importlib._bootstrap',
+   'C:\\Python313\\Lib\\importlib\\_bootstrap.py',
+   'PYMODULE'),
+  ('importlib._abc', 'C:\\Python313\\Lib\\importlib\\_abc.py', 'PYMODULE'),
+  ('importlib.abc', 'C:\\Python313\\Lib\\importlib\\abc.py', 'PYMODULE'),
+  ('importlib', 'C:\\Python313\\Lib\\importlib\\__init__.py', 'PYMODULE'),
+  ('setuptools',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\__init__.py',
+   'PYMODULE'),
+  ('setuptools.msvc',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\msvc.py',
+   'PYMODULE'),
+  ('typing_extensions',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\typing_extensions.py',
+   'PYMODULE'),
+  ('asyncio.coroutines',
+   'C:\\Python313\\Lib\\asyncio\\coroutines.py',
+   'PYMODULE'),
+  ('asyncio', 'C:\\Python313\\Lib\\asyncio\\__init__.py', 'PYMODULE'),
+  ('asyncio.unix_events',
+   'C:\\Python313\\Lib\\asyncio\\unix_events.py',
+   'PYMODULE'),
+  ('asyncio.log', 'C:\\Python313\\Lib\\asyncio\\log.py', 'PYMODULE'),
+  ('subprocess', 'C:\\Python313\\Lib\\subprocess.py', 'PYMODULE'),
+  ('signal', 'C:\\Python313\\Lib\\signal.py', 'PYMODULE'),
+  ('asyncio.windows_events',
+   'C:\\Python313\\Lib\\asyncio\\windows_events.py',
+   'PYMODULE'),
+  ('asyncio.windows_utils',
+   'C:\\Python313\\Lib\\asyncio\\windows_utils.py',
+   'PYMODULE'),
+  ('asyncio.selector_events',
+   'C:\\Python313\\Lib\\asyncio\\selector_events.py',
+   'PYMODULE'),
+  ('ssl', 'C:\\Python313\\Lib\\ssl.py', 'PYMODULE'),
+  ('asyncio.proactor_events',
+   'C:\\Python313\\Lib\\asyncio\\proactor_events.py',
+   'PYMODULE'),
+  ('asyncio.base_subprocess',
+   'C:\\Python313\\Lib\\asyncio\\base_subprocess.py',
+   'PYMODULE'),
+  ('asyncio.threads', 'C:\\Python313\\Lib\\asyncio\\threads.py', 'PYMODULE'),
+  ('asyncio.taskgroups',
+   'C:\\Python313\\Lib\\asyncio\\taskgroups.py',
+   'PYMODULE'),
+  ('asyncio.subprocess',
+   'C:\\Python313\\Lib\\asyncio\\subprocess.py',
+   'PYMODULE'),
+  ('asyncio.streams', 'C:\\Python313\\Lib\\asyncio\\streams.py', 'PYMODULE'),
+  ('asyncio.runners', 'C:\\Python313\\Lib\\asyncio\\runners.py', 'PYMODULE'),
+  ('asyncio.base_events',
+   'C:\\Python313\\Lib\\asyncio\\base_events.py',
+   'PYMODULE'),
+  ('concurrent.futures',
+   'C:\\Python313\\Lib\\concurrent\\futures\\__init__.py',
+   'PYMODULE'),
+  ('concurrent.futures.thread',
+   'C:\\Python313\\Lib\\concurrent\\futures\\thread.py',
+   'PYMODULE'),
+  ('queue', 'C:\\Python313\\Lib\\queue.py', 'PYMODULE'),
+  ('concurrent.futures.process',
+   'C:\\Python313\\Lib\\concurrent\\futures\\process.py',
+   'PYMODULE'),
+  ('multiprocessing.synchronize',
+   'C:\\Python313\\Lib\\multiprocessing\\synchronize.py',
+   'PYMODULE'),
+  ('multiprocessing.heap',
+   'C:\\Python313\\Lib\\multiprocessing\\heap.py',
+   'PYMODULE'),
+  ('multiprocessing.resource_tracker',
+   'C:\\Python313\\Lib\\multiprocessing\\resource_tracker.py',
+   'PYMODULE'),
+  ('multiprocessing.spawn',
+   'C:\\Python313\\Lib\\multiprocessing\\spawn.py',
+   'PYMODULE'),
+  ('runpy', 'C:\\Python313\\Lib\\runpy.py', 'PYMODULE'),
+  ('pkgutil', 'C:\\Python313\\Lib\\pkgutil.py', 'PYMODULE'),
+  ('zipimport', 'C:\\Python313\\Lib\\zipimport.py', 'PYMODULE'),
+  ('multiprocessing.util',
+   'C:\\Python313\\Lib\\multiprocessing\\util.py',
+   'PYMODULE'),
+  ('multiprocessing.forkserver',
+   'C:\\Python313\\Lib\\multiprocessing\\forkserver.py',
+   'PYMODULE'),
+  ('multiprocessing.process',
+   'C:\\Python313\\Lib\\multiprocessing\\process.py',
+   'PYMODULE'),
+  ('multiprocessing.context',
+   'C:\\Python313\\Lib\\multiprocessing\\context.py',
+   'PYMODULE'),
+  ('multiprocessing.popen_spawn_win32',
+   'C:\\Python313\\Lib\\multiprocessing\\popen_spawn_win32.py',
+   'PYMODULE'),
+  ('multiprocessing.popen_forkserver',
+   'C:\\Python313\\Lib\\multiprocessing\\popen_forkserver.py',
+   'PYMODULE'),
+  ('multiprocessing.popen_spawn_posix',
+   'C:\\Python313\\Lib\\multiprocessing\\popen_spawn_posix.py',
+   'PYMODULE'),
+  ('multiprocessing.popen_fork',
+   'C:\\Python313\\Lib\\multiprocessing\\popen_fork.py',
+   'PYMODULE'),
+  ('multiprocessing.sharedctypes',
+   'C:\\Python313\\Lib\\multiprocessing\\sharedctypes.py',
+   'PYMODULE'),
+  ('ctypes', 'C:\\Python313\\Lib\\ctypes\\__init__.py', 'PYMODULE'),
+  ('ctypes.util', 'C:\\Python313\\Lib\\ctypes\\util.py', 'PYMODULE'),
+  ('ctypes._aix', 'C:\\Python313\\Lib\\ctypes\\_aix.py', 'PYMODULE'),
+  ('ctypes.macholib.dyld',
+   'C:\\Python313\\Lib\\ctypes\\macholib\\dyld.py',
+   'PYMODULE'),
+  ('ctypes.macholib',
+   'C:\\Python313\\Lib\\ctypes\\macholib\\__init__.py',
+   'PYMODULE'),
+  ('ctypes.macholib.dylib',
+   'C:\\Python313\\Lib\\ctypes\\macholib\\dylib.py',
+   'PYMODULE'),
+  ('ctypes.macholib.framework',
+   'C:\\Python313\\Lib\\ctypes\\macholib\\framework.py',
+   'PYMODULE'),
+  ('ctypes._endian', 'C:\\Python313\\Lib\\ctypes\\_endian.py', 'PYMODULE'),
+  ('multiprocessing.pool',
+   'C:\\Python313\\Lib\\multiprocessing\\pool.py',
+   'PYMODULE'),
+  ('multiprocessing.dummy',
+   'C:\\Python313\\Lib\\multiprocessing\\dummy\\__init__.py',
+   'PYMODULE'),
+  ('multiprocessing.dummy.connection',
+   'C:\\Python313\\Lib\\multiprocessing\\dummy\\connection.py',
+   'PYMODULE'),
+  ('multiprocessing.managers',
+   'C:\\Python313\\Lib\\multiprocessing\\managers.py',
+   'PYMODULE'),
+  ('multiprocessing.shared_memory',
+   'C:\\Python313\\Lib\\multiprocessing\\shared_memory.py',
+   'PYMODULE'),
+  ('secrets', 'C:\\Python313\\Lib\\secrets.py', 'PYMODULE'),
+  ('hmac', 'C:\\Python313\\Lib\\hmac.py', 'PYMODULE'),
+  ('multiprocessing.reduction',
+   'C:\\Python313\\Lib\\multiprocessing\\reduction.py',
+   'PYMODULE'),
+  ('multiprocessing.resource_sharer',
+   'C:\\Python313\\Lib\\multiprocessing\\resource_sharer.py',
+   'PYMODULE'),
+  ('multiprocessing.queues',
+   'C:\\Python313\\Lib\\multiprocessing\\queues.py',
+   'PYMODULE'),
+  ('multiprocessing.connection',
+   'C:\\Python313\\Lib\\multiprocessing\\connection.py',
+   'PYMODULE'),
+  ('xmlrpc.client', 'C:\\Python313\\Lib\\xmlrpc\\client.py', 'PYMODULE'),
+  ('xmlrpc', 'C:\\Python313\\Lib\\xmlrpc\\__init__.py', 'PYMODULE'),
+  ('xml.parsers.expat',
+   'C:\\Python313\\Lib\\xml\\parsers\\expat.py',
+   'PYMODULE'),
+  ('xml.parsers', 'C:\\Python313\\Lib\\xml\\parsers\\__init__.py', 'PYMODULE'),
+  ('xml', 'C:\\Python313\\Lib\\xml\\__init__.py', 'PYMODULE'),
+  ('xml.sax.expatreader',
+   'C:\\Python313\\Lib\\xml\\sax\\expatreader.py',
+   'PYMODULE'),
+  ('xml.sax.saxutils', 'C:\\Python313\\Lib\\xml\\sax\\saxutils.py', 'PYMODULE'),
+  ('urllib.request', 'C:\\Python313\\Lib\\urllib\\request.py', 'PYMODULE'),
+  ('getpass', 'C:\\Python313\\Lib\\getpass.py', 'PYMODULE'),
+  ('nturl2path', 'C:\\Python313\\Lib\\nturl2path.py', 'PYMODULE'),
+  ('ftplib', 'C:\\Python313\\Lib\\ftplib.py', 'PYMODULE'),
+  ('netrc', 'C:\\Python313\\Lib\\netrc.py', 'PYMODULE'),
+  ('mimetypes', 'C:\\Python313\\Lib\\mimetypes.py', 'PYMODULE'),
+  ('http.cookiejar', 'C:\\Python313\\Lib\\http\\cookiejar.py', 'PYMODULE'),
+  ('http', 'C:\\Python313\\Lib\\http\\__init__.py', 'PYMODULE'),
+  ('http.cookies', 'C:\\Python313\\Lib\\http\\cookies.py', 'PYMODULE'),
+  ('urllib.response', 'C:\\Python313\\Lib\\urllib\\response.py', 'PYMODULE'),
+  ('urllib.error', 'C:\\Python313\\Lib\\urllib\\error.py', 'PYMODULE'),
+  ('xml.sax', 'C:\\Python313\\Lib\\xml\\sax\\__init__.py', 'PYMODULE'),
+  ('xml.sax.handler', 'C:\\Python313\\Lib\\xml\\sax\\handler.py', 'PYMODULE'),
+  ('xml.sax._exceptions',
+   'C:\\Python313\\Lib\\xml\\sax\\_exceptions.py',
+   'PYMODULE'),
+  ('xml.sax.xmlreader',
+   'C:\\Python313\\Lib\\xml\\sax\\xmlreader.py',
+   'PYMODULE'),
+  ('http.client', 'C:\\Python313\\Lib\\http\\client.py', 'PYMODULE'),
+  ('multiprocessing',
+   'C:\\Python313\\Lib\\multiprocessing\\__init__.py',
+   'PYMODULE'),
+  ('concurrent.futures._base',
+   'C:\\Python313\\Lib\\concurrent\\futures\\_base.py',
+   'PYMODULE'),
+  ('concurrent', 'C:\\Python313\\Lib\\concurrent\\__init__.py', 'PYMODULE'),
+  ('asyncio.trsock', 'C:\\Python313\\Lib\\asyncio\\trsock.py', 'PYMODULE'),
+  ('asyncio.staggered',
+   'C:\\Python313\\Lib\\asyncio\\staggered.py',
+   'PYMODULE'),
+  ('asyncio.timeouts', 'C:\\Python313\\Lib\\asyncio\\timeouts.py', 'PYMODULE'),
+  ('asyncio.tasks', 'C:\\Python313\\Lib\\asyncio\\tasks.py', 'PYMODULE'),
+  ('asyncio.queues', 'C:\\Python313\\Lib\\asyncio\\queues.py', 'PYMODULE'),
+  ('asyncio.base_tasks',
+   'C:\\Python313\\Lib\\asyncio\\base_tasks.py',
+   'PYMODULE'),
+  ('asyncio.locks', 'C:\\Python313\\Lib\\asyncio\\locks.py', 'PYMODULE'),
+  ('asyncio.mixins', 'C:\\Python313\\Lib\\asyncio\\mixins.py', 'PYMODULE'),
+  ('asyncio.sslproto', 'C:\\Python313\\Lib\\asyncio\\sslproto.py', 'PYMODULE'),
+  ('asyncio.transports',
+   'C:\\Python313\\Lib\\asyncio\\transports.py',
+   'PYMODULE'),
+  ('asyncio.protocols',
+   'C:\\Python313\\Lib\\asyncio\\protocols.py',
+   'PYMODULE'),
+  ('asyncio.futures', 'C:\\Python313\\Lib\\asyncio\\futures.py', 'PYMODULE'),
+  ('asyncio.base_futures',
+   'C:\\Python313\\Lib\\asyncio\\base_futures.py',
+   'PYMODULE'),
+  ('asyncio.exceptions',
+   'C:\\Python313\\Lib\\asyncio\\exceptions.py',
+   'PYMODULE'),
+  ('asyncio.events', 'C:\\Python313\\Lib\\asyncio\\events.py', 'PYMODULE'),
+  ('asyncio.format_helpers',
+   'C:\\Python313\\Lib\\asyncio\\format_helpers.py',
+   'PYMODULE'),
+  ('asyncio.constants',
+   'C:\\Python313\\Lib\\asyncio\\constants.py',
+   'PYMODULE'),
+  ('setuptools._distutils.errors',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_distutils\\errors.py',
+   'PYMODULE'),
+  ('setuptools._distutils.sysconfig',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_distutils\\sysconfig.py',
+   'PYMODULE'),
+  ('setuptools._distutils.text_file',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_distutils\\text_file.py',
+   'PYMODULE'),
+  ('setuptools._distutils.util',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_distutils\\util.py',
+   'PYMODULE'),
+  ('setuptools._distutils.spawn',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_distutils\\spawn.py',
+   'PYMODULE'),
+  ('setuptools._distutils.debug',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_distutils\\debug.py',
+   'PYMODULE'),
+  ('setuptools._distutils._modified',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_distutils\\_modified.py',
+   'PYMODULE'),
+  ('setuptools._distutils._log',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_distutils\\_log.py',
+   'PYMODULE'),
+  ('setuptools._distutils.compat.py39',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_distutils\\compat\\py39.py',
+   'PYMODULE'),
+  ('setuptools._distutils.compat',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_distutils\\compat\\__init__.py',
+   'PYMODULE'),
+  ('setuptools._distutils.ccompiler',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_distutils\\ccompiler.py',
+   'PYMODULE'),
+  ('setuptools._distutils.compilers.C.base',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_distutils\\compilers\\C\\base.py',
+   'PYMODULE'),
+  ('setuptools._distutils.fancy_getopt',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_distutils\\fancy_getopt.py',
+   'PYMODULE'),
+  ('setuptools._distutils.file_util',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_distutils\\file_util.py',
+   'PYMODULE'),
+  ('setuptools._distutils.dir_util',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_distutils\\dir_util.py',
+   'PYMODULE'),
+  ('setuptools._distutils.compilers.C', '-', 'PYMODULE'),
+  ('setuptools._distutils.compilers.C.msvc',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_distutils\\compilers\\C\\msvc.py',
+   'PYMODULE'),
+  ('unittest.mock', 'C:\\Python313\\Lib\\unittest\\mock.py', 'PYMODULE'),
+  ('unittest', 'C:\\Python313\\Lib\\unittest\\__init__.py', 'PYMODULE'),
+  ('unittest.async_case',
+   'C:\\Python313\\Lib\\unittest\\async_case.py',
+   'PYMODULE'),
+  ('unittest.signals', 'C:\\Python313\\Lib\\unittest\\signals.py', 'PYMODULE'),
+  ('unittest.main', 'C:\\Python313\\Lib\\unittest\\main.py', 'PYMODULE'),
+  ('unittest.runner', 'C:\\Python313\\Lib\\unittest\\runner.py', 'PYMODULE'),
+  ('unittest.loader', 'C:\\Python313\\Lib\\unittest\\loader.py', 'PYMODULE'),
+  ('unittest.suite', 'C:\\Python313\\Lib\\unittest\\suite.py', 'PYMODULE'),
+  ('unittest.case', 'C:\\Python313\\Lib\\unittest\\case.py', 'PYMODULE'),
+  ('unittest._log', 'C:\\Python313\\Lib\\unittest\\_log.py', 'PYMODULE'),
+  ('difflib', 'C:\\Python313\\Lib\\difflib.py', 'PYMODULE'),
+  ('unittest.result', 'C:\\Python313\\Lib\\unittest\\result.py', 'PYMODULE'),
+  ('unittest.util', 'C:\\Python313\\Lib\\unittest\\util.py', 'PYMODULE'),
+  ('setuptools._distutils.compilers', '-', 'PYMODULE'),
+  ('setuptools._distutils.compat.numpy',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_distutils\\compat\\numpy.py',
+   'PYMODULE'),
+  ('jaraco', '-', 'PYMODULE'),
+  ('setuptools._vendor.jaraco.functools',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\jaraco\\functools\\__init__.py',
+   'PYMODULE'),
+  ('setuptools._vendor.jaraco', '-', 'PYMODULE'),
+  ('setuptools._vendor', '-', 'PYMODULE'),
+  ('sysconfig', 'C:\\Python313\\Lib\\sysconfig\\__init__.py', 'PYMODULE'),
+  ('_aix_support', 'C:\\Python313\\Lib\\_aix_support.py', 'PYMODULE'),
+  ('setuptools._distutils',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_distutils\\__init__.py',
+   'PYMODULE'),
+  ('setuptools._distutils.version',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_distutils\\version.py',
+   'PYMODULE'),
+  ('setuptools._distutils.archive_util',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_distutils\\archive_util.py',
+   'PYMODULE'),
+  ('setuptools._distutils.compilers.C.errors',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_distutils\\compilers\\C\\errors.py',
+   'PYMODULE'),
+  ('setuptools._vendor.more_itertools',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\more_itertools\\__init__.py',
+   'PYMODULE'),
+  ('setuptools._vendor.more_itertools.recipes',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\more_itertools\\recipes.py',
+   'PYMODULE'),
+  ('setuptools._vendor.more_itertools.more',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\more_itertools\\more.py',
+   'PYMODULE'),
+  ('platform', 'C:\\Python313\\Lib\\platform.py', 'PYMODULE'),
+  ('_ios_support', 'C:\\Python313\\Lib\\_ios_support.py', 'PYMODULE'),
+  ('setuptools._distutils.command.build_ext',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_distutils\\command\\build_ext.py',
+   'PYMODULE'),
+  ('setuptools._distutils.command',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_distutils\\command\\__init__.py',
+   'PYMODULE'),
+  ('setuptools._distutils._msvccompiler',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_distutils\\_msvccompiler.py',
+   'PYMODULE'),
+  ('setuptools._distutils.extension',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_distutils\\extension.py',
+   'PYMODULE'),
+  ('site', 'C:\\Python313\\Lib\\site.py', 'PYMODULE'),
+  ('_pyrepl.main', 'C:\\Python313\\Lib\\_pyrepl\\main.py', 'PYMODULE'),
+  ('_pyrepl', 'C:\\Python313\\Lib\\_pyrepl\\__init__.py', 'PYMODULE'),
+  ('_pyrepl.curses', 'C:\\Python313\\Lib\\_pyrepl\\curses.py', 'PYMODULE'),
+  ('curses', 'C:\\Python313\\Lib\\curses\\__init__.py', 'PYMODULE'),
+  ('curses.has_key', 'C:\\Python313\\Lib\\curses\\has_key.py', 'PYMODULE'),
+  ('_pyrepl._minimal_curses',
+   'C:\\Python313\\Lib\\_pyrepl\\_minimal_curses.py',
+   'PYMODULE'),
+  ('_pyrepl.input', 'C:\\Python313\\Lib\\_pyrepl\\input.py', 'PYMODULE'),
+  ('_pyrepl.keymap', 'C:\\Python313\\Lib\\_pyrepl\\keymap.py', 'PYMODULE'),
+  ('_pyrepl.types', 'C:\\Python313\\Lib\\_pyrepl\\types.py', 'PYMODULE'),
+  ('_pyrepl.commands', 'C:\\Python313\\Lib\\_pyrepl\\commands.py', 'PYMODULE'),
+  ('_pyrepl.pager', 'C:\\Python313\\Lib\\_pyrepl\\pager.py', 'PYMODULE'),
+  ('tty', 'C:\\Python313\\Lib\\tty.py', 'PYMODULE'),
+  ('_pyrepl.historical_reader',
+   'C:\\Python313\\Lib\\_pyrepl\\historical_reader.py',
+   'PYMODULE'),
+  ('_pyrepl.reader', 'C:\\Python313\\Lib\\_pyrepl\\reader.py', 'PYMODULE'),
+  ('_pyrepl._threading_handler',
+   'C:\\Python313\\Lib\\_pyrepl\\_threading_handler.py',
+   'PYMODULE'),
+  ('_pyrepl.utils', 'C:\\Python313\\Lib\\_pyrepl\\utils.py', 'PYMODULE'),
+  ('_colorize', 'C:\\Python313\\Lib\\_colorize.py', 'PYMODULE'),
+  ('_pyrepl.console', 'C:\\Python313\\Lib\\_pyrepl\\console.py', 'PYMODULE'),
+  ('code', 'C:\\Python313\\Lib\\code.py', 'PYMODULE'),
+  ('codeop', 'C:\\Python313\\Lib\\codeop.py', 'PYMODULE'),
+  ('_pyrepl.trace', 'C:\\Python313\\Lib\\_pyrepl\\trace.py', 'PYMODULE'),
+  ('_pyrepl.simple_interact',
+   'C:\\Python313\\Lib\\_pyrepl\\simple_interact.py',
+   'PYMODULE'),
+  ('_pyrepl.unix_console',
+   'C:\\Python313\\Lib\\_pyrepl\\unix_console.py',
+   'PYMODULE'),
+  ('_pyrepl.unix_eventqueue',
+   'C:\\Python313\\Lib\\_pyrepl\\unix_eventqueue.py',
+   'PYMODULE'),
+  ('_pyrepl.fancy_termios',
+   'C:\\Python313\\Lib\\_pyrepl\\fancy_termios.py',
+   'PYMODULE'),
+  ('_pyrepl.windows_console',
+   'C:\\Python313\\Lib\\_pyrepl\\windows_console.py',
+   'PYMODULE'),
+  ('ctypes.wintypes', 'C:\\Python313\\Lib\\ctypes\\wintypes.py', 'PYMODULE'),
+  ('_pyrepl.readline', 'C:\\Python313\\Lib\\_pyrepl\\readline.py', 'PYMODULE'),
+  ('_pyrepl.completing_reader',
+   'C:\\Python313\\Lib\\_pyrepl\\completing_reader.py',
+   'PYMODULE'),
+  ('rlcompleter', 'C:\\Python313\\Lib\\rlcompleter.py', 'PYMODULE'),
+  ('_sitebuiltins', 'C:\\Python313\\Lib\\_sitebuiltins.py', 'PYMODULE'),
+  ('pydoc', 'C:\\Python313\\Lib\\pydoc.py', 'PYMODULE'),
+  ('webbrowser', 'C:\\Python313\\Lib\\webbrowser.py', 'PYMODULE'),
+  ('shlex', 'C:\\Python313\\Lib\\shlex.py', 'PYMODULE'),
+  ('http.server', 'C:\\Python313\\Lib\\http\\server.py', 'PYMODULE'),
+  ('socketserver', 'C:\\Python313\\Lib\\socketserver.py', 'PYMODULE'),
+  ('html', 'C:\\Python313\\Lib\\html\\__init__.py', 'PYMODULE'),
+  ('html.entities', 'C:\\Python313\\Lib\\html\\entities.py', 'PYMODULE'),
+  ('pydoc_data.topics',
+   'C:\\Python313\\Lib\\pydoc_data\\topics.py',
+   'PYMODULE'),
+  ('pydoc_data', 'C:\\Python313\\Lib\\pydoc_data\\__init__.py', 'PYMODULE'),
+  ('setuptools._distutils.core',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_distutils\\core.py',
+   'PYMODULE'),
+  ('setuptools._distutils.dist',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_distutils\\dist.py',
+   'PYMODULE'),
+  ('setuptools._distutils.versionpredicate',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_distutils\\versionpredicate.py',
+   'PYMODULE'),
+  ('configparser', 'C:\\Python313\\Lib\\configparser.py', 'PYMODULE'),
+  ('packaging.utils',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\packaging\\utils.py',
+   'PYMODULE'),
+  ('packaging',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\packaging\\__init__.py',
+   'PYMODULE'),
+  ('packaging._musllinux',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\packaging\\_musllinux.py',
+   'PYMODULE'),
+  ('packaging._elffile',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\packaging\\_elffile.py',
+   'PYMODULE'),
+  ('packaging._manylinux',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\packaging\\_manylinux.py',
+   'PYMODULE'),
+  ('packaging.version',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\packaging\\version.py',
+   'PYMODULE'),
+  ('packaging._structures',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\packaging\\_structures.py',
+   'PYMODULE'),
+  ('packaging.tags',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\packaging\\tags.py',
+   'PYMODULE'),
+  ('setuptools._distutils.cmd',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_distutils\\cmd.py',
+   'PYMODULE'),
+  ('setuptools.warnings',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\warnings.py',
+   'PYMODULE'),
+  ('setuptools.version',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\version.py',
+   'PYMODULE'),
+  ('setuptools._importlib',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_importlib.py',
+   'PYMODULE'),
+  ('setuptools._vendor.importlib_metadata',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata\\__init__.py',
+   'PYMODULE'),
+  ('setuptools._vendor.importlib_metadata._adapters',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata\\_adapters.py',
+   'PYMODULE'),
+  ('setuptools._vendor.importlib_metadata._text',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata\\_text.py',
+   'PYMODULE'),
+  ('setuptools._vendor.importlib_metadata._itertools',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata\\_itertools.py',
+   'PYMODULE'),
+  ('setuptools._vendor.importlib_metadata._functools',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata\\_functools.py',
+   'PYMODULE'),
+  ('setuptools._vendor.importlib_metadata._compat',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata\\_compat.py',
+   'PYMODULE'),
+  ('setuptools._vendor.importlib_metadata._collections',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata\\_collections.py',
+   'PYMODULE'),
+  ('setuptools._vendor.importlib_metadata.compat.py311',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata\\compat\\py311.py',
+   'PYMODULE'),
+  ('setuptools._vendor.importlib_metadata.compat.py39',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata\\compat\\py39.py',
+   'PYMODULE'),
+  ('setuptools._vendor.importlib_metadata.compat',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata\\compat\\__init__.py',
+   'PYMODULE'),
+  ('setuptools._vendor.importlib_metadata._meta',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata\\_meta.py',
+   'PYMODULE'),
+  ('setuptools._vendor.zipp',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\zipp\\__init__.py',
+   'PYMODULE'),
+  ('setuptools._vendor.zipp.glob',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\zipp\\glob.py',
+   'PYMODULE'),
+  ('setuptools._vendor.zipp.compat.py310',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\zipp\\compat\\py310.py',
+   'PYMODULE'),
+  ('setuptools._vendor.zipp.compat',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\zipp\\compat\\__init__.py',
+   'PYMODULE'),
+  ('setuptools.extension',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\extension.py',
+   'PYMODULE'),
+  ('setuptools._path',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_path.py',
+   'PYMODULE'),
+  ('setuptools.dist',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\dist.py',
+   'PYMODULE'),
+  ('setuptools.command.bdist_wheel',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\command\\bdist_wheel.py',
+   'PYMODULE'),
+  ('setuptools._vendor.wheel.macosx_libfile',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\wheel\\macosx_libfile.py',
+   'PYMODULE'),
+  ('setuptools._vendor.wheel',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\wheel\\__init__.py',
+   'PYMODULE'),
+  ('setuptools.command.egg_info',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\command\\egg_info.py',
+   'PYMODULE'),
+  ('setuptools._distutils.filelist',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_distutils\\filelist.py',
+   'PYMODULE'),
+  ('setuptools.command._requirestxt',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\command\\_requirestxt.py',
+   'PYMODULE'),
+  ('setuptools._vendor.jaraco.text',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\jaraco\\text\\__init__.py',
+   'PYMODULE'),
+  ('setuptools._vendor.jaraco.context',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\jaraco\\context.py',
+   'PYMODULE'),
+  ('setuptools._vendor.backports.tarfile',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\backports\\tarfile\\__init__.py',
+   'PYMODULE'),
+  ('setuptools._vendor.backports',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\backports\\__init__.py',
+   'PYMODULE'),
+  ('setuptools._vendor.backports.tarfile.compat.py38',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\backports\\tarfile\\compat\\py38.py',
+   'PYMODULE'),
+  ('setuptools._vendor.backports.tarfile.compat',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\backports\\tarfile\\compat\\__init__.py',
+   'PYMODULE'),
+  ('backports',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\backports\\__init__.py',
+   'PYMODULE'),
+  ('setuptools.glob',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\glob.py',
+   'PYMODULE'),
+  ('setuptools.command.setopt',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\command\\setopt.py',
+   'PYMODULE'),
+  ('setuptools.command.sdist',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\command\\sdist.py',
+   'PYMODULE'),
+  ('setuptools._distutils.command.sdist',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_distutils\\command\\sdist.py',
+   'PYMODULE'),
+  ('setuptools.command.build',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\command\\build.py',
+   'PYMODULE'),
+  ('setuptools._distutils.command.build',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_distutils\\command\\build.py',
+   'PYMODULE'),
+  ('setuptools.command.bdist_egg',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\command\\bdist_egg.py',
+   'PYMODULE'),
+  ('setuptools.unicode_utils',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\unicode_utils.py',
+   'PYMODULE'),
+  ('setuptools.compat.py39',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\compat\\py39.py',
+   'PYMODULE'),
+  ('setuptools.compat',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\compat\\__init__.py',
+   'PYMODULE'),
+  ('setuptools.compat.py311',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\compat\\py311.py',
+   'PYMODULE'),
+  ('packaging.requirements',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\packaging\\requirements.py',
+   'PYMODULE'),
+  ('packaging._tokenizer',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\packaging\\_tokenizer.py',
+   'PYMODULE'),
+  ('packaging._parser',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\packaging\\_parser.py',
+   'PYMODULE'),
+  ('setuptools._vendor.wheel.wheelfile',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\wheel\\wheelfile.py',
+   'PYMODULE'),
+  ('setuptools._vendor.wheel.util',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\wheel\\util.py',
+   'PYMODULE'),
+  ('setuptools._vendor.wheel.cli',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\wheel\\cli\\__init__.py',
+   'PYMODULE'),
+  ('setuptools._vendor.wheel.cli.tags',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\wheel\\cli\\tags.py',
+   'PYMODULE'),
+  ('setuptools._vendor.wheel.cli.convert',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\wheel\\cli\\convert.py',
+   'PYMODULE'),
+  ('setuptools._vendor.wheel.vendored.packaging.tags',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\wheel\\vendored\\packaging\\tags.py',
+   'PYMODULE'),
+  ('setuptools._vendor.wheel.vendored.packaging._musllinux',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\wheel\\vendored\\packaging\\_musllinux.py',
+   'PYMODULE'),
+  ('setuptools._vendor.wheel.vendored.packaging._elffile',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\wheel\\vendored\\packaging\\_elffile.py',
+   'PYMODULE'),
+  ('setuptools._vendor.wheel.vendored.packaging._manylinux',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\wheel\\vendored\\packaging\\_manylinux.py',
+   'PYMODULE'),
+  ('setuptools._vendor.wheel.vendored.packaging',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\wheel\\vendored\\packaging\\__init__.py',
+   'PYMODULE'),
+  ('setuptools._vendor.wheel.vendored',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\wheel\\vendored\\__init__.py',
+   'PYMODULE'),
+  ('setuptools._vendor.wheel.metadata',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\wheel\\metadata.py',
+   'PYMODULE'),
+  ('setuptools._vendor.wheel.vendored.packaging.requirements',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\wheel\\vendored\\packaging\\requirements.py',
+   'PYMODULE'),
+  ('setuptools._vendor.wheel.vendored.packaging.utils',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\wheel\\vendored\\packaging\\utils.py',
+   'PYMODULE'),
+  ('setuptools._vendor.wheel.vendored.packaging.version',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\wheel\\vendored\\packaging\\version.py',
+   'PYMODULE'),
+  ('setuptools._vendor.wheel.vendored.packaging._structures',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\wheel\\vendored\\packaging\\_structures.py',
+   'PYMODULE'),
+  ('setuptools._vendor.wheel.vendored.packaging.specifiers',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\wheel\\vendored\\packaging\\specifiers.py',
+   'PYMODULE'),
+  ('setuptools._vendor.wheel.vendored.packaging.markers',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\wheel\\vendored\\packaging\\markers.py',
+   'PYMODULE'),
+  ('setuptools._vendor.wheel.vendored.packaging._tokenizer',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\wheel\\vendored\\packaging\\_tokenizer.py',
+   'PYMODULE'),
+  ('setuptools._vendor.wheel.vendored.packaging._parser',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\wheel\\vendored\\packaging\\_parser.py',
+   'PYMODULE'),
+  ('setuptools._vendor.wheel.cli.pack',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\wheel\\cli\\pack.py',
+   'PYMODULE'),
+  ('setuptools._vendor.wheel.cli.unpack',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\wheel\\cli\\unpack.py',
+   'PYMODULE'),
+  ('setuptools.installer',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\installer.py',
+   'PYMODULE'),
+  ('setuptools.wheel',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\wheel.py',
+   'PYMODULE'),
+  ('setuptools._discovery',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_discovery.py',
+   'PYMODULE'),
+  ('setuptools.archive_util',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\archive_util.py',
+   'PYMODULE'),
+  ('setuptools._distutils.log',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_distutils\\log.py',
+   'PYMODULE'),
+  ('setuptools.errors',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\errors.py',
+   'PYMODULE'),
+  ('setuptools.config.setupcfg',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\config\\setupcfg.py',
+   'PYMODULE'),
+  ('setuptools.config.expand',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\config\\expand.py',
+   'PYMODULE'),
+  ('setuptools.config.pyprojecttoml',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\config\\pyprojecttoml.py',
+   'PYMODULE'),
+  ('setuptools.config._validate_pyproject',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\config\\_validate_pyproject\\__init__.py',
+   'PYMODULE'),
+  ('setuptools.config._validate_pyproject.fastjsonschema_validations',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\config\\_validate_pyproject\\fastjsonschema_validations.py',
+   'PYMODULE'),
+  ('setuptools.config._validate_pyproject.fastjsonschema_exceptions',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\config\\_validate_pyproject\\fastjsonschema_exceptions.py',
+   'PYMODULE'),
+  ('setuptools.config._validate_pyproject.extra_validations',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\config\\_validate_pyproject\\extra_validations.py',
+   'PYMODULE'),
+  ('setuptools.config._validate_pyproject.error_reporting',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\config\\_validate_pyproject\\error_reporting.py',
+   'PYMODULE'),
+  ('setuptools.config._validate_pyproject.formats',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\config\\_validate_pyproject\\formats.py',
+   'PYMODULE'),
+  ('packaging.licenses',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\packaging\\licenses\\__init__.py',
+   'PYMODULE'),
+  ('packaging.licenses._spdx',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\packaging\\licenses\\_spdx.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging.requirements',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\packaging\\requirements.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging.utils',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\packaging\\utils.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging.version',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\packaging\\version.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging._structures',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\packaging\\_structures.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging.tags',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\packaging\\tags.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging._musllinux',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\packaging\\_musllinux.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging._elffile',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\packaging\\_elffile.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging._manylinux',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\packaging\\_manylinux.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging.specifiers',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\packaging\\specifiers.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging.markers',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\packaging\\markers.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging._tokenizer',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\packaging\\_tokenizer.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging._parser',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\packaging\\_parser.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\packaging\\__init__.py',
+   'PYMODULE'),
+  ('setuptools.compat.py310',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\compat\\py310.py',
+   'PYMODULE'),
+  ('setuptools._vendor.tomli',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\tomli\\__init__.py',
+   'PYMODULE'),
+  ('setuptools._vendor.tomli._parser',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\tomli\\_parser.py',
+   'PYMODULE'),
+  ('setuptools._vendor.tomli._types',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\tomli\\_types.py',
+   'PYMODULE'),
+  ('setuptools._vendor.tomli._re',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\tomli\\_re.py',
+   'PYMODULE'),
+  ('tomllib', 'C:\\Python313\\Lib\\tomllib\\__init__.py', 'PYMODULE'),
+  ('tomllib._parser', 'C:\\Python313\\Lib\\tomllib\\_parser.py', 'PYMODULE'),
+  ('tomllib._types', 'C:\\Python313\\Lib\\tomllib\\_types.py', 'PYMODULE'),
+  ('tomllib._re', 'C:\\Python313\\Lib\\tomllib\\_re.py', 'PYMODULE'),
+  ('setuptools.config._apply_pyprojecttoml',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\config\\_apply_pyprojecttoml.py',
+   'PYMODULE'),
+  ('setuptools.config',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\config\\__init__.py',
+   'PYMODULE'),
+  ('setuptools._static',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_static.py',
+   'PYMODULE'),
+  ('packaging.specifiers',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\packaging\\specifiers.py',
+   'PYMODULE'),
+  ('packaging.markers',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\packaging\\markers.py',
+   'PYMODULE'),
+  ('setuptools._shutil',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_shutil.py',
+   'PYMODULE'),
+  ('setuptools.windows_support',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\windows_support.py',
+   'PYMODULE'),
+  ('setuptools.command',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\command\\__init__.py',
+   'PYMODULE'),
+  ('setuptools._distutils.command.bdist',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_distutils\\command\\bdist.py',
+   'PYMODULE'),
+  ('setuptools._entry_points',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_entry_points.py',
+   'PYMODULE'),
+  ('setuptools._itertools',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_itertools.py',
+   'PYMODULE'),
+  ('setuptools.discovery',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\discovery.py',
+   'PYMODULE'),
+  ('setuptools.depends',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\depends.py',
+   'PYMODULE'),
+  ('setuptools._imp',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_imp.py',
+   'PYMODULE'),
+  ('setuptools.logging',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\logging.py',
+   'PYMODULE'),
+  ('setuptools.monkey',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\monkey.py',
+   'PYMODULE'),
+  ('setuptools._core_metadata',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_core_metadata.py',
+   'PYMODULE'),
+  ('setuptools._reqs',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_reqs.py',
+   'PYMODULE'),
+  ('setuptools._normalization',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_normalization.py',
+   'PYMODULE'),
+  ('_distutils_hack.override',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\_distutils_hack\\override.py',
+   'PYMODULE'),
+  ('tracemalloc', 'C:\\Python313\\Lib\\tracemalloc.py', 'PYMODULE'),
+  ('_py_abc', 'C:\\Python313\\Lib\\_py_abc.py', 'PYMODULE'),
+  ('stringprep', 'C:\\Python313\\Lib\\stringprep.py', 'PYMODULE'),
+  ('uvicorn',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\uvicorn\\__init__.py',
+   'PYMODULE'),
+  ('uvicorn.workers',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\uvicorn\\workers.py',
+   'PYMODULE'),
+  ('uvicorn.supervisors.watchfilesreload',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\uvicorn\\supervisors\\watchfilesreload.py',
+   'PYMODULE'),
+  ('watchfiles',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\watchfiles\\__init__.py',
+   'PYMODULE'),
+  ('watchfiles.version',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\watchfiles\\version.py',
+   'PYMODULE'),
+  ('watchfiles.run',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\watchfiles\\run.py',
+   'PYMODULE'),
+  ('anyio',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\anyio\\__init__.py',
+   'PYMODULE'),
+  ('anyio._backends._trio',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\anyio\\_backends\\_trio.py',
+   'PYMODULE'),
+  ('anyio.streams.memory',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\anyio\\streams\\memory.py',
+   'PYMODULE'),
+  ('anyio.streams',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\anyio\\streams\\__init__.py',
+   'PYMODULE'),
+  ('anyio.lowlevel',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\anyio\\lowlevel.py',
+   'PYMODULE'),
+  ('anyio.abc._eventloop',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\anyio\\abc\\_eventloop.py',
+   'PYMODULE'),
+  ('anyio.abc._testing',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\anyio\\abc\\_testing.py',
+   'PYMODULE'),
+  ('anyio.abc._tasks',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\anyio\\abc\\_tasks.py',
+   'PYMODULE'),
+  ('anyio.abc._subprocesses',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\anyio\\abc\\_subprocesses.py',
+   'PYMODULE'),
+  ('anyio.abc._streams',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\anyio\\abc\\_streams.py',
+   'PYMODULE'),
+  ('anyio.abc._resources',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\anyio\\abc\\_resources.py',
+   'PYMODULE'),
+  ('anyio.abc._sockets',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\anyio\\abc\\_sockets.py',
+   'PYMODULE'),
+  ('anyio.from_thread',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\anyio\\from_thread.py',
+   'PYMODULE'),
+  ('anyio._core',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\anyio\\_core\\__init__.py',
+   'PYMODULE'),
+  ('anyio.abc',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\anyio\\abc\\__init__.py',
+   'PYMODULE'),
+  ('anyio._backends._asyncio',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\anyio\\_backends\\_asyncio.py',
+   'PYMODULE'),
+  ('anyio._core._asyncio_selector_thread',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\anyio\\_core\\_asyncio_selector_thread.py',
+   'PYMODULE'),
+  ('sniffio',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sniffio\\__init__.py',
+   'PYMODULE'),
+  ('sniffio._impl',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sniffio\\_impl.py',
+   'PYMODULE'),
+  ('sniffio._version',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sniffio\\_version.py',
+   'PYMODULE'),
+  ('anyio._backends',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\anyio\\_backends\\__init__.py',
+   'PYMODULE'),
+  ('anyio._core._typedattr',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\anyio\\_core\\_typedattr.py',
+   'PYMODULE'),
+  ('anyio._core._testing',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\anyio\\_core\\_testing.py',
+   'PYMODULE'),
+  ('anyio._core._tempfile',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\anyio\\_core\\_tempfile.py',
+   'PYMODULE'),
+  ('anyio._core._tasks',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\anyio\\_core\\_tasks.py',
+   'PYMODULE'),
+  ('anyio._core._synchronization',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\anyio\\_core\\_synchronization.py',
+   'PYMODULE'),
+  ('anyio._core._subprocesses',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\anyio\\_core\\_subprocesses.py',
+   'PYMODULE'),
+  ('anyio._core._streams',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\anyio\\_core\\_streams.py',
+   'PYMODULE'),
+  ('anyio._core._sockets',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\anyio\\_core\\_sockets.py',
+   'PYMODULE'),
+  ('idna',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\idna\\__init__.py',
+   'PYMODULE'),
+  ('idna.package_data',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\idna\\package_data.py',
+   'PYMODULE'),
+  ('idna.intranges',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\idna\\intranges.py',
+   'PYMODULE'),
+  ('idna.core',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\idna\\core.py',
+   'PYMODULE'),
+  ('idna.uts46data',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\idna\\uts46data.py',
+   'PYMODULE'),
+  ('idna.idnadata',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\idna\\idnadata.py',
+   'PYMODULE'),
+  ('anyio.streams.tls',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\anyio\\streams\\tls.py',
+   'PYMODULE'),
+  ('anyio.streams.stapled',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\anyio\\streams\\stapled.py',
+   'PYMODULE'),
+  ('anyio._core._signals',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\anyio\\_core\\_signals.py',
+   'PYMODULE'),
+  ('anyio._core._resources',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\anyio\\_core\\_resources.py',
+   'PYMODULE'),
+  ('anyio._core._fileio',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\anyio\\_core\\_fileio.py',
+   'PYMODULE'),
+  ('anyio._core._exceptions',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\anyio\\_core\\_exceptions.py',
+   'PYMODULE'),
+  ('anyio._core._eventloop',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\anyio\\_core\\_eventloop.py',
+   'PYMODULE'),
+  ('anyio.to_thread',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\anyio\\to_thread.py',
+   'PYMODULE'),
+  ('watchfiles.main',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\watchfiles\\main.py',
+   'PYMODULE'),
+  ('watchfiles.filters',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\watchfiles\\filters.py',
+   'PYMODULE'),
+  ('uvicorn.supervisors.statreload',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\uvicorn\\supervisors\\statreload.py',
+   'PYMODULE'),
+  ('uvicorn.supervisors.multiprocess',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\uvicorn\\supervisors\\multiprocess.py',
+   'PYMODULE'),
+  ('click',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\click\\__init__.py',
+   'PYMODULE'),
+  ('click.parser',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\click\\parser.py',
+   'PYMODULE'),
+  ('click.shell_completion',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\click\\shell_completion.py',
+   'PYMODULE'),
+  ('click.utils',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\click\\utils.py',
+   'PYMODULE'),
+  ('click._compat',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\click\\_compat.py',
+   'PYMODULE'),
+  ('colorama',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\colorama\\__init__.py',
+   'PYMODULE'),
+  ('colorama.ansitowin32',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\colorama\\ansitowin32.py',
+   'PYMODULE'),
+  ('colorama.winterm',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\colorama\\winterm.py',
+   'PYMODULE'),
+  ('colorama.ansi',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\colorama\\ansi.py',
+   'PYMODULE'),
+  ('colorama.initialise',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\colorama\\initialise.py',
+   'PYMODULE'),
+  ('colorama.win32',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\colorama\\win32.py',
+   'PYMODULE'),
+  ('click._winconsole',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\click\\_winconsole.py',
+   'PYMODULE'),
+  ('click.termui',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\click\\termui.py',
+   'PYMODULE'),
+  ('click._termui_impl',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\click\\_termui_impl.py',
+   'PYMODULE'),
+  ('click.globals',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\click\\globals.py',
+   'PYMODULE'),
+  ('click.formatting',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\click\\formatting.py',
+   'PYMODULE'),
+  ('click._textwrap',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\click\\_textwrap.py',
+   'PYMODULE'),
+  ('click.exceptions',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\click\\exceptions.py',
+   'PYMODULE'),
+  ('click.decorators',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\click\\decorators.py',
+   'PYMODULE'),
+  ('click.core',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\click\\core.py',
+   'PYMODULE'),
+  ('click.types',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\click\\types.py',
+   'PYMODULE'),
+  ('uuid', 'C:\\Python313\\Lib\\uuid.py', 'PYMODULE'),
+  ('uvicorn.supervisors.basereload',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\uvicorn\\supervisors\\basereload.py',
+   'PYMODULE'),
+  ('uvicorn.supervisors',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\uvicorn\\supervisors\\__init__.py',
+   'PYMODULE'),
+  ('uvicorn.server',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\uvicorn\\server.py',
+   'PYMODULE'),
+  ('uvicorn.protocols.websockets.wsproto_impl',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\uvicorn\\protocols\\websockets\\wsproto_impl.py',
+   'PYMODULE'),
+  ('uvicorn.protocols.websockets.websockets_impl',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\uvicorn\\protocols\\websockets\\websockets_impl.py',
+   'PYMODULE'),
+  ('websockets.typing',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets\\typing.py',
+   'PYMODULE'),
+  ('websockets.server',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets\\server.py',
+   'PYMODULE'),
+  ('websockets.utils',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets\\utils.py',
+   'PYMODULE'),
+  ('websockets.protocol',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets\\protocol.py',
+   'PYMODULE'),
+  ('websockets.streams',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets\\streams.py',
+   'PYMODULE'),
+  ('websockets.frames',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets\\frames.py',
+   'PYMODULE'),
+  ('websockets.imports',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets\\imports.py',
+   'PYMODULE'),
+  ('websockets.http11',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets\\http11.py',
+   'PYMODULE'),
+  ('websockets.version',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets\\version.py',
+   'PYMODULE'),
+  ('websockets.headers',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets\\headers.py',
+   'PYMODULE'),
+  ('websockets.extensions',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets\\extensions\\__init__.py',
+   'PYMODULE'),
+  ('websockets.legacy.server',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets\\legacy\\server.py',
+   'PYMODULE'),
+  ('websockets.legacy',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets\\legacy\\__init__.py',
+   'PYMODULE'),
+  ('websockets.legacy.protocol',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets\\legacy\\protocol.py',
+   'PYMODULE'),
+  ('websockets.legacy.framing',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets\\legacy\\framing.py',
+   'PYMODULE'),
+  ('websockets.legacy.http',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets\\legacy\\http.py',
+   'PYMODULE'),
+  ('websockets.legacy.exceptions',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets\\legacy\\exceptions.py',
+   'PYMODULE'),
+  ('websockets.asyncio.compatibility',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets\\asyncio\\compatibility.py',
+   'PYMODULE'),
+  ('websockets.asyncio',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets\\asyncio\\__init__.py',
+   'PYMODULE'),
+  ('websockets.asyncio.async_timeout',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets\\asyncio\\async_timeout.py',
+   'PYMODULE'),
+  ('websockets.extensions.permessage_deflate',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets\\extensions\\permessage_deflate.py',
+   'PYMODULE'),
+  ('websockets.extensions.base',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets\\extensions\\base.py',
+   'PYMODULE'),
+  ('websockets.exceptions',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets\\exceptions.py',
+   'PYMODULE'),
+  ('websockets.datastructures',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets\\datastructures.py',
+   'PYMODULE'),
+  ('websockets.legacy.handshake',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets\\legacy\\handshake.py',
+   'PYMODULE'),
+  ('websockets',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets\\__init__.py',
+   'PYMODULE'),
+  ('websockets.uri',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets\\uri.py',
+   'PYMODULE'),
+  ('websockets.sync.utils',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets\\sync\\utils.py',
+   'PYMODULE'),
+  ('websockets.sync.server',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets\\sync\\server.py',
+   'PYMODULE'),
+  ('websockets.sync.router',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets\\sync\\router.py',
+   'PYMODULE'),
+  ('websockets.sync.messages',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets\\sync\\messages.py',
+   'PYMODULE'),
+  ('websockets.sync.connection',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets\\sync\\connection.py',
+   'PYMODULE'),
+  ('websockets.sync.client',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets\\sync\\client.py',
+   'PYMODULE'),
+  ('websockets.sync',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets\\sync\\__init__.py',
+   'PYMODULE'),
+  ('websockets.legacy.client',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets\\legacy\\client.py',
+   'PYMODULE'),
+  ('websockets.legacy.auth',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets\\legacy\\auth.py',
+   'PYMODULE'),
+  ('websockets.http',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets\\http.py',
+   'PYMODULE'),
+  ('websockets.connection',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets\\connection.py',
+   'PYMODULE'),
+  ('websockets.cli',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets\\cli.py',
+   'PYMODULE'),
+  ('websockets.auth',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets\\auth.py',
+   'PYMODULE'),
+  ('websockets.asyncio.messages',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets\\asyncio\\messages.py',
+   'PYMODULE'),
+  ('websockets.asyncio.connection',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets\\asyncio\\connection.py',
+   'PYMODULE'),
+  ('websockets.__main__',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets\\__main__.py',
+   'PYMODULE'),
+  ('websockets.client',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets\\client.py',
+   'PYMODULE'),
+  ('websockets.asyncio.server',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets\\asyncio\\server.py',
+   'PYMODULE'),
+  ('websockets.asyncio.router',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets\\asyncio\\router.py',
+   'PYMODULE'),
+  ('websockets.asyncio.client',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets\\asyncio\\client.py',
+   'PYMODULE'),
+  ('uvicorn.protocols.websockets.auto',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\uvicorn\\protocols\\websockets\\auto.py',
+   'PYMODULE'),
+  ('uvicorn.protocols.websockets',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\uvicorn\\protocols\\websockets\\__init__.py',
+   'PYMODULE'),
+  ('uvicorn.protocols.utils',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\uvicorn\\protocols\\utils.py',
+   'PYMODULE'),
+  ('uvicorn.protocols.http.httptools_impl',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\uvicorn\\protocols\\http\\httptools_impl.py',
+   'PYMODULE'),
+  ('httptools',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\httptools\\__init__.py',
+   'PYMODULE'),
+  ('httptools._version',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\httptools\\_version.py',
+   'PYMODULE'),
+  ('httptools.parser',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\httptools\\parser\\__init__.py',
+   'PYMODULE'),
+  ('httptools.parser.errors',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\httptools\\parser\\errors.py',
+   'PYMODULE'),
+  ('uvicorn.protocols.http.h11_impl',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\uvicorn\\protocols\\http\\h11_impl.py',
+   'PYMODULE'),
+  ('h11._connection',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\h11\\_connection.py',
+   'PYMODULE'),
+  ('h11._writers',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\h11\\_writers.py',
+   'PYMODULE'),
+  ('h11._util',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\h11\\_util.py',
+   'PYMODULE'),
+  ('h11._state',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\h11\\_state.py',
+   'PYMODULE'),
+  ('h11._receivebuffer',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\h11\\_receivebuffer.py',
+   'PYMODULE'),
+  ('h11._readers',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\h11\\_readers.py',
+   'PYMODULE'),
+  ('h11._abnf',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\h11\\_abnf.py',
+   'PYMODULE'),
+  ('h11._headers',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\h11\\_headers.py',
+   'PYMODULE'),
+  ('h11._events',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\h11\\_events.py',
+   'PYMODULE'),
+  ('h11',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\h11\\__init__.py',
+   'PYMODULE'),
+  ('h11._version',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\h11\\_version.py',
+   'PYMODULE'),
+  ('uvicorn.protocols.http.flow_control',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\uvicorn\\protocols\\http\\flow_control.py',
+   'PYMODULE'),
+  ('uvicorn.protocols.http.auto',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\uvicorn\\protocols\\http\\auto.py',
+   'PYMODULE'),
+  ('uvicorn.protocols.http',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\uvicorn\\protocols\\http\\__init__.py',
+   'PYMODULE'),
+  ('uvicorn.protocols',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\uvicorn\\protocols\\__init__.py',
+   'PYMODULE'),
+  ('uvicorn.middleware.wsgi',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\uvicorn\\middleware\\wsgi.py',
+   'PYMODULE'),
+  ('uvicorn.middleware.proxy_headers',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\uvicorn\\middleware\\proxy_headers.py',
+   'PYMODULE'),
+  ('uvicorn.middleware.message_logger',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\uvicorn\\middleware\\message_logger.py',
+   'PYMODULE'),
+  ('uvicorn.middleware.asgi2',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\uvicorn\\middleware\\asgi2.py',
+   'PYMODULE'),
+  ('uvicorn.middleware',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\uvicorn\\middleware\\__init__.py',
+   'PYMODULE'),
+  ('uvicorn.loops.uvloop',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\uvicorn\\loops\\uvloop.py',
+   'PYMODULE'),
+  ('uvicorn.loops.auto',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\uvicorn\\loops\\auto.py',
+   'PYMODULE'),
+  ('uvicorn.loops.asyncio',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\uvicorn\\loops\\asyncio.py',
+   'PYMODULE'),
+  ('uvicorn.loops',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\uvicorn\\loops\\__init__.py',
+   'PYMODULE'),
+  ('uvicorn.logging',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\uvicorn\\logging.py',
+   'PYMODULE'),
+  ('uvicorn.lifespan.on',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\uvicorn\\lifespan\\on.py',
+   'PYMODULE'),
+  ('uvicorn.lifespan.off',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\uvicorn\\lifespan\\off.py',
+   'PYMODULE'),
+  ('uvicorn.lifespan',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\uvicorn\\lifespan\\__init__.py',
+   'PYMODULE'),
+  ('uvicorn.importer',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\uvicorn\\importer.py',
+   'PYMODULE'),
+  ('uvicorn._types',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\uvicorn\\_types.py',
+   'PYMODULE'),
+  ('uvicorn._subprocess',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\uvicorn\\_subprocess.py',
+   'PYMODULE'),
+  ('uvicorn.__main__',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\uvicorn\\__main__.py',
+   'PYMODULE'),
+  ('uvicorn.main',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\uvicorn\\main.py',
+   'PYMODULE'),
+  ('uvicorn.config',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\uvicorn\\config.py',
+   'PYMODULE'),
+  ('yaml',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\yaml\\__init__.py',
+   'PYMODULE'),
+  ('yaml.cyaml',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\yaml\\cyaml.py',
+   'PYMODULE'),
+  ('yaml.resolver',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\yaml\\resolver.py',
+   'PYMODULE'),
+  ('yaml.representer',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\yaml\\representer.py',
+   'PYMODULE'),
+  ('yaml.serializer',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\yaml\\serializer.py',
+   'PYMODULE'),
+  ('yaml.constructor',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\yaml\\constructor.py',
+   'PYMODULE'),
+  ('yaml.dumper',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\yaml\\dumper.py',
+   'PYMODULE'),
+  ('yaml.emitter',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\yaml\\emitter.py',
+   'PYMODULE'),
+  ('yaml.loader',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\yaml\\loader.py',
+   'PYMODULE'),
+  ('yaml.composer',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\yaml\\composer.py',
+   'PYMODULE'),
+  ('yaml.parser',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\yaml\\parser.py',
+   'PYMODULE'),
+  ('yaml.scanner',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\yaml\\scanner.py',
+   'PYMODULE'),
+  ('yaml.reader',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\yaml\\reader.py',
+   'PYMODULE'),
+  ('yaml.nodes',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\yaml\\nodes.py',
+   'PYMODULE'),
+  ('yaml.events',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\yaml\\events.py',
+   'PYMODULE'),
+  ('yaml.tokens',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\yaml\\tokens.py',
+   'PYMODULE'),
+  ('yaml.error',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\yaml\\error.py',
+   'PYMODULE'),
+  ('dotenv',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\dotenv\\__init__.py',
+   'PYMODULE'),
+  ('dotenv.ipython',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\dotenv\\ipython.py',
+   'PYMODULE'),
+  ('dotenv.main',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\dotenv\\main.py',
+   'PYMODULE'),
+  ('dotenv.variables',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\dotenv\\variables.py',
+   'PYMODULE'),
+  ('dotenv.parser',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\dotenv\\parser.py',
+   'PYMODULE'),
+  ('logging.config', 'C:\\Python313\\Lib\\logging\\config.py', 'PYMODULE'),
+  ('logging.handlers', 'C:\\Python313\\Lib\\logging\\handlers.py', 'PYMODULE'),
+  ('smtplib', 'C:\\Python313\\Lib\\smtplib.py', 'PYMODULE'),
+  ('test',
+   'C:\\Users\\DIGITAL MARKET\\Documents\\eletronApp\\backend\\test.py',
+   'PYMODULE'),
+  ('app.utils.email_sender',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\app\\utils\\email_sender.py',
+   'PYMODULE'),
+  ('app.utils',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\app\\utils\\__init__.py',
+   'PYMODULE'),
+  ('app',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\app\\__init__.py',
+   'PYMODULE'),
+  ('app.secret_generator',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\app\\secret_generator.py',
+   'PYMODULE'),
+  ('app.db.models',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\app\\db\\models.py',
+   'PYMODULE'),
+  ('app.db',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\app\\db\\__init__.py',
+   'PYMODULE'),
+  ('sqlalchemy',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\__init__.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.sqlite',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\sqlite\\__init__.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.sqlite.dml',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\sqlite\\dml.py',
+   'PYMODULE'),
+  ('sqlalchemy.util.typing',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\util\\typing.py',
+   'PYMODULE'),
+  ('sqlalchemy.util.compat',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\util\\compat.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql.elements',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\sql\\elements.py',
+   'PYMODULE'),
+  ('sqlalchemy.engine.result',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\engine\\result.py',
+   'PYMODULE'),
+  ('sqlalchemy.cyextension',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\cyextension\\__init__.py',
+   'PYMODULE'),
+  ('sqlalchemy.engine._py_row',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\engine\\_py_row.py',
+   'PYMODULE'),
+  ('sqlalchemy.util._has_cy',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\util\\_has_cy.py',
+   'PYMODULE'),
+  ('sqlalchemy.engine.row',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\engine\\row.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql.util',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\sql\\util.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql.ddl',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\sql\\ddl.py',
+   'PYMODULE'),
+  ('sqlalchemy.engine.base',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\engine\\base.py',
+   'PYMODULE'),
+  ('sqlalchemy.engine.url',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\engine\\url.py',
+   'PYMODULE'),
+  ('sqlalchemy.engine.reflection',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\engine\\reflection.py',
+   'PYMODULE'),
+  ('sqlalchemy.engine.util',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\engine\\util.py',
+   'PYMODULE'),
+  ('sqlalchemy.engine._py_util',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\engine\\_py_util.py',
+   'PYMODULE'),
+  ('sqlalchemy.util.topological',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\util\\topological.py',
+   'PYMODULE'),
+  ('sqlalchemy.engine.interfaces',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\engine\\interfaces.py',
+   'PYMODULE'),
+  ('sqlalchemy.engine.cursor',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\engine\\cursor.py',
+   'PYMODULE'),
+  ('sqlalchemy.engine.default',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\engine\\default.py',
+   'PYMODULE'),
+  ('sqlalchemy.engine.characteristics',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\engine\\characteristics.py',
+   'PYMODULE'),
+  ('sqlalchemy.util.concurrency',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\util\\concurrency.py',
+   'PYMODULE'),
+  ('sqlalchemy.util._concurrency_py3k',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\util\\_concurrency_py3k.py',
+   'PYMODULE'),
+  ('sqlalchemy.util.langhelpers',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\util\\langhelpers.py',
+   'PYMODULE'),
+  ('sqlalchemy.util._collections',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\util\\_collections.py',
+   'PYMODULE'),
+  ('sqlalchemy.util._py_collections',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\util\\_py_collections.py',
+   'PYMODULE'),
+  ('greenlet',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\greenlet\\__init__.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql.sqltypes',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\sql\\sqltypes.py',
+   'PYMODULE'),
+  ('sqlalchemy.engine.processors',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\engine\\processors.py',
+   'PYMODULE'),
+  ('sqlalchemy.engine._py_processors',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\engine\\_py_processors.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql.selectable',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\sql\\selectable.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql.functions',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\sql\\functions.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql.compiler',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\sql\\compiler.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql.crud',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\sql\\crud.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql.visitors',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\sql\\visitors.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql._py_util',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\sql\\_py_util.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql.cache_key',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\sql\\cache_key.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql.annotation',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\sql\\annotation.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql.type_api',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\sql\\type_api.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql.traversals',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\sql\\traversals.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql.operators',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\sql\\operators.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql.dml',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\sql\\dml.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql.base',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\sql\\base.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql._orm_types',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\sql\\_orm_types.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql._typing',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\sql\\_typing.py',
+   'PYMODULE'),
+  ('sqlalchemy.engine.mock',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\engine\\mock.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql.lambdas',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\sql\\lambdas.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql.schema',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\sql\\schema.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql.roles',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\sql\\roles.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql.coercions',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\sql\\coercions.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects._typing',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\_typing.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.sqlite.pysqlite',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\sqlite\\pysqlite.py',
+   'PYMODULE'),
+  ('sqlite3.dbapi2', 'C:\\Python313\\Lib\\sqlite3\\dbapi2.py', 'PYMODULE'),
+  ('sqlite3', 'C:\\Python313\\Lib\\sqlite3\\__init__.py', 'PYMODULE'),
+  ('sqlite3.dump', 'C:\\Python313\\Lib\\sqlite3\\dump.py', 'PYMODULE'),
+  ('sqlite3.__main__', 'C:\\Python313\\Lib\\sqlite3\\__main__.py', 'PYMODULE'),
+  ('sqlalchemy.dialects.sqlite.pysqlcipher',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\sqlite\\pysqlcipher.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.sqlite.base',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\sqlite\\base.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.sqlite.json',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\sqlite\\json.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.sqlite.aiosqlite',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\sqlite\\aiosqlite.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.postgresql',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\postgresql\\__init__.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.postgresql.types',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\postgresql\\types.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.postgresql.named_types',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\postgresql\\named_types.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.postgresql.hstore',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\postgresql\\hstore.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.postgresql.operators',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\postgresql\\operators.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.postgresql.ext',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\postgresql\\ext.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.postgresql.dml',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\postgresql\\dml.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.postgresql.psycopg2cffi',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\postgresql\\psycopg2cffi.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.postgresql.psycopg2',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\postgresql\\psycopg2.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.postgresql._psycopg_common',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\postgresql\\_psycopg_common.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.postgresql.psycopg',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\postgresql\\psycopg.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.postgresql.pg8000',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\postgresql\\pg8000.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.postgresql.base',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\postgresql\\base.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.postgresql.asyncpg',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\postgresql\\asyncpg.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.postgresql.pg_catalog',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\postgresql\\pg_catalog.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.postgresql.ranges',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\postgresql\\ranges.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.postgresql.json',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\postgresql\\json.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.postgresql.array',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\postgresql\\array.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.oracle',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\oracle\\__init__.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.oracle.vector',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\oracle\\vector.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.oracle.oracledb',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\oracle\\oracledb.py',
+   'PYMODULE'),
+  ('sqlalchemy.connectors.asyncio',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\connectors\\asyncio.py',
+   'PYMODULE'),
+  ('sqlalchemy.connectors',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\connectors\\__init__.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.oracle.cx_oracle',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\oracle\\cx_oracle.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.oracle.types',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\oracle\\types.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.oracle.base',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\oracle\\base.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.oracle.dictionary',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\oracle\\dictionary.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.mysql',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\mysql\\__init__.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.mysql.mariadb',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\mysql\\mariadb.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.mysql.expression',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\mysql\\expression.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.mysql.dml',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\mysql\\dml.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.mysql.pyodbc',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\mysql\\pyodbc.py',
+   'PYMODULE'),
+  ('sqlalchemy.connectors.pyodbc',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\connectors\\pyodbc.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.mysql.types',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\mysql\\types.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.mysql.pymysql',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\mysql\\pymysql.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.mysql.mysqldb',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\mysql\\mysqldb.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.mysql.mysqlconnector',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\mysql\\mysqlconnector.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.mysql.mariadbconnector',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\mysql\\mariadbconnector.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.mysql.cymysql',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\mysql\\cymysql.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.mysql.base',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\mysql\\base.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.mysql.reserved_words',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\mysql\\reserved_words.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.mysql.json',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\mysql\\json.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.mysql.enumerated',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\mysql\\enumerated.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.mysql.asyncmy',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\mysql\\asyncmy.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.mysql.aiomysql',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\mysql\\aiomysql.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.mysql.reflection',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\mysql\\reflection.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.mssql',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\mssql\\__init__.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.mssql.pyodbc',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\mssql\\pyodbc.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.mssql.json',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\mssql\\json.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.mssql.pymssql',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\mssql\\pymssql.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.mssql.aioodbc',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\mssql\\aioodbc.py',
+   'PYMODULE'),
+  ('sqlalchemy.connectors.aioodbc',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\connectors\\aioodbc.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.mssql.information_schema',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\mssql\\information_schema.py',
+   'PYMODULE'),
+  ('sqlalchemy.ext.compiler',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\ext\\compiler.py',
+   'PYMODULE'),
+  ('sqlalchemy.ext',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\ext\\__init__.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.mssql.base',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\mssql\\base.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql.default_comparator',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\sql\\default_comparator.py',
+   'PYMODULE'),
+  ('sqlalchemy.ext.baked',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\ext\\baked.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.session',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\orm\\session.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.path_registry',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\orm\\path_registry.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.util',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\orm\\util.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.relationships',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\orm\\relationships.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.strategies',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\orm\\strategies.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.properties',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\orm\\properties.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.dependency',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\orm\\dependency.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.sync',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\orm\\sync.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.decl_base',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\orm\\decl_base.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.decl_api',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\orm\\decl_api.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm._orm_constructors',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\orm\\_orm_constructors.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.instrumentation',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\orm\\instrumentation.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.events',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\orm\\events.py',
+   'PYMODULE'),
+  ('sqlalchemy.event.base',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\event\\base.py',
+   'PYMODULE'),
+  ('sqlalchemy.event.attr',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\event\\attr.py',
+   'PYMODULE'),
+  ('sqlalchemy.event.legacy',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\event\\legacy.py',
+   'PYMODULE'),
+  ('sqlalchemy.event.registry',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\event\\registry.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.scoping',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\orm\\scoping.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.collections',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\orm\\collections.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.mapped_collection',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\orm\\mapped_collection.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.clsregistry',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\orm\\clsregistry.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.strategy_options',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\orm\\strategy_options.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.mapper',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\orm\\mapper.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.interfaces',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\orm\\interfaces.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.unitofwork',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\orm\\unitofwork.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.state_changes',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\orm\\state_changes.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.base',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\orm\\base.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.writeonly',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\orm\\writeonly.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.dynamic',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\orm\\dynamic.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm._typing',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\orm\\_typing.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.state',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\orm\\state.py',
+   'PYMODULE'),
+  ('sqlalchemy.ext.asyncio.session',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\ext\\asyncio\\session.py',
+   'PYMODULE'),
+  ('sqlalchemy.ext.asyncio.result',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\ext\\asyncio\\result.py',
+   'PYMODULE'),
+  ('sqlalchemy.ext.asyncio.exc',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\ext\\asyncio\\exc.py',
+   'PYMODULE'),
+  ('sqlalchemy.ext.asyncio.base',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\ext\\asyncio\\base.py',
+   'PYMODULE'),
+  ('sqlalchemy.ext.asyncio.engine',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\ext\\asyncio\\engine.py',
+   'PYMODULE'),
+  ('sqlalchemy.ext.asyncio',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\ext\\asyncio\\__init__.py',
+   'PYMODULE'),
+  ('sqlalchemy.ext.asyncio.scoping',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\ext\\asyncio\\scoping.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.loading',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\orm\\loading.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.identity',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\orm\\identity.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.descriptor_props',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\orm\\descriptor_props.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.context',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\orm\\context.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.bulk_persistence',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\orm\\bulk_persistence.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.persistence',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\orm\\persistence.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.evaluator',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\orm\\evaluator.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.attributes',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\orm\\attributes.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.query',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\orm\\query.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.exc',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\orm\\exc.py',
+   'PYMODULE'),
+  ('sqlalchemy.types',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\types.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql.expression',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\sql\\expression.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql._selectable_constructors',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\sql\\_selectable_constructors.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql._elements_constructors',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\sql\\_elements_constructors.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql._dml_constructors',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\sql\\_dml_constructors.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\sql\\__init__.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql.events',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\sql\\events.py',
+   'PYMODULE'),
+  ('sqlalchemy.inspection',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\inspection.py',
+   'PYMODULE'),
+  ('sqlalchemy.engine',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\engine\\__init__.py',
+   'PYMODULE'),
+  ('sqlalchemy.engine.create',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\engine\\create.py',
+   'PYMODULE'),
+  ('sqlalchemy.engine.events',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\engine\\events.py',
+   'PYMODULE'),
+  ('sqlalchemy.schema',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\schema.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql.naming',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\sql\\naming.py',
+   'PYMODULE'),
+  ('sqlalchemy.future',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\future\\__init__.py',
+   'PYMODULE'),
+  ('sqlalchemy.future.engine',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\future\\engine.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\dialects\\__init__.py',
+   'PYMODULE'),
+  ('sqlalchemy.pool',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\pool\\__init__.py',
+   'PYMODULE'),
+  ('sqlalchemy.pool.impl',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\pool\\impl.py',
+   'PYMODULE'),
+  ('sqlalchemy.util.queue',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\util\\queue.py',
+   'PYMODULE'),
+  ('sqlalchemy.pool.base',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\pool\\base.py',
+   'PYMODULE'),
+  ('sqlalchemy.pool.events',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\pool\\events.py',
+   'PYMODULE'),
+  ('sqlalchemy.log',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\log.py',
+   'PYMODULE'),
+  ('sqlalchemy.event',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\event\\__init__.py',
+   'PYMODULE'),
+  ('sqlalchemy.event.api',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\event\\api.py',
+   'PYMODULE'),
+  ('sqlalchemy.exc',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\exc.py',
+   'PYMODULE'),
+  ('sqlalchemy.util.preloaded',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\util\\preloaded.py',
+   'PYMODULE'),
+  ('sqlalchemy.util',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\util\\__init__.py',
+   'PYMODULE'),
+  ('sqlalchemy.util.deprecations',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\util\\deprecations.py',
+   'PYMODULE'),
+  ('fitz',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\fitz\\__init__.py',
+   'PYMODULE'),
+  ('pymupdf',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pymupdf\\__init__.py',
+   'PYMODULE'),
+  ('pymupdf.table',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pymupdf\\table.py',
+   'PYMODULE'),
+  ('pymupdf.utils',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pymupdf\\utils.py',
+   'PYMODULE'),
+  ('pymupdf.pymupdf',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pymupdf\\pymupdf.py',
+   'PYMODULE'),
+  ('pymupdf._wxcolors',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pymupdf\\_wxcolors.py',
+   'PYMODULE'),
+  ('pymupdf._apply_pages',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pymupdf\\_apply_pages.py',
+   'PYMODULE'),
+  ('pymupdf.mupdf',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pymupdf\\mupdf.py',
+   'PYMODULE'),
+  ('pymupdf.extra',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pymupdf\\extra.py',
+   'PYMODULE'),
+  ('fastapi.middleware.cors',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\fastapi\\middleware\\cors.py',
+   'PYMODULE'),
+  ('fastapi.middleware',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\fastapi\\middleware\\__init__.py',
+   'PYMODULE'),
+  ('starlette.middleware',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\starlette\\middleware\\__init__.py',
+   'PYMODULE'),
+  ('starlette',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\starlette\\__init__.py',
+   'PYMODULE'),
+  ('starlette.status',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\starlette\\status.py',
+   'PYMODULE'),
+  ('starlette.types',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\starlette\\types.py',
+   'PYMODULE'),
+  ('starlette.websockets',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\starlette\\websockets.py',
+   'PYMODULE'),
+  ('starlette.responses',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\starlette\\responses.py',
+   'PYMODULE'),
+  ('starlette.datastructures',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\starlette\\datastructures.py',
+   'PYMODULE'),
+  ('starlette.concurrency',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\starlette\\concurrency.py',
+   'PYMODULE'),
+  ('starlette.background',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\starlette\\background.py',
+   'PYMODULE'),
+  ('starlette._utils',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\starlette\\_utils.py',
+   'PYMODULE'),
+  ('starlette.requests',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\starlette\\requests.py',
+   'PYMODULE'),
+  ('starlette.routing',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\starlette\\routing.py',
+   'PYMODULE'),
+  ('starlette.convertors',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\starlette\\convertors.py',
+   'PYMODULE'),
+  ('starlette._exception_handler',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\starlette\\_exception_handler.py',
+   'PYMODULE'),
+  ('starlette.applications',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\starlette\\applications.py',
+   'PYMODULE'),
+  ('starlette.middleware.exceptions',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\starlette\\middleware\\exceptions.py',
+   'PYMODULE'),
+  ('starlette.middleware.errors',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\starlette\\middleware\\errors.py',
+   'PYMODULE'),
+  ('starlette.middleware.base',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\starlette\\middleware\\base.py',
+   'PYMODULE'),
+  ('starlette.formparsers',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\starlette\\formparsers.py',
+   'PYMODULE'),
+  ('starlette.exceptions',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\starlette\\exceptions.py',
+   'PYMODULE'),
+  ('starlette.middleware.cors',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\starlette\\middleware\\cors.py',
+   'PYMODULE'),
+  ('app.db.session',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\app\\db\\session.py',
+   'PYMODULE'),
+  ('sqlalchemy.ext.declarative',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\ext\\declarative\\__init__.py',
+   'PYMODULE'),
+  ('sqlalchemy.ext.declarative.extensions',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\ext\\declarative\\extensions.py',
+   'PYMODULE'),
+  ('app.db.schema',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\app\\db\\schema.py',
+   'PYMODULE'),
+  ('pydantic',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\__init__.py',
+   'PYMODULE'),
+  ('pydantic.validators',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\validators.py',
+   'PYMODULE'),
+  ('pydantic.v1.version',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\v1\\version.py',
+   'PYMODULE'),
+  ('pydantic.v1.validators',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\v1\\validators.py',
+   'PYMODULE'),
+  ('pydantic.v1.utils',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\v1\\utils.py',
+   'PYMODULE'),
+  ('pydantic.v1.typing',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\v1\\typing.py',
+   'PYMODULE'),
+  ('pydantic.v1.types',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\v1\\types.py',
+   'PYMODULE'),
+  ('pydantic.v1.tools',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\v1\\tools.py',
+   'PYMODULE'),
+  ('pydantic.v1.schema',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\v1\\schema.py',
+   'PYMODULE'),
+  ('pydantic.v1.parse',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\v1\\parse.py',
+   'PYMODULE'),
+  ('pydantic.v1.networks',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\v1\\networks.py',
+   'PYMODULE'),
+  ('pydantic.v1.mypy',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\v1\\mypy.py',
+   'PYMODULE'),
+  ('pydantic.v1.main',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\v1\\main.py',
+   'PYMODULE'),
+  ('pydantic.v1.json',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\v1\\json.py',
+   'PYMODULE'),
+  ('pydantic.v1.generics',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\v1\\generics.py',
+   'PYMODULE'),
+  ('pydantic.v1.fields',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\v1\\fields.py',
+   'PYMODULE'),
+  ('pydantic.v1.errors',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\v1\\errors.py',
+   'PYMODULE'),
+  ('pydantic.v1.error_wrappers',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\v1\\error_wrappers.py',
+   'PYMODULE'),
+  ('pydantic.v1.env_settings',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\v1\\env_settings.py',
+   'PYMODULE'),
+  ('pydantic.v1.decorator',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\v1\\decorator.py',
+   'PYMODULE'),
+  ('pydantic.v1.datetime_parse',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\v1\\datetime_parse.py',
+   'PYMODULE'),
+  ('pydantic.v1.dataclasses',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\v1\\dataclasses.py',
+   'PYMODULE'),
+  ('pydantic.v1.config',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\v1\\config.py',
+   'PYMODULE'),
+  ('pydantic.v1.color',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\v1\\color.py',
+   'PYMODULE'),
+  ('colorsys', 'C:\\Python313\\Lib\\colorsys.py', 'PYMODULE'),
+  ('pydantic.v1.class_validators',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\v1\\class_validators.py',
+   'PYMODULE'),
+  ('pydantic.v1.annotated_types',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\v1\\annotated_types.py',
+   'PYMODULE'),
+  ('pydantic.v1._hypothesis_plugin',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\v1\\_hypothesis_plugin.py',
+   'PYMODULE'),
+  ('pydantic.v1',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\v1\\__init__.py',
+   'PYMODULE'),
+  ('pydantic.utils',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\utils.py',
+   'PYMODULE'),
+  ('pydantic.typing',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\typing.py',
+   'PYMODULE'),
+  ('pydantic.tools',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\tools.py',
+   'PYMODULE'),
+  ('pydantic.schema',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\schema.py',
+   'PYMODULE'),
+  ('pydantic.plugin._schema_validator',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\plugin\\_schema_validator.py',
+   'PYMODULE'),
+  ('pydantic.plugin._loader',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\plugin\\_loader.py',
+   'PYMODULE'),
+  ('pydantic.plugin',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\plugin\\__init__.py',
+   'PYMODULE'),
+  ('pydantic.parse',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\parse.py',
+   'PYMODULE'),
+  ('pydantic.mypy',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\mypy.py',
+   'PYMODULE'),
+  ('pydantic.json',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\json.py',
+   'PYMODULE'),
+  ('pydantic.generics',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\generics.py',
+   'PYMODULE'),
+  ('pydantic.experimental.pipeline',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\experimental\\pipeline.py',
+   'PYMODULE'),
+  ('annotated_types',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\annotated_types\\__init__.py',
+   'PYMODULE'),
+  ('pydantic.experimental.arguments_schema',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\experimental\\arguments_schema.py',
+   'PYMODULE'),
+  ('pydantic.experimental',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\experimental\\__init__.py',
+   'PYMODULE'),
+  ('pydantic.error_wrappers',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\error_wrappers.py',
+   'PYMODULE'),
+  ('pydantic.env_settings',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\env_settings.py',
+   'PYMODULE'),
+  ('pydantic.deprecated.parse',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\deprecated\\parse.py',
+   'PYMODULE'),
+  ('pydantic.deprecated.json',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\deprecated\\json.py',
+   'PYMODULE'),
+  ('pydantic.deprecated.decorator',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\deprecated\\decorator.py',
+   'PYMODULE'),
+  ('pydantic.deprecated.copy_internals',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\deprecated\\copy_internals.py',
+   'PYMODULE'),
+  ('pydantic.deprecated',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\deprecated\\__init__.py',
+   'PYMODULE'),
+  ('pydantic.decorator',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\decorator.py',
+   'PYMODULE'),
+  ('pydantic.datetime_parse',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\datetime_parse.py',
+   'PYMODULE'),
+  ('pydantic.color',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\color.py',
+   'PYMODULE'),
+  ('pydantic.class_validators',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\class_validators.py',
+   'PYMODULE'),
+  ('pydantic.alias_generators',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\alias_generators.py',
+   'PYMODULE'),
+  ('pydantic._internal._validators',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\_internal\\_validators.py',
+   'PYMODULE'),
+  ('typing_inspection.typing_objects',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\typing_inspection\\typing_objects.py',
+   'PYMODULE'),
+  ('typing_inspection',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\typing_inspection\\__init__.py',
+   'PYMODULE'),
+  ('zoneinfo', 'C:\\Python313\\Lib\\zoneinfo\\__init__.py', 'PYMODULE'),
+  ('zoneinfo._zoneinfo',
+   'C:\\Python313\\Lib\\zoneinfo\\_zoneinfo.py',
+   'PYMODULE'),
+  ('zoneinfo._common', 'C:\\Python313\\Lib\\zoneinfo\\_common.py', 'PYMODULE'),
+  ('zoneinfo._tzpath', 'C:\\Python313\\Lib\\zoneinfo\\_tzpath.py', 'PYMODULE'),
+  ('pydantic._internal._validate_call',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\_internal\\_validate_call.py',
+   'PYMODULE'),
+  ('pydantic._internal._utils',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\_internal\\_utils.py',
+   'PYMODULE'),
+  ('pydantic._internal._typing_extra',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\_internal\\_typing_extra.py',
+   'PYMODULE'),
+  ('typing_inspection.introspection',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\typing_inspection\\introspection.py',
+   'PYMODULE'),
+  ('pydantic._internal._signature',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\_internal\\_signature.py',
+   'PYMODULE'),
+  ('pydantic._internal._serializers',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\_internal\\_serializers.py',
+   'PYMODULE'),
+  ('pydantic._internal._schema_generation_shared',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\_internal\\_schema_generation_shared.py',
+   'PYMODULE'),
+  ('pydantic._internal._schema_gather',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\_internal\\_schema_gather.py',
+   'PYMODULE'),
+  ('pydantic._internal._repr',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\_internal\\_repr.py',
+   'PYMODULE'),
+  ('pydantic._internal._namespace_utils',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\_internal\\_namespace_utils.py',
+   'PYMODULE'),
+  ('pydantic._internal._model_construction',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\_internal\\_model_construction.py',
+   'PYMODULE'),
+  ('pydantic._internal._mock_val_ser',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\_internal\\_mock_val_ser.py',
+   'PYMODULE'),
+  ('pydantic._internal._known_annotated_metadata',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\_internal\\_known_annotated_metadata.py',
+   'PYMODULE'),
+  ('pydantic._internal._internal_dataclass',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\_internal\\_internal_dataclass.py',
+   'PYMODULE'),
+  ('pydantic._internal._import_utils',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\_internal\\_import_utils.py',
+   'PYMODULE'),
+  ('pydantic._internal._git',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\_internal\\_git.py',
+   'PYMODULE'),
+  ('pydantic._internal._generics',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\_internal\\_generics.py',
+   'PYMODULE'),
+  ('pydantic._internal._generate_schema',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\_internal\\_generate_schema.py',
+   'PYMODULE'),
+  ('pydantic._internal._forward_ref',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\_internal\\_forward_ref.py',
+   'PYMODULE'),
+  ('pydantic._internal._fields',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\_internal\\_fields.py',
+   'PYMODULE'),
+  ('pydantic._internal._docs_extraction',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\_internal\\_docs_extraction.py',
+   'PYMODULE'),
+  ('pydantic._internal._discriminated_union',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\_internal\\_discriminated_union.py',
+   'PYMODULE'),
+  ('pydantic._internal._decorators_v1',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\_internal\\_decorators_v1.py',
+   'PYMODULE'),
+  ('pydantic._internal._decorators',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\_internal\\_decorators.py',
+   'PYMODULE'),
+  ('pydantic._internal._dataclasses',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\_internal\\_dataclasses.py',
+   'PYMODULE'),
+  ('pydantic._internal._core_utils',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\_internal\\_core_utils.py',
+   'PYMODULE'),
+  ('pydantic._internal._core_metadata',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\_internal\\_core_metadata.py',
+   'PYMODULE'),
+  ('pydantic._internal._config',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\_internal\\_config.py',
+   'PYMODULE'),
+  ('pydantic._internal',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\_internal\\__init__.py',
+   'PYMODULE'),
+  ('pydantic.root_model',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\root_model.py',
+   'PYMODULE'),
+  ('pydantic.deprecated.tools',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\deprecated\\tools.py',
+   'PYMODULE'),
+  ('pydantic.deprecated.config',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\deprecated\\config.py',
+   'PYMODULE'),
+  ('pydantic.deprecated.class_validators',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\deprecated\\class_validators.py',
+   'PYMODULE'),
+  ('pydantic.warnings',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\warnings.py',
+   'PYMODULE'),
+  ('pydantic.validate_call_decorator',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\validate_call_decorator.py',
+   'PYMODULE'),
+  ('pydantic.type_adapter',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\type_adapter.py',
+   'PYMODULE'),
+  ('pydantic.networks',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\networks.py',
+   'PYMODULE'),
+  ('pydantic.main',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\main.py',
+   'PYMODULE'),
+  ('pydantic.json_schema',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\json_schema.py',
+   'PYMODULE'),
+  ('pydantic.functional_validators',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\functional_validators.py',
+   'PYMODULE'),
+  ('pydantic.functional_serializers',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\functional_serializers.py',
+   'PYMODULE'),
+  ('pydantic.fields',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\fields.py',
+   'PYMODULE'),
+  ('pydantic.errors',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\errors.py',
+   'PYMODULE'),
+  ('pydantic.config',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\config.py',
+   'PYMODULE'),
+  ('pydantic.annotated_handlers',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\annotated_handlers.py',
+   'PYMODULE'),
+  ('pydantic.aliases',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\aliases.py',
+   'PYMODULE'),
+  ('pydantic.dataclasses',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\dataclasses.py',
+   'PYMODULE'),
+  ('pydantic_core.core_schema',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic_core\\core_schema.py',
+   'PYMODULE'),
+  ('pydantic_core',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic_core\\__init__.py',
+   'PYMODULE'),
+  ('pydantic.version',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\version.py',
+   'PYMODULE'),
+  ('pydantic._migration',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\_migration.py',
+   'PYMODULE'),
+  ('pydantic.types',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic\\types.py',
+   'PYMODULE'),
+  ('app.crud.insert_config',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\app\\crud\\insert_config.py',
+   'PYMODULE'),
+  ('app.crud',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\app\\crud\\__init__.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\orm\\__init__.py',
+   'PYMODULE'),
+  ('fastapi',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\fastapi\\__init__.py',
+   'PYMODULE'),
+  ('fastapi.websockets',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\fastapi\\websockets.py',
+   'PYMODULE'),
+  ('fastapi.responses',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\fastapi\\responses.py',
+   'PYMODULE'),
+  ('fastapi.requests',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\fastapi\\requests.py',
+   'PYMODULE'),
+  ('fastapi.param_functions',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\fastapi\\param_functions.py',
+   'PYMODULE'),
+  ('fastapi.openapi.models',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\fastapi\\openapi\\models.py',
+   'PYMODULE'),
+  ('fastapi.openapi',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\fastapi\\openapi\\__init__.py',
+   'PYMODULE'),
+  ('fastapi.logger',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\fastapi\\logger.py',
+   'PYMODULE'),
+  ('fastapi._compat',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\fastapi\\_compat.py',
+   'PYMODULE'),
+  ('fastapi.openapi.constants',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\fastapi\\openapi\\constants.py',
+   'PYMODULE'),
+  ('fastapi.types',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\fastapi\\types.py',
+   'PYMODULE'),
+  ('fastapi.exceptions',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\fastapi\\exceptions.py',
+   'PYMODULE'),
+  ('fastapi.datastructures',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\fastapi\\datastructures.py',
+   'PYMODULE'),
+  ('fastapi.background',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\fastapi\\background.py',
+   'PYMODULE'),
+  ('fastapi.applications',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\fastapi\\applications.py',
+   'PYMODULE'),
+  ('fastapi.utils',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\fastapi\\utils.py',
+   'PYMODULE'),
+  ('fastapi.openapi.utils',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\fastapi\\openapi\\utils.py',
+   'PYMODULE'),
+  ('fastapi.encoders',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\fastapi\\encoders.py',
+   'PYMODULE'),
+  ('fastapi.dependencies.utils',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\fastapi\\dependencies\\utils.py',
+   'PYMODULE'),
+  ('fastapi.dependencies',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\fastapi\\dependencies\\__init__.py',
+   'PYMODULE'),
+  ('fastapi.security.open_id_connect_url',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\fastapi\\security\\open_id_connect_url.py',
+   'PYMODULE'),
+  ('fastapi.security',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\fastapi\\security\\__init__.py',
+   'PYMODULE'),
+  ('fastapi.security.http',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\fastapi\\security\\http.py',
+   'PYMODULE'),
+  ('fastapi.security.utils',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\fastapi\\security\\utils.py',
+   'PYMODULE'),
+  ('fastapi.security.api_key',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\fastapi\\security\\api_key.py',
+   'PYMODULE'),
+  ('fastapi.security.oauth2',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\fastapi\\security\\oauth2.py',
+   'PYMODULE'),
+  ('fastapi.security.base',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\fastapi\\security\\base.py',
+   'PYMODULE'),
+  ('fastapi.concurrency',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\fastapi\\concurrency.py',
+   'PYMODULE'),
+  ('fastapi.dependencies.models',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\fastapi\\dependencies\\models.py',
+   'PYMODULE'),
+  ('fastapi.openapi.docs',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\fastapi\\openapi\\docs.py',
+   'PYMODULE'),
+  ('fastapi.exception_handlers',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\fastapi\\exception_handlers.py',
+   'PYMODULE'),
+  ('fastapi.routing',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\fastapi\\routing.py',
+   'PYMODULE'),
+  ('fastapi.params',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\fastapi\\params.py',
+   'PYMODULE')],
+ [('python313.dll', 'C:\\Python313\\python313.dll', 'BINARY'),
+  ('unicodedata.pyd', 'C:\\Python313\\DLLs\\unicodedata.pyd', 'EXTENSION'),
+  ('_lzma.pyd', 'C:\\Python313\\DLLs\\_lzma.pyd', 'EXTENSION'),
+  ('_bz2.pyd', 'C:\\Python313\\DLLs\\_bz2.pyd', 'EXTENSION'),
+  ('_decimal.pyd', 'C:\\Python313\\DLLs\\_decimal.pyd', 'EXTENSION'),
+  ('_hashlib.pyd', 'C:\\Python313\\DLLs\\_hashlib.pyd', 'EXTENSION'),
+  ('select.pyd', 'C:\\Python313\\DLLs\\select.pyd', 'EXTENSION'),
+  ('_socket.pyd', 'C:\\Python313\\DLLs\\_socket.pyd', 'EXTENSION'),
+  ('_overlapped.pyd', 'C:\\Python313\\DLLs\\_overlapped.pyd', 'EXTENSION'),
+  ('_ssl.pyd', 'C:\\Python313\\DLLs\\_ssl.pyd', 'EXTENSION'),
+  ('_queue.pyd', 'C:\\Python313\\DLLs\\_queue.pyd', 'EXTENSION'),
+  ('_ctypes.pyd', 'C:\\Python313\\DLLs\\_ctypes.pyd', 'EXTENSION'),
+  ('_multiprocessing.pyd',
+   'C:\\Python313\\DLLs\\_multiprocessing.pyd',
+   'EXTENSION'),
+  ('pyexpat.pyd', 'C:\\Python313\\DLLs\\pyexpat.pyd', 'EXTENSION'),
+  ('_asyncio.pyd', 'C:\\Python313\\DLLs\\_asyncio.pyd', 'EXTENSION'),
+  ('_wmi.pyd', 'C:\\Python313\\DLLs\\_wmi.pyd', 'EXTENSION'),
+  ('watchfiles\\_rust_notify.cp313-win_amd64.pyd',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\watchfiles\\_rust_notify.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('_uuid.pyd', 'C:\\Python313\\DLLs\\_uuid.pyd', 'EXTENSION'),
+  ('websockets\\speedups.cp313-win_amd64.pyd',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets\\speedups.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('httptools\\parser\\url_parser.cp313-win_amd64.pyd',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\httptools\\parser\\url_parser.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('httptools\\parser\\parser.cp313-win_amd64.pyd',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\httptools\\parser\\parser.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('yaml\\_yaml.cp313-win_amd64.pyd',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\yaml\\_yaml.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('sqlalchemy\\cyextension\\resultproxy.cp313-win_amd64.pyd',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\cyextension\\resultproxy.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('sqlalchemy\\cyextension\\util.cp313-win_amd64.pyd',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\cyextension\\util.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('sqlalchemy\\cyextension\\processors.cp313-win_amd64.pyd',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\cyextension\\processors.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('sqlalchemy\\cyextension\\immutabledict.cp313-win_amd64.pyd',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\cyextension\\immutabledict.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('sqlalchemy\\cyextension\\collections.cp313-win_amd64.pyd',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\sqlalchemy\\cyextension\\collections.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('greenlet\\_greenlet.cp313-win_amd64.pyd',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\greenlet\\_greenlet.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('_sqlite3.pyd', 'C:\\Python313\\DLLs\\_sqlite3.pyd', 'EXTENSION'),
+  ('pymupdf\\_mupdf.pyd',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pymupdf\\_mupdf.pyd',
+   'EXTENSION'),
+  ('pymupdf\\_extra.pyd',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pymupdf\\_extra.pyd',
+   'EXTENSION'),
+  ('pyodbc.cp313-win_amd64.pyd',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pyodbc.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('pydantic_core\\_pydantic_core.cp313-win_amd64.pyd',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pydantic_core\\_pydantic_core.cp313-win_amd64.pyd',
+   'EXTENSION'),
+  ('_zoneinfo.pyd', 'C:\\Python313\\DLLs\\_zoneinfo.pyd', 'EXTENSION'),
+  ('VCRUNTIME140.dll', 'C:\\Python313\\VCRUNTIME140.dll', 'BINARY'),
+  ('libcrypto-3.dll', 'C:\\Python313\\DLLs\\libcrypto-3.dll', 'BINARY'),
+  ('libssl-3.dll', 'C:\\Python313\\DLLs\\libssl-3.dll', 'BINARY'),
+  ('libffi-8.dll', 'C:\\Python313\\DLLs\\libffi-8.dll', 'BINARY'),
+  ('VCRUNTIME140_1.dll', 'C:\\Python313\\VCRUNTIME140_1.dll', 'BINARY'),
+  ('sqlite3.dll', 'C:\\Python313\\DLLs\\sqlite3.dll', 'BINARY'),
+  ('MSVCP140.dll', 'C:\\Windows\\system32\\MSVCP140.dll', 'BINARY'),
+  ('pymupdf\\mupdfcpp64.dll',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\pymupdf\\mupdfcpp64.dll',
+   'BINARY'),
+  ('python3.dll', 'C:\\Python313\\python3.dll', 'BINARY')],
+ [],
+ [],
+ [('setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\RECORD',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\RECORD',
+   'DATA'),
+  ('setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\WHEEL',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\WHEEL',
+   'DATA'),
+  ('setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\top_level.txt',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\top_level.txt',
+   'DATA'),
+  ('setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\REQUESTED',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\REQUESTED',
+   'DATA'),
+  ('setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\METADATA',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\METADATA',
+   'DATA'),
+  ('setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\LICENSE',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\LICENSE',
+   'DATA'),
+  ('setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\INSTALLER',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\INSTALLER',
+   'DATA'),
+  ('setuptools\\_vendor\\jaraco\\text\\Lorem ipsum.txt',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\jaraco\\text\\Lorem '
+   'ipsum.txt',
+   'DATA'),
+  ('websockets-15.0.1.dist-info\\RECORD',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets-15.0.1.dist-info\\RECORD',
+   'DATA'),
+  ('websockets-15.0.1.dist-info\\LICENSE',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets-15.0.1.dist-info\\LICENSE',
+   'DATA'),
+  ('websockets-15.0.1.dist-info\\top_level.txt',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets-15.0.1.dist-info\\top_level.txt',
+   'DATA'),
+  ('click-8.2.1.dist-info\\INSTALLER',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\click-8.2.1.dist-info\\INSTALLER',
+   'DATA'),
+  ('click-8.2.1.dist-info\\WHEEL',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\click-8.2.1.dist-info\\WHEEL',
+   'DATA'),
+  ('click-8.2.1.dist-info\\METADATA',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\click-8.2.1.dist-info\\METADATA',
+   'DATA'),
+  ('websockets-15.0.1.dist-info\\METADATA',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets-15.0.1.dist-info\\METADATA',
+   'DATA'),
+  ('websockets-15.0.1.dist-info\\entry_points.txt',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets-15.0.1.dist-info\\entry_points.txt',
+   'DATA'),
+  ('click-8.2.1.dist-info\\RECORD',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\click-8.2.1.dist-info\\RECORD',
+   'DATA'),
+  ('click-8.2.1.dist-info\\licenses\\LICENSE.txt',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\click-8.2.1.dist-info\\licenses\\LICENSE.txt',
+   'DATA'),
+  ('websockets-15.0.1.dist-info\\INSTALLER',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets-15.0.1.dist-info\\INSTALLER',
+   'DATA'),
+  ('websockets-15.0.1.dist-info\\WHEEL',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets-15.0.1.dist-info\\WHEEL',
+   'DATA'),
+  ('base_library.zip',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\build\\main\\base_library.zip',
+   'DATA')],
+ [('types', 'C:\\Python313\\Lib\\types.py', 'PYMODULE'),
+  ('posixpath', 'C:\\Python313\\Lib\\posixpath.py', 'PYMODULE'),
+  ('warnings', 'C:\\Python313\\Lib\\warnings.py', 'PYMODULE'),
+  ('ntpath', 'C:\\Python313\\Lib\\ntpath.py', 'PYMODULE'),
+  ('operator', 'C:\\Python313\\Lib\\operator.py', 'PYMODULE'),
+  ('copyreg', 'C:\\Python313\\Lib\\copyreg.py', 'PYMODULE'),
+  ('abc', 'C:\\Python313\\Lib\\abc.py', 'PYMODULE'),
+  ('locale', 'C:\\Python313\\Lib\\locale.py', 'PYMODULE'),
+  ('io', 'C:\\Python313\\Lib\\io.py', 'PYMODULE'),
+  ('codecs', 'C:\\Python313\\Lib\\codecs.py', 'PYMODULE'),
+  ('reprlib', 'C:\\Python313\\Lib\\reprlib.py', 'PYMODULE'),
+  ('sre_compile', 'C:\\Python313\\Lib\\sre_compile.py', 'PYMODULE'),
+  ('collections', 'C:\\Python313\\Lib\\collections\\__init__.py', 'PYMODULE'),
+  ('sre_parse', 'C:\\Python313\\Lib\\sre_parse.py', 'PYMODULE'),
+  ('weakref', 'C:\\Python313\\Lib\\weakref.py', 'PYMODULE'),
+  ('functools', 'C:\\Python313\\Lib\\functools.py', 'PYMODULE'),
+  ('heapq', 'C:\\Python313\\Lib\\heapq.py', 'PYMODULE'),
+  ('linecache', 'C:\\Python313\\Lib\\linecache.py', 'PYMODULE'),
+  ('_weakrefset', 'C:\\Python313\\Lib\\_weakrefset.py', 'PYMODULE'),
+  ('encodings.zlib_codec',
+   'C:\\Python313\\Lib\\encodings\\zlib_codec.py',
+   'PYMODULE'),
+  ('encodings.uu_codec',
+   'C:\\Python313\\Lib\\encodings\\uu_codec.py',
+   'PYMODULE'),
+  ('encodings.utf_8_sig',
+   'C:\\Python313\\Lib\\encodings\\utf_8_sig.py',
+   'PYMODULE'),
+  ('encodings.utf_8', 'C:\\Python313\\Lib\\encodings\\utf_8.py', 'PYMODULE'),
+  ('encodings.utf_7', 'C:\\Python313\\Lib\\encodings\\utf_7.py', 'PYMODULE'),
+  ('encodings.utf_32_le',
+   'C:\\Python313\\Lib\\encodings\\utf_32_le.py',
+   'PYMODULE'),
+  ('encodings.utf_32_be',
+   'C:\\Python313\\Lib\\encodings\\utf_32_be.py',
+   'PYMODULE'),
+  ('encodings.utf_32', 'C:\\Python313\\Lib\\encodings\\utf_32.py', 'PYMODULE'),
+  ('encodings.utf_16_le',
+   'C:\\Python313\\Lib\\encodings\\utf_16_le.py',
+   'PYMODULE'),
+  ('encodings.utf_16_be',
+   'C:\\Python313\\Lib\\encodings\\utf_16_be.py',
+   'PYMODULE'),
+  ('encodings.utf_16', 'C:\\Python313\\Lib\\encodings\\utf_16.py', 'PYMODULE'),
+  ('encodings.unicode_escape',
+   'C:\\Python313\\Lib\\encodings\\unicode_escape.py',
+   'PYMODULE'),
+  ('encodings.undefined',
+   'C:\\Python313\\Lib\\encodings\\undefined.py',
+   'PYMODULE'),
+  ('encodings.tis_620',
+   'C:\\Python313\\Lib\\encodings\\tis_620.py',
+   'PYMODULE'),
+  ('encodings.shift_jisx0213',
+   'C:\\Python313\\Lib\\encodings\\shift_jisx0213.py',
+   'PYMODULE'),
+  ('encodings.shift_jis_2004',
+   'C:\\Python313\\Lib\\encodings\\shift_jis_2004.py',
+   'PYMODULE'),
+  ('encodings.shift_jis',
+   'C:\\Python313\\Lib\\encodings\\shift_jis.py',
+   'PYMODULE'),
+  ('encodings.rot_13', 'C:\\Python313\\Lib\\encodings\\rot_13.py', 'PYMODULE'),
+  ('encodings.raw_unicode_escape',
+   'C:\\Python313\\Lib\\encodings\\raw_unicode_escape.py',
+   'PYMODULE'),
+  ('encodings.quopri_codec',
+   'C:\\Python313\\Lib\\encodings\\quopri_codec.py',
+   'PYMODULE'),
+  ('encodings.punycode',
+   'C:\\Python313\\Lib\\encodings\\punycode.py',
+   'PYMODULE'),
+  ('encodings.ptcp154',
+   'C:\\Python313\\Lib\\encodings\\ptcp154.py',
+   'PYMODULE'),
+  ('encodings.palmos', 'C:\\Python313\\Lib\\encodings\\palmos.py', 'PYMODULE'),
+  ('encodings.oem', 'C:\\Python313\\Lib\\encodings\\oem.py', 'PYMODULE'),
+  ('encodings.mbcs', 'C:\\Python313\\Lib\\encodings\\mbcs.py', 'PYMODULE'),
+  ('encodings.mac_turkish',
+   'C:\\Python313\\Lib\\encodings\\mac_turkish.py',
+   'PYMODULE'),
+  ('encodings.mac_romanian',
+   'C:\\Python313\\Lib\\encodings\\mac_romanian.py',
+   'PYMODULE'),
+  ('encodings.mac_roman',
+   'C:\\Python313\\Lib\\encodings\\mac_roman.py',
+   'PYMODULE'),
+  ('encodings.mac_latin2',
+   'C:\\Python313\\Lib\\encodings\\mac_latin2.py',
+   'PYMODULE'),
+  ('encodings.mac_iceland',
+   'C:\\Python313\\Lib\\encodings\\mac_iceland.py',
+   'PYMODULE'),
+  ('encodings.mac_greek',
+   'C:\\Python313\\Lib\\encodings\\mac_greek.py',
+   'PYMODULE'),
+  ('encodings.mac_farsi',
+   'C:\\Python313\\Lib\\encodings\\mac_farsi.py',
+   'PYMODULE'),
+  ('encodings.mac_cyrillic',
+   'C:\\Python313\\Lib\\encodings\\mac_cyrillic.py',
+   'PYMODULE'),
+  ('encodings.mac_croatian',
+   'C:\\Python313\\Lib\\encodings\\mac_croatian.py',
+   'PYMODULE'),
+  ('encodings.mac_arabic',
+   'C:\\Python313\\Lib\\encodings\\mac_arabic.py',
+   'PYMODULE'),
+  ('encodings.latin_1',
+   'C:\\Python313\\Lib\\encodings\\latin_1.py',
+   'PYMODULE'),
+  ('encodings.kz1048', 'C:\\Python313\\Lib\\encodings\\kz1048.py', 'PYMODULE'),
+  ('encodings.koi8_u', 'C:\\Python313\\Lib\\encodings\\koi8_u.py', 'PYMODULE'),
+  ('encodings.koi8_t', 'C:\\Python313\\Lib\\encodings\\koi8_t.py', 'PYMODULE'),
+  ('encodings.koi8_r', 'C:\\Python313\\Lib\\encodings\\koi8_r.py', 'PYMODULE'),
+  ('encodings.johab', 'C:\\Python313\\Lib\\encodings\\johab.py', 'PYMODULE'),
+  ('encodings.iso8859_9',
+   'C:\\Python313\\Lib\\encodings\\iso8859_9.py',
+   'PYMODULE'),
+  ('encodings.iso8859_8',
+   'C:\\Python313\\Lib\\encodings\\iso8859_8.py',
+   'PYMODULE'),
+  ('encodings.iso8859_7',
+   'C:\\Python313\\Lib\\encodings\\iso8859_7.py',
+   'PYMODULE'),
+  ('encodings.iso8859_6',
+   'C:\\Python313\\Lib\\encodings\\iso8859_6.py',
+   'PYMODULE'),
+  ('encodings.iso8859_5',
+   'C:\\Python313\\Lib\\encodings\\iso8859_5.py',
+   'PYMODULE'),
+  ('encodings.iso8859_4',
+   'C:\\Python313\\Lib\\encodings\\iso8859_4.py',
+   'PYMODULE'),
+  ('encodings.iso8859_3',
+   'C:\\Python313\\Lib\\encodings\\iso8859_3.py',
+   'PYMODULE'),
+  ('encodings.iso8859_2',
+   'C:\\Python313\\Lib\\encodings\\iso8859_2.py',
+   'PYMODULE'),
+  ('encodings.iso8859_16',
+   'C:\\Python313\\Lib\\encodings\\iso8859_16.py',
+   'PYMODULE'),
+  ('encodings.iso8859_15',
+   'C:\\Python313\\Lib\\encodings\\iso8859_15.py',
+   'PYMODULE'),
+  ('encodings.iso8859_14',
+   'C:\\Python313\\Lib\\encodings\\iso8859_14.py',
+   'PYMODULE'),
+  ('encodings.iso8859_13',
+   'C:\\Python313\\Lib\\encodings\\iso8859_13.py',
+   'PYMODULE'),
+  ('encodings.iso8859_11',
+   'C:\\Python313\\Lib\\encodings\\iso8859_11.py',
+   'PYMODULE'),
+  ('encodings.iso8859_10',
+   'C:\\Python313\\Lib\\encodings\\iso8859_10.py',
+   'PYMODULE'),
+  ('encodings.iso8859_1',
+   'C:\\Python313\\Lib\\encodings\\iso8859_1.py',
+   'PYMODULE'),
+  ('encodings.iso2022_kr',
+   'C:\\Python313\\Lib\\encodings\\iso2022_kr.py',
+   'PYMODULE'),
+  ('encodings.iso2022_jp_ext',
+   'C:\\Python313\\Lib\\encodings\\iso2022_jp_ext.py',
+   'PYMODULE'),
+  ('encodings.iso2022_jp_3',
+   'C:\\Python313\\Lib\\encodings\\iso2022_jp_3.py',
+   'PYMODULE'),
+  ('encodings.iso2022_jp_2004',
+   'C:\\Python313\\Lib\\encodings\\iso2022_jp_2004.py',
+   'PYMODULE'),
+  ('encodings.iso2022_jp_2',
+   'C:\\Python313\\Lib\\encodings\\iso2022_jp_2.py',
+   'PYMODULE'),
+  ('encodings.iso2022_jp_1',
+   'C:\\Python313\\Lib\\encodings\\iso2022_jp_1.py',
+   'PYMODULE'),
+  ('encodings.iso2022_jp',
+   'C:\\Python313\\Lib\\encodings\\iso2022_jp.py',
+   'PYMODULE'),
+  ('encodings.idna', 'C:\\Python313\\Lib\\encodings\\idna.py', 'PYMODULE'),
+  ('encodings.hz', 'C:\\Python313\\Lib\\encodings\\hz.py', 'PYMODULE'),
+  ('encodings.hp_roman8',
+   'C:\\Python313\\Lib\\encodings\\hp_roman8.py',
+   'PYMODULE'),
+  ('encodings.hex_codec',
+   'C:\\Python313\\Lib\\encodings\\hex_codec.py',
+   'PYMODULE'),
+  ('encodings.gbk', 'C:\\Python313\\Lib\\encodings\\gbk.py', 'PYMODULE'),
+  ('encodings.gb2312', 'C:\\Python313\\Lib\\encodings\\gb2312.py', 'PYMODULE'),
+  ('encodings.gb18030',
+   'C:\\Python313\\Lib\\encodings\\gb18030.py',
+   'PYMODULE'),
+  ('encodings.euc_kr', 'C:\\Python313\\Lib\\encodings\\euc_kr.py', 'PYMODULE'),
+  ('encodings.euc_jp', 'C:\\Python313\\Lib\\encodings\\euc_jp.py', 'PYMODULE'),
+  ('encodings.euc_jisx0213',
+   'C:\\Python313\\Lib\\encodings\\euc_jisx0213.py',
+   'PYMODULE'),
+  ('encodings.euc_jis_2004',
+   'C:\\Python313\\Lib\\encodings\\euc_jis_2004.py',
+   'PYMODULE'),
+  ('encodings.cp950', 'C:\\Python313\\Lib\\encodings\\cp950.py', 'PYMODULE'),
+  ('encodings.cp949', 'C:\\Python313\\Lib\\encodings\\cp949.py', 'PYMODULE'),
+  ('encodings.cp932', 'C:\\Python313\\Lib\\encodings\\cp932.py', 'PYMODULE'),
+  ('encodings.cp875', 'C:\\Python313\\Lib\\encodings\\cp875.py', 'PYMODULE'),
+  ('encodings.cp874', 'C:\\Python313\\Lib\\encodings\\cp874.py', 'PYMODULE'),
+  ('encodings.cp869', 'C:\\Python313\\Lib\\encodings\\cp869.py', 'PYMODULE'),
+  ('encodings.cp866', 'C:\\Python313\\Lib\\encodings\\cp866.py', 'PYMODULE'),
+  ('encodings.cp865', 'C:\\Python313\\Lib\\encodings\\cp865.py', 'PYMODULE'),
+  ('encodings.cp864', 'C:\\Python313\\Lib\\encodings\\cp864.py', 'PYMODULE'),
+  ('encodings.cp863', 'C:\\Python313\\Lib\\encodings\\cp863.py', 'PYMODULE'),
+  ('encodings.cp862', 'C:\\Python313\\Lib\\encodings\\cp862.py', 'PYMODULE'),
+  ('encodings.cp861', 'C:\\Python313\\Lib\\encodings\\cp861.py', 'PYMODULE'),
+  ('encodings.cp860', 'C:\\Python313\\Lib\\encodings\\cp860.py', 'PYMODULE'),
+  ('encodings.cp858', 'C:\\Python313\\Lib\\encodings\\cp858.py', 'PYMODULE'),
+  ('encodings.cp857', 'C:\\Python313\\Lib\\encodings\\cp857.py', 'PYMODULE'),
+  ('encodings.cp856', 'C:\\Python313\\Lib\\encodings\\cp856.py', 'PYMODULE'),
+  ('encodings.cp855', 'C:\\Python313\\Lib\\encodings\\cp855.py', 'PYMODULE'),
+  ('encodings.cp852', 'C:\\Python313\\Lib\\encodings\\cp852.py', 'PYMODULE'),
+  ('encodings.cp850', 'C:\\Python313\\Lib\\encodings\\cp850.py', 'PYMODULE'),
+  ('encodings.cp775', 'C:\\Python313\\Lib\\encodings\\cp775.py', 'PYMODULE'),
+  ('encodings.cp737', 'C:\\Python313\\Lib\\encodings\\cp737.py', 'PYMODULE'),
+  ('encodings.cp720', 'C:\\Python313\\Lib\\encodings\\cp720.py', 'PYMODULE'),
+  ('encodings.cp500', 'C:\\Python313\\Lib\\encodings\\cp500.py', 'PYMODULE'),
+  ('encodings.cp437', 'C:\\Python313\\Lib\\encodings\\cp437.py', 'PYMODULE'),
+  ('encodings.cp424', 'C:\\Python313\\Lib\\encodings\\cp424.py', 'PYMODULE'),
+  ('encodings.cp273', 'C:\\Python313\\Lib\\encodings\\cp273.py', 'PYMODULE'),
+  ('encodings.cp1258', 'C:\\Python313\\Lib\\encodings\\cp1258.py', 'PYMODULE'),
+  ('encodings.cp1257', 'C:\\Python313\\Lib\\encodings\\cp1257.py', 'PYMODULE'),
+  ('encodings.cp1256', 'C:\\Python313\\Lib\\encodings\\cp1256.py', 'PYMODULE'),
+  ('encodings.cp1255', 'C:\\Python313\\Lib\\encodings\\cp1255.py', 'PYMODULE'),
+  ('encodings.cp1254', 'C:\\Python313\\Lib\\encodings\\cp1254.py', 'PYMODULE'),
+  ('encodings.cp1253', 'C:\\Python313\\Lib\\encodings\\cp1253.py', 'PYMODULE'),
+  ('encodings.cp1252', 'C:\\Python313\\Lib\\encodings\\cp1252.py', 'PYMODULE'),
+  ('encodings.cp1251', 'C:\\Python313\\Lib\\encodings\\cp1251.py', 'PYMODULE'),
+  ('encodings.cp1250', 'C:\\Python313\\Lib\\encodings\\cp1250.py', 'PYMODULE'),
+  ('encodings.cp1140', 'C:\\Python313\\Lib\\encodings\\cp1140.py', 'PYMODULE'),
+  ('encodings.cp1125', 'C:\\Python313\\Lib\\encodings\\cp1125.py', 'PYMODULE'),
+  ('encodings.cp1026', 'C:\\Python313\\Lib\\encodings\\cp1026.py', 'PYMODULE'),
+  ('encodings.cp1006', 'C:\\Python313\\Lib\\encodings\\cp1006.py', 'PYMODULE'),
+  ('encodings.cp037', 'C:\\Python313\\Lib\\encodings\\cp037.py', 'PYMODULE'),
+  ('encodings.charmap',
+   'C:\\Python313\\Lib\\encodings\\charmap.py',
+   'PYMODULE'),
+  ('encodings.bz2_codec',
+   'C:\\Python313\\Lib\\encodings\\bz2_codec.py',
+   'PYMODULE'),
+  ('encodings.big5hkscs',
+   'C:\\Python313\\Lib\\encodings\\big5hkscs.py',
+   'PYMODULE'),
+  ('encodings.big5', 'C:\\Python313\\Lib\\encodings\\big5.py', 'PYMODULE'),
+  ('encodings.base64_codec',
+   'C:\\Python313\\Lib\\encodings\\base64_codec.py',
+   'PYMODULE'),
+  ('encodings.ascii', 'C:\\Python313\\Lib\\encodings\\ascii.py', 'PYMODULE'),
+  ('encodings.aliases',
+   'C:\\Python313\\Lib\\encodings\\aliases.py',
+   'PYMODULE'),
+  ('encodings', 'C:\\Python313\\Lib\\encodings\\__init__.py', 'PYMODULE'),
+  ('re._parser', 'C:\\Python313\\Lib\\re\\_parser.py', 'PYMODULE'),
+  ('re._constants', 'C:\\Python313\\Lib\\re\\_constants.py', 'PYMODULE'),
+  ('re._compiler', 'C:\\Python313\\Lib\\re\\_compiler.py', 'PYMODULE'),
+  ('re._casefix', 'C:\\Python313\\Lib\\re\\_casefix.py', 'PYMODULE'),
+  ('re', 'C:\\Python313\\Lib\\re\\__init__.py', 'PYMODULE'),
+  ('sre_constants', 'C:\\Python313\\Lib\\sre_constants.py', 'PYMODULE'),
+  ('stat', 'C:\\Python313\\Lib\\stat.py', 'PYMODULE'),
+  ('keyword', 'C:\\Python313\\Lib\\keyword.py', 'PYMODULE'),
+  ('enum', 'C:\\Python313\\Lib\\enum.py', 'PYMODULE'),
+  ('traceback', 'C:\\Python313\\Lib\\traceback.py', 'PYMODULE'),
+  ('_collections_abc', 'C:\\Python313\\Lib\\_collections_abc.py', 'PYMODULE'),
+  ('genericpath', 'C:\\Python313\\Lib\\genericpath.py', 'PYMODULE'),
+  ('os', 'C:\\Python313\\Lib\\os.py', 'PYMODULE')])

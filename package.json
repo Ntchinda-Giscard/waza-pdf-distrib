@@ -1,0 +1,43 @@
+{
+  "name": "electron-app",
+  "version": "1.0.0",
+  "description": "Electron app with Next.js frontend and FastAPI backend",
+  "main": "electron/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "cross-env NODE_ENV=development ELECTRON_IS_DEV=1 electron .",
+    "electron:dev": "cross-env NODE_ENV=development ELECTRON_IS_DEV=1 electron .",
+    "electron:prod": "cross-env NODE_ENV=production electron .",
+    "build": "electron-builder",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder --publish=never"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "electron": "^25.9.8",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+  "appId": "com.yourcompany.yourapp",
+  "productName": "WAZA PAYROLL DISTRIBUTOR",
+  "directories": {
+    "output": "dist"
+  },
+  "files": [
+    "electron/main.js",
+    "icons/**/*"
+  ],
+  "extraResources": [
+    {
+      "from": "../backend/dist/",
+      "to": "backend/dist/",
+      "filter": ["**/*"]
+    },
+    {
+      "from": "../frontend/.next/standalone/",
+      "to": "frontend/",
+      "filter": ["**/*"]
+    }
+  ]
+}
+}
