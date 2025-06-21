@@ -1,0 +1,12 @@
+{
+  "timestamp": "2025-06-21T08:36:36.001Z",
+  "frontend": {
+    "path": "frontend",
+    "serverExists": true,
+    "buildExists": true
+  },
+  "backend": {
+    "path": "backend",
+    "executableExists": true
+  }
+}
