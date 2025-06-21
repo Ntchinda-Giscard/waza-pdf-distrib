@@ -1,14 +1,24 @@
 # main.py or routers/config.py
-from fastapi import FastAPI, Depends, HTTPException
+from fastapi import FastAPI, Depends, HTTPException, logger
 from sqlalchemy.orm import Session
 from app.crud.insert_config import create_or_update_user_config
 from app.db.schema import UserConfigCreate
 from app.db.session import get_db, engine, Base
 from fastapi.middleware.cors import CORSMiddleware
 from test import process_configs
+import logging
 
+
+# 🔗 Setup logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
+
+logger.info(f'Creating app.db...')
 Base.metadata.create_all(bind=engine)
-
+logger.info(f'Created app.db')
 app = FastAPI()
 
 # Set allowed origins (example: React frontend on localhost:3000)
@@ -45,4 +55,4 @@ def read_root():
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="127.0.0.1", port=8000)
+    uvicorn.run(app)

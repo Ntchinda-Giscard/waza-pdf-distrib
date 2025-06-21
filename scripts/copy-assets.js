@@ -22,7 +22,7 @@ async function copyAssets() {
     // Step 1: Copy the built Next.js frontend
     console.log('📦 Copying Next.js frontend assets...')
     
-    const frontendSource = path.join(__dirname, '../frontend')
+    const frontendSource = path.join(__dirname, '../frontend/.next/standalone')
     const frontendDest = path.join(resourcesDir, 'frontend')
     
     // Check if the Next.js build exists

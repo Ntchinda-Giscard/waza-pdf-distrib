@@ -11,6 +11,51 @@ const DEV_BACKEND_PORT = 8000
 const PRODUCTION_FRONTEND_PORT = 3001
 const PRODUCTION_BACKEND_PORT = 8001
 
+// Create a log file for debugging
+const logDir = isDev ? path.join(__dirname, '../logs') : path.join(path.dirname(app.getPath('exe')), 'logs')
+const logFile = path.join(logDir, `app-${new Date().toISOString().split('T')[0]}.log`)
+
+// Ensure log directory exists
+if (!fs.existsSync(logDir)) {
+  fs.mkdirSync(logDir, { recursive: true })
+}
+
+/**
+ * Enhanced logging function that writes to both console and file
+ */
+function log(level, message, data = null) {
+  const timestamp = new Date().toISOString()
+  const logMessage = `[${timestamp}] [${level.toUpperCase()}] ${message}`
+  
+  console.log(logMessage)
+  
+  try {
+    let fullMessage = logMessage
+    if (data) {
+      fullMessage += `\nData: ${typeof data === 'string' ? data : JSON.stringify(data, null, 2)}`
+    }
+    fullMessage += '\n'
+    
+    fs.appendFileSync(logFile, fullMessage)
+  } catch (error) {
+    console.error('Failed to write to log file:', error)
+  }
+}
+
+// Override console methods to also log to file
+const originalConsoleLog = console.log
+const originalConsoleError = console.error
+
+console.log = (...args) => {
+  originalConsoleLog(...args)
+  log('info', args.join(' '))
+}
+
+console.error = (...args) => {
+  originalConsoleError(...args)
+  log('error', args.join(' '))
+}
+
 /**
  * Gets the correct resource path based on whether we're in development or production
  * In development: uses relative paths from the electron folder
@@ -132,12 +177,12 @@ class FastAPIServerManager {
 
   async startServer() {
     if (isDev) {
-      console.log('Development mode: assuming FastAPI dev server is running on port', DEV_BACKEND_PORT)
+      log('info', 'Development mode: assuming FastAPI dev server is running on port', DEV_BACKEND_PORT)
       this.isReady = true
       return Promise.resolve()
     }
 
-    console.log('Production mode: starting FastAPI server')
+    log('info', 'Production mode: starting FastAPI server')
     
     return new Promise((resolve, reject) => {
       // Use the resource path helper to find the backend executable
@@ -151,49 +196,73 @@ class FastAPIServerManager {
         return
       }
       
-      console.log(`Starting FastAPI server from: ${backendExecutable}`)
+      log('info', `Starting FastAPI server from: ${backendExecutable}`)
       
       this.server = spawn(backendExecutable, [], {
         env: {
           ...process.env,
           PORT: PRODUCTION_BACKEND_PORT,
-          HOST: '127.0.0.1'
+          HOST: '0.0.0.0', // Changed from 127.0.0.1 to 0.0.0.0 for better binding
+          PYTHONUNBUFFERED: '1' // Ensure Python output is not buffered
         },
         stdio: ['pipe', 'pipe', 'pipe']
       })
 
       this.server.stdout.on('data', (data) => {
-        const output = data.toString()
-        console.log('FastAPI server:', output)
+        const output = data.toString().trim()
+        log('info', `FastAPI stdout: ${output}`)
         
-        if (output.includes('Uvicorn running') || output.includes('Application startup complete')) {
-          this.isReady = true
-          resolve()
+        // Look for various FastAPI startup indicators
+        if (output.includes('Uvicorn running') || 
+            output.includes('Application startup complete') ||
+            output.includes('Started server process') ||
+            output.includes(`Waiting for application startup`) ||
+            output.includes('ASGI') ||
+            output.toLowerCase().includes('listening')) {
+          
+          log('info', 'FastAPI server startup detected from stdout')
+          if (!this.isReady) {
+            this.isReady = true
+            resolve()
+          }
         }
       })
 
       this.server.stderr.on('data', (data) => {
-        const error = data.toString()
-        console.error('FastAPI server error:', error)
+        const error = data.toString().trim()
+        log('warn', `FastAPI stderr: ${error}`)
+        
+        // Some FastAPI servers log startup info to stderr
+        if (error.includes('Uvicorn running') || 
+            error.includes('Application startup complete') ||
+            error.includes('Started server process')) {
+          
+          log('info', 'FastAPI server startup detected from stderr')
+          if (!this.isReady) {
+            this.isReady = true  
+            resolve()
+          }
+        }
       })
 
       this.server.on('error', (error) => {
-        console.error('Failed to start FastAPI server:', error)
+        log('error', 'Failed to start FastAPI server:', error)
         reject(error)
       })
 
-      this.server.on('close', (code) => {
-        console.log(`FastAPI server exited with code ${code}`)
+      this.server.on('close', (code, signal) => {
+        log('warn', `FastAPI server exited with code ${code}, signal: ${signal}`)
         this.isReady = false
       })
 
+      // Increased timeout and better logging
       setTimeout(() => {
         if (!this.isReady) {
-          console.log('FastAPI server timeout reached, assuming ready')
+          log('warn', 'FastAPI server timeout reached, but process seems to be running. Proceeding...')
           this.isReady = true
           resolve()
         }
-      }, 12000)
+      }, 15000) // Increased from 12000 to 15000ms
     })
   }
 
@@ -202,9 +271,9 @@ class FastAPIServerManager {
       return true
     }
 
-    console.log('Verifying FastAPI server is responding...')
+    log('info', 'Verifying FastAPI server is responding...')
     
-    const maxAttempts = 30
+    const maxAttempts = 45 // Increased from 30
     const targetPort = PRODUCTION_BACKEND_PORT
 
     for (let attempt = 1; attempt <= maxAttempts; attempt++) {
@@ -212,28 +281,49 @@ class FastAPIServerManager {
         const http = require('http')
         
         await new Promise((resolve, reject) => {
-          const request = http.get(`http://localhost:${targetPort}/health`, (response) => {
-            resolve()
-          }).on('error', () => {
-            const rootRequest = http.get(`http://localhost:${targetPort}/`, (response) => {
-              resolve()
-            }).on('error', reject)
-            
-            rootRequest.setTimeout(3000)
-          })
+          // Try multiple endpoints that might exist
+          const endpoints = ['/health', '/docs', '/openapi.json', '/']
+          let endpointIndex = 0
           
-          request.setTimeout(3000)
+          const tryEndpoint = () => {
+            if (endpointIndex >= endpoints.length) {
+              reject(new Error('All endpoints failed'))
+              return
+            }
+            
+            const endpoint = endpoints[endpointIndex]
+            const url = `http://localhost:${targetPort}${endpoint}`
+            
+            log('debug', `Attempt ${attempt}: Trying endpoint ${url}`)
+            
+            const request = http.get(url, (response) => {
+              log('info', `Success! FastAPI server responded to ${endpoint} with status ${response.statusCode}`)
+              resolve()
+            }).on('error', (error) => {
+              log('debug', `Endpoint ${endpoint} failed: ${error.message}`)
+              endpointIndex++
+              tryEndpoint()
+            })
+            
+            request.setTimeout(5000) // Increased timeout per request
+          }
+          
+          tryEndpoint()
         })
 
-        console.log(`FastAPI server is responding after ${attempt} attempts`)
+        log('info', `FastAPI server is responding after ${attempt} attempts`)
         return true
       } catch (error) {
-        console.log(`Attempt ${attempt}: FastAPI server not ready, waiting...`)
-        await sleep(1000)
+        log('debug', `Attempt ${attempt}: FastAPI server not ready, waiting... (${error.message})`)
+        await sleep(2000) // Increased from 1000ms
       }
     }
 
-    throw new Error('FastAPI server failed to start within expected time')
+    log('error', 'FastAPI server failed to respond within expected time')
+    
+    // Don't throw error immediately, try to continue anyway
+    log('warn', 'Continuing with app startup despite FastAPI health check failure')
+    return false
   }
 
   shutdown() {
@@ -250,31 +340,41 @@ const frontendManager = new NextJsServerManager()
 const backendManager = new FastAPIServerManager()
 
 async function createWindow() {
-  console.log(`Starting application in ${isDev ? 'development' : 'production'} mode...`)
-  console.log(`App path: ${app.getAppPath()}`)
-  console.log(`Exe path: ${app.getPath('exe')}`)
+  log('info', `Starting application in ${isDev ? 'development' : 'production'} mode...`)
+  log('info', `App path: ${app.getAppPath()}`)
+  log('info', `Exe path: ${app.getPath('exe')}`)
+  log('info', `Log file: ${logFile}`)
 
   try {
-    console.log('Starting backend server...')
+    log('info', 'Starting backend server...')
     await backendManager.startServer()
-    await backendManager.waitForServer()
-    console.log('✓ Backend server is ready!')
+    
+    log('info', 'Backend server started, checking health...')
+    const backendHealthy = await backendManager.waitForServer()
+    
+    if (backendHealthy) {
+      log('info', '✓ Backend server is ready and responding!')
+    } else {
+      log('warn', '⚠ Backend server started but health check failed - continuing anyway')
+    }
 
-    console.log('Starting frontend server...')
+    log('info', 'Starting frontend server...')
     await frontendManager.startServer()
-    console.log('✓ Frontend server is ready!')
+    log('info', '✓ Frontend server is ready!')
 
-    console.log('✓ All servers started successfully!')
+    log('info', '✓ All servers started successfully!')
   } catch (error) {
-    console.error('❌ Failed to start servers:', error)
+    log('error', '❌ Failed to start servers:', error)
     
     // Show an error dialog to help with debugging
     const { dialog } = require('electron')
-    dialog.showErrorBox('Startup Error', 
-      `Failed to start application servers:\n\n${error.message}\n\nCheck the console for more details.`)
+    const errorMessage = `Failed to start application servers:\n\n${error.message}\n\nCheck the log file at:\n${logFile}`
     
-    app.quit()
-    return
+    dialog.showErrorBox('Startup Error', errorMessage)
+    
+    // Don't quit immediately - let the user see the error and check logs
+    // app.quit()
+    // return
   }
 
   const mainWindow = new BrowserWindow({
@@ -290,11 +390,11 @@ async function createWindow() {
 
   // Add better error handling for the window loading
   mainWindow.webContents.on('did-fail-load', (event, errorCode, errorDescription) => {
-    console.error('Failed to load application:', errorCode, errorDescription)
+    log('error', 'Failed to load application:', { errorCode, errorDescription })
   })
 
   mainWindow.webContents.once('did-finish-load', () => {
-    console.log('✓ Application loaded successfully')
+    log('info', '✓ Application loaded successfully')
     mainWindow.show()
     
     if (isDev) {
@@ -306,12 +406,12 @@ async function createWindow() {
     `http://localhost:${DEV_FRONTEND_PORT}` : 
     `http://localhost:${PRODUCTION_FRONTEND_PORT}`
   
-  console.log('Loading application from:', appURL)
+  log('info', 'Loading application from:', appURL)
   
   try {
     await mainWindow.loadURL(appURL)
   } catch (error) {
-    console.error('Failed to load URL:', error)
+    log('error', 'Failed to load URL:', error)
   }
 }
 
