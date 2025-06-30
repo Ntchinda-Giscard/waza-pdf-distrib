@@ -2,7 +2,7 @@
 import sys
 from fastapi import FastAPI, Depends, HTTPException, logger
 from sqlalchemy.orm import Session
-from app.crud.insert_config import create_or_update_user_config
+from app.crud.insert_config import add_config_user, create_or_update_user_config
 from app.db.schema import UserConfigCreate
 from app.db.session import get_db, engine, Base
 from app.routes.odbc import odbc_router
@@ -59,6 +59,13 @@ async def root():
 @app.get("/api/test")
 async def test_endpoint():
     return {"message": "Test endpoint working"}
+
+
+
+@app.post("/config/")
+def add_config(config: UserConfigCreate, db: Session = Depends(get_db)):  # ✅ correct usage
+    return add_config_user(db, config)
+    
 
 @app.post("/user-config/")
 def create_config(config: UserConfigCreate, db: Session = Depends(get_db)):  # ✅ correct usage
