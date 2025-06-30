@@ -25,14 +25,14 @@ export function SubfolderConnectionFields({ subfolders, form }: SubfolderConnect
           <CardContent className="space-y-4">
             <FormField
               control={form.control}
-              name={`subfolderConnections.${index}.folderName`}
+              name={`subfolders.${index}.subfolder_name`}
               defaultValue={folder}
-              render={({ field }) => <Input type="hidden" {...field} />}
+              render={({ field }) => <Input type="hidden" {...field} value={folder} />}
             />
 
             <FormField
               control={form.control}
-              name={`subfolderConnections.${index}.databaseName`}
+              name={`subfolders.${index}.link_database`}
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Database Name</FormLabel>
@@ -46,12 +46,19 @@ export function SubfolderConnectionFields({ subfolders, form }: SubfolderConnect
 
             <FormField
               control={form.control}
-              name={`subfolderConnections.${index}.connectionString`}
+              //@ts-ignore
+
+              name={`subfolders.${index}.connection_string`}
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Connection String</FormLabel>
                   <FormControl>
-                    <Input placeholder="Enter connection string" {...field} />
+                    
+                    <Input
+                      placeholder="Enter connection string"
+                      {...field}
+                      value={typeof field.value === "string" ? field.value : ""}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
