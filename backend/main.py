@@ -5,9 +5,11 @@ from sqlalchemy.orm import Session
 from app.crud.insert_config import create_or_update_user_config
 from app.db.schema import UserConfigCreate
 from app.db.session import get_db, engine, Base
+from app.routes.odbc import odbc_router
 from fastapi.middleware.cors import CORSMiddleware
-from test import process_configs
 import logging
+
+from test import process_configs
 
 
 # Configure logging to help with debugging
@@ -40,6 +42,9 @@ app.add_middleware(
     allow_methods=["*"],    # or restrict to ["GET", "POST", ...]
     allow_headers=["*"],    # or restrict to specific headers
 )
+
+
+app.include_router(odbc_router)
 
 # Health check endpoint (important for Electron startup detection)
 @app.get("/health")
