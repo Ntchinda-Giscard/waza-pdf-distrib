@@ -1,4 +1,5 @@
 # main.py or routers/config.py
+import sys
 from fastapi import FastAPI, Depends, HTTPException, logger
 from sqlalchemy.orm import Session
 from app.crud.insert_config import create_or_update_user_config
@@ -9,11 +10,16 @@ from test import process_configs
 import logging
 
 
-# 🔗 Setup logging
+# Configure logging to help with debugging
 logging.basicConfig(
     level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s'
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.StreamHandler(sys.stdout),
+        logging.FileHandler('fastapi.log')
+    ]
 )
+
 logger = logging.getLogger(__name__)
 
 logger.info(f'Creating app.db...')
@@ -34,6 +40,20 @@ app.add_middleware(
     allow_methods=["*"],    # or restrict to ["GET", "POST", ...]
     allow_headers=["*"],    # or restrict to specific headers
 )
+
+# Health check endpoint (important for Electron startup detection)
+@app.get("/health")
+async def health_check():
+    return {"status": "healthy", "message": "FastAPI server is running"}
+
+@app.get("/")
+async def root():
+    return {"message": "FastAPI backend is running", "version": "1.0.0"}
+
+# Add your other endpoints here
+@app.get("/api/test")
+async def test_endpoint():
+    return {"message": "Test endpoint working"}
 
 @app.post("/user-config/")
 def create_config(config: UserConfigCreate, db: Session = Depends(get_db)):  # ✅ correct usage
