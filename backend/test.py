@@ -17,6 +17,40 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+
+
+
+
+def connect_to_database(dsn, username=None, password=None):
+    """
+    Connects to a SQL Server database using either Windows Authentication or SQL Server Authentication.
+
+    Parameters:
+    - dsn (str): The Data Source Name configured in ODBC.
+    - username (str, optional): The SQL Server username (required for SQL Server Authentication).
+    - password (str, optional): The SQL Server password (required for SQL Server Authentication).
+
+    Returns:
+    - pyodbc.Connection: A connection object to the database.
+    """
+    try:
+        if username and password:
+            # SQL Server Authentication
+            conn = pyodbc.connect(f'DSN={dsn};UID={username};PWD={password}')
+            logger.info("Connected using SQL Server Authentication.")
+        else:
+            # Windows Authentication
+            conn = pyodbc.connect(f'DSN={dsn};Trusted_Connection=yes')
+            logger.info("Connected using Windows Authentication.")
+
+        return conn
+
+    except pyodbc.Error as e:
+        raise Exception(f"❌ Failed to connect to database: {e}")
+        logger.error(f"An error occurred: {e}")
+        return None
+
+
 def extract_text_after_reference(full_text: str, reference: str, num_chars: int, ignore_spaces_in_count: bool = False) -> str:
     idx = full_text.find(reference)
     if idx == -1:

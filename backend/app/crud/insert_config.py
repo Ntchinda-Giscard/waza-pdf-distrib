@@ -43,6 +43,7 @@ def add_config_user(db: Session, config: UserConfigAdd):
 
     new = UserConfig(
         odbc_source = config.odbc_source,
+        connection_type = config.connection_type,
         db_type = config.db_type,
         db_server = config.db_server,
         db_username = config.db_username,
@@ -51,8 +52,12 @@ def add_config_user(db: Session, config: UserConfigAdd):
         db_port = config.db_port,
         folder_name = config.folder_name,
         license_key = config.license_key,
-        numner_of_char = config.numner_of_char,
-        ref_text = config.ref_text
+        number_of_char  = config.number_of_char,
+        ref_text = config.ref_text,
+
+        table_name = config.table_name,
+        email_field = config.email_field,
+        license_field = config.license_field
     )
     db.add(new)
     db.commit()
