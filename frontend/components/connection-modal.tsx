@@ -1,6 +1,6 @@
 "use client"
 
-import { X, AlertCircle, Loader2, FolderOpen } from "lucide-react"
+import { X, AlertCircle, Loader2, FolderOpen, Loader2Icon } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -70,7 +70,7 @@ export function ConnectionModal() {
       email_field: connectionData.emailColumnName,
       license_field: connectionData.matriculeColumnName
     };
-
+    setLoading(true)
     await fetch("http://127.0.0.1:8000/config/", {
   method: "POST",
   headers: {
@@ -100,12 +100,15 @@ export function ConnectionModal() {
     toast.success("Configuration saved successfully!", {
       description: "Your database connection settings have been saved.",
     });
+    setLoading(false)
+    setModalOpen(false);
   })
   .catch(error => {
     console.error("Erreur lors de la requête :", error);
     toast.error("Failed to save configuration", {
       description: error.message,
     });
+    setLoading(false);
   });
 
 
@@ -430,8 +433,10 @@ export function ConnectionModal() {
                     
                     handleSubmitConfigration()
                   }}
+                  disabled={loading}
                   className="w-full bg-blue-600 hover:bg-blue-700 text-white transition-colors duration-200"
               >
+                {loading && <Loader2Icon className="animate-spin" />}
                 Save Configuration
               </Button>
             </div>
