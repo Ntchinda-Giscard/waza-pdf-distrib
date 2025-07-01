@@ -3,8 +3,8 @@ import './globals.css'
 import { Toaster } from 'sonner'
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
+  title: 'Waza paie',
+  description: 'logiciels de distribution des fiches de paie',
   generator: 'v0.dev',
 }
 

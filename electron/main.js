@@ -769,7 +769,7 @@ function createWindow() {
     log('info', 'Window loaded successfully');
     mainWindow.show();
     
-    if (!isDev) {
+    if (isDev) {
       mainWindow.webContents.openDevTools();
     }
   });

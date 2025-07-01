@@ -21,7 +21,7 @@
   },
   "build": {
     "appId": "com.yourcompany.yourapp",
-    "productName": "Your App Name",
+    "productName": "Waza paie",
     "directories": {
       "output": "dist"
     },
