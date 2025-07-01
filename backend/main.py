@@ -9,7 +9,7 @@ from app.routes.odbc import odbc_router
 from fastapi.middleware.cors import CORSMiddleware
 import logging
 
-from test import process_configs
+from test import process_configs, run_pdf_automation
 
 
 # Configure logging to help with debugging
@@ -80,6 +80,14 @@ async def run_automation():
     except Exception as e:
         return HTTPException( detail=f"{e}", status_code=500 )
 
+
+@app.post("/test/")
+def test_endpoint():
+    try:
+        run_pdf_automation()
+    except Exception as e:
+        logger.error(f"❌ Error occurred in test_endpoint: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
 
 @app.get("/")
 def read_root():

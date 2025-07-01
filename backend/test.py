@@ -46,9 +46,8 @@ def connect_to_database(dsn, username=None, password=None):
         return conn
 
     except pyodbc.Error as e:
-        raise Exception(f"❌ Failed to connect to database: {e}")
-        logger.error(f"An error occurred: {e}")
-        return None
+        logger.error(f"An error occurred: {e} ")
+        raise Exception(f"❌ Failed to connect to database: {e}")   
 
 
 def extract_text_after_reference(full_text: str, reference: str, num_chars: int, ignore_spaces_in_count: bool = False) -> str:
@@ -191,6 +190,27 @@ def process_configs():
 
     finally:
         session.close()
+
+def run_pdf_automation():
+    session = SessionLocal()
+    try:
+        logger.info("🔄 Fetching user configurations from the database...")
+        user_configs = session.query(UserConfig).one()
+        if not user_configs:
+            logger.warning("⚠️ No user configurations found in the database.")
+            raise Exception("No user configurations found.")
+        logger.info(f"🔧 Found {user_configs} user configurations.")
+        if user_configs.connection_type == "odbc":
+            conn = connect_to_database(
+                user_configs.odbc_source,
+                user_configs.db_username,
+                user_configs.db_password
+            )
+        logger.info("🔄 Starting automation process...")
+        logger.info("✅ Automation completed successfully.")
+    except Exception as e:
+        logger.error(f"❌ Automation failed: {e}")
+        raise e
 
 if __name__ == "__main__":
     process_configs()
