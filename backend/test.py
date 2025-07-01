@@ -268,23 +268,24 @@ def run_pdf_automation():
                 )
 
                 logger.info(f"🔎 Querying database for matricule: {m}")
-                logger.info(f"🔎 Querying results: {results} ")
+                if results:
+                    email = results[0].get("EMail")
+                    if not email:
+                        logger.warning(f"⚠️ No email found for {m}")
+                        continue
+                    logger.info(f"✅ Query result: {email}")
+                    logger.info(f"✅ File location: {matricules_w_path[m]}")
+                    send_email(
+                        email_receiver=email,
+                        attachments=[matricules_w_path[m]],
+                    )
+                else:
+                    logger.warning(f"⚠️ No results for {m}")
+                
+                if number_process <= 0:
+                    logger.info("  🔒 License limit reached, stopping further processing.")
+                    break
 
-
-                # if results:
-                #     email = results[0].get("EMail")
-                #     if not email:
-                #         logger.warning(f"⚠️ No email found for {m}")
-                #         continue
-                #     logger.info(f"✅ Query result: {email}")
-                #     logger.info(f"✅ File location: {matricules_w_path[m]}")
-                #     send_email(
-                #         email_receiver=email,
-                #         attachments=[matricules_w_path[m]],
-                #     )
-                # else:
-                #     logger.warning(f"⚠️ No results for {m}")
-            
             logger.info("✅ Automation completed successfully.")
     except Exception as e:
         logger.error(f"❌ Automation failed: {e}")
