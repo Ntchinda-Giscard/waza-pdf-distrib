@@ -14,7 +14,7 @@
     "cleanDistDir": true,
     "assetPrefix": "",
     "cacheMaxMemorySize": 52428800,
-    "configOrigin": "next.config.js",
+    "configOrigin": "next.config.mjs",
     "useFileSystemPublicRoutes": true,
     "generateEtags": true,
     "pageExtensions": [
@@ -280,7 +280,7 @@
     },
     "htmlLimitedBots": "Mediapartners-Google|Slurp|DuckDuckBot|baiduspider|yandex|sogou|bitlybot|tumblr|vkShare|quora link preview|redditbot|ia_archiver|Bingbot|BingPreview|applebot|facebookexternalhit|facebookcatalog|Twitterbot|LinkedInBot|Slackbot|Discordbot|WhatsApp|SkypeUriPreview",
     "bundlePagesRouterDependencies": false,
-    "configFileName": "next.config.js"
+    "configFileName": "next.config.mjs"
   },
   "appDir": "C:\\Users\\DIGITAL MARKET\\Documents\\eletronApp\\frontend",
   "relativeAppDir": "",

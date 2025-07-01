@@ -10,6 +10,7 @@ import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Textarea } from "@/components/ui/textarea"
 import { useConnectionStore, type ConnectionType, type DatabaseType } from "@/lib/store"
 import {useState} from "react";
+import { toast } from "sonner"
 
 export function ConnectionModal() {
   const [loading, setLoading] = useState(false)
@@ -51,6 +52,7 @@ export function ConnectionModal() {
   }
 
   const handleSubmitConfigration = async () => {
+    console.log(connectionData.odbcSource)
     const connData = {
       odbc_source: connectionData.odbcSource,
       connection_type: connectionData.connectionType,
@@ -69,20 +71,44 @@ export function ConnectionModal() {
       license_field: connectionData.matriculeColumnName
     };
 
-    await fetch("http://127.0.0.1:8000/config", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(connData)
-    })
-        .then(response => response.json())
-        .then(data => {
-          console.log("Réponse du serveur :", data);
-        })
-        .catch(error => {
-          console.error("Erreur lors de la requête :", error);
-        });
+    await fetch("http://127.0.0.1:8000/config/", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify(connData)
+})
+  .then(async response => {
+    const data = await response.json();
+
+    if (!response.ok) {
+      // Extract meaningful error message
+      let errorMessage = "Unknown error";
+
+      if (typeof data.detail === "string") {
+        errorMessage = data.detail;
+      } else if (Array.isArray(data.detail)) {
+        // Join multiple validation messages
+        errorMessage = data.detail.map((d: { msg: any }) => d.msg).join(" | ");
+      } else {
+        errorMessage = JSON.stringify(data);
+      }
+      console.error("Error response:", errorMessage);
+      throw new Error(errorMessage);
+    }
+
+    toast.success("Configuration saved successfully!", {
+      description: "Your database connection settings have been saved.",
+    });
+  })
+  .catch(error => {
+    console.error("Erreur lors de la requête :", error);
+    toast.error("Failed to save configuration", {
+      description: error.message,
+    });
+  });
+
+
   };
 
   if (!isModalOpen) return null
@@ -397,7 +423,7 @@ export function ConnectionModal() {
             <div className="border-t border-gray-800 p-6">
               <Button
                   onClick={() => {
-                    setModalOpen(false)
+                    
                     handleSubmitConfigration()
                   }}
                   className="w-full bg-blue-600 hover:bg-blue-700 text-white transition-colors duration-200"

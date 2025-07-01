@@ -1,0 +1,306 @@
+[2025-06-21T10:41:09.167Z] [INFO] Electron app ready, starting initialization
+Data: {
+  "isDev": true,
+  "frontendPort": 3000,
+  "backendPort": 8000,
+  "resourcesPath": "C:\\Users\\DIGITAL MARKET\\Documents\\eletronApp\\node_modules\\electron\\dist\\resources",
+  "appPath": "C:\\Users\\DIGITAL MARKET\\Documents\\eletronApp"
+}
+[2025-06-21T10:41:09.275Z] [INFO] Step 1: Starting backend server
+[2025-06-21T10:41:09.278Z] [INFO] Starting backend server
+[2025-06-21T10:41:09.279Z] [INFO] Development mode: assuming backend is running separately
+[2025-06-21T10:41:09.280Z] [INFO] Step 2: Starting frontend server
+[2025-06-21T10:41:09.294Z] [INFO] Starting frontend server
+[2025-06-21T10:41:09.295Z] [INFO] Development mode: assuming frontend dev server is running
+[2025-06-21T10:41:09.296Z] [INFO] Step 3: Waiting for servers to be ready
+[2025-06-21T10:41:09.299Z] [DEBUG] Health check attempt 1 for http://localhost:3000
+[2025-06-21T10:41:09.377Z] [DEBUG] Health check attempt 1 for http://localhost:8000/docs
+[2025-06-21T10:41:09.414Z] [DEBUG] Health check failed for http://localhost:8000/docs: connect ECONNREFUSED ::1:8000
+[2025-06-21T10:41:10.427Z] [DEBUG] Health check attempt 2 for http://localhost:8000/docs
+[2025-06-21T10:41:10.430Z] [DEBUG] Health check failed for http://localhost:8000/docs: connect ECONNREFUSED ::1:8000
+[2025-06-21T10:41:11.444Z] [DEBUG] Health check attempt 3 for http://localhost:8000/docs
+[2025-06-21T10:41:11.447Z] [DEBUG] Health check failed for http://localhost:8000/docs: connect ECONNREFUSED ::1:8000
+[2025-06-21T10:41:11.460Z] [DEBUG] Health check timeout for http://localhost:3000
+[2025-06-21T10:41:11.462Z] [DEBUG] Health check failed for http://localhost:3000: socket hang up
+[2025-06-21T10:41:12.463Z] [DEBUG] Health check attempt 4 for http://localhost:8000/docs
+[2025-06-21T10:41:12.466Z] [DEBUG] Health check attempt 2 for http://localhost:3000
+[2025-06-21T10:41:12.468Z] [DEBUG] Health check failed for http://localhost:8000/docs: connect ECONNREFUSED ::1:8000
+[2025-06-21T10:41:13.482Z] [DEBUG] Health check attempt 5 for http://localhost:8000/docs
+[2025-06-21T10:41:13.485Z] [DEBUG] Health check failed for http://localhost:8000/docs: connect ECONNREFUSED ::1:8000
+[2025-06-21T10:41:14.471Z] [DEBUG] Health check timeout for http://localhost:3000
+[2025-06-21T10:41:14.472Z] [DEBUG] Health check failed for http://localhost:3000: socket hang up
+[2025-06-21T10:41:14.486Z] [DEBUG] Health check attempt 6 for http://localhost:8000/docs
+[2025-06-21T10:41:14.493Z] [DEBUG] Health check failed for http://localhost:8000/docs: connect ECONNREFUSED ::1:8000
+[2025-06-21T10:41:15.475Z] [DEBUG] Health check attempt 3 for http://localhost:3000
+[2025-06-21T10:41:15.495Z] [DEBUG] Health check attempt 7 for http://localhost:8000/docs
+[2025-06-21T10:41:15.503Z] [DEBUG] Health check failed for http://localhost:8000/docs: connect ECONNREFUSED ::1:8000
+[2025-06-21T10:41:16.510Z] [DEBUG] Health check attempt 8 for http://localhost:8000/docs
+[2025-06-21T10:41:16.513Z] [DEBUG] Health check failed for http://localhost:8000/docs: connect ECONNREFUSED ::1:8000
+[2025-06-21T10:41:17.480Z] [DEBUG] Health check timeout for http://localhost:3000
+[2025-06-21T10:41:17.481Z] [DEBUG] Health check failed for http://localhost:3000: socket hang up
+[2025-06-21T10:41:17.529Z] [DEBUG] Health check attempt 9 for http://localhost:8000/docs
+[2025-06-21T10:41:17.532Z] [DEBUG] Health check failed for http://localhost:8000/docs: connect ECONNREFUSED ::1:8000
+[2025-06-21T10:41:18.494Z] [DEBUG] Health check attempt 4 for http://localhost:3000
+[2025-06-21T10:41:18.549Z] [DEBUG] Health check attempt 10 for http://localhost:8000/docs
+[2025-06-21T10:41:18.552Z] [DEBUG] Health check failed for http://localhost:8000/docs: connect ECONNREFUSED ::1:8000
+[2025-06-21T10:41:19.565Z] [DEBUG] Health check attempt 11 for http://localhost:8000/docs
+[2025-06-21T10:41:19.568Z] [DEBUG] Health check failed for http://localhost:8000/docs: connect ECONNREFUSED ::1:8000
+[2025-06-21T10:41:20.507Z] [DEBUG] Health check timeout for http://localhost:3000
+[2025-06-21T10:41:20.511Z] [DEBUG] Health check failed for http://localhost:3000: socket hang up
+[2025-06-21T10:41:20.583Z] [DEBUG] Health check attempt 12 for http://localhost:8000/docs
+[2025-06-21T10:41:20.587Z] [DEBUG] Health check failed for http://localhost:8000/docs: connect ECONNREFUSED ::1:8000
+[2025-06-21T10:41:21.546Z] [DEBUG] Health check attempt 5 for http://localhost:3000
+[2025-06-21T10:41:21.597Z] [DEBUG] Health check attempt 13 for http://localhost:8000/docs
+[2025-06-21T10:41:21.601Z] [DEBUG] Health check failed for http://localhost:8000/docs: connect ECONNREFUSED ::1:8000
+[2025-06-21T10:41:22.607Z] [DEBUG] Health check attempt 14 for http://localhost:8000/docs
+[2025-06-21T10:41:22.610Z] [DEBUG] Health check failed for http://localhost:8000/docs: connect ECONNREFUSED ::1:8000
+[2025-06-21T10:41:23.554Z] [DEBUG] Health check timeout for http://localhost:3000
+[2025-06-21T10:41:23.555Z] [DEBUG] Health check failed for http://localhost:3000: socket hang up
+[2025-06-21T10:41:23.615Z] [DEBUG] Health check attempt 15 for http://localhost:8000/docs
+[2025-06-21T10:41:23.618Z] [DEBUG] Health check failed for http://localhost:8000/docs: connect ECONNREFUSED ::1:8000
+[2025-06-21T10:41:24.568Z] [DEBUG] Health check attempt 6 for http://localhost:3000
+[2025-06-21T10:41:24.631Z] [DEBUG] Health check attempt 16 for http://localhost:8000/docs
+[2025-06-21T10:41:24.634Z] [DEBUG] Health check failed for http://localhost:8000/docs: connect ECONNREFUSED ::1:8000
+[2025-06-21T10:41:25.650Z] [DEBUG] Health check attempt 17 for http://localhost:8000/docs
+[2025-06-21T10:41:25.652Z] [DEBUG] Health check failed for http://localhost:8000/docs: connect ECONNREFUSED ::1:8000
+[2025-06-21T10:41:26.576Z] [DEBUG] Health check timeout for http://localhost:3000
+[2025-06-21T10:41:26.577Z] [DEBUG] Health check failed for http://localhost:3000: socket hang up
+[2025-06-21T10:41:26.666Z] [DEBUG] Health check attempt 18 for http://localhost:8000/docs
+[2025-06-21T10:41:26.669Z] [DEBUG] Health check failed for http://localhost:8000/docs: connect ECONNREFUSED ::1:8000
+[2025-06-21T10:41:27.579Z] [DEBUG] Health check attempt 7 for http://localhost:3000
+[2025-06-21T10:41:27.681Z] [DEBUG] Health check attempt 19 for http://localhost:8000/docs
+[2025-06-21T10:41:27.684Z] [DEBUG] Health check failed for http://localhost:8000/docs: connect ECONNREFUSED ::1:8000
+[2025-06-21T10:41:28.692Z] [DEBUG] Health check attempt 20 for http://localhost:8000/docs
+[2025-06-21T10:41:28.695Z] [DEBUG] Health check failed for http://localhost:8000/docs: connect ECONNREFUSED ::1:8000
+[2025-06-21T10:41:29.585Z] [DEBUG] Health check timeout for http://localhost:3000
+[2025-06-21T10:41:29.586Z] [DEBUG] Health check failed for http://localhost:3000: socket hang up
+[2025-06-21T10:41:29.696Z] [DEBUG] Health check attempt 21 for http://localhost:8000/docs
+[2025-06-21T10:41:29.699Z] [DEBUG] Health check failed for http://localhost:8000/docs: connect ECONNREFUSED ::1:8000
+[2025-06-21T10:41:30.588Z] [DEBUG] Health check attempt 8 for http://localhost:3000
+[2025-06-21T10:41:30.714Z] [DEBUG] Health check attempt 22 for http://localhost:8000/docs
+[2025-06-21T10:41:30.716Z] [DEBUG] Health check failed for http://localhost:8000/docs: connect ECONNREFUSED ::1:8000
+[2025-06-21T10:41:31.733Z] [DEBUG] Health check attempt 23 for http://localhost:8000/docs
+[2025-06-21T10:41:31.735Z] [DEBUG] Health check failed for http://localhost:8000/docs: connect ECONNREFUSED ::1:8000
+[2025-06-21T10:41:32.595Z] [DEBUG] Health check timeout for http://localhost:3000
+[2025-06-21T10:41:32.596Z] [DEBUG] Health check failed for http://localhost:3000: socket hang up
+[2025-06-21T10:41:32.747Z] [DEBUG] Health check attempt 24 for http://localhost:8000/docs
+[2025-06-21T10:41:32.749Z] [DEBUG] Health check failed for http://localhost:8000/docs: connect ECONNREFUSED ::1:8000
+[2025-06-21T10:41:33.599Z] [DEBUG] Health check attempt 9 for http://localhost:3000
+[2025-06-21T10:41:33.760Z] [DEBUG] Health check attempt 25 for http://localhost:8000/docs
+[2025-06-21T10:41:33.763Z] [DEBUG] Health check failed for http://localhost:8000/docs: connect ECONNREFUSED ::1:8000
+[2025-06-21T10:41:34.775Z] [DEBUG] Health check attempt 26 for http://localhost:8000/docs
+[2025-06-21T10:41:34.778Z] [DEBUG] Health check failed for http://localhost:8000/docs: connect ECONNREFUSED ::1:8000
+[2025-06-21T10:41:35.604Z] [DEBUG] Health check timeout for http://localhost:3000
+[2025-06-21T10:41:35.606Z] [DEBUG] Health check failed for http://localhost:3000: socket hang up
+[2025-06-21T10:41:35.780Z] [DEBUG] Health check attempt 27 for http://localhost:8000/docs
+[2025-06-21T10:41:35.783Z] [DEBUG] Health check failed for http://localhost:8000/docs: connect ECONNREFUSED ::1:8000
+[2025-06-21T10:41:36.618Z] [DEBUG] Health check attempt 10 for http://localhost:3000
+[2025-06-21T10:41:36.791Z] [DEBUG] Health check attempt 28 for http://localhost:8000/docs
+[2025-06-21T10:41:36.794Z] [DEBUG] Health check failed for http://localhost:8000/docs: connect ECONNREFUSED ::1:8000
+[2025-06-21T10:41:37.797Z] [DEBUG] Health check attempt 29 for http://localhost:8000/docs
+[2025-06-21T10:41:37.801Z] [DEBUG] Health check failed for http://localhost:8000/docs: connect ECONNREFUSED ::1:8000
+[2025-06-21T10:41:38.620Z] [DEBUG] Health check timeout for http://localhost:3000
+[2025-06-21T10:41:38.622Z] [DEBUG] Health check failed for http://localhost:3000: socket hang up
+[2025-06-21T10:41:38.814Z] [DEBUG] Health check attempt 30 for http://localhost:8000/docs
+[2025-06-21T10:41:38.817Z] [DEBUG] Health check failed for http://localhost:8000/docs: connect ECONNREFUSED ::1:8000
+[2025-06-21T10:41:38.817Z] [ERROR] Server health check failed after 30 attempts
+[2025-06-21T10:41:38.818Z] [WARN] Backend health check failed, but continuing...
+[2025-06-21T10:41:39.632Z] [DEBUG] Health check attempt 11 for http://localhost:3000
+[2025-06-21T10:41:41.649Z] [DEBUG] Health check timeout for http://localhost:3000
+[2025-06-21T10:41:41.653Z] [DEBUG] Health check failed for http://localhost:3000: socket hang up
+[2025-06-21T10:41:42.662Z] [DEBUG] Health check attempt 12 for http://localhost:3000
+[2025-06-21T10:41:44.681Z] [DEBUG] Health check timeout for http://localhost:3000
+[2025-06-21T10:41:44.682Z] [DEBUG] Health check failed for http://localhost:3000: socket hang up
+[2025-06-21T10:41:45.684Z] [DEBUG] Health check attempt 13 for http://localhost:3000
+[2025-06-21T10:41:47.688Z] [DEBUG] Health check timeout for http://localhost:3000
+[2025-06-21T10:41:47.690Z] [DEBUG] Health check failed for http://localhost:3000: socket hang up
+[2025-06-21T10:41:48.701Z] [DEBUG] Health check attempt 14 for http://localhost:3000
+[2025-06-21T10:41:50.710Z] [DEBUG] Health check timeout for http://localhost:3000
+[2025-06-21T10:41:50.711Z] [DEBUG] Health check failed for http://localhost:3000: socket hang up
+[2025-06-21T10:41:51.712Z] [DEBUG] Health check attempt 15 for http://localhost:3000
+[2025-06-21T10:41:53.728Z] [DEBUG] Health check timeout for http://localhost:3000
+[2025-06-21T10:41:53.730Z] [DEBUG] Health check failed for http://localhost:3000: socket hang up
+[2025-06-21T10:41:54.736Z] [DEBUG] Health check attempt 16 for http://localhost:3000
+[2025-06-21T10:41:56.746Z] [DEBUG] Health check timeout for http://localhost:3000
+[2025-06-21T10:41:56.749Z] [DEBUG] Health check failed for http://localhost:3000: socket hang up
+[2025-06-21T10:41:57.762Z] [DEBUG] Health check attempt 17 for http://localhost:3000
+[2025-06-21T10:41:59.776Z] [DEBUG] Health check timeout for http://localhost:3000
+[2025-06-21T10:41:59.777Z] [DEBUG] Health check failed for http://localhost:3000: socket hang up
+[2025-06-21T10:42:00.789Z] [DEBUG] Health check attempt 18 for http://localhost:3000
+[2025-06-21T10:42:02.794Z] [DEBUG] Health check timeout for http://localhost:3000
+[2025-06-21T10:42:02.797Z] [DEBUG] Health check failed for http://localhost:3000: socket hang up
+[2025-06-21T10:42:03.812Z] [DEBUG] Health check attempt 19 for http://localhost:3000
+[2025-06-21T10:42:05.826Z] [DEBUG] Health check timeout for http://localhost:3000
+[2025-06-21T10:42:05.827Z] [DEBUG] Health check failed for http://localhost:3000: socket hang up
+[2025-06-21T10:42:06.829Z] [DEBUG] Health check attempt 20 for http://localhost:3000
+[2025-06-21T10:42:08.844Z] [DEBUG] Health check timeout for http://localhost:3000
+[2025-06-21T10:42:08.849Z] [DEBUG] Health check failed for http://localhost:3000: socket hang up
+[2025-06-21T10:42:09.875Z] [DEBUG] Health check attempt 21 for http://localhost:3000
+[2025-06-21T10:42:11.884Z] [DEBUG] Health check timeout for http://localhost:3000
+[2025-06-21T10:42:11.886Z] [DEBUG] Health check failed for http://localhost:3000: socket hang up
+[2025-06-21T10:42:12.900Z] [DEBUG] Health check attempt 22 for http://localhost:3000
+[2025-06-21T10:42:14.914Z] [DEBUG] Health check timeout for http://localhost:3000
+[2025-06-21T10:42:14.916Z] [DEBUG] Health check failed for http://localhost:3000: socket hang up
+[2025-06-21T10:42:15.920Z] [DEBUG] Health check attempt 23 for http://localhost:3000
+[2025-06-21T10:42:17.926Z] [DEBUG] Health check timeout for http://localhost:3000
+[2025-06-21T10:42:17.927Z] [DEBUG] Health check failed for http://localhost:3000: socket hang up
+[2025-06-21T10:42:18.930Z] [DEBUG] Health check attempt 24 for http://localhost:3000
+[2025-06-21T10:42:20.937Z] [DEBUG] Health check timeout for http://localhost:3000
+[2025-06-21T10:42:20.939Z] [DEBUG] Health check failed for http://localhost:3000: socket hang up
+[2025-06-21T10:42:21.943Z] [DEBUG] Health check attempt 25 for http://localhost:3000
+[2025-06-21T10:42:23.963Z] [DEBUG] Health check timeout for http://localhost:3000
+[2025-06-21T10:42:23.964Z] [DEBUG] Health check failed for http://localhost:3000: socket hang up
+[2025-06-21T10:42:24.966Z] [DEBUG] Health check attempt 26 for http://localhost:3000
+[2025-06-21T10:42:26.973Z] [DEBUG] Health check timeout for http://localhost:3000
+[2025-06-21T10:42:26.974Z] [DEBUG] Health check failed for http://localhost:3000: socket hang up
+[2025-06-21T10:42:27.980Z] [DEBUG] Health check attempt 27 for http://localhost:3000
+[2025-06-21T10:42:29.984Z] [DEBUG] Health check timeout for http://localhost:3000
+[2025-06-21T10:42:29.986Z] [DEBUG] Health check failed for http://localhost:3000: socket hang up
+[2025-06-21T10:42:30.988Z] [DEBUG] Health check attempt 28 for http://localhost:3000
+[2025-06-21T10:42:32.996Z] [DEBUG] Health check timeout for http://localhost:3000
+[2025-06-21T10:42:32.997Z] [DEBUG] Health check failed for http://localhost:3000: socket hang up
+[2025-06-21T10:42:34.009Z] [DEBUG] Health check attempt 29 for http://localhost:3000
+[2025-06-21T10:42:36.020Z] [DEBUG] Health check timeout for http://localhost:3000
+[2025-06-21T10:42:36.022Z] [DEBUG] Health check failed for http://localhost:3000: socket hang up
+[2025-06-21T10:42:37.023Z] [DEBUG] Health check attempt 30 for http://localhost:3000
+[2025-06-21T10:42:39.032Z] [DEBUG] Health check timeout for http://localhost:3000
+[2025-06-21T10:42:39.033Z] [DEBUG] Health check failed for http://localhost:3000: socket hang up
+[2025-06-21T10:42:39.034Z] [ERROR] Server health check failed after 30 attempts
+[2025-06-21T10:42:39.035Z] [ERROR] Application startup failed
+Data: {}
+[2025-06-21T10:42:58.835Z] [INFO] Application shutting down
+[2025-06-30T12:48:16.113Z] [INFO] Electron app ready, starting initialization
+Data: {
+  "isDev": true,
+  "frontendPort": 3000,
+  "backendPort": 8000,
+  "resourcesPath": "C:\\Users\\DIGITAL MARKET\\Documents\\eletronApp\\node_modules\\electron\\dist\\resources",
+  "appPath": "C:\\Users\\DIGITAL MARKET\\Documents\\eletronApp"
+}
+[2025-06-30T12:48:16.441Z] [INFO] Step 1: Starting backend server
+[2025-06-30T12:48:16.443Z] [INFO] Starting backend server
+[2025-06-30T12:48:16.445Z] [INFO] Development mode: assuming backend is running separately
+[2025-06-30T12:48:16.481Z] [INFO] Step 2: Starting frontend server
+[2025-06-30T12:48:16.499Z] [INFO] Starting frontend server
+[2025-06-30T12:48:16.500Z] [INFO] Development mode: assuming frontend dev server is running
+[2025-06-30T12:48:16.501Z] [INFO] Step 3: Waiting for servers to be ready
+[2025-06-30T12:48:16.550Z] [DEBUG] Health check attempt 1 for port 3000
+[2025-06-30T12:48:16.564Z] [DEBUG] Health check attempt 1 for port 8000
+[2025-06-30T12:48:16.957Z] [DEBUG] Health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-06-30T12:48:16.967Z] [DEBUG] Health check failed for port 8000: connect ECONNREFUSED 127.0.0.1:8000
+[2025-06-30T12:48:17.978Z] [DEBUG] Health check attempt 2 for port 8000
+[2025-06-30T12:48:17.999Z] [DEBUG] Health check failed for port 8000: connect ECONNREFUSED 127.0.0.1:8000
+[2025-06-30T12:48:18.960Z] [DEBUG] Health check attempt 2 for port 3000
+[2025-06-30T12:48:18.966Z] [DEBUG] Health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-06-30T12:48:19.008Z] [DEBUG] Health check attempt 3 for port 8000
+[2025-06-30T12:48:19.015Z] [DEBUG] Health check failed for port 8000: connect ECONNREFUSED 127.0.0.1:8000
+[2025-06-30T12:48:20.027Z] [DEBUG] Health check attempt 4 for port 8000
+[2025-06-30T12:48:20.029Z] [DEBUG] Health check failed for port 8000: connect ECONNREFUSED 127.0.0.1:8000
+[2025-06-30T12:48:20.969Z] [DEBUG] Health check attempt 3 for port 3000
+[2025-06-30T12:48:20.975Z] [DEBUG] Health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-06-30T12:48:21.031Z] [DEBUG] Health check attempt 5 for port 8000
+[2025-06-30T12:48:21.033Z] [DEBUG] Health check failed for port 8000: connect ECONNREFUSED 127.0.0.1:8000
+[2025-06-30T12:48:22.039Z] [DEBUG] Health check attempt 6 for port 8000
+[2025-06-30T12:48:22.045Z] [DEBUG] Health check failed for port 8000: connect ECONNREFUSED 127.0.0.1:8000
+[2025-06-30T12:48:22.982Z] [DEBUG] Health check attempt 4 for port 3000
+[2025-06-30T12:48:23.018Z] [DEBUG] Health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-06-30T12:48:23.060Z] [DEBUG] Health check attempt 7 for port 8000
+[2025-06-30T12:48:23.061Z] [DEBUG] Health check failed for port 8000: connect ECONNREFUSED 127.0.0.1:8000
+[2025-06-30T12:48:24.065Z] [DEBUG] Health check attempt 8 for port 8000
+[2025-06-30T12:48:24.069Z] [DEBUG] Health check failed for port 8000: connect ECONNREFUSED 127.0.0.1:8000
+[2025-06-30T12:48:25.022Z] [DEBUG] Health check attempt 5 for port 3000
+[2025-06-30T12:48:25.028Z] [DEBUG] Health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-06-30T12:48:25.084Z] [DEBUG] Health check attempt 9 for port 8000
+[2025-06-30T12:48:25.086Z] [DEBUG] Health check failed for port 8000: connect ECONNREFUSED 127.0.0.1:8000
+[2025-06-30T12:48:26.090Z] [DEBUG] Health check attempt 10 for port 8000
+[2025-06-30T12:48:26.097Z] [DEBUG] Health check failed for port 8000: connect ECONNREFUSED 127.0.0.1:8000
+[2025-06-30T12:48:27.034Z] [DEBUG] Health check attempt 6 for port 3000
+[2025-06-30T12:48:27.040Z] [DEBUG] Health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-06-30T12:48:27.114Z] [DEBUG] Health check attempt 11 for port 8000
+[2025-06-30T12:48:27.115Z] [DEBUG] Health check failed for port 8000: connect ECONNREFUSED 127.0.0.1:8000
+[2025-06-30T12:48:28.117Z] [DEBUG] Health check attempt 12 for port 8000
+[2025-06-30T12:48:28.119Z] [DEBUG] Health check failed for port 8000: connect ECONNREFUSED 127.0.0.1:8000
+[2025-06-30T12:48:29.044Z] [DEBUG] Health check attempt 7 for port 3000
+[2025-06-30T12:48:29.050Z] [DEBUG] Health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-06-30T12:48:29.122Z] [DEBUG] Health check attempt 13 for port 8000
+[2025-06-30T12:48:29.124Z] [DEBUG] Health check failed for port 8000: connect ECONNREFUSED 127.0.0.1:8000
+[2025-06-30T12:48:30.132Z] [DEBUG] Health check attempt 14 for port 8000
+[2025-06-30T12:48:30.138Z] [DEBUG] Health check failed for port 8000: connect ECONNREFUSED 127.0.0.1:8000
+[2025-06-30T12:48:31.058Z] [DEBUG] Health check attempt 8 for port 3000
+[2025-06-30T12:48:31.060Z] [DEBUG] Health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-06-30T12:48:31.152Z] [DEBUG] Health check attempt 15 for port 8000
+[2025-06-30T12:48:31.154Z] [DEBUG] Health check failed for port 8000: connect ECONNREFUSED 127.0.0.1:8000
+[2025-06-30T12:48:31.155Z] [ERROR] Server health check failed after 15 attempts
+[2025-06-30T12:48:31.155Z] [WARN] Backend health check failed, but continuing...
+[2025-06-30T12:48:33.071Z] [DEBUG] Health check attempt 9 for port 3000
+[2025-06-30T12:48:33.073Z] [DEBUG] Health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-06-30T12:48:35.079Z] [DEBUG] Health check attempt 10 for port 3000
+[2025-06-30T12:48:35.084Z] [DEBUG] Health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-06-30T12:48:37.087Z] [DEBUG] Health check attempt 11 for port 3000
+[2025-06-30T12:48:37.092Z] [DEBUG] Health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-06-30T12:48:39.109Z] [DEBUG] Health check attempt 12 for port 3000
+[2025-06-30T12:48:39.114Z] [DEBUG] Health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-06-30T12:48:41.120Z] [DEBUG] Health check attempt 13 for port 3000
+[2025-06-30T12:48:41.124Z] [DEBUG] Health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-06-30T12:48:43.125Z] [DEBUG] Health check attempt 14 for port 3000
+[2025-06-30T12:48:43.131Z] [DEBUG] Health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-06-30T12:48:45.137Z] [DEBUG] Health check attempt 15 for port 3000
+[2025-06-30T12:48:45.139Z] [DEBUG] Health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-06-30T12:48:47.146Z] [DEBUG] Health check attempt 16 for port 3000
+[2025-06-30T12:48:47.148Z] [DEBUG] Health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-06-30T12:48:49.154Z] [DEBUG] Health check attempt 17 for port 3000
+[2025-06-30T12:48:49.156Z] [DEBUG] Health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-06-30T12:48:51.164Z] [DEBUG] Health check attempt 18 for port 3000
+[2025-06-30T12:48:51.166Z] [DEBUG] Health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-06-30T12:48:53.181Z] [DEBUG] Health check attempt 19 for port 3000
+[2025-06-30T12:48:53.184Z] [DEBUG] Health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-06-30T12:48:55.192Z] [DEBUG] Health check attempt 20 for port 3000
+[2025-06-30T12:48:55.193Z] [DEBUG] Health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-06-30T12:48:57.201Z] [DEBUG] Health check attempt 21 for port 3000
+[2025-06-30T12:48:57.202Z] [DEBUG] Health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-06-30T12:48:59.207Z] [DEBUG] Health check attempt 22 for port 3000
+[2025-06-30T12:48:59.209Z] [DEBUG] Health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-06-30T12:49:01.213Z] [DEBUG] Health check attempt 23 for port 3000
+[2025-06-30T12:49:01.215Z] [DEBUG] Health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-06-30T12:49:03.221Z] [DEBUG] Health check attempt 24 for port 3000
+[2025-06-30T12:49:03.224Z] [DEBUG] Health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-06-30T12:49:05.228Z] [DEBUG] Health check attempt 25 for port 3000
+[2025-06-30T12:49:05.233Z] [DEBUG] Health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-06-30T12:49:07.249Z] [DEBUG] Health check attempt 26 for port 3000
+[2025-06-30T12:49:07.264Z] [DEBUG] Health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-06-30T12:49:09.293Z] [DEBUG] Health check attempt 27 for port 3000
+[2025-06-30T12:49:09.298Z] [DEBUG] Health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-06-30T12:49:11.317Z] [DEBUG] Health check attempt 28 for port 3000
+[2025-06-30T12:49:11.321Z] [DEBUG] Health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-06-30T12:49:13.334Z] [DEBUG] Health check attempt 29 for port 3000
+[2025-06-30T12:49:13.337Z] [DEBUG] Health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-06-30T12:49:15.343Z] [DEBUG] Health check attempt 30 for port 3000
+[2025-06-30T12:49:15.346Z] [DEBUG] Health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-06-30T12:49:15.347Z] [ERROR] Server health check failed after 30 attempts
+[2025-06-30T12:49:15.348Z] [WARN] Socket health check failed, trying HTTP check...
+[2025-06-30T12:49:15.349Z] [DEBUG] HTTP health check attempt 1 for port 3000
+[2025-06-30T12:49:15.393Z] [DEBUG] HTTP health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-06-30T12:49:17.400Z] [DEBUG] HTTP health check attempt 2 for port 3000
+[2025-06-30T12:49:17.406Z] [DEBUG] HTTP health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-06-30T12:49:19.410Z] [DEBUG] HTTP health check attempt 3 for port 3000
+[2025-06-30T12:49:19.416Z] [DEBUG] HTTP health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-06-30T12:49:21.419Z] [DEBUG] HTTP health check attempt 4 for port 3000
+[2025-06-30T12:49:21.421Z] [DEBUG] HTTP health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-06-30T12:49:23.425Z] [DEBUG] HTTP health check attempt 5 for port 3000
+[2025-06-30T12:49:23.427Z] [DEBUG] HTTP health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-06-30T12:49:25.436Z] [DEBUG] HTTP health check attempt 6 for port 3000
+[2025-06-30T12:49:25.438Z] [DEBUG] HTTP health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-06-30T12:49:27.443Z] [DEBUG] HTTP health check attempt 7 for port 3000
+[2025-06-30T12:49:27.449Z] [DEBUG] HTTP health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-06-30T12:49:29.463Z] [DEBUG] HTTP health check attempt 8 for port 3000
+[2025-06-30T12:49:29.465Z] [DEBUG] HTTP health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-06-30T12:49:31.473Z] [DEBUG] HTTP health check attempt 9 for port 3000
+[2025-06-30T12:49:31.479Z] [DEBUG] HTTP health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-06-30T12:49:33.495Z] [DEBUG] HTTP health check attempt 10 for port 3000
+[2025-06-30T12:49:33.500Z] [DEBUG] HTTP health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-06-30T12:49:35.514Z] [DEBUG] HTTP health check attempt 11 for port 3000
+[2025-06-30T12:49:35.517Z] [DEBUG] HTTP health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-06-30T12:49:37.524Z] [DEBUG] HTTP health check attempt 12 for port 3000
+[2025-06-30T12:49:37.526Z] [DEBUG] HTTP health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-06-30T12:49:39.530Z] [DEBUG] HTTP health check attempt 13 for port 3000
+[2025-06-30T12:49:39.534Z] [DEBUG] HTTP health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000

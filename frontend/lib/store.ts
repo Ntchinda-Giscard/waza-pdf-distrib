@@ -1,3 +1,4 @@
+import { toast } from "sonner"
 import { create } from "zustand"
 import { persist } from "zustand/middleware"
 
@@ -128,7 +129,8 @@ export const useConnectionStore = create<ConnectionStore>()(
             const { connectionData } = get()
             try {
               console.log("Sending data to backend:", connectionData)
-              const response = await fetch("/api/connection", {
+
+              const response = await fetch("http://127.0.0.1:8000/test/", {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json",
@@ -136,15 +138,35 @@ export const useConnectionStore = create<ConnectionStore>()(
                 body: JSON.stringify(connectionData),
               })
 
+              const data = await response.json()
+
               if (response.ok) {
                 console.log("Data sent successfully")
+                toast.success("Data sent successfully!", {
+                  description: "Your data has been processed by the backend.",
+                })
               } else {
-                console.error("Failed to send data")
+                const errorMessage = typeof data.detail === "string"
+                  ? data.detail
+                  : JSON.stringify(data)
+
+                toast.error("Failed to send data to backend", {
+                  description: errorMessage,
+                })
+
+                console.error("Failed to send data:", errorMessage)
               }
-            } catch (error) {
+            } catch (error: any) {
               console.error("Error sending data:", error)
+              toast.error("Network or unexpected error", {
+                description: error.message || "Unknown error occurred.",
+              })
             }
-          },
+          }
+
+
+
+
         }),
         {
           name: "connection-storage",
