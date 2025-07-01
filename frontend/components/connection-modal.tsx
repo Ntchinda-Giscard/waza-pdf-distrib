@@ -252,7 +252,9 @@ export function ConnectionModal() {
                 )}
 
                 {/* Database Name (Native only) */}
-                {connectionData.connectionType === "native" && (
+                {
+                // connectionData.connectionType === "native" &&
+                //  (
                     <div className="space-y-2">
                       <Label htmlFor="databaseName" className="text-sm font-medium text-gray-200">
                         Database Name
@@ -266,9 +268,11 @@ export function ConnectionModal() {
                           placeholder="Enter database name"
                       />
                     </div>
-                )}
+                // )
+                }
 
                 {/* Table Name (Both ODBC and Native) */}
+                
                 <div className="space-y-2">
                   <Label htmlFor="tableName" className="text-sm font-medium text-gray-200">
                     Table Name

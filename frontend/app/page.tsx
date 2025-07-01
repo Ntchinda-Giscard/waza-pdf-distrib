@@ -1,15 +1,19 @@
 "use client"
 
-import { Database, Send, Server } from "lucide-react"
+import { Database, Send, Server, Loader2Icon } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ConnectionModal } from "@/components/connection-modal"
 import { useConnectionStore } from "@/lib/store"
+import { useState } from "react"
 
 export default function HomePage() {
   const { setModalOpen, sendToBackend, connectionData } = useConnectionStore()
+  const [loading, setLoading] = useState(false)
 
   const handleSendToBackend = async () => {
+    setLoading(true)
     await sendToBackend()
+    setLoading(false)
   }
 
   const isConfigurationComplete = () => {
@@ -26,8 +30,8 @@ export default function HomePage() {
 
     // Check required fields for all connection types
     if (
-        !username ||
-        !password ||
+        // !username ||
+        // !password ||
         !tableName ||
         !matriculeColumnName ||
         !emailColumnName ||
@@ -86,12 +90,12 @@ export default function HomePage() {
             {/* Send to Backend Button */}
             <Button
                 onClick={handleSendToBackend}
-                disabled={!isConfigurationComplete()}
+                disabled={loading || !isConfigurationComplete()}
                 variant="outline"
                 size="lg"
                 className="w-full border-gray-700 text-gray-300 hover:bg-gray-800 hover:text-white hover:border-gray-600 disabled:opacity-50 disabled:cursor-not-allowed py-4 text-lg font-medium bg-transparent transition-all duration-200"
             >
-              <Send className="w-5 h-5 mr-2" />
+              { loading ? <Loader2Icon className="animate-spin" /> : <Send className="w-5 h-5 mr-2" />}
               Send to Backend
             </Button>
           </div>
