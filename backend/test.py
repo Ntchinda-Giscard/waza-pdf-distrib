@@ -21,7 +21,7 @@ logger = logging.getLogger(__name__)
 
 
 
-def connect_to_database(dsn, username=None, password=None):
+def connect_to_database(dsn, username=None, password=None, database=None):
     """
     Connects to a SQL Server database using either Windows Authentication or SQL Server Authentication.
 
@@ -29,25 +29,30 @@ def connect_to_database(dsn, username=None, password=None):
     - dsn (str): The Data Source Name configured in ODBC.
     - username (str, optional): The SQL Server username (required for SQL Server Authentication).
     - password (str, optional): The SQL Server password (required for SQL Server Authentication).
+    - database (str, optional): The name of the specific database to connect to.
 
     Returns:
     - pyodbc.Connection: A connection object to the database.
     """
     try:
-        if username and password:
-            # SQL Server Authentication
-            conn = pyodbc.connect(f'DSN={dsn};UID={username};PWD={password}')
-            logger.info("Connected using SQL Server Authentication.")
-        else:
-            # Windows Authentication
-            conn = pyodbc.connect(f'DSN={dsn};Trusted_Connection=yes')
-            logger.info("Connected using Windows Authentication.")
+        connection_str = f'DSN={dsn};'
+        if database:
+            connection_str += f'DATABASE={database};'
 
+        if username and password:
+            logger.info(f"Connecting using SQL Server Authentication. DSN: {dsn}, Username: {username}")
+            connection_str += f'UID={username};PWD={password};'
+        else:
+            logger.info(f"Connecting using Windows Authentication. DSN: {dsn}")
+            connection_str += 'Trusted_Connection=yes;'
+
+        conn = pyodbc.connect(connection_str)
+        logger.info("✅ Connection established successfully.")
         return conn
 
     except pyodbc.Error as e:
-        logger.error(f"An error occurred: {e} ")
-        raise Exception(f"❌ Failed to connect to database: {e}")   
+        logger.error(f"❌ Database connection error: {e}")
+        raise Exception(f"❌ Failed to connect to database: {str(e)}")  
 
 
 def extract_text_after_reference(full_text: str, reference: str, num_chars: int, ignore_spaces_in_count: bool = False) -> str:
@@ -99,9 +104,9 @@ def extract_pdf_text(file_path, reference, num_chars, folder_path):
 
     return pages_matricules, matricule_with_path
 
-def fetch_by_matricule(conn, table, matricule_value, email_field):
+def fetch_by_matricule(conn, table, matricule_value, email_field, matricule_field="MatriculeSalarie"):
     cursor = conn.cursor()
-    sql = f"SELECT {email_field} FROM {table} WHERE MatriculeSalarie = ?"
+    sql = f"SELECT {email_field} FROM {table} WHERE {matricule_field} = ?"
     cursor.execute(sql, (matricule_value,))
     cols = [col[0] for col in cursor.description]
     rows = cursor.fetchall()
@@ -191,6 +196,40 @@ def process_configs():
     finally:
         session.close()
 
+
+def ensure_pdf_exists(folder_path):
+    """
+    Vérifie qu'il existe au moins un fichier .pdf dans le dossier donné.
+    Lève une Exception si aucun PDF n'est trouvé.
+    """
+    if not folder_path:
+        logger.warning("⚠️ No folder path specified in user configurations.")
+        raise Exception("No folder path specified in user configurations.")
+    
+    if not os.path.isdir(folder_path):
+        logger.error(f"❌ The path is not a directory: {folder_path}")
+        raise Exception(f"The specified path is not a directory: {folder_path}")
+
+    logger.info(f"📂 Processing folder: {folder_path}")
+
+    # Cherche un PDF
+    pdf_found = False
+    for entry in os.listdir(folder_path):
+        full_path = os.path.join(folder_path, entry)
+        # On ne tient compte que des fichiers et uniquement des .pdf
+        if os.path.isfile(full_path) and entry.lower().endswith(".pdf"):
+            logger.info(f"✅ PDF found: {entry}")
+            pdf_found = True
+            break
+
+    if not pdf_found:
+        logger.error(f"❌ No PDF files found in the folder: {folder_path}")
+        raise Exception(f"No PDF files found in the folder: {folder_path}")
+    
+    # Si besoin, retourne le chemin du PDF trouvé
+    return full_path
+
+
 def run_pdf_automation():
     session = SessionLocal()
     try:
@@ -200,14 +239,53 @@ def run_pdf_automation():
             logger.warning("⚠️ No user configurations found in the database.")
             raise Exception("No user configurations found.")
         logger.info(f"🔧 Found {user_configs} user configurations.")
+        folder_path = user_configs.folder_name
+        number_process = decode_license_key(user_configs.license_key)
+        pdf_path = ensure_pdf_exists(folder_path)                
+        
         if user_configs.connection_type == "odbc":
+            logger.info("🔄 Starting automation process...")
             conn = connect_to_database(
                 user_configs.odbc_source,
                 user_configs.db_username,
-                user_configs.db_password
+                user_configs.db_password,
+                user_configs.db_name
             )
-        logger.info("🔄 Starting automation process...")
-        logger.info("✅ Automation completed successfully.")
+
+            matricules, matricules_w_path = extract_pdf_text(
+                            pdf_path, user_configs.ref_text, user_configs.number_of_char, folder_path
+                        )
+            # logger.info(f"🔢 Found {(matricules)}")
+            logger.info(f"🔢 Found {len(matricules)} matricules in {pdf_path}")
+            for m in matricules:
+                number_process -= 1
+                logger.info(f"🔢 Remaining processes: {number_process}")
+                if not m:
+                    continue
+                logger.info(f"🔎 Found matricule: {m}")
+                results = fetch_by_matricule(
+                    conn, user_configs.table_name, m, user_configs.email_field, user_configs.license_field
+                )
+
+                logger.info(f"🔎 Querying database for matricule: {m}")
+                logger.info(f"🔎 Querying results: {results} ")
+
+
+                # if results:
+                #     email = results[0].get("EMail")
+                #     if not email:
+                #         logger.warning(f"⚠️ No email found for {m}")
+                #         continue
+                #     logger.info(f"✅ Query result: {email}")
+                #     logger.info(f"✅ File location: {matricules_w_path[m]}")
+                #     send_email(
+                #         email_receiver=email,
+                #         attachments=[matricules_w_path[m]],
+                #     )
+                # else:
+                #     logger.warning(f"⚠️ No results for {m}")
+            
+            logger.info("✅ Automation completed successfully.")
     except Exception as e:
         logger.error(f"❌ Automation failed: {e}")
         raise e
