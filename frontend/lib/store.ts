@@ -1,9 +1,9 @@
-import { toast } from "sonner"
 import { create } from "zustand"
 import { persist } from "zustand/middleware"
 
 export type ConnectionType = "odbc" | "native"
 export type DatabaseType = "postgresql" | "mysql" | "mssql"
+export type TabType = "home" | "database" | "folders" | "matricule" | "email" | "settings"
 
 export interface OdbcSource {
   name: string
@@ -11,168 +11,308 @@ export interface OdbcSource {
   description?: string
 }
 
-export interface ConnectionData {
+export interface DatabaseConnection {
+  id: string
   connectionType: ConnectionType
   odbcSource?: string
   databaseType?: DatabaseType
   serverName?: string
   username: string
   password: string
-  tableName: string // Now required for both ODBC and Native
-  matriculeColumnName: string
-  emailColumnName: string
-  databaseName?: string
-  // New fields
-  pdfFolderPath: string
-  licenseKey: string
-  referenceText: string
-  maxCharacters: number
 }
 
-interface ConnectionStore {
-  connectionData: ConnectionData
+export interface FolderDatabaseLink {
+  id: string
+  mainFolder: string
+  subFolder: string
+  linkedDatabase: string
+  archiveFolder?: string
+  logFolder?: string
+  isSageDatabase: boolean
+  tableName?: string
+  matriculeField?: string
+  emailField?: string
+}
+
+export interface MatriculeConfig {
+  numberOfCharacters: number
+  referenceText: string
+  detectionPattern?: string
+}
+
+export interface EmailConfig {
+  smtpServer: string
+  smtpPort: number
+  senderEmail: string
+  senderPassword: string
+  useSSL: boolean
+  useTLS: boolean
+  timeout: number
+  retryAttempts: number
+}
+
+interface AppState {
+  // Tab management
+  activeTab: TabType
+  setActiveTab: (tab: TabType) => void
+
+  // License management
+  licenseKey: string
+  isLicenseActive: boolean
+  showLicenseModal: boolean
+  setLicenseKey: (key: string) => void
+  setShowLicenseModal: (show: boolean) => void
+  activateLicense: () => void
+
+  // Database connections
+  databaseConnections: DatabaseConnection[]
   odbcSources: OdbcSource[]
-  isModalOpen: boolean
   isLoadingOdbcSources: boolean
   odbcSourcesError: string | null
-  setConnectionData: (data: Partial<ConnectionData>) => void
-  setModalOpen: (open: boolean) => void
-  resetConnectionData: () => void
+  addDatabaseConnection: (connection: Omit<DatabaseConnection, "id">) => void
+  updateDatabaseConnection: (id: string, updates: Partial<DatabaseConnection>) => void
+  removeDatabaseConnection: (id: string) => void
   fetchOdbcSources: () => Promise<void>
-  sendToBackend: () => Promise<void>
+
+  // Folder database links
+  folderDatabaseLinks: FolderDatabaseLink[]
+  addFolderDatabaseLink: (link: Omit<FolderDatabaseLink, "id">) => void
+  updateFolderDatabaseLink: (id: string, updates: Partial<FolderDatabaseLink>) => void
+  removeFolderDatabaseLink: (id: string) => void
+
+  // Matricule configuration
+  matriculeConfig: MatriculeConfig
+  setMatriculeConfig: (config: Partial<MatriculeConfig>) => void
+
+  // Email configuration
+  emailConfig: EmailConfig
+  setEmailConfig: (config: Partial<EmailConfig>) => void
+  testEmailConfiguration: () => Promise<boolean>
+
+  // Payroll process
+  startPayrollDistribution: () => void
 }
 
-const initialConnectionData: ConnectionData = {
-  connectionType: "odbc",
-  username: "",
-  password: "",
-  tableName: "",
-  matriculeColumnName: "",
-  emailColumnName: "",
-  pdfFolderPath: "",
-  licenseKey: "",
-  referenceText: "",
-  maxCharacters: 1000,
+const defaultMatriculeConfig: MatriculeConfig = {
+  numberOfCharacters: 6,
+  referenceText: "MAT",
+  detectionPattern: "",
 }
 
-export const useConnectionStore = create<ConnectionStore>()(
-    persist(
-        (set, get) => ({
-          connectionData: initialConnectionData,
-          odbcSources: [],
-          isModalOpen: false,
-          isLoadingOdbcSources: false,
-          odbcSourcesError: null,
-          setConnectionData: (data) =>
-              set((state) => ({
-                connectionData: { ...state.connectionData, ...data },
-              })),
-          setModalOpen: (open) => {
-            set({ isModalOpen: open })
-            // Fetch ODBC sources when modal opens
-            if (open) {
-              get().fetchOdbcSources()
-            }
-          },
-          resetConnectionData: () => set({ connectionData: initialConnectionData }),
-          fetchOdbcSources: async () => {
-            set({ isLoadingOdbcSources: true, odbcSourcesError: null })
-            try {
-              // Try both localhost and 127.0.0.1
-              const endpoints = ["http://localhost:8000/odbc/odbc-sources", "http://127.0.0.1:8000/odbc/odbc-sources"]
+const defaultEmailConfig: EmailConfig = {
+  smtpServer: "",
+  smtpPort: 587,
+  senderEmail: "",
+  senderPassword: "",
+  useSSL: false,
+  useTLS: true,
+  timeout: 30,
+  retryAttempts: 3,
+}
 
-              let response: Response | null = null
-              let lastError: Error | null = null
+export const useAppStore = create<AppState>()(
+  persist(
+    (set, get) => ({
+      // Tab management
+      activeTab: "home",
+      setActiveTab: (tab) => set({ activeTab: tab }),
 
-              for (const endpoint of endpoints) {
-                try {
-                  response = await fetch(endpoint, {
-                    method: "GET",
-                    headers: {
-                      "Content-Type": "application/json",
-                    },
-                  })
-                  if (response.ok) break
-                } catch (error) {
-                  lastError = error as Error
-                  continue
-                }
-              }
+      // License management
+      licenseKey: "",
+      isLicenseActive: false,
+      showLicenseModal: false,
+      setLicenseKey: (key) => set({ licenseKey: key }),
+      setShowLicenseModal: (show) => set({ showLicenseModal: show }),
+      activateLicense: () => {
+        const { licenseKey } = get()
+        if (licenseKey.trim()) {
+          set({
+            isLicenseActive: true,
+            showLicenseModal: false,
+          })
+        }
+      },
 
-              if (!response || !response.ok) {
-                throw new Error(lastError?.message || "Failed to fetch ODBC sources")
-              }
+      // Database connections
+      databaseConnections: [],
+      odbcSources: [],
+      isLoadingOdbcSources: false,
+      odbcSourcesError: null,
 
-              const sources: OdbcSource[] = await response.json()
-              console.log("sorces", sources)
-              set({ odbcSources: sources.odbc_sources, isLoadingOdbcSources: false })
-            } catch (error) {
-              console.error("Error fetching ODBC sources:", error)
-              set({
-                odbcSourcesError:
-                    "Failed to connect to FastAPI server. Please ensure it's running on localhost:8000 or 127.0.0.1:8000",
-                isLoadingOdbcSources: false,
-                // Provide fallback mock data for development
-                odbcSources: [
-                  { name: "SQL Server Native Client", driver: "SQLNCLI11", description: "SQL Server Native Client 11.0" },
-                  {
-                    name: "PostgreSQL ODBC Driver",
-                    driver: "PostgreSQL Unicode",
-                    description: "PostgreSQL ODBC Driver (Unicode)",
-                  },
-                  { name: "MySQL ODBC Driver", driver: "MySQL ODBC 8.0 Driver", description: "MySQL ODBC 8.0 Driver" },
-                ],
-              })
-            }
-          },
-          sendToBackend: async () => {
-            const { connectionData } = get()
-            try {
-              console.log("Sending data to backend:", connectionData)
+      addDatabaseConnection: (connection) => {
+        const newConnection = {
+          ...connection,
+          id: Date.now().toString(),
+        }
+        set((state) => ({
+          databaseConnections: [...state.databaseConnections, newConnection],
+        }))
+      },
 
-              const response = await fetch("http://127.0.0.1:8000/test/", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify(connectionData),
-              })
+      updateDatabaseConnection: (id, updates) => {
+        set((state) => ({
+          databaseConnections: state.databaseConnections.map((conn) =>
+            conn.id === id ? { ...conn, ...updates } : conn,
+          ),
+        }))
+      },
 
-              const data = await response.json()
+      removeDatabaseConnection: (id) => {
+        set((state) => ({
+          databaseConnections: state.databaseConnections.filter((conn) => conn.id !== id),
+        }))
+      },
 
-              if (response.ok) {
-                console.log("Data sent successfully")
-                toast.success("Data sent successfully!", {
-                  description: "Your data has been processed by the backend.",
-                })
-              } else {
-                const errorMessage = typeof data.detail === "string"
-                  ? data.detail
-                  : JSON.stringify(data)
-
-                toast.error("Failed to send data to backend", {
-                  description: errorMessage,
-                })
-
-                console.error("Failed to send data:", errorMessage)
-              }
-            } catch (error: any) {
-              console.error("Error sending data:", error)
-              toast.error("Network or unexpected error", {
-                description: error.message || "Unknown error occurred.",
-              })
-            }
+      fetchOdbcSources: async () => {
+        set({ isLoadingOdbcSources: true, odbcSourcesError: null })
+        try {
+          const response = await fetch("http://localhost:8000/odbc-sources")
+          if (response.ok) {
+            const sources = await response.json()
+            set({ odbcSources: sources, isLoadingOdbcSources: false })
+          } else {
+            throw new Error("Failed to fetch ODBC sources")
           }
+        } catch (error: any) {
+          // Fallback to mock data if server is not available
+          const mockOdbcSources: OdbcSource[] = [
+            {
+              name: "SQL Server Native Client 11.0",
+              driver: "SQLNCLI11",
+              description: "Microsoft SQL Server Native Client 11.0",
+            },
+            {
+              name: "PostgreSQL ODBC Driver (Unicode)",
+              driver: "PostgreSQL Unicode",
+              description: "PostgreSQL ODBC Driver with Unicode support",
+            },
+            { name: "MySQL ODBC 8.0 Driver", driver: "MySQL ODBC 8.0 Driver", description: "MySQL Connector/ODBC 8.0" },
+            {
+              name: "Microsoft Access Driver",
+              driver: "Microsoft Access Driver (*.mdb, *.accdb)",
+              description: "Microsoft Access Database Engine",
+            },
+            {
+              name: "Oracle ODBC Driver",
+              driver: "Oracle in OraClient19Home1",
+              description: "Oracle Database ODBC Driver",
+            },
+            { name: "SQLite3 ODBC Driver", driver: "SQLite3 ODBC Driver", description: "SQLite ODBC Driver" },
+          ]
+          set({
+            odbcSources: mockOdbcSources,
+            odbcSourcesError: "Using offline ODBC sources (server unavailable)",
+            isLoadingOdbcSources: false,
+          })
+        }
+      },
 
+      // Folder database links
+      folderDatabaseLinks: [],
 
+      addFolderDatabaseLink: (link) => {
+        const newLink = {
+          ...link,
+          id: Date.now().toString(),
+        }
+        set((state) => ({
+          folderDatabaseLinks: [...state.folderDatabaseLinks, newLink],
+        }))
+      },
 
+      updateFolderDatabaseLink: (id, updates) => {
+        set((state) => ({
+          folderDatabaseLinks: state.folderDatabaseLinks.map((link) =>
+            link.id === id ? { ...link, ...updates } : link,
+          ),
+        }))
+      },
 
-        }),
-        {
-          name: "connection-storage",
-          partialize: (state) => ({
-            connectionData: state.connectionData,
-          }),
-        },
-    ),
+      removeFolderDatabaseLink: (id) => {
+        set((state) => ({
+          folderDatabaseLinks: state.folderDatabaseLinks.filter((link) => link.id !== id),
+        }))
+      },
+
+      // Matricule configuration
+      matriculeConfig: defaultMatriculeConfig,
+      setMatriculeConfig: (config) => {
+        set((state) => ({
+          matriculeConfig: { ...state.matriculeConfig, ...config },
+        }))
+      },
+
+      // Email configuration
+      emailConfig: defaultEmailConfig,
+      setEmailConfig: (config) => {
+        set((state) => ({
+          emailConfig: { ...state.emailConfig, ...config },
+        }))
+      },
+
+      testEmailConfiguration: async () => {
+        const { emailConfig } = get()
+        try {
+          // Simulate email test - in real app, this would test SMTP connection
+          console.log("Testing email configuration:", emailConfig)
+          await new Promise((resolve) => setTimeout(resolve, 2000))
+          return true
+        } catch (error) {
+          console.error("Email test failed:", error)
+          return false
+        }
+      },
+
+      // Payroll process
+      startPayrollDistribution: () => {
+        const { isLicenseActive, databaseConnections, folderDatabaseLinks, matriculeConfig, emailConfig } = get()
+
+        if (!isLicenseActive) {
+          alert("Veuillez activer votre licence avant de continuer.")
+          return
+        }
+
+        if (databaseConnections.length === 0) {
+          alert("Veuillez configurer au moins une base de données.")
+          set({ activeTab: "database" })
+          return
+        }
+
+        if (folderDatabaseLinks.length === 0) {
+          alert("Veuillez configurer au moins une liaison dossier/BDD.")
+          set({ activeTab: "folders" })
+          return
+        }
+
+        if (!emailConfig.smtpServer || !emailConfig.senderEmail) {
+          alert("Veuillez configurer les paramètres email.")
+          set({ activeTab: "email" })
+          return
+        }
+
+        // Start the payroll distribution process
+        alert("Lancement de la distribution des fiches de paie...")
+        console.log("Starting payroll distribution with:", {
+          databases: databaseConnections.length,
+          links: folderDatabaseLinks.length,
+          matriculeConfig,
+          emailConfig,
+        })
+      },
+    }),
+    {
+      name: "payroll-app-storage",
+      partialize: (state) => ({
+        licenseKey: state.licenseKey,
+        isLicenseActive: state.isLicenseActive,
+        databaseConnections: state.databaseConnections,
+        folderDatabaseLinks: state.folderDatabaseLinks,
+        matriculeConfig: state.matriculeConfig,
+        emailConfig: state.emailConfig,
+      }),
+    },
+  ),
 )
+
+// Also export the connection store for backward compatibility
+export const useConnectionStore = useAppStore

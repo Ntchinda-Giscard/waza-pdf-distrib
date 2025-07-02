@@ -52,7 +52,7 @@ def connect_to_database(dsn, username=None, password=None, database=None):
 
     except pyodbc.Error as e:
         logger.error(f"❌ Database connection error: {e}")
-        raise Exception(f"❌ Failed to connect to database: {str(e)}")  
+        raise Exception(f"Failed to connect to database: {str(e)}")  
 
 
 def extract_text_after_reference(full_text: str, reference: str, num_chars: int, ignore_spaces_in_count: bool = False) -> str:
@@ -168,7 +168,7 @@ def process_configs():
                 try:
                     conn = connect_to_mssql(config.db_server, subfolder.link_database, config.db_username, config.db_password)
                 except Exception as e:
-                    raise Exception(f" ❌ Error connecting to database {subfolder.link_database}: {e}")
+                    raise Exception(f" Error connecting to database {subfolder.link_database}: {e}")
                 if not conn:
                     logger.warning(f"  ❌ Could not connect to {subfolder.link_database}")
                     continue
