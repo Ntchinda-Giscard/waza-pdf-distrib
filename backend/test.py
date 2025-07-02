@@ -78,15 +78,29 @@ def extract_pdf_text(file_path, reference, num_chars, folder_path):
     matricule_with_path = {}
     today = datetime.date.today().isoformat()
     base_dir = os.path.join(folder_path, "Dossier de traitement journalier", today)
+    journal_dir = os.path.join(base_dir, "Journal")
     os.makedirs(base_dir, exist_ok=True)
+    os.makedirs(journal_dir, exist_ok=True)
+    journal_filename = f"journal-{today}.txt"
+    journal_path = os.path.join(journal_dir, journal_filename)
 
     try:
         with fitz.open(file_path) as doc:
             pdf_name = os.path.splitext(os.path.basename(file_path))[0]
             for i, page in enumerate(doc):
                 page_text = page.get_text()
+                # print(page_text)
+                # break
                 matricule = extract_text_after_reference(page_text, reference, num_chars)
-
+                
+                with open(journal_path, "a", encoding="utf-8") as journal_file:
+                    if matricule:
+                        log_msg = f"{datetime.datetime.now().isoformat()} - Page {i+1}: ✅ Found matricule '{matricule}'\n"
+                        logger.info(f"    ✅ Page {i+1}: Found matricule '{matricule}'")
+                    else:
+                        log_msg = f"{datetime.datetime.now().isoformat()} - Page {i+1}: ❌ No matricule found\n"
+                        logger.warning(f"    ❌ {datetime.datetime.now().isoformat()} - Page {i+1}: No matricule found")
+                    journal_file.write(log_msg)
                 new_pdf = fitz.open()
                 new_pdf.insert_pdf(doc, from_page=i, to_page=i)
 
@@ -104,13 +118,27 @@ def extract_pdf_text(file_path, reference, num_chars, folder_path):
 
     return pages_matricules, matricule_with_path
 
-def fetch_by_matricule(conn, table, matricule_value, email_field, matricule_field="MatriculeSalarie"):
+def fetch_by_matricule(conn, table, matricule_value, email_field, matricule_field="MatriculeSalarie", folder_name=None):
+    today = datetime.date.today().isoformat()
+    base_dir = os.path.join(folder_name, "Dossier de traitement journalier", today)
+    journal_dir = os.path.join(base_dir, "Journal")
+    os.makedirs(journal_dir, exist_ok=True)
+    journal_filename = f"journal-traitement-{today}.txt"
+    journal_path = os.path.join(journal_dir, journal_filename)
     cursor = conn.cursor()
     sql = f"SELECT {email_field} FROM {table} WHERE {matricule_field} = ?"
     cursor.execute(sql, (matricule_value,))
     cols = [col[0] for col in cursor.description]
     rows = cursor.fetchall()
-    return [dict(zip(cols, row)) for row in rows]
+    print(f"🔎 Querying database for matricule: {rows}")
+    results = [dict(zip(cols, row)) for row in rows]
+    print(results)
+    # If no email found, log in French
+    if not results or not results[0].get(email_field):
+        with open(journal_path, "a", encoding="utf-8") as journal_file:
+            msg = f"{datetime.datetime.now().isoformat()} - Aucun email trouvé pour le matricule '{matricule_value}'\n"
+            journal_file.write(msg)
+    return results
 
 def connect_to_mssql(server, database, username, password):
     try:
@@ -239,9 +267,13 @@ def run_pdf_automation():
             logger.warning("⚠️ No user configurations found in the database.")
             raise Exception("No user configurations found.")
         logger.info(f"🔧 Found {user_configs} user configurations.")
+        logger.info(f"🔧 Folder name: {user_configs.folder_name}")
         folder_path = user_configs.folder_name
+        logger.info(f"🔧 Folder path: {folder_path}")
         number_process = decode_license_key(user_configs.license_key)
-        pdf_path = ensure_pdf_exists(folder_path)                
+        logger.info(f"🔧 License key decoded, number of processes allowed: {number_process}")
+        pdf_path = ensure_pdf_exists(folder_path)
+        logger.info(f"🔧 PDF file to process: {pdf_path}")                
         
         if user_configs.connection_type == "odbc":
             logger.info("🔄 Starting automation process...")
@@ -264,7 +296,7 @@ def run_pdf_automation():
                     continue
                 logger.info(f"🔎 Found matricule: {m}")
                 results = fetch_by_matricule(
-                    conn, user_configs.table_name, m, user_configs.email_field, user_configs.license_field
+                    conn, user_configs.table_name, m, user_configs.email_field, user_configs.license_field, folder_path
                 )
 
                 logger.info(f"🔎 Querying database for matricule: {m}")
