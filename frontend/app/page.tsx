@@ -5,6 +5,7 @@ import { HomeTab } from "@/components/home-tab"
 import { ParametresTab } from "@/components/parametres-tab"
 import { LicenseModal } from "@/components/license-modal"
 import { useAppStore } from "@/lib/store"
+import FolderPicker from "@/components/fonder-picker"
 
 export default function HomePage() {
   const { activeTab } = useAppStore()
@@ -35,6 +36,9 @@ export default function HomePage() {
 
       {/* License Modal */}
       <LicenseModal />
+
+      {/* Folder picker*/}
+      {/* <FolderPicker /> */}
     </div>
   )
 }

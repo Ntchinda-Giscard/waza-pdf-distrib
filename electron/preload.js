@@ -17,8 +17,14 @@ contextBridge.exposeInMainWorld('electronAPI', {
     // ipcRenderer.invoke sends a message to the main process and waits for a response
     // It's like making a phone call - you dial (invoke) and wait for an answer
     return ipcRenderer.invoke('open-folder-picker');
+  },
+  scanSubFolders: (path) =>{
+    console.log('Preload: Frontend requested folder scan');
+    // This function will be available in your frontend as window.electronAPI.scanSubFolders()
+    return ipcRenderer.invoke('scan-subfolders', path);
   }
 });
+
 
 // Optional: Add a way to check if we're running in Electron
 contextBridge.exposeInMainWorld('electronInfo', {

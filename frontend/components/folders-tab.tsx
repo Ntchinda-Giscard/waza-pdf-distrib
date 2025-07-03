@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import { FolderOpen, Trash2, Edit, Plus } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -11,6 +11,13 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { useAppStore, type FolderDatabaseLink } from "@/lib/store"
+
+// Extend the Window interface to include electronAPI
+declare global {
+  interface Window {
+    electronAPI?: any
+  }
+}
 
 export function FoldersTab() {
   const {
@@ -32,11 +39,111 @@ export function FoldersTab() {
   })
   const [availableSubfolders, setAvailableSubfolders] = useState<string[]>([])
   const [isScanning, setIsScanning] = useState(false)
+  // State to store the selected folder path
+  const [selectedPath, setSelectedPath] = useState('');
+  // State to show loading status when dialog is open
+  const [isLoading, setIsLoading] = useState(false);
+  // State to check if we're running in Electron environment
+  const [isElectronAvailable, setIsElectronAvailable] = useState(false);
+
+  const [subfolder, setSubfolder] = useState([])
+  const [scanningSubfolders, setScanningSubfolders] = useState(false)
+
+  // Check if Electron API is available when component mounts
+    useEffect(() => {
+      // This runs after the component is rendered
+      // We check if window.electronAPI exists (created by our preload script)
+      if (typeof window !== 'undefined' && window.electronAPI) {
+        setIsElectronAvailable(true);
+        console.log('Frontend: Electron API is available');
+      } else {
+        setIsElectronAvailable(false);
+        console.log('Frontend: Running in web browser mode');
+      }
+    }, []);
 
   // Refs for hidden file inputs
   const mainFolderInputRef = useRef<HTMLInputElement>(null)
   const archiveFolderInputRef = useRef<HTMLInputElement>(null)
   const logFolderInputRef = useRef<HTMLInputElement>(null)
+
+
+  const handleFolderSelection = async () => {
+    // First, check if we're in Electron environment
+    if (!isElectronAvailable) {
+      alert('Folder picker is only available in the desktop app');
+      return;
+    }
+
+    try {
+      setIsLoading(true);
+      console.log('Frontend: Requesting folder picker...');
+
+      // Call the Electron API that we exposed in preload.js
+      // This will trigger the main process to open the native folder dialog
+      const result = await window.electronAPI.openFolderPicker();
+      
+      console.log('Frontend: Received result from Electron:', result);
+
+      // Handle the response from the main process
+      if (result.success && result.path) {
+        // User successfully selected a folder
+        setSelectedPath(result.path);
+        console.log('Frontend: User selected folder:', result.path);
+        console.log('Frontend: Complete absolute path:', result.path);
+        
+        // You can do additional processing here, such as:
+        // - Save to local storage
+        // - Update other components
+        // - Trigger other actions based on the selected folder
+        
+      } else if (result.success === false && result.message) {
+        // User canceled or there was an issue
+        console.log('Frontend: Folder selection canceled or failed:', result.message);
+      }
+      
+    } catch (error) {
+      // Handle any errors that might occur during the process
+      console.error('Frontend: Error during folder selection:', error);
+      alert('An error occurred while selecting the folder');
+    } finally {
+      // Always reset loading state
+      setIsLoading(false);
+    }
+  };
+
+
+  const handleScanSubFolders = async (path: string) => {
+    if (!isElectronAvailable) {
+      alert('Folder picker is only available in the desktop app');
+      return;
+    }
+
+    try{
+        const result = await window.electronAPI.scanSubFolders(path);
+        console.log('Frontend: Received subfolder scan results:', result);
+
+        if (result.success && result.subfolders.length > 0) {
+          setSubfolder(result.subfolders);
+          console.log('Subfolder: subfolder:', result.subfolders);
+        }else if(result.success === false){
+            console.log('Frontend: Subfolder scanning failed:', result.error)
+        }
+
+    }catch(error){
+        console.error('Frontend: Error during folder selection:', error);
+        alert('An error occurred while selecting the folder');
+    }finally{
+
+    }
+  }
+
+  // Function to clear the selected path
+  const clearSelection = () => {
+    setSelectedPath('');
+    console.log('Frontend: Cleared folder selection');
+  };
+
 
   const handleSubmit = () => {
     if (isEditing) {
@@ -307,27 +414,35 @@ export function FoldersTab() {
             <Label className="text-gray-200">Dossier Principal</Label>
             <div className="flex space-x-2">
               <Input
-                value={formData.mainFolder || ""}
+                value={  selectedPath || formData.mainFolder}
                 onChange={(e) => {
-                  setFormData({ ...formData, mainFolder: e.target.value })
+                //   setFormData({ ...formData, mainFolder: e.target.value })
+                  setFormData({ ...formData, mainFolder: selectedPath })
                   // Clear subfolders when manually editing main folder
-                  if (e.target.value !== formData.mainFolder) {
+                //   if (e.target.value !== formData.mainFolder) {
+                //     setAvailableSubfolders([])
+                //     setFormData({ ...formData, mainFolder: e.target.value, subFolder: "" })
+                //   }
+                if (selectedPath !== formData.mainFolder) {
                     setAvailableSubfolders([])
-                    setFormData({ ...formData, mainFolder: e.target.value, subFolder: "" })
+                    setFormData({ ...formData, mainFolder: selectedPath, subFolder: "" })
                   }
                 }}
                 className="bg-gray-800 border-gray-700 text-white flex-1"
                 placeholder="Chemin absolu du dossier principal (ex: E:/Dossier du fichier a traiter)"
               />
+              <p>{selectedPath || formData.mainFolder}</p>
               <Button
                 type="button"
                 variant="outline"
-                onClick={() => openFolderPicker("mainFolder")}
+                // onClick={() => openFolderPicker("mainFolder")}
+                // disabled={isScanning}
+                onClick={handleFolderSelection}
+                disabled={isLoading || !isElectronAvailable}
                 className="border-gray-700 text-gray-300 hover:bg-gray-800 bg-transparent"
                 title="Sélectionner un dossier"
-                disabled={isScanning}
               >
-                {isScanning ? (
+                {isLoading ? (
                   <div className="w-4 h-4 border-2 border-gray-400 border-t-transparent rounded-full animate-spin" />
                 ) : (
                   <FolderOpen className="w-4 h-4" />
@@ -345,12 +460,13 @@ export function FoldersTab() {
           <div className="space-y-2">
             <Label className="text-gray-200">Sous-dossier</Label>
             <Select
-              value={formData.subFolder}
+              value={formData.subFolder || subfolder}
               onValueChange={(value) => setFormData({ ...formData, subFolder: value })}
-              disabled={availableSubfolders.length === 0 || isScanning}
+            //   disabled={availableSubfolders.length === 0 || isScanning}
+            disabled={subfolder.length === 0 || isLoading}
             >
               <SelectTrigger className="bg-gray-800 border-gray-700 text-white">
-                <SelectValue
+                {/* <SelectValue
                   placeholder={
                     isScanning
                       ? "Analyse en cours..."
@@ -358,21 +474,42 @@ export function FoldersTab() {
                         ? "Sélectionnez d'abord un dossier principal"
                         : "Sélectionner un sous-dossier"
                   }
+                /> */}
+                <SelectValue
+                  placeholder={
+                    isLoading
+                      ? "Analyse en cours..."
+                      : subfolder.length === 0
+                        ? "Sélectionnez d'abord un dossier principal"
+                        : "Sélectionner un sous-dossier"
+                  }
                 />
               </SelectTrigger>
               <SelectContent className="bg-gray-800 border-gray-700">
-                {availableSubfolders.map((folder) => (
+                {/* {availableSubfolders.map((folder) => (
+                  <SelectItem key={folder} value={folder} className="text-white hover:bg-gray-700">
+                    📁 {folder}
+                  </SelectItem>
+                ))} */}
+                {subfolder.map((folder) => (
                   <SelectItem key={folder} value={folder} className="text-white hover:bg-gray-700">
                     📁 {folder}
                   </SelectItem>
                 ))}
               </SelectContent>
             </Select>
-            <p className="text-xs text-gray-400">
+            {/* <p className="text-xs text-gray-400">
               {isScanning
                 ? "Recherche des sous-dossiers..."
                 : availableSubfolders.length > 0
                   ? `${availableSubfolders.length} sous-dossier(s) trouvé(s) dans le dossier principal`
+                  : "Aucun sous-dossier détecté - sélectionnez un dossier principal contenant des sous-dossiers"}
+            </p> */}
+            <p className="text-xs text-gray-400">
+              {isLoading
+                ? "Recherche des sous-dossiers..."
+                : subfolder.length > 0
+                  ? `${subfolder.length} sous-dossier(s) trouvé(s) dans le dossier principal`
                   : "Aucun sous-dossier détecté - sélectionnez un dossier principal contenant des sous-dossiers"}
             </p>
           </div>

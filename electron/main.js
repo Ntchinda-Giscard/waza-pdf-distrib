@@ -564,6 +564,30 @@ ipcMain.handle('open-folder-picker', async () => {
   }
 });
 
+ipcMain.handle('scan-subfolders', async (rootPath) => {
+  try {
+    console.log('Main process: Scanning subfolders in:', rootPath);
+
+    const subfolders = await fs.readdir(rootPath);
+    console.log(`Main process: Found ${subfolders.length} subfolders`);
+
+    return {
+      success: true,
+      subfolders: subfolders,
+      count: subfolders.length,
+      rootPath: rootPath
+    };
+  } catch (error) {
+    console.error('Main process: Error scanning subfolders:', error);
+    return {
+      success: false,
+      error: error.message,
+      subfolders: [],
+      count: 0
+    };
+  }
+});
+
 function getResourcePath(relativePath) {
   if (isDev) {
     return path.join(__dirname, relativePath)
