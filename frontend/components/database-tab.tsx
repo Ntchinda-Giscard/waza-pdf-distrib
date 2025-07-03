@@ -1,6 +1,6 @@
 "use client"
 
-import { JSXElementConstructor, Key, ReactElement, ReactNode, ReactPortal, useState } from "react"
+import { useState } from "react"
 import { Database, Trash2, Edit } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -74,7 +74,7 @@ export function DatabaseTab() {
               onValueChange={(value: ConnectionType) => setFormData({ ...formData, connectionType: value })}
             >
               <div className="flex items-center space-x-2">
-                <RadioGroupItem value="odbc" id="odbc" />
+                <RadioGroupItem value="odbc" className="bg-blue-500" id="odbc" />
                 <Label htmlFor="odbc" className="text-gray-300">
                   Connexion ODBC
                 </Label>
@@ -100,14 +100,11 @@ export function DatabaseTab() {
                   <SelectValue placeholder="Sélectionner une source ODBC" />
                 </SelectTrigger>
                 <SelectContent className="bg-gray-800 border-gray-700">
-                  {odbcSources.map((source: { name: string | undefined | null }) => {
-                    const name = source.name ?? "";
-                    return (
-                      <SelectItem key={name} value={name} className="text-white">
-                        {name}
-                      </SelectItem>
-                    );
-                  })}
+                  {odbcSources.map((source) => (
+                    <SelectItem key={source.name} value={source.name} className="text-white">
+                      {source.name}
+                    </SelectItem>
+                  ))}
                 </SelectContent>
               </Select>
             </div>
@@ -224,7 +221,7 @@ export function DatabaseTab() {
                     <Button
                       size="sm"
                       variant="outline"
-                      onClick={() => removeDatabaseConnection(String(connection.id))}
+                      onClick={() => removeDatabaseConnection(connection.id)}
                       className="border-red-700 text-red-400 hover:bg-red-900"
                     >
                       <Trash2 className="w-4 h-4" />

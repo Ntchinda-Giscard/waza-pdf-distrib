@@ -3,7 +3,8 @@ import { persist } from "zustand/middleware"
 
 export type ConnectionType = "odbc" | "native"
 export type DatabaseType = "postgresql" | "mysql" | "mssql"
-export type TabType = "home" | "database" | "folders" | "matricule" | "email" | "settings"
+export type TabType = "home" | "parametres"
+export type ParametreTabType = "database" | "folders" | "matricule" | "email" | "settings"
 
 export interface OdbcSource {
   name: string
@@ -54,7 +55,9 @@ export interface EmailConfig {
 interface AppState {
   // Tab management
   activeTab: TabType
+  activeParametreTab: ParametreTabType
   setActiveTab: (tab: TabType) => void
+  setActiveParametreTab: (tab: ParametreTabType) => void
 
   // License management
   licenseKey: string
@@ -115,7 +118,9 @@ export const useAppStore = create<AppState>()(
     (set, get) => ({
       // Tab management
       activeTab: "home",
+      activeParametreTab: "database",
       setActiveTab: (tab) => set({ activeTab: tab }),
+      setActiveParametreTab: (tab) => set({ activeParametreTab: tab }),
 
       // License management
       licenseKey: "",
@@ -268,35 +273,36 @@ export const useAppStore = create<AppState>()(
         const { isLicenseActive, databaseConnections, folderDatabaseLinks, matriculeConfig, emailConfig } = get()
 
         if (!isLicenseActive) {
-          alert("Veuillez activer votre licence avant de continuer.")
+          console.log("License activation required before continuing.")
+          set({ showLicenseModal: true })
           return
         }
 
         if (databaseConnections.length === 0) {
-          alert("Veuillez configurer au moins une base de données.")
-          set({ activeTab: "database" })
+          console.log("At least one database must be configured.")
+          set({ activeTab: "parametres", activeParametreTab: "database" })
           return
         }
 
         if (folderDatabaseLinks.length === 0) {
-          alert("Veuillez configurer au moins une liaison dossier/BDD.")
-          set({ activeTab: "folders" })
+          console.log("At least one folder/database link must be configured.")
+          set({ activeTab: "parametres", activeParametreTab: "folders" })
           return
         }
 
         if (!emailConfig.smtpServer || !emailConfig.senderEmail) {
-          alert("Veuillez configurer les paramètres email.")
-          set({ activeTab: "email" })
+          console.log("Email configuration required.")
+          set({ activeTab: "parametres", activeParametreTab: "email" })
           return
         }
 
         // Start the payroll distribution process
-        alert("Lancement de la distribution des fiches de paie...")
-        console.log("Starting payroll distribution with:", {
+        console.log("Starting payroll distribution process...")
+        console.log("Configuration:", {
           databases: databaseConnections.length,
           links: folderDatabaseLinks.length,
           matriculeConfig,
-          emailConfig,
+          emailConfig: { ...emailConfig, senderPassword: "[REDACTED]" },
         })
       },
     }),
@@ -305,6 +311,7 @@ export const useAppStore = create<AppState>()(
       partialize: (state) => ({
         licenseKey: state.licenseKey,
         isLicenseActive: state.isLicenseActive,
+        activeParametreTab: state.activeParametreTab,
         databaseConnections: state.databaseConnections,
         folderDatabaseLinks: state.folderDatabaseLinks,
         matriculeConfig: state.matriculeConfig,

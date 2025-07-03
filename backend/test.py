@@ -47,11 +47,11 @@ def connect_to_database(dsn, username=None, password=None, database=None):
             connection_str += 'Trusted_Connection=yes;'
 
         conn = pyodbc.connect(connection_str)
-        logger.info("✅ Connection established successfully.")
+        logger.info("Connection established successfully.")
         return conn
 
     except pyodbc.Error as e:
-        logger.error(f"❌ Database connection error: {e}")
+        logger.error(f"Database connection error: {e}")
         raise Exception(f"Failed to connect to database: {str(e)}")  
 
 
@@ -95,11 +95,11 @@ def extract_pdf_text(file_path, reference, num_chars, folder_path):
                 
                 with open(journal_path, "a", encoding="utf-8") as journal_file:
                     if matricule:
-                        log_msg = f"{datetime.datetime.now().isoformat()} - Page {i+1}: ✅ Found matricule '{matricule}'\n"
-                        logger.info(f"    ✅ Page {i+1}: Found matricule '{matricule}'")
+                        log_msg = f"{datetime.datetime.now().isoformat()} - Page {i+1}:  Found matricule '{matricule}'\n"
+                        logger.info(f"    Page {i+1}: Found matricule '{matricule}'")
                     else:
-                        log_msg = f"{datetime.datetime.now().isoformat()} - Page {i+1}: ❌ No matricule found\n"
-                        logger.warning(f"    ❌ {datetime.datetime.now().isoformat()} - Page {i+1}: No matricule found")
+                        log_msg = f"{datetime.datetime.now().isoformat()} - Page {i+1}:  No matricule found\n"
+                        logger.warning(f"     {datetime.datetime.now().isoformat()} - Page {i+1}: No matricule found")
                     journal_file.write(log_msg)
                 new_pdf = fitz.open()
                 new_pdf.insert_pdf(doc, from_page=i, to_page=i)
@@ -113,8 +113,8 @@ def extract_pdf_text(file_path, reference, num_chars, folder_path):
                 pages_matricules.append(matricule)
 
     except Exception as e:
-        logger.error(f"❌ Error processing {file_path}: {e}")
-        return [f"❌ Error processing {file_path}: {e}"], {}
+        logger.error(f" Error processing {file_path}: {e}")
+        return [f" Error processing {file_path}: {e}"], {}
 
     return pages_matricules, matricule_with_path
 
@@ -130,14 +130,19 @@ def fetch_by_matricule(conn, table, matricule_value, email_field, matricule_fiel
     cursor.execute(sql, (matricule_value,))
     cols = [col[0] for col in cursor.description]
     rows = cursor.fetchall()
-    print(f"🔎 Querying database for matricule: {rows}")
+    logger.info(f" Row found in db: {rows}")
     results = [dict(zip(cols, row)) for row in rows]
-    print(results)
+    logger.info(f" Query result: {results}")
     # If no email found, log in French
     if not results or not results[0].get(email_field):
         with open(journal_path, "a", encoding="utf-8") as journal_file:
             msg = f"{datetime.datetime.now().isoformat()} - Aucun email trouvé pour le matricule '{matricule_value}'\n"
             journal_file.write(msg)
+    else:
+        with open(journal_path, "a", encoding="utf-8") as journal_file:
+            msg = f"{datetime.datetime.now().isoformat()} - Email trouvé pour le matricule '{matricule_value}': {results[0].get(email_field)}\n"
+            journal_file.write(msg)
+
     return results
 
 def connect_to_mssql(server, database, username, password):
@@ -148,7 +153,7 @@ def connect_to_mssql(server, database, username, password):
         )
         return pyodbc.connect(conn_str)
     except Exception as e:
-        logger.error(f"❌ Failed to connect to {database}: {e}")
+        logger.error(f" Failed to connect to {database}: {e}")
         return None
 
 def process_configs():
@@ -156,13 +161,13 @@ def process_configs():
     try:
         user_configs = session.query(UserConfig).all()
         for config in user_configs:
-            logger.info(f"\n🔧 UserConfig: {config.folder_name}")
+            logger.info(f"\n UserConfig: {config.folder_name}")
             
             for subfolder in config.subfolders:
                 logger.info(f"  📁 Subfolder: {subfolder.subfolder_name}")
                 number_process = decode_license_key(config.license_key)
                 folder_path = os.path.join(config.folder_name, subfolder.subfolder_name)
-                logger.info(f"  📂 Looking in: {folder_path}")
+                logger.info(f"   Looking in: {folder_path}")
 
                 logging.info( f" database user {config.db_username} and password: {config.db_password}" )
                 try:
@@ -170,9 +175,9 @@ def process_configs():
                 except Exception as e:
                     raise Exception(f" Error connecting to database {subfolder.link_database}: {e}")
                 if not conn:
-                    logger.warning(f"  ❌ Could not connect to {subfolder.link_database}")
+                    logger.warning(f"   Could not connect to {subfolder.link_database}")
                     continue
-                logger.info(f"  ✅ Connected to DB: {subfolder.link_database}")
+                logger.info(f"   Connected to DB: {subfolder.link_database}")
 
                 if os.path.isdir(folder_path):
                     for fname in os.listdir(folder_path):
@@ -180,7 +185,7 @@ def process_configs():
                             continue
 
                         pdf_path = os.path.join(folder_path, fname)
-                        logger.info(f"\n  📄 File: {fname}")
+                        logger.info(f"\n   File: {fname}")
 
                         matricules, matricules_w_path = extract_pdf_text(
                             pdf_path, config.ref_text, config.numner_of_char, folder_path
@@ -188,38 +193,38 @@ def process_configs():
                         
                         for m in matricules:
                             number_process -= 1
-                            logger.info(f"  🔢 Remaining processes: {number_process}")
+                            logger.info(f"   Remaining processes: {number_process}")
                             if not m:
                                 continue
-                            logger.info(f"    🔎 Found matricule: {m}")
+                            logger.info(f"     Found matricule: {m}")
                             results = fetch_by_matricule(
                                 conn, subfolder.table, m, subfolder.email_field
                             )
                             if results:
                                 email = results[0].get("EMail")
                                 if not email:
-                                    logger.warning(f"    ⚠️ No email found for {m}")
+                                    logger.warning(f" No email found for {m}")
                                     continue
-                                logger.info(f"    ✅ Query result: {email}")
-                                logger.info(f"    ✅ File location: {matricules_w_path[m]}")
+                                logger.info(f"     Query result: {email}")
+                                logger.info(f"     File location: {matricules_w_path[m]}")
                                 send_email(
                                     email_receiver=email,
                                     attachments=[matricules_w_path[m]],
                                 )
                             else:
-                                logger.warning(f"    ⚠️ No results for {m}")
+                                logger.warning(f"     No results for {m}")
                             
                             
                             
                             if number_process <= 0:
-                                logger.info("  🔒 License limit reached, stopping further processing.")
+                                logger.info("   License limit reached, stopping further processing.")
                                 break
                            
                 else:
-                    logger.warning(f"  ⚠️ Folder not found: {folder_path}")
+                    logger.warning(f"   Folder not found: {folder_path}")
 
                 conn.close()
-                logger.info(f"  🔒 Closed connection to {subfolder.link_database}")
+                logger.info(f"   Closed connection to {subfolder.link_database}")
 
     finally:
         session.close()
@@ -231,14 +236,14 @@ def ensure_pdf_exists(folder_path):
     Lève une Exception si aucun PDF n'est trouvé.
     """
     if not folder_path:
-        logger.warning("⚠️ No folder path specified in user configurations.")
+        logger.warning(" No folder path specified in user configurations.")
         raise Exception("No folder path specified in user configurations.")
     
     if not os.path.isdir(folder_path):
-        logger.error(f"❌ The path is not a directory: {folder_path}")
+        logger.error(f" The path is not a directory: {folder_path}")
         raise Exception(f"The specified path is not a directory: {folder_path}")
 
-    logger.info(f"📂 Processing folder: {folder_path}")
+    logger.info(f" Processing folder: {folder_path}")
 
     # Cherche un PDF
     pdf_found = False
@@ -246,12 +251,12 @@ def ensure_pdf_exists(folder_path):
         full_path = os.path.join(folder_path, entry)
         # On ne tient compte que des fichiers et uniquement des .pdf
         if os.path.isfile(full_path) and entry.lower().endswith(".pdf"):
-            logger.info(f"✅ PDF found: {entry}")
+            logger.info(f" PDF found: {entry}")
             pdf_found = True
             break
 
     if not pdf_found:
-        logger.error(f"❌ No PDF files found in the folder: {folder_path}")
+        logger.error(f" No PDF files found in the folder: {folder_path}")
         raise Exception(f"No PDF files found in the folder: {folder_path}")
     
     # Si besoin, retourne le chemin du PDF trouvé
@@ -261,22 +266,22 @@ def ensure_pdf_exists(folder_path):
 def run_pdf_automation():
     session = SessionLocal()
     try:
-        logger.info("🔄 Fetching user configurations from the database...")
+        logger.info(" Fetching user configurations from the database...")
         user_configs = session.query(UserConfig).one()
         if not user_configs:
-            logger.warning("⚠️ No user configurations found in the database.")
+            logger.warning(" No user configurations found in the database.")
             raise Exception("No user configurations found.")
-        logger.info(f"🔧 Found {user_configs} user configurations.")
-        logger.info(f"🔧 Folder name: {user_configs.folder_name}")
+        logger.info(f" Found {user_configs} user configurations.")
+        logger.info(f" Folder name: {user_configs.folder_name}")
         folder_path = user_configs.folder_name
-        logger.info(f"🔧 Folder path: {folder_path}")
+        logger.info(f" Folder path: {folder_path}")
         number_process = decode_license_key(user_configs.license_key)
-        logger.info(f"🔧 License key decoded, number of processes allowed: {number_process}")
+        logger.info(f" License key decoded, number of processes allowed: {number_process}")
         pdf_path = ensure_pdf_exists(folder_path)
-        logger.info(f"🔧 PDF file to process: {pdf_path}")                
+        logger.info(f" PDF file to process: {pdf_path}")                
         
         if user_configs.connection_type == "odbc":
-            logger.info("🔄 Starting automation process...")
+            logger.info(" Starting automation process...")
             conn = connect_to_database(
                 user_configs.odbc_source,
                 user_configs.db_username,
@@ -287,40 +292,43 @@ def run_pdf_automation():
             matricules, matricules_w_path = extract_pdf_text(
                             pdf_path, user_configs.ref_text, user_configs.number_of_char, folder_path
                         )
-            # logger.info(f"🔢 Found {(matricules)}")
-            logger.info(f"🔢 Found {len(matricules)} matricules in {pdf_path}")
+            # logger.info(f" Found {(matricules)}")
+            logger.info(f" Found {len(matricules)} matricules in {pdf_path}")
             for m in matricules:
                 number_process -= 1
-                logger.info(f"🔢 Remaining processes: {number_process}")
+                logger.info(f" Remaining processes: {number_process}")
                 if not m:
                     continue
-                logger.info(f"🔎 Found matricule: {m}")
+                logger.info(f" Found matricule: {m}")
+                logger.info(f" Querying database for matricule: {m}")
                 results = fetch_by_matricule(
                     conn, user_configs.table_name, m, user_configs.email_field, user_configs.license_field, folder_path
                 )
+                email = results[0].get("EMail")
+                logger.info(f" Query result: {email}")
 
-                logger.info(f"🔎 Querying database for matricule: {m}")
+                
                 if results:
                     email = results[0].get("EMail")
                     if not email:
-                        logger.warning(f"⚠️ No email found for {m}")
+                        logger.warning(f" No email found for {m}")
                         continue
-                    logger.info(f"✅ Query result: {email}")
-                    logger.info(f"✅ File location: {matricules_w_path[m]}")
+                    logger.info(f" Query result: {email}")
+                    logger.info(f" File location: {matricules_w_path[m]}")
                     send_email(
                         email_receiver=email,
                         attachments=[matricules_w_path[m]],
                     )
                 else:
-                    logger.warning(f"⚠️ No results for {m}")
+                    logger.warning(f" No results for {m}")
                 
                 if number_process <= 0:
-                    logger.info("  🔒 License limit reached, stopping further processing.")
+                    logger.info("   License limit reached, stopping further processing.")
                     break
 
-            logger.info("✅ Automation completed successfully.")
+            logger.info(" Automation completed successfully.")
     except Exception as e:
-        logger.error(f"❌ Automation failed: {e}")
+        logger.error(f" Automation failed: {e}")
         raise e
 
 if __name__ == "__main__":

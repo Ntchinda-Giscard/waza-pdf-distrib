@@ -2,11 +2,7 @@
 
 import { TabBar } from "@/components/tab-bar"
 import { HomeTab } from "@/components/home-tab"
-import { DatabaseTab } from "@/components/database-tab"
-import { FoldersTab } from "@/components/folders-tab"
-import { MatriculeTab } from "@/components/matricule-tab"
-import { EmailTab } from "@/components/email-tab"
-import { SettingsTab } from "@/components/settings-tab"
+import { ParametresTab } from "@/components/parametres-tab"
 import { LicenseModal } from "@/components/license-modal"
 import { useAppStore } from "@/lib/store"
 
@@ -17,16 +13,8 @@ export default function HomePage() {
     switch (activeTab) {
       case "home":
         return <HomeTab />
-      case "database":
-        return <DatabaseTab />
-      case "folders":
-        return <FoldersTab />
-      case "matricule":
-        return <MatriculeTab />
-      case "email":
-        return <EmailTab />
-      case "settings":
-        return <SettingsTab />
+      case "parametres":
+        return <ParametresTab />
       default:
         return <HomeTab />
     }
@@ -39,11 +27,11 @@ export default function HomePage() {
         <h1 className="text-white font-semibold">Application de Distribution Automatisée des Fiches de Paie</h1>
       </div>
 
-      {/* Tab Navigation */}
+      {/* Main Tab Navigation */}
       <TabBar />
 
       {/* Tab Content */}
-      <div className="flex-1 overflow-auto">{renderActiveTab()}</div>
+      <div className="flex-1 overflow-hidden">{renderActiveTab()}</div>
 
       {/* License Modal */}
       <LicenseModal />
