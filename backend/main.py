@@ -11,6 +11,7 @@ from app.routes.matricule import matricule_router
 from app.routes.email import email_router
 from app.routes.license import license_router
 from app.routes.folder_config import folder_router
+from app.routes.run_automation import run_router
 from fastapi.middleware.cors import CORSMiddleware
 import logging
 
@@ -54,6 +55,7 @@ app.include_router(matricule_router)
 app.include_router(email_router)
 app.include_router(license_router)
 app.include_router(folder_router)
+app.include_router(run_router)
 
 # Health check endpoint (important for Electron startup detection)
 @app.get("/health")

@@ -73,12 +73,11 @@ def extract_text_after_reference(full_text: str, reference: str, num_chars: int,
                     break
         return "".join(result)
 
-def extract_pdf_text(file_path, reference, num_chars, folder_path):
+def extract_pdf_text(file_path, reference, num_chars, folder_path, journal_dir):
     pages_matricules = []
     matricule_with_path = {}
     today = datetime.date.today().isoformat()
     base_dir = os.path.join(folder_path, "Dossier de traitement journalier", today)
-    journal_dir = os.path.join(base_dir, "Journal")
     os.makedirs(base_dir, exist_ok=True)
     os.makedirs(journal_dir, exist_ok=True)
     journal_filename = f"journal-{today}.txt"
@@ -118,10 +117,8 @@ def extract_pdf_text(file_path, reference, num_chars, folder_path):
 
     return pages_matricules, matricule_with_path
 
-def fetch_by_matricule(conn, table, matricule_value, email_field, matricule_field="MatriculeSalarie", folder_name=None):
+def fetch_by_matricule(conn, table, matricule_value, email_field, matricule_field="MatriculeSalarie", journal_dir=None):
     today = datetime.date.today().isoformat()
-    base_dir = os.path.join(folder_name, "Dossier de traitement journalier", today)
-    journal_dir = os.path.join(base_dir, "Journal")
     os.makedirs(journal_dir, exist_ok=True)
     journal_filename = f"journal-traitement-{today}.txt"
     journal_path = os.path.join(journal_dir, journal_filename)
