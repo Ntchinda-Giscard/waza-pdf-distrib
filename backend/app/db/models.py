@@ -55,6 +55,11 @@ class DatabaseConfig(Base):
     main_folder = Column(String, nullable=True)
     subfolder_name = Column(String, nullable=True)
     link_database = Column(String, nullable=True)
+    archive_folder = Column(String, nullable=True)
+    log_folder = Column(String, nullable=True)
+    tablename = Column(String, nullable=True, default="T_SAL")
+    matricule_field = Column(String, nullable=True, index=True, default="MatriculeSalarie")
+    email_field = Column(String, nullable=True, default="EMail")
 
 
 class MatriculeConfig(Base):

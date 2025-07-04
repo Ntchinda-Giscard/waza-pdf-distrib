@@ -69,6 +69,11 @@ class DatabaseConfigAdd(BaseModel):
     main_folder: Optional[str] = None
     subfolder_name: Optional[str] = None
     link_database: Optional[str] = None
+    archive_folder: Optional[str] = None
+    log_folder: Optional[str] = None
+    tablename: Optional[str] = None
+    matricule_field: Optional[str] = None
+    email_field: Optional[str] = None
 
 class DatabaseConfigDelete(BaseModel):
     subfolder_name: Optional[str] = None
