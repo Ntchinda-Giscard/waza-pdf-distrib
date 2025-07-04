@@ -150,7 +150,8 @@ export const useAppStore = create<AppState>()(
           id: Date.now().toString(),
         }
         set((state) => ({
-          databaseConnections: [...state.databaseConnections, newConnection],
+          // databaseConnections: [...state.databaseConnections, newConnection],
+          databaseConnections: [newConnection],
         }))
       },
 
@@ -171,10 +172,12 @@ export const useAppStore = create<AppState>()(
       fetchOdbcSources: async () => {
         set({ isLoadingOdbcSources: true, odbcSourcesError: null })
         try {
-          const response = await fetch("http://localhost:8000/odbc-sources")
+          const response = await fetch("http://127.0.0.1:8000/odbc/odbc-sources")
+          console.log(response)
           if (response.ok) {
             const sources = await response.json()
-            set({ odbcSources: sources, isLoadingOdbcSources: false })
+            console.log(sources)
+            set({ odbcSources: sources.odbc_sources, isLoadingOdbcSources: false })
           } else {
             throw new Error("Failed to fetch ODBC sources")
           }

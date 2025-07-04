@@ -5,9 +5,46 @@ import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Checkbox } from "@/components/ui/checkbox"
 import { useAppStore } from "@/lib/store"
+import { Button } from "./ui/button"
+import { useState } from "react"
+import { toast } from "sonner"
 
 export function EmailTab() {
   const { emailConfig, setEmailConfig } = useAppStore()
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubmit = async () => {
+    const data = {
+      smtp_server: emailConfig.smtpServer,
+      port: emailConfig.smtpPort,
+      user_name: emailConfig.senderEmail,
+      password: emailConfig.senderPassword,
+      ssl: emailConfig.useSSL,
+      tls: emailConfig.useTLS,
+    }
+    // Handle form submission
+    setIsLoading(true);
+    const response = await fetch("http://127.0.0.1:8000/email/add", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+
+    if (!response.ok) {
+      // Handle error
+      toast.error("Échec de la mise à jour de la configuration email")
+      console.error("Failed to update email config:", response.statusText)
+      setIsLoading(false)
+      throw new Error("Failed to update email config")
+    }
+    toast.success("Configuration email mise à jour avec succès")
+    setIsLoading(false)
+
+    // Handle success
+    console.log("Email config updated successfully")
+  }
 
   return (
     <div className="p-6 space-y-6">
@@ -94,6 +131,16 @@ export function EmailTab() {
               </div>
             </div>
           </div>
+          <Button 
+            disabled={isLoading}
+            className="bg-blue-600 hover:bg-blue-700"
+            onClick={() => {
+              setEmailConfig({ ...emailConfig });
+              handleSubmit();
+            }}
+          >
+              Sauvegarder
+          </Button>
         </CardContent>
       </Card>
     </div>

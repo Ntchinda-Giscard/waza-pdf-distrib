@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Database, Trash2, Edit } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -9,6 +9,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { useAppStore, type ConnectionType, type DatabaseType, type DatabaseConnection } from "@/lib/store"
+import { toast } from "sonner"
 
 export function DatabaseTab() {
   const {
@@ -20,14 +21,45 @@ export function DatabaseTab() {
     fetchOdbcSources,
   } = useAppStore()
 
+  // useEffect(() => {
+  //   fetchOdbcSources()
+  // }, [])
+
   const [isEditing, setIsEditing] = useState<string | null>(null)
+  const [isLoading, setIsLoading] = useState(false)
   const [formData, setFormData] = useState<Partial<DatabaseConnection>>({
     connectionType: "odbc",
     username: "",
     password: "",
   })
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    setIsLoading(true)
+    console.log("Form Data:", formData)
+    try{
+      const data = {
+      odbc_source: formData.odbcSource,
+      connection_type: formData.connectionType,
+      db_type: formData.databaseType,
+      db_server: formData.serverName,
+      db_username: formData.username,
+      db_password: formData.password,
+    };
+
+    const response = await fetch("http://127.0.0.1:8000/odbc/add-odbc", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    });
+
+    if(!response.ok){
+      toast.error("Échec de l'ajout ou de la mise à jour de la connexion à la base de données")
+      setIsLoading(false)
+      throw new Error("Failed to add or update database connection")
+    }
+
     if (isEditing) {
       updateDatabaseConnection(isEditing, formData)
       setIsEditing(null)
@@ -35,6 +67,18 @@ export function DatabaseTab() {
       addDatabaseConnection(formData as Omit<DatabaseConnection, "id">)
     }
     setFormData({ connectionType: "odbc", username: "", password: "" })
+    setIsLoading(false)
+    toast.success(isEditing ? "Connexion mise à jour avec succès" : "Connexion ajoutée avec succès")
+  }catch(error){
+    console.log("Error:", error)
+    toast.error("Une erreur s'est produite lors de l'ajout de la connexion")
+    if (error instanceof Error) {
+      toast.error(`Erreur: ${error.message}`)
+    } else {
+      toast.error("Une erreur inconnue s'est produite")
+    }
+  }
+  setIsLoading(false)
   }
 
   const handleEdit = (connection: DatabaseConnection) => {
@@ -74,7 +118,7 @@ export function DatabaseTab() {
               onValueChange={(value: ConnectionType) => setFormData({ ...formData, connectionType: value })}
             >
               <div className="flex items-center space-x-2">
-                <RadioGroupItem value="odbc" className="bg-blue-500" id="odbc" />
+                <RadioGroupItem value="odbc"  id="odbc" />
                 <Label htmlFor="odbc" className="text-gray-300">
                   Connexion ODBC
                 </Label>
@@ -100,7 +144,7 @@ export function DatabaseTab() {
                   <SelectValue placeholder="Sélectionner une source ODBC" />
                 </SelectTrigger>
                 <SelectContent className="bg-gray-800 border-gray-700">
-                  {odbcSources.map((source) => (
+                  {odbcSources?.map((source) => (
                     <SelectItem key={source.name} value={source.name} className="text-white">
                       {source.name}
                     </SelectItem>
@@ -194,7 +238,7 @@ export function DatabaseTab() {
             </CardContent>
           </Card>
         ) : (
-          databaseConnections.map((connection) => (
+          databaseConnections?.map((connection) => (
             <Card key={connection.id} className="bg-gray-900 border-gray-800">
               <CardContent className="p-4">
                 <div className="flex items-center justify-between">

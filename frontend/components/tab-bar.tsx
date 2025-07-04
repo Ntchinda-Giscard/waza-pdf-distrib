@@ -7,7 +7,7 @@ import { useAppStore } from "@/lib/store"
 
 const mainTabs = [
   { id: "home", label: "Accueil", icon: Home },
-  { id: "parametres", label: "Paramètres", icon: Settings },
+  { id: "parametres", label: "Paramètres Généraux", icon: Settings },
 ]
 
 export function TabBar() {

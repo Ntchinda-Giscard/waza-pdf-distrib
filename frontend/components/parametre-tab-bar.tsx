@@ -10,7 +10,7 @@ const parametreTabs = [
   { id: "folders", label: "Liaison Dossiers/BDD", icon: Link },
   { id: "matricule", label: "Configuration Matricule", icon: Hash },
   { id: "email", label: "Configuration Email", icon: Mail },
-  { id: "settings", label: "Paramètres Généraux", icon: Cog },
+  { id: "settings", label: "Paramètres", icon: Cog },
 ]
 
 export function ParametreTabBar() {

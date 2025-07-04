@@ -5,9 +5,42 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { useAppStore } from "@/lib/store"
+import { Button } from "./ui/button"
+import { toast } from "sonner"
+import { useState } from "react"
 
 export function MatriculeTab() {
-  const { matriculeConfig, setMatriculeConfig } = useAppStore()
+  const { matriculeConfig, setMatriculeConfig } = useAppStore();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubmit = async () => {
+    const data = {
+      number_of_character: matriculeConfig.numberOfCharacters,
+      ref_text: matriculeConfig.referenceText,
+    }
+    // Handle form submission
+    setIsLoading(true);
+    const response = await fetch("http://127.0.0.1:8000/matricule/add", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+
+    if (!response.ok) {
+      // Handle error
+      toast.error("Échec de la mise à jour de la configuration du matricule")
+      console.error("Failed to update matricule config:", response.statusText)
+      setIsLoading(false)
+      throw new Error("Failed to update matricule config")
+    }
+    toast.success("Configuration du matricule mise à jour avec succès")
+    setIsLoading(false)
+
+    // Handle success
+    console.log("Matricule config updated successfully")
+  }
 
   return (
     <div className="p-6 space-y-6">
@@ -29,10 +62,14 @@ export function MatriculeTab() {
               <Label className="text-gray-200">Nombre de Caractères du Matricule</Label>
               <Input
                 type="number"
-                min="1"
-                max="20"
+                // min="1"
+                // max="20"
                 value={matriculeConfig.numberOfCharacters}
-                onChange={(e) => setMatriculeConfig({ numberOfCharacters: Number.parseInt(e.target.value) || 1 })}
+                onChange={(e) => {
+                  setMatriculeConfig({ numberOfCharacters: Number.parseInt(e.target.value) })
+                  handleSubmit()
+                }
+              }
                 className="bg-gray-800 border-gray-700 text-white"
                 placeholder="6"
               />
@@ -47,9 +84,19 @@ export function MatriculeTab() {
                 className="bg-gray-800 border-gray-700 text-white"
                 placeholder="MAT"
               />
-              <p className="text-xs text-gray-400">Texte précédant le matricule dans le nom du fichier</p>
+              <p className="text-xs text-gray-400">Texte avant le matricule dans le nom du fichier</p>
             </div>
           </div>
+          <Button 
+            disabled={isLoading}
+            className="bg-blue-600 hover:bg-blue-700"
+            onClick={() => {
+              setMatriculeConfig({ ...matriculeConfig });
+              handleSubmit();
+            }}
+          >
+              Sauvegarder
+          </Button>
         </CardContent>
       </Card>
     </div>

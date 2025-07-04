@@ -6,15 +6,35 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useAppStore } from "@/lib/store"
+import { toast } from "sonner"
 
 export function LicenseModal() {
   const { showLicenseModal, licenseKey, setLicenseKey, activateLicense, setShowLicenseModal } = useAppStore()
   const [tempLicenseKey, setTempLicenseKey] = useState(licenseKey)
 
-  const handleActivate = () => {
-    setLicenseKey(tempLicenseKey)
-    activateLicense()
+  const handleActivate = async () => {
+  const response = await fetch("http://127.0.0.1:8000/license/activate", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ license: tempLicenseKey }),
+  });
+
+  if (!response.ok) {
+    // Read the JSON payload
+    const errorData = await response.json();
+    // Use `detail` instead of `message`
+    const msg = errorData.detail || "Erreur inconnue";
+    toast.error(`Échec de l'activation de la licence : ${msg}`);
+    return;
   }
+
+  setLicenseKey(tempLicenseKey);
+  activateLicense();
+  toast.success("Licence activée avec succès");
+};
+
 
   if (!showLicenseModal) return null
 
