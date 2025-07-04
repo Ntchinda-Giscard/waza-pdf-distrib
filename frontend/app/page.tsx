@@ -25,7 +25,7 @@ export default function HomePage() {
     <div className="h-screen flex flex-col bg-gray-950">
       {/* Application Title Bar */}
       <div className="h-12 bg-gray-900 border-b border-gray-800 flex items-center px-4">
-        <h1 className="text-white font-semibold">Application de Distribution Automatisée des Fiches de Paie</h1>
+        <h1 className="text-white font-semibold">Application de Distribution Automatisée des  de Paie</h1>
       </div>
 
       {/* Main Tab Navigation */}

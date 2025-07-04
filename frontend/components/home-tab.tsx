@@ -20,8 +20,8 @@ export function HomeTab() {
           <div className="mx-auto w-16 h-16 bg-gradient-to-br from-green-600 to-green-700 rounded-full flex items-center justify-center shadow-lg">
             <Play className="w-8 h-8 text-white" />
           </div>
-          <h1 className="text-3xl font-bold text-white">Distribution des Fiches de Paie</h1>
-          <p className="text-gray-400 text-lg">Automatisez l'envoi des fiches de paie par courrier électronique</p>
+          <h1 className="text-3xl font-bold text-white">Distribution des Bulletin de Paie</h1>
+          <p className="text-gray-400 text-lg">Automatisez l'envoi des bulletin de paie par courrier électronique</p>
         </div>
 
         {/* License Status */}
@@ -72,7 +72,7 @@ export function HomeTab() {
           className="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white py-4 text-lg font-medium transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
         >
           <Play className="w-5 h-5 mr-2" />
-          Lancer l'Envoi des Fiches
+          Lancer l'Envoi des Bulletin
         </Button>
 
         {(!isLicenseActive || !isConfigurationComplete()) && (

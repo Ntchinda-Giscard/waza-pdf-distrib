@@ -11,6 +11,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { useAppStore, type FolderDatabaseLink } from "@/lib/store"
+import { log } from "console"
 
 // Extend the Window interface to include electronAPI
 declare global {
@@ -47,7 +48,8 @@ export function FoldersTab() {
   const [isElectronAvailable, setIsElectronAvailable] = useState(false);
 
   const [subfolder, setSubfolder] = useState([])
-  const [scanningSubfolders, setScanningSubfolders] = useState(false)
+  const [archiveSelectedFolder, setArchiveFolder] = useState(false)
+  const [logSelectedFolder, setLogFolder] = useState(false)
 
   // Check if Electron API is available when component mounts
     useEffect(() => {
@@ -89,6 +91,8 @@ export function FoldersTab() {
       if (result.success && result.path) {
         // User successfully selected a folder
         setSelectedPath(result.path);
+        const subfolders = await window.electronAPI.scanSubFolders(result.path);
+        setSubfolder(subfolders)
         console.log('Frontend: User selected folder:', result.path);
         console.log('Frontend: Complete absolute path:', result.path);
         
@@ -112,31 +116,81 @@ export function FoldersTab() {
     }
   };
 
-
-  const handleScanSubFolders = async (path: string) => {
+  const handleSelectArchive = async () => {
+    // First, check if we're in Electron environment
     if (!isElectronAvailable) {
       alert('Folder picker is only available in the desktop app');
       return;
     }
 
-    try{
-        const result = await window.electronAPI.scanSubFolders(path);
-        console.log('Frontend: Received subfolder scan results:', result);
+    try {
+      console.log('Frontend: Requesting folder picker...');
 
-        if (result.success && result.subfolders.length > 0) {
-          setSubfolder(result.subfolders);
-          console.log('Subfolder: subfolder:', result.subfolders);
-        }else if(result.success === false){
-            console.log('Frontend: Subfolder scanning failed:', result.error)
-        }
+      // Call the Electron API that we exposed in preload.js
+      // This will trigger the main process to open the native folder dialog
+      const result = await window.electronAPI.openFolderPicker();
+      
+      console.log('Frontend: Received result from Electron:', result);
 
-    }catch(error){
-        console.error('Frontend: Error during folder selection:', error);
-        alert('An error occurred while selecting the folder');
-    }finally{
-
+      // Handle the response from the main process
+      if (result.success && result.path) {
+        // User successfully selected a folder
+        setArchiveFolder(result.path);
+        console.log('Frontend: User selected folder:', result.path);
+        console.log('Frontend: Complete absolute path:', result.path);
+        
+        
+      } else if (result.success === false && result.message) {
+        // User canceled or there was an issue
+        console.log('Frontend: Folder selection canceled or failed:', result.message);
+      }
+      
+    } catch (error) {
+      // Handle any errors that might occur during the process
+      console.error('Frontend: Error during folder selection:', error);
+      alert('An error occurred while selecting the folder');
+    } finally {
+      // Always reset loading state
     }
-  }
+  };
+
+  const handleSelectJournal = async () => {
+    // First, check if we're in Electron environment
+    if (!isElectronAvailable) {
+      alert('Folder picker is only available in the desktop app');
+      return;
+    }
+
+    try {
+      console.log('Frontend: Requesting folder picker...');
+
+      // Call the Electron API that we exposed in preload.js
+      // This will trigger the main process to open the native folder dialog
+      const result = await window.electronAPI.openFolderPicker();
+      
+      console.log('Frontend: Received result from Electron:', result);
+
+      // Handle the response from the main process
+      if (result.success && result.path) {
+        // User successfully selected a folder
+        setLogFolder(result.path);
+        console.log('Frontend: User selected folder:', result.path);
+        console.log('Frontend: Complete absolute path:', result.path);
+        
+        
+      } else if (result.success === false && result.message) {
+        // User canceled or there was an issue
+        console.log('Frontend: Folder selection canceled or failed:', result.message);
+      }
+      
+    } catch (error) {
+      // Handle any errors that might occur during the process
+      console.error('Frontend: Error during folder selection:', error);
+      alert('An error occurred while selecting the folder');
+    } finally {
+      // Always reset loading state
+    }
+  };
 
   // Function to clear the selected path
   const clearSelection = () => {
@@ -431,7 +485,7 @@ export function FoldersTab() {
                 className="bg-gray-800 border-gray-700 text-white flex-1"
                 placeholder="Chemin absolu du dossier principal (ex: E:/Dossier du fichier a traiter)"
               />
-              <p>{selectedPath || formData.mainFolder}</p>
+              {/* <p>{selectedPath || formData.mainFolder}</p> */}
               <Button
                 type="button"
                 variant="outline"
@@ -532,8 +586,8 @@ export function FoldersTab() {
               <Label className="text-gray-200">Dossier d'Archivage</Label>
               <div className="flex space-x-2">
                 <Input
-                  value={formData.archiveFolder || ""}
-                  onChange={(e) => setFormData({ ...formData, archiveFolder: e.target.value })}
+                  value={formData.archiveFolder || archiveSelectedFolder}
+                  onChange={(e) => setFormData({ ...formData, archiveFolder: archiveSelectedFolder })}
                   className="bg-gray-800 border-gray-700 text-white flex-1"
                   placeholder="Chemin absolu du dossier d'archivage"
                 />
@@ -541,7 +595,7 @@ export function FoldersTab() {
                   type="button"
                   variant="outline"
                   size="sm"
-                  onClick={() => openFolderPicker("archiveFolder")}
+                  onClick={handleSelectArchive}
                   className="border-gray-700 text-gray-300 hover:bg-gray-800 bg-transparent"
                   title="Sélectionner le dossier d'archivage"
                 >
@@ -554,8 +608,8 @@ export function FoldersTab() {
               <Label className="text-gray-200">Dossier de Journalisation</Label>
               <div className="flex space-x-2">
                 <Input
-                  value={formData.logFolder || ""}
-                  onChange={(e) => setFormData({ ...formData, logFolder: e.target.value })}
+                  value={formData.logFolder || logSelectedFolder}
+                  onChange={(e) => setFormData({ ...formData, logFolder: logSelectedFolder })}
                   className="bg-gray-800 border-gray-700 text-white flex-1"
                   placeholder="Chemin absolu du dossier de logs"
                 />
@@ -563,7 +617,7 @@ export function FoldersTab() {
                   type="button"
                   variant="outline"
                   size="sm"
-                  onClick={() => openFolderPicker("logFolder")}
+                  onClick={handleSelectJournal}
                   className="border-gray-700 text-gray-300 hover:bg-gray-800 bg-transparent"
                   title="Sélectionner le dossier de logs"
                 >
@@ -579,16 +633,17 @@ export function FoldersTab() {
             <Label className="text-gray-200">Type de Base de Données</Label>
             <RadioGroup
               value={formData.isSageDatabase ? "sage" : "other"}
+              className="bg-blue-500"
               onValueChange={(value) => setFormData({ ...formData, isSageDatabase: value === "sage" })}
             >
               <div className="flex items-center space-x-2">
-                <RadioGroupItem value="sage" id="sage" />
+                <RadioGroupItem className="bg-blue-500" value="sage" id="sage" />
                 <Label htmlFor="sage" className="text-gray-300">
                   Base SAGE
                 </Label>
               </div>
               <div className="flex items-center space-x-2">
-                <RadioGroupItem value="other" id="other" />
+                <RadioGroupItem className="bg-blue-500" value="other" id="other" />
                 <Label htmlFor="other" className="text-gray-300">
                   Autre Base de Données
                 </Label>

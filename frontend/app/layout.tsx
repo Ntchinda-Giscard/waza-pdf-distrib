@@ -4,7 +4,7 @@ import { Toaster } from 'sonner'
 
 export const metadata: Metadata = {
   title: 'Waza paie',
-  description: 'logiciels de distribution des fiches de paie',
+  description: 'logiciels de distribution des bulletin de paie',
   generator: 'v0.dev',
 }
 
