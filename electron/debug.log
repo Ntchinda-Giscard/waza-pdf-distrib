@@ -304,3 +304,83 @@ Data: {
 [2025-06-30T12:49:37.526Z] [DEBUG] HTTP health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
 [2025-06-30T12:49:39.530Z] [DEBUG] HTTP health check attempt 13 for port 3000
 [2025-06-30T12:49:39.534Z] [DEBUG] HTTP health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-07-03T16:59:25.681Z] [INFO] Electron app ready, starting initialization
+Data: {
+  "isDev": true,
+  "frontendPort": 3000,
+  "backendPort": 8000,
+  "resourcesPath": "C:\\Users\\DIGITAL MARKET\\Documents\\eletronApp\\node_modules\\electron\\dist\\resources",
+  "appPath": "C:\\Users\\DIGITAL MARKET\\Documents\\eletronApp"
+}
+[2025-07-03T16:59:25.933Z] [INFO] Step 0: Cleaning up existing processes
+[2025-07-03T16:59:25.938Z] [INFO] Attempting to kill processes on port 3000
+[2025-07-03T16:59:26.160Z] [DEBUG] No process found on port 3000
+[2025-07-03T16:59:26.163Z] [INFO] Attempting to kill processes on port 8000
+[2025-07-03T16:59:26.281Z] [DEBUG] No process found on port 8000
+[2025-07-03T16:59:29.295Z] [INFO] Step 1: Checking Node.js installation
+[2025-07-03T16:59:29.410Z] [INFO] Node.js found: v22.15.0
+[2025-07-03T16:59:29.411Z] [INFO] Step 2: Starting backend server
+[2025-07-03T16:59:29.413Z] [INFO] Starting backend server
+[2025-07-03T16:59:29.414Z] [INFO] Development mode: assuming backend is running separately
+[2025-07-03T16:59:29.415Z] [INFO] Step 3: Starting frontend server
+[2025-07-03T16:59:29.418Z] [INFO] Starting frontend server
+[2025-07-03T16:59:29.421Z] [INFO] Development mode: assuming frontend dev server is running
+[2025-07-03T16:59:29.422Z] [INFO] Step 4: Waiting for servers to be ready
+[2025-07-03T16:59:29.423Z] [DEBUG] Health check attempt 1 for port 3000
+[2025-07-03T16:59:29.432Z] [DEBUG] Health check attempt 1 for port 8000
+[2025-07-03T16:59:29.559Z] [DEBUG] Health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-07-03T16:59:29.692Z] [DEBUG] Health check failed for port 8000: connect ECONNREFUSED 127.0.0.1:8000
+[2025-07-03T16:59:30.705Z] [DEBUG] Health check attempt 2 for port 8000
+[2025-07-03T16:59:30.707Z] [DEBUG] Health check failed for port 8000: connect ECONNREFUSED 127.0.0.1:8000
+[2025-07-03T16:59:31.575Z] [DEBUG] Health check attempt 2 for port 3000
+[2025-07-03T16:59:31.577Z] [DEBUG] Health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-07-03T16:59:31.710Z] [DEBUG] Health check attempt 3 for port 8000
+[2025-07-03T16:59:31.712Z] [DEBUG] Health check failed for port 8000: connect ECONNREFUSED 127.0.0.1:8000
+[2025-07-03T16:59:32.725Z] [DEBUG] Health check attempt 4 for port 8000
+[2025-07-03T16:59:32.728Z] [DEBUG] Health check failed for port 8000: connect ECONNREFUSED 127.0.0.1:8000
+[2025-07-03T16:59:33.588Z] [DEBUG] Health check attempt 3 for port 3000
+[2025-07-03T16:59:33.591Z] [DEBUG] Health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-07-03T16:59:33.730Z] [DEBUG] Health check attempt 5 for port 8000
+[2025-07-03T16:59:33.732Z] [DEBUG] Health check failed for port 8000: connect ECONNREFUSED 127.0.0.1:8000
+[2025-07-03T16:59:34.744Z] [DEBUG] Health check attempt 6 for port 8000
+[2025-07-03T16:59:34.746Z] [DEBUG] Health check failed for port 8000: connect ECONNREFUSED 127.0.0.1:8000
+[2025-07-03T16:59:35.604Z] [DEBUG] Health check attempt 4 for port 3000
+[2025-07-03T16:59:35.606Z] [DEBUG] Health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-07-03T16:59:35.763Z] [DEBUG] Health check attempt 7 for port 8000
+[2025-07-03T16:59:35.765Z] [DEBUG] Health check failed for port 8000: connect ECONNREFUSED 127.0.0.1:8000
+[2025-07-03T16:59:36.781Z] [DEBUG] Health check attempt 8 for port 8000
+[2025-07-03T16:59:36.787Z] [DEBUG] Health check failed for port 8000: connect ECONNREFUSED 127.0.0.1:8000
+[2025-07-03T16:59:37.614Z] [DEBUG] Health check attempt 5 for port 3000
+[2025-07-03T16:59:37.617Z] [DEBUG] Health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-07-03T16:59:37.805Z] [DEBUG] Health check attempt 9 for port 8000
+[2025-07-03T16:59:37.809Z] [DEBUG] Health check failed for port 8000: connect ECONNREFUSED 127.0.0.1:8000
+[2025-07-03T16:59:38.826Z] [DEBUG] Health check attempt 10 for port 8000
+[2025-07-03T16:59:38.830Z] [DEBUG] Health check failed for port 8000: connect ECONNREFUSED 127.0.0.1:8000
+[2025-07-03T16:59:39.631Z] [DEBUG] Health check attempt 6 for port 3000
+[2025-07-03T16:59:39.633Z] [DEBUG] Health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-07-03T16:59:39.839Z] [DEBUG] Health check attempt 11 for port 8000
+[2025-07-03T16:59:39.841Z] [DEBUG] Health check failed for port 8000: connect ECONNREFUSED 127.0.0.1:8000
+[2025-07-03T16:59:40.855Z] [DEBUG] Health check attempt 12 for port 8000
+[2025-07-03T16:59:40.859Z] [DEBUG] Health check failed for port 8000: connect ECONNREFUSED 127.0.0.1:8000
+[2025-07-03T16:59:41.642Z] [DEBUG] Health check attempt 7 for port 3000
+[2025-07-03T16:59:41.645Z] [DEBUG] Health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-07-03T16:59:41.871Z] [DEBUG] Health check attempt 13 for port 8000
+[2025-07-03T16:59:41.872Z] [DEBUG] Health check failed for port 8000: connect ECONNREFUSED 127.0.0.1:8000
+[2025-07-03T16:59:42.880Z] [DEBUG] Health check attempt 14 for port 8000
+[2025-07-03T16:59:42.882Z] [DEBUG] Health check failed for port 8000: connect ECONNREFUSED 127.0.0.1:8000
+[2025-07-03T16:59:43.658Z] [DEBUG] Health check attempt 8 for port 3000
+[2025-07-03T16:59:43.660Z] [DEBUG] Health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-07-03T16:59:43.885Z] [DEBUG] Health check attempt 15 for port 8000
+[2025-07-03T16:59:43.888Z] [DEBUG] Health check failed for port 8000: connect ECONNREFUSED 127.0.0.1:8000
+[2025-07-03T16:59:43.889Z] [ERROR] Server health check failed after 15 attempts
+[2025-07-03T16:59:43.891Z] [WARN] Backend health check failed, but continuing...
+[2025-07-03T16:59:45.665Z] [DEBUG] Health check attempt 9 for port 3000
+[2025-07-03T16:59:45.667Z] [DEBUG] Health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-07-03T16:59:47.684Z] [DEBUG] Health check attempt 10 for port 3000
+[2025-07-03T16:59:47.687Z] [DEBUG] Health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-07-03T16:59:49.705Z] [DEBUG] Health check attempt 11 for port 3000
+[2025-07-03T16:59:49.710Z] [DEBUG] Health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-07-03T16:59:51.724Z] [DEBUG] Health check attempt 12 for port 3000
+[2025-07-03T16:59:51.728Z] [DEBUG] Health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000
+[2025-07-03T16:59:53.745Z] [DEBUG] Health check attempt 13 for port 3000
+[2025-07-03T16:59:53.751Z] [DEBUG] Health check failed for port 3000: connect ECONNREFUSED 127.0.0.1:3000

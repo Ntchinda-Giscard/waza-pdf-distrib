@@ -12,6 +12,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { useAppStore, type FolderDatabaseLink } from "@/lib/store"
 import { log } from "console"
+import { toast } from "sonner"
 
 // Extend the Window interface to include electronAPI
 declare global {
@@ -197,11 +198,12 @@ export function FoldersTab() {
     setSelectedPath('');
     console.log('Frontend: Cleared folder selection');
   };
-
+  
 
   const handleSubmit = () => {
     if (isEditing) {
       updateFolderDatabaseLink(isEditing, formData)
+      toast.success(`Folder updated successfully (${formData.mainFolder})`)
       setIsEditing(null)
     } else {
       addFolderDatabaseLink(formData as Omit<FolderDatabaseLink, "id">)
@@ -587,7 +589,7 @@ export function FoldersTab() {
               <div className="flex space-x-2">
                 <Input
                   value={formData.archiveFolder || archiveSelectedFolder}
-                  onChange={(e) => setFormData({ ...formData, archiveFolder: archiveSelectedFolder })}
+                  onChange={(e) => setFormData({ ...formData, archiveFolder: e.target.value })}
                   className="bg-gray-800 border-gray-700 text-white flex-1"
                   placeholder="Chemin absolu du dossier d'archivage"
                 />
@@ -609,7 +611,7 @@ export function FoldersTab() {
               <div className="flex space-x-2">
                 <Input
                   value={formData.logFolder || logSelectedFolder}
-                  onChange={(e) => setFormData({ ...formData, logFolder: logSelectedFolder })}
+                  onChange={(e) => setFormData({ ...formData, logFolder: e.target.value })}
                   className="bg-gray-800 border-gray-700 text-white flex-1"
                   placeholder="Chemin absolu du dossier de logs"
                 />

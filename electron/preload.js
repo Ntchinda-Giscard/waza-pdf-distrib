@@ -18,9 +18,8 @@ contextBridge.exposeInMainWorld('electronAPI', {
     // It's like making a phone call - you dial (invoke) and wait for an answer
     return ipcRenderer.invoke('open-folder-picker');
   },
-  scanSubFolders: (path) =>{
-    console.log('Preload: Frontend requested folder scan');
-    // This function will be available in your frontend as window.electronAPI.scanSubFolders()
+  scanSubFolders: (path) => {
+    console.log('Preload: Frontend requested folder scan for:', path);
     return ipcRenderer.invoke('scan-subfolders', path);
   }
 });

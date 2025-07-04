@@ -1,7 +1,8 @@
 const { app, BrowserWindow, dialog, ipcMain } = require("electron")
 const { spawn, exec } = require("child_process")
-const path = require("path")
-const fs = require("fs")
+const fs = require('fs');
+const fsPromises = require('fs').promises; // For async operations like stat, readdir
+const path = require('path');       // This is for handling file paths
 const http = require("http")
 const net = require("net")
 const os = require("os")
@@ -490,7 +491,7 @@ function createWindow() {
     log("info", "Window loaded successfully")
     mainWindow.show()
 
-    if (isDev) {
+    if (!isDev) {
       mainWindow.webContents.openDevTools()
     }
   })
@@ -564,29 +565,81 @@ ipcMain.handle('open-folder-picker', async () => {
   }
 });
 
-ipcMain.handle('scan-subfolders', async (rootPath) => {
+// Add this to your electron/main.js file
+// This function returns a simple array of folder names like ["base1", "base2"]
+// Your subfolder scanning function (now with proper fs module access)
+ipcMain.handle('scan-subfolders', async (event, rootPath) => {
   try {
     console.log('Main process: Scanning subfolders in:', rootPath);
-
-    const subfolders = await fs.readdir(rootPath);
-    console.log(`Main process: Found ${subfolders.length} subfolders`);
-
-    return {
-      success: true,
-      subfolders: subfolders,
-      count: subfolders.length,
-      rootPath: rootPath
-    };
+    
+    // First, do a quick synchronous check to see if the path even exists
+    // This prevents unnecessary async operations on non-existent paths
+    if (!fs.existsSync(rootPath)) {
+      throw new Error(`Path does not exist: ${rootPath}`);
+    }
+    
+    // Now verify it's actually a directory using the async version
+    const pathStats = await fsPromises.stat(rootPath);
+    if (!pathStats.isDirectory()) {
+      throw new Error('The provided path is not a directory');
+    }
+    
+    // Read all items in the directory
+    const allItems = await fsPromises.readdir(rootPath);
+    const folderNames = [];
+    
+    // Check each item to see if it's a folder
+    for (const item of allItems) {
+      const fullPath = path.join(rootPath, item);
+      
+      try {
+        const itemStats = await fsPromises.stat(fullPath);
+        if (itemStats.isDirectory()) {
+          folderNames.push(item);
+        }
+      } catch (error) {
+        // Log warnings for items we can't access (permissions, broken symlinks, etc.)
+        console.warn(`Could not access item: ${fullPath}`, error.message);
+      }
+    }
+    
+    // Sort alphabetically for better user experience
+    folderNames.sort();
+    
+    console.log(`Main process: Found ${folderNames.length} subfolders:`, folderNames);
+    return folderNames;
+    
   } catch (error) {
     console.error('Main process: Error scanning subfolders:', error);
-    return {
-      success: false,
-      error: error.message,
-      subfolders: [],
-      count: 0
-    };
+    return []; // Return empty array on error
   }
 });
+
+// ipcMain.handle('scan-subfolders', async (rootPath) => {
+//   try {
+//     console.log('Main process: Scanning subfolders in:', rootPath);
+
+//     const subfolders = await fs.readdir(rootPath);
+//     console.log(`Main process: Found ${subfolders.length} subfolders`);
+//     log('info', `Found ${subfolders.length} subfolders in ${rootPath}`, { rootPath, subfolders });
+
+//     return {
+//       success: true,
+//       subfolders: subfolders,
+//       count: subfolders.length,
+//       rootPath: rootPath
+//     };
+//   } catch (error) {
+//     console.error('Main process: Error scanning subfolders:', error);
+//     log('error', 'Error scanning subfolders', { rootPath, error });
+//     return {
+//       success: false,
+//       error: error.message,
+//       subfolders: [],
+//       count: 0
+//     };
+//   }
+// });
 
 function getResourcePath(relativePath) {
   if (isDev) {
