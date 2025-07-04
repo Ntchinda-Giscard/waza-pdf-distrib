@@ -20,6 +20,10 @@ def extract_text(file_path, reference, num_chars, archive_path, journal_dir):
     journal_filename = f"journal-{today}.txt"
     journal_path = os.path.join(journal_dir, journal_filename)
 
+    # Create directories if they don't exist
+    os.makedirs(archive_path, exist_ok=True)
+    os.makedirs(journal_dir, exist_ok=True)
+
     try:
         with fitz.open(file_path) as doc:
             pdf_name = os.path.splitext(os.path.basename(file_path))[0]
@@ -37,10 +41,14 @@ def extract_text(file_path, reference, num_chars, archive_path, journal_dir):
                         log_msg = f"{datetime.datetime.now().isoformat()} - Page {i+1}:  No matricule found\n"
                         logger.warning(f"     {datetime.datetime.now().isoformat()} - Page {i+1}: No matricule found")
                     journal_file.write(log_msg)
+                
+                # Create new PDF for this page
                 new_pdf = fitz.open()
                 new_pdf.insert_pdf(doc, from_page=i, to_page=i)
 
-                pdf_filename = f"{matricule}_page_{i+1}.pdf"
+                # Use a default name if matricule is None or empty
+                matricule_safe = matricule if matricule else "NO_MATRICULE"
+                pdf_filename = f"{matricule_safe}_page_{i+1}.pdf"
                 dest_pdf = os.path.join(archive_path, pdf_filename)
                 new_pdf.save(dest_pdf)
                 new_pdf.close()

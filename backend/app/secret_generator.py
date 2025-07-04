@@ -55,7 +55,7 @@ def decode_license_key(key: str, secret: str = SECRET) -> int:
 
 if __name__ == "__main__":
     # Example usage
-    allowed_count = 12
+    allowed_count = 30
     license_key = generate_license_key(allowed_count)
     print(f"Generated License Key: {license_key}")
 

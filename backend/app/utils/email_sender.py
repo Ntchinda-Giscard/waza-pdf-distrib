@@ -6,6 +6,7 @@ from email.message import EmailMessage
 
 def send_email(
     email_receiver: str,
+    server='smtp.gmail.com',
     email_sender="ntchinda1998@gmail.com",
     email_password="adlp aqvr qxek htdh",
     attachments: list[str] = None  # list of file paths to attach
@@ -52,8 +53,11 @@ Cordialement,"""
 
     # Send via Gmail SMTP
     context = ssl.create_default_context()
-    with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp:
-        smtp.login(email_sender, email_password)
+    with smtplib.SMTP_SSL(server, 465, context=context) as smtp:
+        try:
+            smtp.login(email_sender, email_password)
+        except Exception as e:
+            raise Exception(f'Erreur de connection au serveur smtp: {e}')
         smtp.send_message(em)
 
 
