@@ -38,3 +38,24 @@ class UserConfigAdd(BaseModel):
     email_field: Optional[str] = None
     license_field: Optional[str] = None
 
+
+
+class DatabaseServerAdd(BaseModel):
+    odbc_source: str
+    connection_type: str
+    db_type: Optional[str] = None
+    db_server: Optional[str] = None
+    db_username: Optional[str] = None
+    db_password: Optional[str] = None
+
+class MatriculeConfigAdd(BaseModel):
+    number_of_character: Optional[int] = None
+    ref_text: Optional[str] = None
+
+class EmailConfigAdd(BaseModel):
+    smtp_server: Optional[str]
+    user_name: Optional[str]
+    password: Optional[str]
+    port: Optional[str]
+    tls: Optional[bool]
+    ssl: Optional[bool]
