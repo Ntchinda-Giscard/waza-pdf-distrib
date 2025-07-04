@@ -56,6 +56,10 @@ class EmailConfigAdd(BaseModel):
     smtp_server: Optional[str]
     user_name: Optional[str]
     password: Optional[str]
-    port: Optional[str]
+    port: Optional[int]
     tls: Optional[bool]
     ssl: Optional[bool]
+
+
+class LicenseConfigAdd(BaseModel):
+    license: Optional[str] = None

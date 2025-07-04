@@ -8,6 +8,7 @@ from app.db.session import get_db, engine, Base
 from app.routes.odbc import odbc_router
 from app.routes.matricule import matricule_router
 from app.routes.email import email_router
+from app.routes.license import license_router
 from fastapi.middleware.cors import CORSMiddleware
 import logging
 
@@ -49,6 +50,7 @@ app.add_middleware(
 app.include_router(odbc_router)
 app.include_router(matricule_router)
 app.include_router(email_router)
+app.include_router(license_router)
 
 # Health check endpoint (important for Electron startup detection)
 @app.get("/health")
