@@ -5,10 +5,12 @@ from sqlalchemy.orm import Session
 from app.crud.insert_config import add_config_user, create_or_update_user_config
 from app.db.schema import UserConfigAdd, UserConfigCreate
 from app.db.session import get_db, engine, Base
+from app.routes import folder_config
 from app.routes.odbc import odbc_router
 from app.routes.matricule import matricule_router
 from app.routes.email import email_router
 from app.routes.license import license_router
+from app.routes.folder_config import folder_router
 from fastapi.middleware.cors import CORSMiddleware
 import logging
 
@@ -51,6 +53,7 @@ app.include_router(odbc_router)
 app.include_router(matricule_router)
 app.include_router(email_router)
 app.include_router(license_router)
+app.include_router(folder_router)
 
 # Health check endpoint (important for Electron startup detection)
 @app.get("/health")

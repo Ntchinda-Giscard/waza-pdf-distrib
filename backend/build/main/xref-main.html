@@ -24,6 +24,11 @@ imports:
  &#8226;   <a href="#app.crud.insert_config">app.crud.insert_config</a>
  &#8226;   <a href="#app.db.schema">app.db.schema</a>
  &#8226;   <a href="#app.db.session">app.db.session</a>
+ &#8226;   <a href="#app.routes">app.routes</a>
+ &#8226;   <a href="#app.routes.email">app.routes.email</a>
+ &#8226;   <a href="#app.routes.folder_config">app.routes.folder_config</a>
+ &#8226;   <a href="#app.routes.license">app.routes.license</a>
+ &#8226;   <a href="#app.routes.matricule">app.routes.matricule</a>
  &#8226;   <a href="#app.routes.odbc">app.routes.odbc</a>
  &#8226;   <a href="#codecs">codecs</a>
  &#8226;   <a href="#collections">collections</a>
@@ -4304,6 +4309,10 @@ imports:
   <div class="import">
 imported by:
     <a href="#app.crud.insert_config">app.crud.insert_config</a>
+ &#8226;   <a href="#app.routes.email">app.routes.email</a>
+ &#8226;   <a href="#app.routes.folder_config">app.routes.folder_config</a>
+ &#8226;   <a href="#app.routes.license">app.routes.license</a>
+ &#8226;   <a href="#app.routes.matricule">app.routes.matricule</a>
  &#8226;   <a href="#app.routes.odbc">app.routes.odbc</a>
  &#8226;   <a href="#test">test</a>
 
@@ -4326,6 +4335,10 @@ imports:
   <div class="import">
 imported by:
     <a href="#app.crud.insert_config">app.crud.insert_config</a>
+ &#8226;   <a href="#app.routes.email">app.routes.email</a>
+ &#8226;   <a href="#app.routes.folder_config">app.routes.folder_config</a>
+ &#8226;   <a href="#app.routes.license">app.routes.license</a>
+ &#8226;   <a href="#app.routes.matricule">app.routes.matricule</a>
  &#8226;   <a href="#app.routes.odbc">app.routes.odbc</a>
  &#8226;   <a href="#main.py">main.py</a>
 
@@ -4347,6 +4360,10 @@ imports:
   <div class="import">
 imported by:
     <a href="#app.db.models">app.db.models</a>
+ &#8226;   <a href="#app.routes.email">app.routes.email</a>
+ &#8226;   <a href="#app.routes.folder_config">app.routes.folder_config</a>
+ &#8226;   <a href="#app.routes.license">app.routes.license</a>
+ &#8226;   <a href="#app.routes.matricule">app.routes.matricule</a>
  &#8226;   <a href="#app.routes.odbc">app.routes.odbc</a>
  &#8226;   <a href="#main.py">main.py</a>
  &#8226;   <a href="#test">test</a>
@@ -4357,15 +4374,108 @@ imported by:
 
 <div class="node">
   <a name="app.routes"></a>
-  <a target="code" href="-" type="text/plain"><tt>app.routes</tt></a>
-<span class="moduletype">NamespacePackage</span>  <div class="import">
+  <a target="code" href="///C:/Users/DIGITAL%20MARKET/Documents/eletronApp/backend/app/routes/__init__.py" type="text/plain"><tt>app.routes</tt></a>
+<span class="moduletype">Package</span>  <div class="import">
 imports:
     <a href="#app">app</a>
+ &#8226;   <a href="#app.routes.folder_config">app.routes.folder_config</a>
 
   </div>
   <div class="import">
 imported by:
-    <a href="#app.routes.odbc">app.routes.odbc</a>
+    <a href="#app.routes.email">app.routes.email</a>
+ &#8226;   <a href="#app.routes.folder_config">app.routes.folder_config</a>
+ &#8226;   <a href="#app.routes.license">app.routes.license</a>
+ &#8226;   <a href="#app.routes.matricule">app.routes.matricule</a>
+ &#8226;   <a href="#app.routes.odbc">app.routes.odbc</a>
+ &#8226;   <a href="#main.py">main.py</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="app.routes.email"></a>
+  <a target="code" href="///C:/Users/DIGITAL%20MARKET/Documents/eletronApp/backend/app/routes/email.py" type="text/plain"><tt>app.routes.email</tt></a>
+<span class="moduletype">SourceModule</span>  <div class="import">
+imports:
+    <a href="#app.db.models">app.db.models</a>
+ &#8226;   <a href="#app.db.schema">app.db.schema</a>
+ &#8226;   <a href="#app.db.session">app.db.session</a>
+ &#8226;   <a href="#app.routes">app.routes</a>
+ &#8226;   <a href="#fastapi">fastapi</a>
+ &#8226;   <a href="#sqlalchemy.orm">sqlalchemy.orm</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#main.py">main.py</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="app.routes.folder_config"></a>
+  <a target="code" href="///C:/Users/DIGITAL%20MARKET/Documents/eletronApp/backend/app/routes/folder_config.py" type="text/plain"><tt>app.routes.folder_config</tt></a>
+<span class="moduletype">SourceModule</span>  <div class="import">
+imports:
+    <a href="#app.db.models">app.db.models</a>
+ &#8226;   <a href="#app.db.schema">app.db.schema</a>
+ &#8226;   <a href="#app.db.session">app.db.session</a>
+ &#8226;   <a href="#app.routes">app.routes</a>
+ &#8226;   <a href="#fastapi">fastapi</a>
+ &#8226;   <a href="#hashlib">hashlib</a>
+ &#8226;   <a href="#sqlalchemy.orm">sqlalchemy.orm</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#app.routes">app.routes</a>
+ &#8226;   <a href="#main.py">main.py</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="app.routes.license"></a>
+  <a target="code" href="///C:/Users/DIGITAL%20MARKET/Documents/eletronApp/backend/app/routes/license.py" type="text/plain"><tt>app.routes.license</tt></a>
+<span class="moduletype">SourceModule</span>  <div class="import">
+imports:
+    <a href="#app.db.models">app.db.models</a>
+ &#8226;   <a href="#app.db.schema">app.db.schema</a>
+ &#8226;   <a href="#app.db.session">app.db.session</a>
+ &#8226;   <a href="#app.routes">app.routes</a>
+ &#8226;   <a href="#app.secret_generator">app.secret_generator</a>
+ &#8226;   <a href="#fastapi">fastapi</a>
+ &#8226;   <a href="#sqlalchemy.orm">sqlalchemy.orm</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#main.py">main.py</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="app.routes.matricule"></a>
+  <a target="code" href="///C:/Users/DIGITAL%20MARKET/Documents/eletronApp/backend/app/routes/matricule.py" type="text/plain"><tt>app.routes.matricule</tt></a>
+<span class="moduletype">SourceModule</span>  <div class="import">
+imports:
+    <a href="#app.db.models">app.db.models</a>
+ &#8226;   <a href="#app.db.schema">app.db.schema</a>
+ &#8226;   <a href="#app.db.session">app.db.session</a>
+ &#8226;   <a href="#app.routes">app.routes</a>
+ &#8226;   <a href="#fastapi">fastapi</a>
+ &#8226;   <a href="#sqlalchemy.orm">sqlalchemy.orm</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#main.py">main.py</a>
 
   </div>
 
@@ -4406,7 +4516,8 @@ imports:
   </div>
   <div class="import">
 imported by:
-    <a href="#test">test</a>
+    <a href="#app.routes.license">app.routes.license</a>
+ &#8226;   <a href="#test">test</a>
 
   </div>
 
@@ -10986,7 +11097,11 @@ imports:
   </div>
   <div class="import">
 imported by:
-    <a href="#app.routes.odbc">app.routes.odbc</a>
+    <a href="#app.routes.email">app.routes.email</a>
+ &#8226;   <a href="#app.routes.folder_config">app.routes.folder_config</a>
+ &#8226;   <a href="#app.routes.license">app.routes.license</a>
+ &#8226;   <a href="#app.routes.matricule">app.routes.matricule</a>
+ &#8226;   <a href="#app.routes.odbc">app.routes.odbc</a>
  &#8226;   <a href="#fastapi._compat">fastapi._compat</a>
  &#8226;   <a href="#fastapi.applications">fastapi.applications</a>
  &#8226;   <a href="#fastapi.background">fastapi.background</a>
@@ -12690,7 +12805,8 @@ imports:
   </div>
   <div class="import">
 imported by:
-    <a href="#app.secret_generator">app.secret_generator</a>
+    <a href="#app.routes.folder_config">app.routes.folder_config</a>
+ &#8226;   <a href="#app.secret_generator">app.secret_generator</a>
  &#8226;   <a href="#hmac">hmac</a>
  &#8226;   <a href="#pyodbc">pyodbc</a>
  &#8226;   <a href="#random">random</a>
@@ -29807,6 +29923,10 @@ imported by:
     <a href="#app.crud.insert_config">app.crud.insert_config</a>
  &#8226;   <a href="#app.db.models">app.db.models</a>
  &#8226;   <a href="#app.db.session">app.db.session</a>
+ &#8226;   <a href="#app.routes.email">app.routes.email</a>
+ &#8226;   <a href="#app.routes.folder_config">app.routes.folder_config</a>
+ &#8226;   <a href="#app.routes.license">app.routes.license</a>
+ &#8226;   <a href="#app.routes.matricule">app.routes.matricule</a>
  &#8226;   <a href="#app.routes.odbc">app.routes.odbc</a>
  &#8226;   <a href="#main.py">main.py</a>
  &#8226;   <a href="#sqlalchemy">sqlalchemy</a>

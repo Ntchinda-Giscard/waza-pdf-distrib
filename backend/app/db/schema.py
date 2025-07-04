@@ -63,3 +63,12 @@ class EmailConfigAdd(BaseModel):
 
 class LicenseConfigAdd(BaseModel):
     license: Optional[str] = None
+
+
+class DatabaseConfigAdd(BaseModel):
+    main_folder: Optional[str] = None
+    subfolder_name: Optional[str] = None
+    link_database: Optional[str] = None
+
+class DatabaseConfigDelete(BaseModel):
+    subfolder_name: Optional[str] = None

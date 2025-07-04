@@ -229,7 +229,26 @@
    'C:\\Users\\DIGITAL '
    'MARKET\\Documents\\eletronApp\\backend\\app\\db\\session.py',
    'PYMODULE'),
-  ('app.routes', '-', 'PYMODULE'),
+  ('app.routes',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\app\\routes\\__init__.py',
+   'PYMODULE'),
+  ('app.routes.email',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\app\\routes\\email.py',
+   'PYMODULE'),
+  ('app.routes.folder_config',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\app\\routes\\folder_config.py',
+   'PYMODULE'),
+  ('app.routes.license',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\app\\routes\\license.py',
+   'PYMODULE'),
+  ('app.routes.matricule',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\app\\routes\\matricule.py',
+   'PYMODULE'),
   ('app.routes.odbc',
    'C:\\Users\\DIGITAL '
    'MARKET\\Documents\\eletronApp\\backend\\app\\routes\\odbc.py',

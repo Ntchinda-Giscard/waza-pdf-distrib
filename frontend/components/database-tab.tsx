@@ -21,9 +21,9 @@ export function DatabaseTab() {
     fetchOdbcSources,
   } = useAppStore()
 
-  // useEffect(() => {
-  //   fetchOdbcSources()
-  // }, [])
+  useEffect(() => {
+    fetchOdbcSources()
+  }, [])
 
   const [isEditing, setIsEditing] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(false)
@@ -81,6 +81,24 @@ export function DatabaseTab() {
   setIsLoading(false)
   }
 
+  const handleDelete = async () => {
+    formData.odbcSource = ""
+    if (!isEditing) {
+      // Show confirmation dialog
+        const response = await fetch("http://127.0.0.1:8000/odbc/delete", {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+        })
+        if (!response.ok) {
+          toast.error("Échec de la suppression de la connexion à la base de données")
+          throw new Error("Failed to delete database connection")
+        }
+        toast.success("Connexion supprimée avec succès")
+    }
+  }
+
   const handleEdit = (connection: DatabaseConnection) => {
     setFormData(connection)
     setIsEditing(connection.id)
@@ -116,15 +134,16 @@ export function DatabaseTab() {
             <RadioGroup
               value={formData.connectionType}
               onValueChange={(value: ConnectionType) => setFormData({ ...formData, connectionType: value })}
+              className=""
             >
               <div className="flex items-center space-x-2">
-                <RadioGroupItem value="odbc"  id="odbc" />
+                <RadioGroupItem value="odbc" className="bg-blue-500"  id="odbc" />
                 <Label htmlFor="odbc" className="text-gray-300">
                   Connexion ODBC
                 </Label>
               </div>
               <div className="flex items-center space-x-2">
-                <RadioGroupItem value="native" id="native" />
+                <RadioGroupItem value="native" className="bg-blue-500" id="native" />
                 <Label htmlFor="native" className="text-gray-300">
                   Connexion SQL Native
                 </Label>
@@ -265,7 +284,10 @@ export function DatabaseTab() {
                     <Button
                       size="sm"
                       variant="outline"
-                      onClick={() => removeDatabaseConnection(connection.id)}
+                      onClick={() => {
+                        handleDelete()
+                        removeDatabaseConnection(connection.id)
+                      }}
                       className="border-red-700 text-red-400 hover:bg-red-900"
                     >
                       <Trash2 className="w-4 h-4" />

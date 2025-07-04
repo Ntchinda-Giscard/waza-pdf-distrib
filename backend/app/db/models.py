@@ -52,6 +52,9 @@ class DatabaseServer(Base):
 class DatabaseConfig(Base):
     __tablename__ = "database_configs"
     id = Column(Integer, primary_key=True, index=True)
+    main_folder = Column(String, nullable=True)
+    subfolder_name = Column(String, nullable=True)
+    link_database = Column(String, nullable=True)
 
 
 class MatriculeConfig(Base):

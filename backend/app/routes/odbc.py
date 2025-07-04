@@ -68,6 +68,11 @@ async def list_odbc_sources():
     return {"odbc_sources": sources}
 
 
+@odbc_router.delete("/delete")
+async def delete_odbc_source(db: Session = Depends(get_db)):
+    db.query(DatabaseServer).delete()
+    db.commit()
+
 @odbc_router.post("/add-odbc")
 async def add_database(input: DatabaseServerAdd, db: Session = Depends(get_db)):
     result = add_database_server(input, db)

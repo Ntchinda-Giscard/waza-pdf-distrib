@@ -184,7 +184,7 @@ export function FoldersTab() {
     }
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     console.log("Submitting form data:", formData)
     
     // Basic validation
@@ -192,6 +192,19 @@ export function FoldersTab() {
       toast.error("Veuillez remplir tous les champs obligatoires")
       return
     }
+    const data = {
+  main_folder: formData.mainFolder,
+  subfolder_name: formData.subFolder,
+  link_database: formData.linkedDatabase
+}
+
+    const response = await fetch("http://127.0.0.1:8000/folder-config/add", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
 
     if (isEditing) {
       updateFolderDatabaseLink(isEditing, formData)
@@ -246,6 +259,18 @@ export function FoldersTab() {
       isSageDatabase: false,
     })
     setAvailableSubfolders([])
+  }
+
+  const handleDelete = async (subFolder: string) => {
+    // Show confirmation dialog
+    // http://127.0.0.1:8000/folder-config/delete
+    const response = await fetch("http://127.0.0.1:8000/folder-config/delete", {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+            body: JSON.stringify({ subfolder_name:  subFolder })
+        })
   }
 
   // Function to construct absolute path from file path
@@ -722,7 +747,10 @@ export function FoldersTab() {
                           <Button
                             size="sm"
                             variant="outline"
-                            onClick={() => removeFolderDatabaseLink(link.id)}
+                            onClick={() => {
+                                handleDelete(link.subFolder)
+                                removeFolderDatabaseLink(link.id)
+                            }}
                             className="border-red-700 text-red-400 hover:bg-red-900"
                           >
                             <Trash2 className="w-4 h-4" />
