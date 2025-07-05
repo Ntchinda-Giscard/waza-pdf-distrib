@@ -302,7 +302,7 @@ def run_pdf_automation():
                     conn, user_configs.table_name, m, user_configs.email_field, user_configs.license_field, folder_path
                 )
                 email = results[0].get("EMail")
-                logger.info(f" Query result: {email}")
+                logger.info(f" Queried email: {email}")
 
                 
                 if results:
@@ -310,7 +310,7 @@ def run_pdf_automation():
                     if not email:
                         logger.warning(f" No email found for {m}")
                         continue
-                    logger.info(f" Query result: {email}")
+                    logger.info(f" Queried email: {email}")
                     logger.info(f" File location: {matricules_w_path[m]}")
                     send_email(
                         email_receiver=email,

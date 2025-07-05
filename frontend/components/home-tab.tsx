@@ -1,12 +1,101 @@
 "use client"
 
-import { Play, CheckCircle, AlertCircle } from "lucide-react"
+import { Play, CheckCircle, AlertCircle, FolderOpen } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useAppStore } from "@/lib/store"
 import { cn } from "@/lib/utils"
+import { useState } from "react"
+import { toast } from "sonner"
 
 export function HomeTab() {
-  const { isLicenseActive, startPayrollDistribution, databaseConnections, folderDatabaseLinks } = useAppStore()
+  const { isLicenseActive, startPayrollDistribution, databaseConnections, folderDatabaseLinks, emailConfig } = useAppStore()
+  const [loading, setLoading] = useState(false);
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [progress, setProgress] = useState<number>(0);
+  const [status, setStatus] = useState<string>("");
+
+
+  // const handlePayrollDistribution = async() =>{
+  //   const response = await fetch("http://127.0.0.1:8000/run/automation", {
+  //       method: 'POST',
+  //       headers: {
+  //           'Content-Type': 'application/json'
+  //       },
+  //   })
+  // }
+
+  const handlePayrollDistribution = async () => {
+    setIsLoading(true);
+    setProgress(0);
+    setStatus("Initialisation...");
+
+    try {
+      const response = await fetch("http://127.0.0.1:8000/run/automation", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+      });
+
+      if (!response.body) {
+        throw new Error("Aucune réponse retournée.");
+      }
+
+      const reader = response.body
+        .pipeThrough(new TextDecoderStream())
+        .pipeThrough(splitStream("\n"));
+
+      const streamReader = reader.getReader();
+
+      while (true) {
+        const { value, done } = await streamReader.read();
+        if (done) break;
+        if (!value) continue;
+
+        try {
+          const msg = JSON.parse(value);
+          if (msg.error) {
+            toast.error(msg.error);
+            setStatus(msg.error);
+          } else {
+            if (typeof msg.progress === "number") setProgress(msg.progress);
+
+            if (msg.matricule) {
+              setStatus(`📄 Matricule: ${msg.matricule} → 📧 ${msg.email || "Aucun email"}`);
+            }
+
+            if (msg.message) setStatus(msg.message);
+          }
+        } catch (e) {
+          console.warn("Chunk parse error", e);
+        }
+      }
+
+      toast.success("🎉 Distribution terminée !");
+      setStatus("✅ Distribution complétée");
+    } catch (err) {
+      toast.error("❌ Erreur durant la distribution");
+      console.error(err);
+      setStatus("Erreur de communication serveur");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleOpenFolder = async () =>{
+        
+    if (folderDatabaseLinks[0]?.logFolder){
+      try{
+        setLoading(true);
+        const result = await window.electronAPI.openFolder(folderDatabaseLinks[0]?.logFolder)
+        setLoading(false);
+      }catch(error){
+        setLoading(false);
+      }finally{
+        setLoading(false);
+      }
+
+    }
+  }
 
   const isConfigurationComplete = () => {
     return databaseConnections.length > 0 && folderDatabaseLinks.length > 0
@@ -66,8 +155,8 @@ export function HomeTab() {
 
         {/* Main Action Button */}
         <Button
-          onClick={startPayrollDistribution}
-          disabled={!isLicenseActive || !isConfigurationComplete()}
+          onClick={handlePayrollDistribution}
+          disabled={!isLicenseActive || !isConfigurationComplete() || !emailConfig }
           size="lg"
           className="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white py-4 text-lg font-medium transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
         >
@@ -75,14 +164,54 @@ export function HomeTab() {
           Lancer l'Envoi des Bulletin
         </Button>
 
+        <Button
+          onClick={handleOpenFolder}
+          // disabled={!isLicenseActive || !isConfigurationComplete()}
+          disabled={loading}
+          size="lg"
+          className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white py-4 text-lg font-medium transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+        >
+          <FolderOpen className="w-5 h-5 mr-2" />
+          Ouvrir dossier de journalisation
+        </Button>
+        {isLoading && (
+        <div className="space-y-2">
+          <div className="w-full h-3 bg-gray-200 rounded-full overflow-hidden">
+            <div
+              className="h-full bg-blue-600 transition-all duration-300"
+              style={{ width: `${progress}%` }}
+            />
+          </div>
+          <p className="text-sm text-muted-foreground">{status}</p>
+        </div>
+      )}
+
         {(!isLicenseActive || !isConfigurationComplete()) && (
           <div className="text-xs text-gray-500 space-y-1">
             {!isLicenseActive && <p>• Activez votre licence</p>}
             {databaseConnections.length === 0 && <p>• Configurez au moins une base de données</p>}
             {folderDatabaseLinks.length === 0 && <p>• Configurez au moins une liaison dossier/BDD</p>}
+            {!emailConfig && <p>• Configurer votre serveur mail</p>}
           </div>
         )}
       </div>
     </div>
   )
+}
+
+
+// Utilitaire pour découper le stream ligne par ligne
+function splitStream(delimiter: string) {
+  let buffer = "";
+  return new TransformStream<string, string>({
+    transform(chunk, controller) {
+      buffer += chunk;
+      const parts = buffer.split(delimiter);
+      buffer = parts.pop()!;
+      for (const part of parts) controller.enqueue(part);
+    },
+    flush(controller) {
+      if (buffer) controller.enqueue(buffer);
+    },
+  });
 }

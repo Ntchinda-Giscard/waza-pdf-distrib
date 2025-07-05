@@ -1,4 +1,4 @@
-const { app, BrowserWindow, dialog, ipcMain } = require("electron")
+const { app, BrowserWindow, dialog, ipcMain, shell  } = require("electron")
 const { spawn, exec } = require("child_process")
 const fs = require('fs');
 const fsPromises = require('fs').promises; // For async operations like stat, readdir
@@ -614,6 +614,34 @@ ipcMain.handle('scan-subfolders', async (event, rootPath) => {
     return []; // Return empty array on error
   }
 });
+
+// IPC handler to open a folder with custom path
+ipcMain.handle('open-folder', async (event, folderPath) => {
+  try {
+    // Validate that folderPath is provided
+    if (!folderPath) {
+      throw new Error('Folder path is required');
+    }
+    
+    // Resolve the path (can be relative or absolute)
+    const resolvedPath = path.resolve(folderPath);
+    
+    // Check if directory exists
+    if (!fs.existsSync(resolvedPath)) {
+      // Create the directory if it doesn't exist
+      fs.mkdirSync(resolvedPath, { recursive: true });
+    }
+    
+    // Open the folder in the system's default file manager
+    await shell.openPath(resolvedPath);
+    
+    return { success: true, path: resolvedPath };
+  } catch (error) {
+    console.error('Error opening folder:', error);
+    return { success: false, error: error.message };
+  }
+});
+
 
 // ipcMain.handle('scan-subfolders', async (rootPath) => {
 //   try {

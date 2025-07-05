@@ -29,8 +29,9 @@ export function DatabaseTab() {
   const [isLoading, setIsLoading] = useState(false)
   const [formData, setFormData] = useState<Partial<DatabaseConnection>>({
     connectionType: "odbc",
-    username: "",
-    password: "",
+    username: databaseConnections[0]?.username,
+    password: databaseConnections[0]?.password,
+    odbcSource: databaseConnections[0]?.odbcSource,
   })
 
   const handleSubmit = async () => {

@@ -176,6 +176,7 @@ async def distribution_automation(db: Session = Depends(get_db)):
                 matricules, matricules_w_path = extract_text(
                     file_path=file_path,
                     archive_path=archive_dir,
+                    archive_file_dir=subfolder.archive_folder,
                     journal_dir=journal_dir,
                     num_chars=matricule_config.number_of_character,
                     reference=matricule_config.ref_text

@@ -37,6 +37,9 @@ export function FoldersTab() {
     linkedDatabase: "",
     archiveFolder: "",
     logFolder: "",
+    tableName: "T_SAL",
+    matriculeField: "MatriculeSalarie",
+    emailField: "EMail",
     isSageDatabase: false,
   })
   const [availableSubfolders, setAvailableSubfolders] = useState<string[]>([])
@@ -193,9 +196,14 @@ export function FoldersTab() {
       return
     }
     const data = {
-  main_folder: formData.mainFolder,
-  subfolder_name: formData.subFolder,
-  link_database: formData.linkedDatabase
+        main_folder: formData.mainFolder,
+        subfolder_name: formData.subFolder,
+        link_database: formData.linkedDatabase,
+        archive_folder: formData.archiveFolder,
+        log_folder: formData.logFolder,
+        tablename: formData.tableName,
+        matricule_field: formData.matriculeField,
+        email_field: formData.emailField
 }
 
     const response = await fetch("http://127.0.0.1:8000/folder-config/add", {
@@ -207,8 +215,32 @@ export function FoldersTab() {
     })
 
     if (isEditing) {
+        const data = {
+        main_folder: formData.mainFolder,
+        subfolder_name: formData.subFolder,
+        link_database: formData.linkedDatabase,
+        archive_folder: formData.archiveFolder,
+        log_folder: formData.logFolder,
+        tablename: formData.tableName,
+        matricule_field: formData.matriculeField,
+        email_field: formData.emailField
+}
       updateFolderDatabaseLink(isEditing, formData)
-      toast.success(`Folder updated successfully (${formData.mainFolder})`)
+      const response = await fetch("http://127.0.0.1:8000/folder-config/update", {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    if(!response.ok) {
+        const errorData = await response.json()
+        const errorMessage = errorData.detail || "Erreur inconnue"
+        toast.error(`Échec de la mise à jour: ${errorMessage}`)
+        console.error("Failed to update folder database link:", errorData)
+        return
+    }
+      toast.success(`Configuration mise à jour avec succès: (${formData.mainFolder})`)
       setIsEditing(null)
     } else {
       addFolderDatabaseLink(formData as Omit<FolderDatabaseLink, "id">)
@@ -565,7 +597,7 @@ export function FoldersTab() {
               className="bg-gray-800 border-gray-700 text-white"
               placeholder="Entrer le nom de la base de données"
             />
-            <p className="text-xs text-gray-400">Chaque sous-dossier peut avoir plusieurs bases de données liées</p>
+            <p className="text-xs text-gray-400">Chaque sous-dossier ne peut avoir qu'une seule base de données liée</p>
           </div>
 
           {/* Archive and Log Folders */}

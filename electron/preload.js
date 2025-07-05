@@ -21,7 +21,11 @@ contextBridge.exposeInMainWorld('electronAPI', {
   scanSubFolders: (path) => {
     console.log('Preload: Frontend requested folder scan for:', path);
     return ipcRenderer.invoke('scan-subfolders', path);
-  }
+  },
+  openFolder: (path) => {
+    console.log('Preload: Frontend requested folder open for:', path);
+    return ipcRenderer.invoke('open-folder', path);
+  },
 });
 
 
