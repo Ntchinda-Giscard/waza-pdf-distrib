@@ -9,6 +9,7 @@ def send_email(
     server='smtp.gmail.com',
     email_sender="ntchinda1998@gmail.com",
     email_password="adlp aqvr qxek htdh",
+    port: int = 465,
     attachments: list[str] = None  # list of file paths to attach
 ):
     subject="Votre bulletin de paie"
@@ -53,7 +54,7 @@ Cordialement,"""
 
     # Send via Gmail SMTP
     context = ssl.create_default_context()
-    with smtplib.SMTP_SSL(server, 465, context=context) as smtp:
+    with smtplib.SMTP_SSL(server, port, context=context) as smtp:
         try:
             smtp.login(email_sender, email_password)
         except Exception as e:

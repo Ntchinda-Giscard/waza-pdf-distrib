@@ -102,7 +102,7 @@ export function HomeTab() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center h-full p-8">
+    <div className="flex flex-col items-center overflow-y-scroll justify-center h-full p-8">
       <div className="max-w-md w-full space-y-8 text-center">
         {/* Header */}
         <div className="space-y-4">

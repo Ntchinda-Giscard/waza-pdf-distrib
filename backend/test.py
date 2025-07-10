@@ -119,28 +119,62 @@ def extract_pdf_text(file_path, reference, num_chars, folder_path, journal_dir):
 
 def fetch_by_matricule(conn, table, matricule_value, email_field, matricule_field="MatriculeSalarie", journal_dir=None):
     today = datetime.date.today().isoformat()
-    os.makedirs(journal_dir, exist_ok=True)
-    journal_filename = f"journal-traitement-{today}.txt"
-    journal_path = os.path.join(journal_dir, journal_filename)
+    if journal_dir:
+        os.makedirs(journal_dir, exist_ok=True)
+        journal_filename = f"journal-traitement-{today}.txt"
+        journal_path = os.path.join(journal_dir, journal_filename)
+    
     cursor = conn.cursor()
-    sql = f"SELECT {email_field} FROM {table} WHERE {matricule_field} = ?"
+    logger.info(f"Searching for matricule '{matricule_value}' in table '{table}' using field '{matricule_field}'")
+    
+    # Query to fetch the employee record
+    sql = f"SELECT {email_field}, {matricule_field} FROM {table} WHERE {matricule_field} = ?"
     cursor.execute(sql, (matricule_value,))
+    
+    # Get column names and fetch results
     cols = [col[0] for col in cursor.description]
     rows = cursor.fetchall()
-    logger.info(f" Row found in db: {rows}")
+    
+    # Log what we found
+    logger.info(f"Query executed: {sql} with parameter: {matricule_value}")
+    logger.info(f"Rows found in database: {rows}")
+    
+    # Convert to dictionary format for easier access
     results = [dict(zip(cols, row)) for row in rows]
-    logger.info(f" Query result: {results}")
-    # If no email found, log in French
-    if not results or not results[0].get(email_field):
+    logger.info(f"Query results as dict: {results}")
+    
+    # Check if employee was found
+    if not results:
+        msg = f"No employee found with matricule '{matricule_value}'"
+        logger.warning(msg)
+        if journal_dir:
+            with open(journal_path, "a", encoding="utf-8") as journal_file:
+                journal_file.write(f"{datetime.datetime.now().isoformat()} - Aucun employé trouvé pour le matricule '{matricule_value}'\n")
+        return None
+    
+    # Employee found, now check email
+    employee = results[0]
+    logger.info(f"Employee found: {employee}")
+    
+    email = employee.get(email_field)
+    logger.info(f"Email tied to matricule '{matricule_value}': {email}")
+    
+    # Check if email exists and is not empty
+    if not email or email.strip() == "":
+        msg = f"Employee found but no email available for matricule '{matricule_value}'"
+        logger.warning(msg)
+        if journal_dir:
+            with open(journal_path, "a", encoding="utf-8") as journal_file:
+                journal_file.write(f"{datetime.datetime.now().isoformat()} - Employé trouvé mais aucun email pour le matricule '{matricule_value}'\n")
+        return None
+    
+    # Email found - log success and return just the email
+    logger.info(f"Email successfully found for matricule '{matricule_value}': {email}")
+    if journal_dir:
         with open(journal_path, "a", encoding="utf-8") as journal_file:
-            msg = f"{datetime.datetime.now().isoformat()} - Aucun email trouvé pour le matricule '{matricule_value}'\n"
-            journal_file.write(msg)
-    else:
-        with open(journal_path, "a", encoding="utf-8") as journal_file:
-            msg = f"{datetime.datetime.now().isoformat()} - Email trouvé pour le matricule '{matricule_value}': {results[0].get(email_field)}\n"
-            journal_file.write(msg)
-
-    return results
+            journal_file.write(f"{datetime.datetime.now().isoformat()} - Email trouvé pour le matricule '{matricule_value}': {email}\n")
+    
+    return email.strip()  # Return only the email as a string
 
 def connect_to_mssql(server, database, username, password):
     try:

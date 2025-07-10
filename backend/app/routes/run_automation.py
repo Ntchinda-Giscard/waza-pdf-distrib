@@ -189,23 +189,23 @@ async def distribution_automation(db: Session = Depends(get_db)):
                         return
 
                     number_process -= 1
-                    results = fetch_by_matricule(
+                    result = fetch_by_matricule(
                         conn, subfolder.tablename, matricule,
                         subfolder.email_field, subfolder.matricule_field, subfolder.log_folder
                     )
-                    email = results[0].get("EMail") if results else None
 
-                    if not email:
+                    if not result:
                         async for msg in emit_progress(matricule=matricule, email=None):
                             yield msg
                         continue
 
                     send_email(
-                        email_receiver=email,
+                        email_receiver=result,
                         attachments=[matricules_w_path[matricule]],
                         email_sender=email_config.user_name,
                         email_password=email_config.password,
-                        server=email_config.smtp_server
+                        server=email_config.smtp_server,
+                        port=email_config.port
                     )
 
                     async for msg in emit_progress(matricule=matricule, email=email):

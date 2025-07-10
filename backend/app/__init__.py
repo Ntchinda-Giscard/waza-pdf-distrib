@@ -79,6 +79,7 @@ def extract_text(file_path, reference, num_chars, archive_path, journal_dir, arc
     # Create directories if they don't exist
     os.makedirs(archive_path, exist_ok=True)
     os.makedirs(journal_dir, exist_ok=True)
+    milis = datetime.datetime.now().microsecond // 1000
 
     try:
         with fitz.open(file_path) as doc:
@@ -113,8 +114,11 @@ def extract_text(file_path, reference, num_chars, archive_path, journal_dir, arc
                 pages_matricules.append(matricule)
 
         # move the file to the archive_file_dir without renaming it
-        os.rename(file_path, os.path.join(archive_file_dir, os.path.basename(file_path)))
-
+        # try:
+        #     os.rename(file_path, os.path.join(archive_file_dir, os.path.basename(file_path)))
+        # except Exception as e:
+        #     logger.error(f" Error moving {file_path}: {e}")
+        #     pass
     except Exception as e:
         logger.error(f" Error processing {file_path}: {e}")
         return [f" Error processing {file_path}: {e}"], {}
