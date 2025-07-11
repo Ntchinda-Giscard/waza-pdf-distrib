@@ -20,7 +20,7 @@ async def get_folder_config(input: DatabaseConfigAdd, db: Session = Depends(get_
         folder_config = db.query(DatabaseConfig).filter(DatabaseConfig.subfolder_name == input.subfolder_name).first()
         if folder_config:
             db.delete(folder_config)
-            
+
         new_config = DatabaseConfig(
             main_folder=input.main_folder,
             subfolder_name=input.subfolder_name,
@@ -47,12 +47,12 @@ async def update_folder_config(input: DatabaseConfigAdd, db: Session = Depends(g
     
     if folder_config:
         folder_config.main_folder = input.main_folder
-        folder_config.link_database = input.link_database
+        folder_config.link_database = input.link_database.strip()
         folder_config.archive_folder = input.archive_folder
         folder_config.log_folder = input.log_folder
-        folder_config.tablename = input.tablename
-        folder_config.matricule_field = input.matricule_field
-        folder_config.email_field = input.email_field
+        folder_config.tablename = input.tablename.strip()
+        folder_config.matricule_field = input.matricule_field.strip()
+        folder_config.email_field = input.email_field.strip()
         
         db.commit()
         db.refresh(folder_config)

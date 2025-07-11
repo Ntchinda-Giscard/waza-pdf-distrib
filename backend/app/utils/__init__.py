@@ -258,7 +258,7 @@ Pour vous aider à faire valoir vos droits, conservez ce bulletin de paie sans l
 Sage
 """
 
-def extract_text_after_reference(full_text: str, reference: str, num_chars: int, ignore_spaces_in_count: bool = False) -> str:
+def text_extractor(full_text: str, reference: str, num_chars: int, ignore_spaces_in_count: bool = False) -> str:
     idx = full_text.find(reference)
     if idx == -1:
         return ""
@@ -276,5 +276,5 @@ def extract_text_after_reference(full_text: str, reference: str, num_chars: int,
                     break
         return "".join(result)
 
-mat = extract_text_after_reference(text, "N° de Sécurité Sociale", 5)
+mat = text_extractor(text, "N° de Sécurité Sociale", 5)
 print(mat)

@@ -8,7 +8,7 @@ import stat
 import shutil
 from pathlib import Path
 from test import extract_text_after_reference  # PyMuPDF
-
+from app.utils import text_extractor
 
 # 🔗 Setup logging
 logging.basicConfig(
@@ -20,7 +20,7 @@ logger = logging.getLogger(__name__)
 
 
 def extract_text(file_path, reference, num_chars, archive_path, journal_dir, archive_file_dir):
-    logger.info(f"Reference text: {reference}, number of chars: {num_chars}")
+    
     pages_matricules = []
     matricule_with_path = {}
     today = datetime.date.today().isoformat()
@@ -52,7 +52,9 @@ def extract_text(file_path, reference, num_chars, archive_path, journal_dir, arc
                 # Extract text from the current page
                 page_text = page.get_text()
                 # logger.info(f"Text: {page_text}")
-                matricule = extract_text_after_reference(page_text, reference, num_chars)
+                logger.info(f"Reference text: {reference}, number of chars: {num_chars}")
+                matricule = text_extractor(page_text, reference, num_chars)
+                pages_matricules.append(matricule)
                 
                 # # Log the matricule finding result
                 # with open(journal_path, "a", encoding="utf-8") as journal_file:
@@ -79,7 +81,7 @@ def extract_text(file_path, reference, num_chars, archive_path, journal_dir, arc
                 
                 # # Store the matricule and path mapping
                 # matricule_with_path[matricule] = dest_pdf
-                # pages_matricules.append(matricule)
+                
                 
                 # logger.info(f"Created page PDF: {dest_pdf}")
                 
