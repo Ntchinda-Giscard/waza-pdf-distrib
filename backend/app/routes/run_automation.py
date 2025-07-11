@@ -207,14 +207,14 @@ async def distribution_automation(db: Session = Depends(get_db)):
                             yield msg
                         continue
 
-                    # send_email(
-                    #     email_receiver=result,
-                    #     attachments=[matricules_w_path[matricule]],
-                    #     email_sender=email_config.user_name,
-                    #     email_password=email_config.password,
-                    #     server=email_config.smtp_server,
-                    #     port=email_config.port
-                    # )
+                    send_email(
+                        email_receiver=result,
+                        attachments=[matricules_w_path[matricule]],
+                        email_sender=email_config.user_name,
+                        email_password=email_config.password,
+                        server=email_config.smtp_server,
+                        port=email_config.port
+                    )
 
                     async for msg in emit_progress(matricule=matricule, email=result):
                         yield msg
