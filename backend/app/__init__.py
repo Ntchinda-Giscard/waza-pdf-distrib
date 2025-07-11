@@ -51,7 +51,7 @@ def extract_text(file_path, reference, num_chars, archive_path, journal_dir, arc
             try:
                 # Extract text from the current page
                 page_text = page.get_text()
-                logger.info(f"Text: {page_text}")
+                # logger.info(f"Text: {page_text}")
                 matricule = extract_text_after_reference(page_text, reference, num_chars)
                 
                 # # Log the matricule finding result
@@ -81,7 +81,7 @@ def extract_text(file_path, reference, num_chars, archive_path, journal_dir, arc
                 # matricule_with_path[matricule] = dest_pdf
                 # pages_matricules.append(matricule)
                 
-                logger.info(f"Created page PDF: {dest_pdf}")
+                # logger.info(f"Created page PDF: {dest_pdf}")
                 
             except Exception as page_error:
                 logger.error(f"Error processing page {i+1}: {page_error}")

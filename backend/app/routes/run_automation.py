@@ -188,34 +188,36 @@ async def distribution_automation(db: Session = Depends(get_db)):
                     reference=matricule_config.ref_text
                 )
 
-                for matricule in matricules:
-                    if number_process <= 0:
-                        async for msg in emit_progress(error="⛔ Limite de licence atteinte."):
-                            yield msg
-                        return
+                logger.info(f"matricules: {matricules}")
 
-                    number_process -= 1
-                    result = fetch_by_matricule(
-                        conn, subfolder.tablename, matricule,
-                        subfolder.email_field, subfolder.matricule_field, subfolder.log_folder
-                    )
+                # for matricule in matricules:
+                #     if number_process <= 0:
+                #         async for msg in emit_progress(error="⛔ Limite de licence atteinte."):
+                #             yield msg
+                #         return
 
-                    if not result:
-                        async for msg in emit_progress(matricule=matricule, email=None):
-                            yield msg
-                        continue
+                #     number_process -= 1
+                #     result = fetch_by_matricule(
+                #         conn, subfolder.tablename, matricule,
+                #         subfolder.email_field, subfolder.matricule_field, subfolder.log_folder
+                #     )
 
-                    send_email(
-                        email_receiver=result,
-                        attachments=[matricules_w_path[matricule]],
-                        email_sender=email_config.user_name,
-                        email_password=email_config.password,
-                        server=email_config.smtp_server,
-                        port=email_config.port
-                    )
+                #     if not result:
+                #         async for msg in emit_progress(matricule=matricule, email=None):
+                #             yield msg
+                #         continue
 
-                    async for msg in emit_progress(matricule=matricule, email=result):
-                        yield msg
+                #     send_email(
+                #         email_receiver=result,
+                #         attachments=[matricules_w_path[matricule]],
+                #         email_sender=email_config.user_name,
+                #         email_password=email_config.password,
+                #         server=email_config.smtp_server,
+                #         port=email_config.port
+                #     )
+
+                #     async for msg in emit_progress(matricule=matricule, email=result):
+                #         yield msg
 
             # Final message
             yield (json.dumps({"progress": 100, "message": "✅ Terminé"}) + "\n").encode("utf-8")
