@@ -57,33 +57,32 @@ def extract_text(file_path, reference, num_chars, archive_path, journal_dir, arc
                 pages_matricules.append(matricule)
                 
                 # # Log the matricule finding result
-                # with open(journal_path, "a", encoding="utf-8") as journal_file:
-                #     if matricule:
-                #         log_msg = f"{datetime.datetime.now().isoformat()} - Page {i+1}: Found matricule '{matricule}'\n"
-                #         logger.info(f"Page {i+1}: Found matricule '{matricule}'")
-                #     else:
-                #         log_msg = f"{datetime.datetime.now().isoformat()} - Page {i+1}: No matricule found\n"
-                #         logger.warning(f"Page {i+1}: No matricule found")
-                #     journal_file.write(log_msg)
+                with open(journal_path, "a", encoding="utf-8") as journal_file:
+                    if matricule:
+                        log_msg = f"{datetime.datetime.now().isoformat()} - Page {i+1}: Found matricule '{matricule}'\n"
+                        logger.info(f"Page {i+1}: Found matricule '{matricule}'")
+                    else:
+                        log_msg = f"{datetime.datetime.now().isoformat()} - Page {i+1}: No matricule found\n"
+                        logger.warning(f"Page {i+1}: No matricule found")
+                    journal_file.write(log_msg)
                 
-                # # Create new PDF for this page
-                # new_pdf = fitz.open()  # Create a new empty PDF
-                # new_pdf.insert_pdf(doc, from_page=i, to_page=i)  # Insert current page
+                # Create new PDF for this page
+                new_pdf = fitz.open()  # Create a new empty PDF
+                new_pdf.insert_pdf(doc, from_page=i, to_page=i)  # Insert current page
                 
-                # # Generate safe filename
-                # matricule_safe = matricule if matricule else "NO_MATRICULE"
-                # pdf_filename = f"{matricule_safe}_page_{i+1}.pdf"
-                # dest_pdf = os.path.join(full_archive_path, pdf_filename)
+                # Generate safe filename
+                matricule_safe = matricule if matricule else "NO_MATRICULE"
+                pdf_filename = f"{matricule_safe}_page_{i+1}.pdf"
+                dest_pdf = os.path.join(full_archive_path, pdf_filename)
                 
-                # # Save the new PDF
-                # new_pdf.save(dest_pdf)
-                # created_files.append(dest_pdf)
+                # Save the new PDF
+                new_pdf.save(dest_pdf)
                 
-                # # Store the matricule and path mapping
-                # matricule_with_path[matricule] = dest_pdf
+                # Store the matricule and path mapping
+                matricule_with_path[matricule] = dest_pdf
                 
                 
-                # logger.info(f"Created page PDF: {dest_pdf}")
+                logger.info(f"Created page PDF: {dest_pdf}")
                 
             except Exception as page_error:
                 logger.error(f"Error processing page {i+1}: {page_error}")
@@ -209,6 +208,8 @@ def archive_original_file(file_path, archive_file_dir):
     except Exception as e:
         logger.error(f"Error archiving file {file_path}: {e}")
         return False
+
+
 # def extract_text(file_path, reference, num_chars, archive_path, journal_dir, archive_file_dir):
 #     """Extract matricule from PDF pages and save each page to a new PDF file
 #     with a filename based on the matricule and the original PDF filename.
