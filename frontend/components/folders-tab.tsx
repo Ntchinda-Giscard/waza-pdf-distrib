@@ -195,6 +195,11 @@ export function FoldersTab() {
       toast.error("Veuillez remplir tous les champs obligatoires")
       return
     }
+    const sub_folders = folderDatabaseLinks.find(( s ) => (s.subFolder === formData.subFolder))
+    if(sub_folders){
+      toast.error("Cette liaison à la base de données a déjà été ajoutée.")
+      return
+    }
     const data = {
         main_folder: formData.mainFolder,
         subfolder_name: formData.subFolder,
@@ -482,7 +487,7 @@ export function FoldersTab() {
       <input
         ref={mainFolderInputRef}
         type="file"
-        webkitdirectory=""
+        // webkitdirectory=""
         style={{ display: "none" }}
         onChange={handleMainFolderSelect}
         accept="*/*"
@@ -490,7 +495,7 @@ export function FoldersTab() {
       <input
         ref={archiveFolderInputRef}
         type="file"
-        webkitdirectory=""
+        // webkitdirectory=""
         style={{ display: "none" }}
         onChange={(e) => handleFolderSelect("archiveFolder", e)}
         accept="*/*"
@@ -498,7 +503,7 @@ export function FoldersTab() {
       <input
         ref={logFolderInputRef}
         type="file"
-        webkitdirectory=""
+        // webkitdirectory=""
         style={{ display: "none" }}
         onChange={(e) => handleFolderSelect("logFolder", e)}
         accept="*/*"
