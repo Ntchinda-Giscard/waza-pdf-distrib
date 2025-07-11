@@ -129,7 +129,7 @@ def fetch_by_matricule(conn, table, matricule_value, email_field, matricule_fiel
     
     # Query to fetch the employee record
     sql = f"SELECT {email_field}, {matricule_field} FROM {table} WHERE {matricule_field} = ?"
-    cursor.execute(sql, (matricule_value,))
+    cursor.execute(sql, (matricule_value.strip(),))
     
     # Get column names and fetch results
     cols = [col[0] for col in cursor.description]
