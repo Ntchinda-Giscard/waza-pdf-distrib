@@ -199,6 +199,8 @@ export function FoldersTab() {
     if(sub_folders){
       toast.error("Cette liaison à la base de données a déjà été ajoutée.")
       return
+    }else if(!sub_folders){
+      toast.success("Folder not found")
     }
     const data = {
         main_folder: formData.mainFolder,
@@ -301,13 +303,19 @@ export function FoldersTab() {
   const handleDelete = async (subFolder: string) => {
     // Show confirmation dialog
     // http://127.0.0.1:8000/folder-config/delete
-    const response = await fetch("http://127.0.0.1:8000/folder-config/delete", {
+    try{
+      const response = await fetch("http://127.0.0.1:8000/folder-config/delete", {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json'
           },
             body: JSON.stringify({ subfolder_name:  subFolder })
         })
+        toast.success(`Liaison supprimer avec succès`)
+    }catch(error){
+      toast.error(`Suppression impossible`)
+    }
+    
   }
 
   // Function to construct absolute path from file path
