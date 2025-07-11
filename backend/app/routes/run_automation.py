@@ -130,6 +130,12 @@ async def distribution_automation(db: Session = Depends(get_db)):
             number_process = decode_license_key(license.license)
             matricule_config = db.query(MatriculeConfig).one()
 
+            logger.info(f"Number of processes: {number_process}")
+            logger.info(f"Matricule config: {matricule_config}")
+            logger.info(f"Email config: {email_config}")
+            logger.info(f"Server info: {server_info}")
+            logger.info(f"Subfolders: {subfolders}")
+
             total_to_process = number_process
             processed = 0
 
@@ -208,7 +214,7 @@ async def distribution_automation(db: Session = Depends(get_db)):
                         port=email_config.port
                     )
 
-                    async for msg in emit_progress(matricule=matricule, email=email):
+                    async for msg in emit_progress(matricule=matricule, email=result):
                         yield msg
 
             # Final message
