@@ -150,10 +150,7 @@ def fetch_by_matricule(
 
     Returns:
     - str or None: The email if found, else None
-    """
-    import os
-    import datetime
-    
+    """    
     # Build fully-qualified table identifier
     fq_table = f"[{database_name.strip()}].[{schema_name.strip()}].[{table_name.strip()}]"
 
