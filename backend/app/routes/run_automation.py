@@ -200,8 +200,14 @@ async def distribution_automation(db: Session = Depends(get_db)):
 
                     number_process -= 1
                     result = fetch_by_matricule(
-                        conn, subfolder.tablename, matricule,
-                        subfolder.email_field, subfolder.matricule_field, subfolder.log_folder
+                        conn=conn,
+                        database_name=subfolder.link_database,
+                        schema_name='dbo',
+                        table_name=subfolder.tablename,
+                        matricule_value=matricule,
+                        email_field=subfolder.email_field, 
+                        matricule_field=subfolder.matricule_field, 
+                        journal_dir=subfolder.log_folder
                     )
 
                     if not result:
