@@ -1,5 +1,5 @@
 from hashlib import new
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from app.db.models import DatabaseConfig
 from app.db.schema import DatabaseConfigAdd, DatabaseConfigDelete
@@ -11,18 +11,31 @@ folder_router = APIRouter(
 )
 
 @folder_router.post("/add")
-async def get_folder_config(input: DatabaseConfigAdd, db: Session = Depends(get_db)):
+async def add_folder_config(input: DatabaseConfigAdd, db: Session = Depends(get_db)):
     """
-    Retrieve the folder configuration.
+    Add or update a folder configuration.
+    Replaces existing configuration if subfolder_name already exists.
     """
-    if(input.main_folder):
-        # Add new folder configuration
-        folder_config = db.query(DatabaseConfig).filter(DatabaseConfig.subfolder_name == input.subfolder_name).first()
-        if folder_config:
-            db.delete(folder_config)
+    # Validate that main_folder is provided
+    if not input.main_folder:
+        raise HTTPException(
+            status_code=400, 
+            detail="main_folder is required and cannot be empty"
+        )
+    
+    try:
+        # Check if configuration already exists for this subfolder
+        existing_config = db.query(DatabaseConfig).filter(
+            DatabaseConfig.subfolder_name == input.subfolder_name
+        ).first()
+        
+        if existing_config:
+            # Delete the existing configuration
+            db.delete(existing_config)
+            # Commit the deletion before adding new record
             db.commit()
-            db.refresh()
-
+        
+        # Create new configuration
         new_config = DatabaseConfig(
             main_folder=input.main_folder,
             subfolder_name=input.subfolder_name,
@@ -33,12 +46,26 @@ async def get_folder_config(input: DatabaseConfigAdd, db: Session = Depends(get_
             matricule_field=input.matricule_field,
             email_field=input.email_field
         )
+        
+        # Add and commit the new configuration
         db.add(new_config)
         db.commit()
+        
+        # Refresh the new object to get any database-generated fields
         db.refresh(new_config)
-        return new_config
-
-    return None
+        
+        return {
+            "message": "Folder configuration added successfully",
+            "config": new_config
+        }
+        
+    except Exception as e:
+        # Rollback any partial changes
+        db.rollback()
+        raise HTTPException(
+            status_code=500, 
+            detail=f"Failed to add folder configuration: {str(e)}"
+        )
 
 @folder_router.put("/update")
 async def update_folder_config(input: DatabaseConfigAdd, db: Session = Depends(get_db)):
