@@ -21,7 +21,7 @@ logger = logging.getLogger(__name__)
 
 
 
-def connect_to_database(dsn, username=None, password=None, database=None):
+def connect_to_database(dsn, database, tablename, email_field, username=None, password=None):
     """
     Connects to a SQL Server database using either Windows Authentication or SQL Server Authentication.
 
@@ -38,6 +38,7 @@ def connect_to_database(dsn, username=None, password=None, database=None):
         connection_str = f'DSN={dsn};'
         if database:
             connection_str += f'DATABASE={database};'
+            logger.info(f"====>Database: {database}")
 
         if username and password:
             logger.info(f"Connecting using SQL Server Authentication. DSN: {dsn}, Username: {username}")
@@ -45,8 +46,15 @@ def connect_to_database(dsn, username=None, password=None, database=None):
         else:
             logger.info(f"Connecting using Windows Authentication. DSN: {dsn}")
             connection_str += 'Trusted_Connection=yes;'
-
+        
+        logger.info(f" Connectioni string: {connection_str} ")
         conn = pyodbc.connect(connection_str)
+        cursor = conn.cursor()
+        sql = f"SELECT {email_field} FROM {tablename}"
+        cursor.execute(sql)
+        rows = cursor.fetchall()
+    
+        logger.info(f"Test connectio to database: {rows}")
         logger.info("Connection established successfully.")
         return conn
 
@@ -117,64 +125,105 @@ def extract_pdf_text(file_path, reference, num_chars, folder_path, journal_dir):
 
     return pages_matricules, matricule_with_path
 
-def fetch_by_matricule(conn, table, matricule_value, email_field, matricule_field="MatriculeSalarie", journal_dir=None):
+def fetch_by_matricule(
+    conn,
+    database_name,
+    schema_name,
+    table_name,
+    matricule_value,
+    email_field,
+    matricule_field="MatriculeSalarie",
+    journal_dir=None
+):
+    """
+    Fetches the email for an employee identified by matricule from a fully-qualified SQL Server table.
+
+    Parameters:
+    - conn: pyodbc.Connection object
+    - database_name (str): Name of the database
+    - schema_name (str): Name of the schema (e.g. 'dbo')
+    - table_name (str): Name of the table (without brackets)
+    - matricule_value (str or int): The value to filter on
+    - email_field (str): Name of the email column
+    - matricule_field (str): Name of the matricule column
+    - journal_dir (str, optional): Directory to write a journal log
+
+    Returns:
+    - str or None: The email if found, else None
+    """
+    import os
+    import datetime
+    
+    # Build fully-qualified table identifier
+    fq_table = f"[{database_name.strip()}].[{schema_name.strip()}].[{table_name.strip()}]"
+
+    # Prepare journal file if needed
     today = datetime.date.today().isoformat()
     if journal_dir:
         os.makedirs(journal_dir, exist_ok=True)
-        journal_filename = f"journal-traitement-{today}.txt"
-        journal_path = os.path.join(journal_dir, journal_filename)
-    
+        journal_path = os.path.join(journal_dir, f"journal-traitement-{today}.txt")
+
     cursor = conn.cursor()
-    logger.info(f"Searching for matricule '{matricule_value}' in table '{table}' using field '{matricule_field}'")
-    
-    # Query to fetch the employee record
-    sql = f"SELECT {email_field}, {matricule_field} FROM {table} WHERE {matricule_field} = ?"
-    cursor.execute(sql, (matricule_value.strip(),))
-    
-    # Get column names and fetch results
+    logger.info(f"Searching for matricule '{matricule_value}' in table '{fq_table}' field '{matricule_field}'")
+
+    # Normalize parameter and decide on WHERE clause
+    raw = str(matricule_value).strip()
+    try:
+        # If convertible to int, treat as numeric column
+        param = int(raw)
+        where_clause = f"{matricule_field} = ?"
+    except ValueError:
+        # Treat as string: trimmed and case-insensitive
+        param = raw
+        where_clause = (
+            f"LOWER(LTRIM(RTRIM({matricule_field}))) = LOWER(LTRIM(RTRIM(?)))"
+        )
+
+    # Construct and execute parameterized SQL
+    sql = (
+        f"SELECT {email_field.strip()}, {matricule_field.strip()}"
+        f" FROM {fq_table}"
+        f" WHERE {where_clause}"
+    )
+    logger.info(f"Executing SQL: {sql} with parameter: {param!r}")
+    cursor.execute(sql, (param,))
+
+    # Fetch results
     cols = [col[0] for col in cursor.description]
     rows = cursor.fetchall()
-    
-    # Log what we found
-    logger.info(f"Query executed: {sql} with parameter: {matricule_value}")
-    logger.info(f"Rows found in database: {rows}")
-    
-    # Convert to dictionary format for easier access
+    logger.info(f"Rows found: {rows}")
+
+    # Convert rows to dicts
     results = [dict(zip(cols, row)) for row in rows]
     logger.info(f"Query results as dict: {results}")
-    
-    # Check if employee was found
+
     if not results:
         msg = f"No employee found with matricule '{matricule_value}'"
         logger.warning(msg)
         if journal_dir:
-            with open(journal_path, "a", encoding="utf-8") as journal_file:
-                journal_file.write(f"{datetime.datetime.now().isoformat()} - Aucun employé trouvé pour le matricule '{matricule_value}'\n")
+            with open(journal_path, "a", encoding="utf-8") as jfile:
+                jfile.write(f"{datetime.datetime.now().isoformat()} - {msg}\n")
         return None
-    
-    # Employee found, now check email
+
     employee = results[0]
-    logger.info(f"Employee found: {employee}")
-    
     email = employee.get(email_field)
-    logger.info(f"Email tied to matricule '{matricule_value}': {email}")
-    
-    # Check if email exists and is not empty
     if not email or email.strip() == "":
-        msg = f"Employee found but no email available for matricule '{matricule_value}'"
+        msg = f"Employee found but no email for matricule '{matricule_value}'"
         logger.warning(msg)
         if journal_dir:
-            with open(journal_path, "a", encoding="utf-8") as journal_file:
-                journal_file.write(f"{datetime.datetime.now().isoformat()} - Employé trouvé mais aucun email pour le matricule '{matricule_value}'\n")
+            with open(journal_path, "a", encoding="utf-8") as jfile:
+                jfile.write(f"{datetime.datetime.now().isoformat()} - {msg}\n")
         return None
-    
-    # Email found - log success and return just the email
+
+    # Log and return
     logger.info(f"Email successfully found for matricule '{matricule_value}': {email}")
     if journal_dir:
-        with open(journal_path, "a", encoding="utf-8") as journal_file:
-            journal_file.write(f"{datetime.datetime.now().isoformat()} - Email trouvé pour le matricule '{matricule_value}': {email}\n")
-    
-    return email.strip()  # Return only the email as a string
+        with open(journal_path, "a", encoding="utf-8") as jfile:
+            jfile.write(f"{datetime.datetime.now().isoformat()} - Email found: {email}\n")
+
+    return email.strip()
+
+
 
 def connect_to_mssql(server, database, username, password):
     try:

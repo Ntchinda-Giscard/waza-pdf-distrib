@@ -163,7 +163,9 @@ async def distribution_automation(db: Session = Depends(get_db)):
                     dsn=server_info.odbc_source,
                     database=subfolder.link_database,
                     username=server_info.db_username,
-                    password=server_info.db_password
+                    password=server_info.db_password,
+                    tablename=subfolder.tablename,
+                    email_field=subfolder.email_field
                 )
 
                 today = datetime.date.today().isoformat()

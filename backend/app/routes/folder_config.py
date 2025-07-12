@@ -20,6 +20,8 @@ async def get_folder_config(input: DatabaseConfigAdd, db: Session = Depends(get_
         folder_config = db.query(DatabaseConfig).filter(DatabaseConfig.subfolder_name == input.subfolder_name).first()
         if folder_config:
             db.delete(folder_config)
+            db.commit()
+            db.refresh()
 
         new_config = DatabaseConfig(
             main_folder=input.main_folder,
