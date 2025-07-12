@@ -150,42 +150,50 @@
    'BINARY'),
   ('MSVCP140.dll', 'C:\\Windows\\system32\\MSVCP140.dll', 'BINARY'),
   ('python3.dll', 'C:\\Python313\\python3.dll', 'BINARY'),
-  ('setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\METADATA',
-   'C:\\Users\\DIGITAL '
-   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\METADATA',
-   'DATA'),
-  ('setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\INSTALLER',
-   'C:\\Users\\DIGITAL '
-   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\INSTALLER',
-   'DATA'),
-  ('setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\LICENSE',
-   'C:\\Users\\DIGITAL '
-   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\LICENSE',
-   'DATA'),
   ('setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\REQUESTED',
    'C:\\Users\\DIGITAL '
    'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\REQUESTED',
-   'DATA'),
-  ('setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\WHEEL',
-   'C:\\Users\\DIGITAL '
-   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\WHEEL',
    'DATA'),
   ('setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\top_level.txt',
    'C:\\Users\\DIGITAL '
    'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\top_level.txt',
    'DATA'),
+  ('setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\WHEEL',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\WHEEL',
+   'DATA'),
+  ('setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\INSTALLER',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\INSTALLER',
+   'DATA'),
+  ('setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\METADATA',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\METADATA',
+   'DATA'),
   ('setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\RECORD',
    'C:\\Users\\DIGITAL '
    'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\RECORD',
+   'DATA'),
+  ('setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\LICENSE',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\LICENSE',
    'DATA'),
   ('setuptools\\_vendor\\jaraco\\text\\Lorem ipsum.txt',
    'C:\\Users\\DIGITAL '
    'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\setuptools\\_vendor\\jaraco\\text\\Lorem '
    'ipsum.txt',
    'DATA'),
-  ('click-8.2.1.dist-info\\INSTALLER',
+  ('click-8.2.1.dist-info\\METADATA',
    'C:\\Users\\DIGITAL '
-   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\click-8.2.1.dist-info\\INSTALLER',
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\click-8.2.1.dist-info\\METADATA',
+   'DATA'),
+  ('click-8.2.1.dist-info\\RECORD',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\click-8.2.1.dist-info\\RECORD',
+   'DATA'),
+  ('websockets-15.0.1.dist-info\\top_level.txt',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets-15.0.1.dist-info\\top_level.txt',
    'DATA'),
   ('click-8.2.1.dist-info\\licenses\\LICENSE.txt',
    'C:\\Users\\DIGITAL '
@@ -195,41 +203,33 @@
    'C:\\Users\\DIGITAL '
    'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets-15.0.1.dist-info\\INSTALLER',
    'DATA'),
-  ('websockets-15.0.1.dist-info\\top_level.txt',
+  ('websockets-15.0.1.dist-info\\RECORD',
    'C:\\Users\\DIGITAL '
-   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets-15.0.1.dist-info\\top_level.txt',
-   'DATA'),
-  ('click-8.2.1.dist-info\\WHEEL',
-   'C:\\Users\\DIGITAL '
-   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\click-8.2.1.dist-info\\WHEEL',
-   'DATA'),
-  ('websockets-15.0.1.dist-info\\LICENSE',
-   'C:\\Users\\DIGITAL '
-   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets-15.0.1.dist-info\\LICENSE',
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets-15.0.1.dist-info\\RECORD',
    'DATA'),
   ('websockets-15.0.1.dist-info\\entry_points.txt',
    'C:\\Users\\DIGITAL '
    'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets-15.0.1.dist-info\\entry_points.txt',
    'DATA'),
+  ('websockets-15.0.1.dist-info\\METADATA',
+   'C:\\Users\\DIGITAL '
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets-15.0.1.dist-info\\METADATA',
+   'DATA'),
   ('websockets-15.0.1.dist-info\\WHEEL',
    'C:\\Users\\DIGITAL '
    'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets-15.0.1.dist-info\\WHEEL',
    'DATA'),
-  ('click-8.2.1.dist-info\\METADATA',
+  ('click-8.2.1.dist-info\\WHEEL',
    'C:\\Users\\DIGITAL '
-   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\click-8.2.1.dist-info\\METADATA',
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\click-8.2.1.dist-info\\WHEEL',
    'DATA'),
-  ('websockets-15.0.1.dist-info\\RECORD',
+  ('click-8.2.1.dist-info\\INSTALLER',
    'C:\\Users\\DIGITAL '
-   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets-15.0.1.dist-info\\RECORD',
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\click-8.2.1.dist-info\\INSTALLER',
    'DATA'),
-  ('click-8.2.1.dist-info\\RECORD',
+  ('websockets-15.0.1.dist-info\\LICENSE',
    'C:\\Users\\DIGITAL '
-   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\click-8.2.1.dist-info\\RECORD',
-   'DATA'),
-  ('websockets-15.0.1.dist-info\\METADATA',
-   'C:\\Users\\DIGITAL '
-   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets-15.0.1.dist-info\\METADATA',
+   'MARKET\\Documents\\eletronApp\\backend\\.venv\\Lib\\site-packages\\websockets-15.0.1.dist-info\\LICENSE',
    'DATA'),
   ('base_library.zip',
    'C:\\Users\\DIGITAL '
