@@ -183,7 +183,7 @@ def fetch_by_matricule(
         f" WHERE {where_clause}"
     )
     logger.info(f"Executing SQL: {sql} with parameter: {param!r}")
-    cursor.execute(sql, (param,))
+    cursor.execute(sql, (param))
 
     # Fetch results
     cols = [col[0] for col in cursor.description]
