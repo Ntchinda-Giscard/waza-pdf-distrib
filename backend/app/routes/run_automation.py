@@ -214,7 +214,14 @@ async def distribution_automation(db: Session = Depends(get_db)):
                         async for msg in emit_progress(matricule=matricule, email=None):
                             yield msg
                         continue
-
+                    if email_config.ssl:
+                        security= "ssl"
+                    elif email_config.tls:
+                        security="tls"
+                    elif email_config.ssl and email_config.tls:
+                        security="both"
+                    else:
+                        security="tls"
                     send_email(
                         email_receiver=result,
                         attachments=[matricules_w_path[matricule]],
@@ -222,7 +229,7 @@ async def distribution_automation(db: Session = Depends(get_db)):
                         email_password=email_config.password,
                         server=email_config.smtp_server,
                         port=email_config.port,
-                        use_ssl=email_config.ssl
+                        security=security
                     )
 
                     async for msg in emit_progress(matricule=matricule, email=result):
