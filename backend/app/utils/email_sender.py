@@ -3,6 +3,14 @@ import ssl
 import mimetypes
 from pathlib import Path
 from email.message import EmailMessage
+import logging
+
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
+
 
 def send_email(
     email_receiver: str,
@@ -37,7 +45,7 @@ Cordialement,"""
     for file_path in attachments or []:
         path = Path(file_path)
         if not path.is_file():
-            print(f"⚠️ Fichier introuvable : {file_path}")
+            logger.info(f"⚠️ Fichier introuvable : {file_path}")
             continue
         mime_type, _ = mimetypes.guess_type(path)
         if not mime_type:
@@ -65,25 +73,25 @@ Cordialement,"""
     # Gestion des différentes options
     try:
         if mode == "ssl":
-            print(f"🔐 Tentative SSL sur {server}:{port}")
+            logger.info(f"🔐 Tentative SSL sur {server}:{port}")
             try_ssl()
-            print("✅ Email envoyé avec SSL.")
+            logger.info("✅ Email envoyé avec SSL.")
         elif mode == "tls":
-            print(f"🔐 Tentative STARTTLS sur {server}:{port}")
+            logger.info(f"🔐 Tentative STARTTLS sur {server}:{port}")
             try_tls()
-            print("✅ Email envoyé avec STARTTLS.")
+            logger.info("✅ Email envoyé avec STARTTLS.")
         elif mode == "both":
             # Essai SSL puis TLS si échec
             try:
-                print(f"🔐 [BOTH] Tentative SSL sur {server}:{port}")
+                logger.info(f"🔐 [BOTH] Tentative SSL sur {server}:{port}")
                 try_ssl()
-                print("✅ Email envoyé avec SSL.")
+                logger.info("✅ Email envoyé avec SSL.")
             except Exception as e_ssl:
-                print(f"⚠️ Échec SSL : {e_ssl}")
+                logger.info(f"⚠️ Échec SSL : {e_ssl}")
                 try:
-                    print(f"🔐 [BOTH] Tentative STARTTLS sur {server}:{port}")
+                    logger.info(f"🔐 [BOTH] Tentative STARTTLS sur {server}:{port}")
                     try_tls()
-                    print("✅ Email envoyé avec STARTTLS.")
+                    logger.info("✅ Email envoyé avec STARTTLS.")
                 except Exception as e_tls:
                     raise RuntimeError(
                         f"❌ Échec des deux méthodes sur {server}:{port}.\n"
