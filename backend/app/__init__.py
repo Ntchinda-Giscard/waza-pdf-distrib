@@ -37,7 +37,7 @@ def extract_text(file_path, reference, num_chars, archive_path, journal_dir, arc
     
     # Create the full archive directory path
     full_archive_path = os.path.join(archive_path, archive_file_dir)
-    os.makedirs(full_archive_path, exist_ok=True)
+    os.makedirs(archive_path, exist_ok=True)
     logger.info(f"Full archive path: {full_archive_path}")
 
     # Keep track of created files for cleanup if needed
@@ -62,7 +62,7 @@ def extract_text(file_path, reference, num_chars, archive_path, journal_dir, arc
                 pages_matricules.append(matricule)
                 
                 # # Log the matricule finding result
-                with open(journal_path, "a", encoding="utf-8") as journal_file:
+                with open(journal_dir, "a", encoding="utf-8") as journal_file:
                     if matricule:
                         log_msg = f"{datetime.datetime.now().isoformat()} - Page {i+1}: Found matricule '{matricule}'\n"
                         logger.info(f"Page {i+1}: Found matricule '{matricule}'")
