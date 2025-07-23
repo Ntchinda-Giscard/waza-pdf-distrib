@@ -25,15 +25,20 @@ def extract_text(file_path, reference, num_chars, archive_path, journal_dir, arc
     matricule_with_path = {}
     today = datetime.date.today().isoformat()
     journal_filename = f"journal-{today}.txt"
+    logger.info(f"Journal file: {journal_filename}")
     journal_path = os.path.join(journal_dir, journal_filename)
+    logger.info(f"Journal path: {journal_path}")
 
     # Create directories if they don't exist
     os.makedirs(archive_path, exist_ok=True)
     os.makedirs(journal_dir, exist_ok=True)
+    logger.info(f"Archive path: {archive_path}")
+    logger.info(f"Journal directory: {journal_dir}")
     
     # Create the full archive directory path
     full_archive_path = os.path.join(archive_path, archive_file_dir)
     os.makedirs(full_archive_path, exist_ok=True)
+    logger.info(f"Full archive path: {full_archive_path}")
 
     # Keep track of created files for cleanup if needed
     created_files = []
@@ -74,7 +79,7 @@ def extract_text(file_path, reference, num_chars, archive_path, journal_dir, arc
                 matricule_safe = matricule if matricule else "NO_MATRICULE"
                 pdf_filename = f"{matricule_safe}_page_{i+1}.pdf"
                 dest_pdf = os.path.join(full_archive_path, pdf_filename)
-                
+                logger.info(f"Destination PDF: {dest_pdf}")
                 # Save the new PDF
                 new_pdf.save(dest_pdf)
                 
