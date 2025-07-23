@@ -78,7 +78,7 @@ def extract_text(file_path, reference, num_chars, archive_path, journal_dir, arc
                 # Generate safe filename
                 matricule_safe = matricule if matricule else "NO_MATRICULE"
                 pdf_filename = f"{matricule_safe}_page_{i+1}.pdf"
-                dest_pdf = os.path.join(full_archive_path, pdf_filename)
+                dest_pdf = os.path.join(archive_path, pdf_filename)
                 logger.info(f"Destination PDF: {dest_pdf}")
                 # Save the new PDF
                 new_pdf.save(dest_pdf)
