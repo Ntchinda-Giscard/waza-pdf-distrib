@@ -4,6 +4,10 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
+  background-image: url('/logowaza.jpg'); /* put your image in public/background.jpg */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 @layer utilities {

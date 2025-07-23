@@ -107,7 +107,7 @@ export function HomeTab() {
         {/* Header */}
         <div className="space-y-4">
           <div className="mx-auto w-16 h-16 bg-gradient-to-br from-green-600 to-green-700 rounded-full flex items-center justify-center shadow-lg">
-            <Play className="w-8 h-8 text-white" />
+          <Play className="w-8 h-8 text-white" />
           </div>
           <h1 className="text-3xl font-bold text-white">Distribution des Bulletin de Paie</h1>
           <p className="text-gray-400 text-lg">Automatisez l'envoi des bulletin de paie par courrier électronique</p>
