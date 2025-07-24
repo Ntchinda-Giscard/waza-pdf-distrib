@@ -298,7 +298,7 @@ def fetch_by_matricule(
     employee = results[0]
     email = employee.get(email_field)
     if not email or email.strip() == "":
-        msg = f"Employee found but no email for matricule '{matricule_value}'"
+        msg = f"Employé trouvé, mais aucun email pour le matricule '{matricule_value}'"
         logger.warning(msg)
         if journal_dir:
             with open(journal_path, "a", encoding="utf-8") as jfile:
@@ -309,7 +309,7 @@ def fetch_by_matricule(
     logger.info(f"Email successfully found for matricule '{matricule_value}': {email}")
     if journal_dir:
         with open(journal_path, "a", encoding="utf-8") as jfile:
-            jfile.write(f"{datetime.datetime.now().isoformat()} - Email found: {email}\n")
+            jfile.write(f"{datetime.datetime.now().isoformat()} - Email trouvé : {email}\n")
 
     return email.strip()
 
