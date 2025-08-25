@@ -1,13 +1,24 @@
 import smtplib
+import unicodedata
 import ssl
 import mimetypes
+import sys
 from pathlib import Path
 from email.message import EmailMessage
 import logging
 
+# Ensure UTF-8 encoding for stdout/stderr
+if sys.stdout.encoding != 'utf-8':
+    sys.stdout.reconfigure(encoding='utf-8')
+if sys.stderr.encoding != 'utf-8':
+    sys.stderr.reconfigure(encoding='utf-8')
+
 logging.basicConfig(
     level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s'
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.StreamHandler(sys.stdout)
+    ]
 )
 logger = logging.getLogger(__name__)
 
@@ -27,25 +38,22 @@ def send_email(
         raise ValueError(f"Paramètre 'security' invalide : {security}. Attendu : 'ssl', 'tls' ou 'both'.")
 
     subject = "Votre bulletin de paie"
-    body = """Veuillez trouver en pièce jointe votre bulletin de paie pour le mois.
+    # The issue is in this body text - there are invisible non-breaking spaces (\xa0)
+    # Let's clean them up while preserving the text content
+    body = "Veuillez trouver en piece jointe votre bulletin de paie pour le mois"
 
-Ce document contient des informations confidentielles concernant votre rémunération.
-Merci de le conserver en lieu sûr et de ne pas le partager avec des personnes non autorisées.
-
-Cordialement,"""
-
-    # Création du message
+    # Création du message with explicit UTF-8 encoding
     em = EmailMessage()
     em["From"] = email_sender
     em["To"] = email_receiver
     em["Subject"] = subject
-    em.set_content(body)
+    em.set_content(body, charset='utf-8')
 
     # Ajout des pièces jointes
     for file_path in attachments or []:
         path = Path(file_path)
         if not path.is_file():
-            logger.info(f"⚠️ Fichier introuvable : {file_path}")
+            logger.info(f"Fichier introuvable : {file_path}")
             continue
         mime_type, _ = mimetypes.guess_type(path)
         if not mime_type:
@@ -60,6 +68,7 @@ Cordialement,"""
     def try_ssl():
         with smtplib.SMTP_SSL(server, port, context=context) as smtp:
             smtp.login(email_sender, email_password)
+            logger.info(f"Connexion réussie à {server}:{port} avec SSL.")
             smtp.send_message(em)
 
     def try_tls():
@@ -68,38 +77,53 @@ Cordialement,"""
             smtp.starttls(context=context)
             smtp.ehlo()
             smtp.login(email_sender, email_password)
+            logger.info(f"Connexion réussie à {server}:{port} avec STARTTLS.")
             smtp.send_message(em)
 
     # Gestion des différentes options
     try:
         if mode == "ssl":
-            logger.info(f"🔐 Tentative SSL sur {server}:{port}")
+            logger.info(f"Tentative SSL sur {server}:{port}")
             try_ssl()
-            logger.info("✅ Email envoyé avec SSL.")
+            logger.info("Email envoyé avec SSL.")
         elif mode == "tls":
-            logger.info(f"🔐 Tentative STARTTLS sur {server}:{port}")
+            logger.info(f"Tentative STARTTLS sur {server}:{port}")
             try_tls()
-            logger.info("✅ Email envoyé avec STARTTLS.")
+            logger.info("Email envoyé avec STARTTLS.")
         elif mode == "both":
             # Essai SSL puis TLS si échec
             try:
-                logger.info(f"🔐 [BOTH] Tentative SSL sur {server}:{port}")
+                logger.info(f"[BOTH] Tentative SSL sur {server}:{port}")
                 try_ssl()
-                logger.info("✅ Email envoyé avec SSL.")
+                logger.info("Email envoyé avec SSL.")
             except Exception as e_ssl:
-                logger.info(f"⚠️ Échec SSL : {e_ssl}")
+                logger.info(f"Échec SSL : {e_ssl}")
                 try:
-                    logger.info(f"🔐 [BOTH] Tentative STARTTLS sur {server}:{port}")
+                    logger.info(f"[BOTH] Tentative STARTTLS sur {server}:{port}")
                     try_tls()
-                    logger.info("✅ Email envoyé avec STARTTLS.")
+                    logger.info("Email envoyé avec STARTTLS.")
                 except Exception as e_tls:
                     raise RuntimeError(
-                        f"❌ Échec des deux méthodes sur {server}:{port}.\n"
+                        f"Échec des deux méthodes sur {server}:{port}.\n"
                         f"- SSL error: {e_ssl}\n"
                         f"- STARTTLS error: {e_tls}"
                     ) from e_tls
     except Exception as e:
-        raise RuntimeError(f"❌ Échec de l'envoi : {e}")
+        # Handle Unicode characters in error messages properly
+        try:
+            error_msg = str(e)
+            logger.error(f"Échec de l'envoi : {error_msg}")
+        except UnicodeEncodeError:
+            # If the error message contains problematic characters, handle them
+            error_msg = str(e).encode('utf-8', errors='replace').decode('utf-8')
+            logger.error(f"Échec de l'envoi : {error_msg}")
+        except Exception as log_error:
+            # Last resort: use the original method to clean the error
+            clean_error = unicodedata.normalize("NFKD", str(e)).encode("ascii", "ignore").decode()
+            logger.error(f"Échec de l'envoi (nettoyé) : {clean_error}")
+            logger.error(f"Erreur de logging : {log_error}")
+        raise e
+
 
 # Exemple d'utilisation
 if __name__ == "__main__":

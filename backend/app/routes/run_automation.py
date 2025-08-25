@@ -100,7 +100,7 @@ async def distribution_automation(db: Session = Depends(get_db)):
 
                 for matricule in matricules:
                     if number_process <= 0:
-                        async for msg in emit_progress(error="⛔ Limite de licence atteinte."):
+                        async for msg in emit_progress(error="Limite de licence atteinte."):
                             yield msg
                         return
 
@@ -142,9 +142,9 @@ async def distribution_automation(db: Session = Depends(get_db)):
                         yield msg
 
             # Final message
-            yield (json.dumps({"progress": 100, "message": "✅ Terminé"}) + "\n").encode("utf-8")
+            yield (json.dumps({"progress": 100, "message": "Terminé"}) + "\n").encode("utf-8")
 
         except Exception as e:
-            yield (json.dumps({"error": f"❌ Erreur lors de l'automatisation : {str(e)}"}) + "\n").encode("utf-8")
+            yield (json.dumps({"error": f"Erreur lors de l'automatisation : {str(e)}"}) + "\n").encode("utf-8")
 
     return StreamingResponse(event_stream(), media_type="application/x-ndjson")

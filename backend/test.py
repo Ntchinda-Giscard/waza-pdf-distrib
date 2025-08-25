@@ -239,7 +239,7 @@ def process_configs():
             logger.info(f"\n UserConfig: {config.folder_name}")
             
             for subfolder in config.subfolders:
-                logger.info(f"  📁 Subfolder: {subfolder.subfolder_name}")
+                logger.info(f"Subfolder: {subfolder.subfolder_name}")
                 number_process = decode_license_key(config.license_key)
                 folder_path = os.path.join(config.folder_name, subfolder.subfolder_name)
                 logger.info(f"   Looking in: {folder_path}")
