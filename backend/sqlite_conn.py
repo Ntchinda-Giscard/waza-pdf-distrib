@@ -11,3 +11,11 @@ def sqlite_connection():
         yield conn
     finally:
         conn.close()
+
+with sqlite_connection() as conn:
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM PRICSTRUCT")
+    tables = cursor.fetchall()
+    for table in tables:
+        print(dict(table))
+        break
