@@ -725,3 +725,240 @@
 2025-10-07 18:34:13,863 - INFO - Connecting using Windows Authentication. DSN: demo2 - test - connect_to_database - 52 - MainThread
 2025-10-07 18:34:13,864 - INFO -  Connectioni string: DSN=demo2;DATABASE=PAIETEST;Trusted_Connection=yes;  - test - connect_to_database - 55 - MainThread
 2025-10-07 18:34:29,683 - ERROR - Database connection error: ('08001', "[08001] [Microsoft][ODBC Driver 17 for SQL Server]Fournisseur de canaux nommés : Impossible d'ouvrir une connexion à SQL Server [2].  (2) (SQLDriverConnect); [08001] [Microsoft][ODBC Driver 17 for SQL Server]Délai d'attente de connexion expiré (0); [08001] [Microsoft][ODBC Driver 17 for SQL Server]Une erreur liée au réseau ou spécifique à l'instance s'est produite lors de l'établissement d'une connexion à SQL Server. Le serveur est introuvable ou n'est pas accessible. Vérifiez si le nom de l'instance est correct et si SQL Server est configuré pour autoriser les connexions distantes. Pour plus d'informations, consultez la documentation en ligne de SQL Server. (2)") - test - connect_to_database - 67 - MainThread
+2025-10-07 18:45:22,277 - INFO - Creating app.db... - __main__ - <module> - 33 - MainThread
+2025-10-07 18:45:22,281 - INFO - Created app.db - __main__ - <module> - 35 - MainThread
+2025-10-07 18:47:16,261 - INFO - Number of processes: 12 - app.routes.run_automation - event_stream - 45 - MainThread
+2025-10-07 18:47:16,263 - INFO - Matricule config: <app.db.models.MatriculeConfig object at 0x000001DF878A8AD0> - app.routes.run_automation - event_stream - 46 - MainThread
+2025-10-07 18:47:16,263 - INFO - Email config: <app.db.models.EmailConfig object at 0x000001DF878A8830> - app.routes.run_automation - event_stream - 47 - MainThread
+2025-10-07 18:47:16,263 - INFO - Server info: <app.db.models.DatabaseServer object at 0x000001DF878A8440> - app.routes.run_automation - event_stream - 48 - MainThread
+2025-10-07 18:47:16,264 - INFO - Subfolders: [<app.db.models.DatabaseConfig object at 0x000001DF87852CF0>] - app.routes.run_automation - event_stream - 49 - MainThread
+2025-10-07 18:47:16,264 - INFO - Base dir: E:\Dossier du fichier a traiter\Base1 - app.routes.run_automation - event_stream - 81 - MainThread
+2025-10-07 18:47:16,265 - INFO - Archive dir: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07 - app.routes.run_automation - event_stream - 82 - MainThread
+2025-10-07 18:47:16,265 - INFO - Journal dir: E:\Dossier du fichier a traiter\Base1\Logs\2025-10-07 - app.routes.run_automation - event_stream - 83 - MainThread
+2025-10-07 18:47:16,266 - INFO -  Processing folder: E:\Dossier du fichier a traiter\Base1 - test - ensure_pdf_exists - 326 - MainThread
+2025-10-07 18:47:16,267 - INFO -  PDF found: BULLETINS DE PAIE YOSSI.pdf - test - ensure_pdf_exists - 334 - MainThread
+2025-10-07 18:47:16,267 - INFO - Journal file: journal-2025-10-07.txt - app - extract_text - 33 - MainThread
+2025-10-07 18:47:16,268 - INFO - Journal path: E:\Dossier du fichier a traiter\Base1\Logs\2025-10-07\journal-2025-10-07.txt - app - extract_text - 35 - MainThread
+2025-10-07 18:47:16,270 - INFO - Archive path: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07 - app - extract_text - 40 - MainThread
+2025-10-07 18:47:16,270 - INFO - Journal directory: E:\Dossier du fichier a traiter\Base1\Logs\2025-10-07 - app - extract_text - 41 - MainThread
+2025-10-07 18:47:16,271 - INFO - Full archive path: E:\Dossier du fichier a traiter\Base1\Archieve - app - extract_text - 46 - MainThread
+2025-10-07 18:47:16,274 - INFO - Processing PDF: E:\Dossier du fichier a traiter\Base1\BULLETINS DE PAIE YOSSI.pdf with 53 pages - app - extract_text - 57 - MainThread
+2025-10-07 18:47:16,333 - INFO - Reference text: N° de Sécurité Sociale, number of chars: 5 - app - extract_text - 65 - MainThread
+2025-10-07 18:47:16,334 - INFO - Page 1: Found matricule '00679' - app - extract_text - 73 - MainThread
+2025-10-07 18:47:16,337 - INFO - Destination PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\00679_page_1.pdf - app - extract_text - 87 - MainThread
+2025-10-07 18:47:16,340 - INFO - Created page PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\00679_page_1.pdf - app - extract_text - 95 - MainThread
+2025-10-07 18:47:16,364 - INFO - Reference text: N° de Sécurité Sociale, number of chars: 5 - app - extract_text - 65 - MainThread
+2025-10-07 18:47:16,366 - INFO - Page 2: Found matricule '00992' - app - extract_text - 73 - MainThread
+2025-10-07 18:47:16,371 - INFO - Destination PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\00992_page_2.pdf - app - extract_text - 87 - MainThread
+2025-10-07 18:47:16,374 - INFO - Created page PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\00992_page_2.pdf - app - extract_text - 95 - MainThread
+2025-10-07 18:47:16,398 - INFO - Reference text: N° de Sécurité Sociale, number of chars: 5 - app - extract_text - 65 - MainThread
+2025-10-07 18:47:16,400 - INFO - Page 3: Found matricule '01189' - app - extract_text - 73 - MainThread
+2025-10-07 18:47:16,402 - INFO - Destination PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01189_page_3.pdf - app - extract_text - 87 - MainThread
+2025-10-07 18:47:16,414 - INFO - Created page PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01189_page_3.pdf - app - extract_text - 95 - MainThread
+2025-10-07 18:47:16,433 - INFO - Reference text: N° de Sécurité Sociale, number of chars: 5 - app - extract_text - 65 - MainThread
+2025-10-07 18:47:16,434 - INFO - Page 4: Found matricule '01271' - app - extract_text - 73 - MainThread
+2025-10-07 18:47:16,439 - INFO - Destination PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01271_page_4.pdf - app - extract_text - 87 - MainThread
+2025-10-07 18:47:16,449 - INFO - Created page PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01271_page_4.pdf - app - extract_text - 95 - MainThread
+2025-10-07 18:47:16,483 - INFO - Reference text: N° de Sécurité Sociale, number of chars: 5 - app - extract_text - 65 - MainThread
+2025-10-07 18:47:16,486 - INFO - Page 5: Found matricule '01301' - app - extract_text - 73 - MainThread
+2025-10-07 18:47:16,489 - INFO - Destination PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01301_page_5.pdf - app - extract_text - 87 - MainThread
+2025-10-07 18:47:16,498 - INFO - Created page PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01301_page_5.pdf - app - extract_text - 95 - MainThread
+2025-10-07 18:47:16,522 - INFO - Reference text: N° de Sécurité Sociale, number of chars: 5 - app - extract_text - 65 - MainThread
+2025-10-07 18:47:16,523 - INFO - Page 6: Found matricule '01337' - app - extract_text - 73 - MainThread
+2025-10-07 18:47:16,534 - INFO - Destination PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01337_page_6.pdf - app - extract_text - 87 - MainThread
+2025-10-07 18:47:16,540 - INFO - Created page PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01337_page_6.pdf - app - extract_text - 95 - MainThread
+2025-10-07 18:47:16,566 - INFO - Reference text: N° de Sécurité Sociale, number of chars: 5 - app - extract_text - 65 - MainThread
+2025-10-07 18:47:16,568 - INFO - Page 7: Found matricule '01344' - app - extract_text - 73 - MainThread
+2025-10-07 18:47:16,572 - INFO - Destination PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01344_page_7.pdf - app - extract_text - 87 - MainThread
+2025-10-07 18:47:16,582 - INFO - Created page PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01344_page_7.pdf - app - extract_text - 95 - MainThread
+2025-10-07 18:47:16,614 - INFO - Reference text: N° de Sécurité Sociale, number of chars: 5 - app - extract_text - 65 - MainThread
+2025-10-07 18:47:16,616 - INFO - Page 8: Found matricule '01445' - app - extract_text - 73 - MainThread
+2025-10-07 18:47:16,619 - INFO - Destination PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01445_page_8.pdf - app - extract_text - 87 - MainThread
+2025-10-07 18:47:16,628 - INFO - Created page PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01445_page_8.pdf - app - extract_text - 95 - MainThread
+2025-10-07 18:47:16,657 - INFO - Reference text: N° de Sécurité Sociale, number of chars: 5 - app - extract_text - 65 - MainThread
+2025-10-07 18:47:16,661 - INFO - Page 9: Found matricule '01447' - app - extract_text - 73 - MainThread
+2025-10-07 18:47:16,668 - INFO - Destination PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01447_page_9.pdf - app - extract_text - 87 - MainThread
+2025-10-07 18:47:16,674 - INFO - Created page PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01447_page_9.pdf - app - extract_text - 95 - MainThread
+2025-10-07 18:47:16,700 - INFO - Reference text: N° de Sécurité Sociale, number of chars: 5 - app - extract_text - 65 - MainThread
+2025-10-07 18:47:16,701 - INFO - Page 10: Found matricule '01488' - app - extract_text - 73 - MainThread
+2025-10-07 18:47:16,707 - INFO - Destination PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01488_page_10.pdf - app - extract_text - 87 - MainThread
+2025-10-07 18:47:16,715 - INFO - Created page PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01488_page_10.pdf - app - extract_text - 95 - MainThread
+2025-10-07 18:47:16,750 - INFO - Reference text: N° de Sécurité Sociale, number of chars: 5 - app - extract_text - 65 - MainThread
+2025-10-07 18:47:16,751 - INFO - Page 11: Found matricule '01492' - app - extract_text - 73 - MainThread
+2025-10-07 18:47:16,761 - INFO - Destination PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01492_page_11.pdf - app - extract_text - 87 - MainThread
+2025-10-07 18:47:16,767 - INFO - Created page PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01492_page_11.pdf - app - extract_text - 95 - MainThread
+2025-10-07 18:47:16,803 - INFO - Reference text: N° de Sécurité Sociale, number of chars: 5 - app - extract_text - 65 - MainThread
+2025-10-07 18:47:16,804 - INFO - Page 12: Found matricule '00381' - app - extract_text - 73 - MainThread
+2025-10-07 18:47:16,806 - INFO - Destination PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\00381_page_12.pdf - app - extract_text - 87 - MainThread
+2025-10-07 18:47:16,813 - INFO - Created page PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\00381_page_12.pdf - app - extract_text - 95 - MainThread
+2025-10-07 18:47:16,840 - INFO - Reference text: N° de Sécurité Sociale, number of chars: 5 - app - extract_text - 65 - MainThread
+2025-10-07 18:47:16,848 - INFO - Page 13: Found matricule '00925' - app - extract_text - 73 - MainThread
+2025-10-07 18:47:16,851 - INFO - Destination PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\00925_page_13.pdf - app - extract_text - 87 - MainThread
+2025-10-07 18:47:16,855 - INFO - Created page PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\00925_page_13.pdf - app - extract_text - 95 - MainThread
+2025-10-07 18:47:16,879 - INFO - Reference text: N° de Sécurité Sociale, number of chars: 5 - app - extract_text - 65 - MainThread
+2025-10-07 18:47:16,880 - INFO - Page 14: Found matricule '00983' - app - extract_text - 73 - MainThread
+2025-10-07 18:47:16,882 - INFO - Destination PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\00983_page_14.pdf - app - extract_text - 87 - MainThread
+2025-10-07 18:47:16,886 - INFO - Created page PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\00983_page_14.pdf - app - extract_text - 95 - MainThread
+2025-10-07 18:47:16,906 - INFO - Reference text: N° de Sécurité Sociale, number of chars: 5 - app - extract_text - 65 - MainThread
+2025-10-07 18:47:16,907 - INFO - Page 15: Found matricule '01004' - app - extract_text - 73 - MainThread
+2025-10-07 18:47:16,912 - INFO - Destination PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01004_page_15.pdf - app - extract_text - 87 - MainThread
+2025-10-07 18:47:16,915 - INFO - Created page PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01004_page_15.pdf - app - extract_text - 95 - MainThread
+2025-10-07 18:47:16,939 - INFO - Reference text: N° de Sécurité Sociale, number of chars: 5 - app - extract_text - 65 - MainThread
+2025-10-07 18:47:16,940 - INFO - Page 16: Found matricule '01047' - app - extract_text - 73 - MainThread
+2025-10-07 18:47:16,946 - INFO - Destination PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01047_page_16.pdf - app - extract_text - 87 - MainThread
+2025-10-07 18:47:16,951 - INFO - Created page PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01047_page_16.pdf - app - extract_text - 95 - MainThread
+2025-10-07 18:47:16,969 - INFO - Reference text: N° de Sécurité Sociale, number of chars: 5 - app - extract_text - 65 - MainThread
+2025-10-07 18:47:16,969 - INFO - Page 17: Found matricule '01050' - app - extract_text - 73 - MainThread
+2025-10-07 18:47:16,971 - INFO - Destination PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01050_page_17.pdf - app - extract_text - 87 - MainThread
+2025-10-07 18:47:16,974 - INFO - Created page PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01050_page_17.pdf - app - extract_text - 95 - MainThread
+2025-10-07 18:47:16,998 - INFO - Reference text: N° de Sécurité Sociale, number of chars: 5 - app - extract_text - 65 - MainThread
+2025-10-07 18:47:16,998 - INFO - Page 18: Found matricule '01093' - app - extract_text - 73 - MainThread
+2025-10-07 18:47:17,002 - INFO - Destination PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01093_page_18.pdf - app - extract_text - 87 - MainThread
+2025-10-07 18:47:17,006 - INFO - Created page PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01093_page_18.pdf - app - extract_text - 95 - MainThread
+2025-10-07 18:47:17,022 - INFO - Reference text: N° de Sécurité Sociale, number of chars: 5 - app - extract_text - 65 - MainThread
+2025-10-07 18:47:17,023 - INFO - Page 19: Found matricule '01146' - app - extract_text - 73 - MainThread
+2025-10-07 18:47:17,031 - INFO - Destination PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01146_page_19.pdf - app - extract_text - 87 - MainThread
+2025-10-07 18:47:17,037 - INFO - Created page PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01146_page_19.pdf - app - extract_text - 95 - MainThread
+2025-10-07 18:47:17,060 - INFO - Reference text: N° de Sécurité Sociale, number of chars: 5 - app - extract_text - 65 - MainThread
+2025-10-07 18:47:17,063 - INFO - Page 20: Found matricule '01437' - app - extract_text - 73 - MainThread
+2025-10-07 18:47:17,066 - INFO - Destination PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01437_page_20.pdf - app - extract_text - 87 - MainThread
+2025-10-07 18:47:17,069 - INFO - Created page PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01437_page_20.pdf - app - extract_text - 95 - MainThread
+2025-10-07 18:47:17,100 - INFO - Reference text: N° de Sécurité Sociale, number of chars: 5 - app - extract_text - 65 - MainThread
+2025-10-07 18:47:17,101 - INFO - Page 21: Found matricule '01452' - app - extract_text - 73 - MainThread
+2025-10-07 18:47:17,104 - INFO - Destination PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01452_page_21.pdf - app - extract_text - 87 - MainThread
+2025-10-07 18:47:17,106 - INFO - Created page PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01452_page_21.pdf - app - extract_text - 95 - MainThread
+2025-10-07 18:47:17,128 - INFO - Reference text: N° de Sécurité Sociale, number of chars: 5 - app - extract_text - 65 - MainThread
+2025-10-07 18:47:17,129 - INFO - Page 22: Found matricule '01486' - app - extract_text - 73 - MainThread
+2025-10-07 18:47:17,132 - INFO - Destination PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01486_page_22.pdf - app - extract_text - 87 - MainThread
+2025-10-07 18:47:17,136 - INFO - Created page PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01486_page_22.pdf - app - extract_text - 95 - MainThread
+2025-10-07 18:47:17,172 - INFO - Reference text: N° de Sécurité Sociale, number of chars: 5 - app - extract_text - 65 - MainThread
+2025-10-07 18:47:17,173 - INFO - Page 23: Found matricule '01491' - app - extract_text - 73 - MainThread
+2025-10-07 18:47:17,181 - INFO - Destination PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01491_page_23.pdf - app - extract_text - 87 - MainThread
+2025-10-07 18:47:17,184 - INFO - Created page PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01491_page_23.pdf - app - extract_text - 95 - MainThread
+2025-10-07 18:47:17,200 - INFO - Reference text: N° de Sécurité Sociale, number of chars: 5 - app - extract_text - 65 - MainThread
+2025-10-07 18:47:17,203 - INFO - Page 24: Found matricule '00969' - app - extract_text - 73 - MainThread
+2025-10-07 18:47:17,212 - INFO - Destination PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\00969_page_24.pdf - app - extract_text - 87 - MainThread
+2025-10-07 18:47:17,215 - INFO - Created page PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\00969_page_24.pdf - app - extract_text - 95 - MainThread
+2025-10-07 18:47:17,248 - INFO - Reference text: N° de Sécurité Sociale, number of chars: 5 - app - extract_text - 65 - MainThread
+2025-10-07 18:47:17,252 - INFO - Page 25: Found matricule '01022' - app - extract_text - 73 - MainThread
+2025-10-07 18:47:17,256 - INFO - Destination PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01022_page_25.pdf - app - extract_text - 87 - MainThread
+2025-10-07 18:47:17,269 - INFO - Created page PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01022_page_25.pdf - app - extract_text - 95 - MainThread
+2025-10-07 18:47:17,299 - INFO - Reference text: N° de Sécurité Sociale, number of chars: 5 - app - extract_text - 65 - MainThread
+2025-10-07 18:47:17,302 - INFO - Page 26: Found matricule '01205' - app - extract_text - 73 - MainThread
+2025-10-07 18:47:17,304 - INFO - Destination PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01205_page_26.pdf - app - extract_text - 87 - MainThread
+2025-10-07 18:47:17,313 - INFO - Created page PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01205_page_26.pdf - app - extract_text - 95 - MainThread
+2025-10-07 18:47:17,329 - INFO - Reference text: N° de Sécurité Sociale, number of chars: 5 - app - extract_text - 65 - MainThread
+2025-10-07 18:47:17,330 - INFO - Page 27: Found matricule '01231' - app - extract_text - 73 - MainThread
+2025-10-07 18:47:17,332 - INFO - Destination PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01231_page_27.pdf - app - extract_text - 87 - MainThread
+2025-10-07 18:47:17,338 - INFO - Created page PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01231_page_27.pdf - app - extract_text - 95 - MainThread
+2025-10-07 18:47:17,361 - INFO - Reference text: N° de Sécurité Sociale, number of chars: 5 - app - extract_text - 65 - MainThread
+2025-10-07 18:47:17,362 - INFO - Page 28: Found matricule '01342' - app - extract_text - 73 - MainThread
+2025-10-07 18:47:17,365 - INFO - Destination PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01342_page_28.pdf - app - extract_text - 87 - MainThread
+2025-10-07 18:47:17,368 - INFO - Created page PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01342_page_28.pdf - app - extract_text - 95 - MainThread
+2025-10-07 18:47:17,398 - INFO - Reference text: N° de Sécurité Sociale, number of chars: 5 - app - extract_text - 65 - MainThread
+2025-10-07 18:47:17,400 - INFO - Page 29: Found matricule '01345' - app - extract_text - 73 - MainThread
+2025-10-07 18:47:17,405 - INFO - Destination PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01345_page_29.pdf - app - extract_text - 87 - MainThread
+2025-10-07 18:47:17,415 - INFO - Created page PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01345_page_29.pdf - app - extract_text - 95 - MainThread
+2025-10-07 18:47:17,432 - INFO - Reference text: N° de Sécurité Sociale, number of chars: 5 - app - extract_text - 65 - MainThread
+2025-10-07 18:47:17,435 - INFO - Page 30: Found matricule '01528' - app - extract_text - 73 - MainThread
+2025-10-07 18:47:17,457 - INFO - Destination PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01528_page_30.pdf - app - extract_text - 87 - MainThread
+2025-10-07 18:47:17,469 - INFO - Created page PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01528_page_30.pdf - app - extract_text - 95 - MainThread
+2025-10-07 18:47:17,498 - INFO - Reference text: N° de Sécurité Sociale, number of chars: 5 - app - extract_text - 65 - MainThread
+2025-10-07 18:47:17,517 - INFO - Page 31: Found matricule '01529' - app - extract_text - 73 - MainThread
+2025-10-07 18:47:17,520 - INFO - Destination PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01529_page_31.pdf - app - extract_text - 87 - MainThread
+2025-10-07 18:47:17,524 - INFO - Created page PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01529_page_31.pdf - app - extract_text - 95 - MainThread
+2025-10-07 18:47:17,585 - INFO - Reference text: N° de Sécurité Sociale, number of chars: 5 - app - extract_text - 65 - MainThread
+2025-10-07 18:47:17,589 - INFO - Page 32: Found matricule '01533' - app - extract_text - 73 - MainThread
+2025-10-07 18:47:17,594 - INFO - Destination PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01533_page_32.pdf - app - extract_text - 87 - MainThread
+2025-10-07 18:47:17,686 - INFO - Created page PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01533_page_32.pdf - app - extract_text - 95 - MainThread
+2025-10-07 18:47:17,723 - INFO - Reference text: N° de Sécurité Sociale, number of chars: 5 - app - extract_text - 65 - MainThread
+2025-10-07 18:47:17,724 - INFO - Page 33: Found matricule '01576' - app - extract_text - 73 - MainThread
+2025-10-07 18:47:17,730 - INFO - Destination PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01576_page_33.pdf - app - extract_text - 87 - MainThread
+2025-10-07 18:47:17,734 - INFO - Created page PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01576_page_33.pdf - app - extract_text - 95 - MainThread
+2025-10-07 18:47:17,748 - INFO - Reference text: N° de Sécurité Sociale, number of chars: 5 - app - extract_text - 65 - MainThread
+2025-10-07 18:47:17,748 - INFO - Page 34: Found matricule '00460' - app - extract_text - 73 - MainThread
+2025-10-07 18:47:17,754 - INFO - Destination PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\00460_page_34.pdf - app - extract_text - 87 - MainThread
+2025-10-07 18:47:17,759 - INFO - Created page PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\00460_page_34.pdf - app - extract_text - 95 - MainThread
+2025-10-07 18:47:17,786 - INFO - Reference text: N° de Sécurité Sociale, number of chars: 5 - app - extract_text - 65 - MainThread
+2025-10-07 18:47:17,787 - INFO - Page 35: Found matricule '00462' - app - extract_text - 73 - MainThread
+2025-10-07 18:47:17,790 - INFO - Destination PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\00462_page_35.pdf - app - extract_text - 87 - MainThread
+2025-10-07 18:47:17,798 - INFO - Created page PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\00462_page_35.pdf - app - extract_text - 95 - MainThread
+2025-10-07 18:47:17,816 - INFO - Reference text: N° de Sécurité Sociale, number of chars: 5 - app - extract_text - 65 - MainThread
+2025-10-07 18:47:17,817 - INFO - Page 36: Found matricule '01221' - app - extract_text - 73 - MainThread
+2025-10-07 18:47:17,819 - INFO - Destination PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01221_page_36.pdf - app - extract_text - 87 - MainThread
+2025-10-07 18:47:17,821 - INFO - Created page PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01221_page_36.pdf - app - extract_text - 95 - MainThread
+2025-10-07 18:47:17,838 - INFO - Reference text: N° de Sécurité Sociale, number of chars: 5 - app - extract_text - 65 - MainThread
+2025-10-07 18:47:17,839 - INFO - Page 37: Found matricule '01223' - app - extract_text - 73 - MainThread
+2025-10-07 18:47:17,843 - INFO - Destination PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01223_page_37.pdf - app - extract_text - 87 - MainThread
+2025-10-07 18:47:17,849 - INFO - Created page PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01223_page_37.pdf - app - extract_text - 95 - MainThread
+2025-10-07 18:47:17,869 - INFO - Reference text: N° de Sécurité Sociale, number of chars: 5 - app - extract_text - 65 - MainThread
+2025-10-07 18:47:17,870 - INFO - Page 38: Found matricule '01308' - app - extract_text - 73 - MainThread
+2025-10-07 18:47:17,872 - INFO - Destination PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01308_page_38.pdf - app - extract_text - 87 - MainThread
+2025-10-07 18:47:17,874 - INFO - Created page PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01308_page_38.pdf - app - extract_text - 95 - MainThread
+2025-10-07 18:47:17,889 - INFO - Reference text: N° de Sécurité Sociale, number of chars: 5 - app - extract_text - 65 - MainThread
+2025-10-07 18:47:17,890 - INFO - Page 39: Found matricule '01318' - app - extract_text - 73 - MainThread
+2025-10-07 18:47:17,895 - INFO - Destination PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01318_page_39.pdf - app - extract_text - 87 - MainThread
+2025-10-07 18:47:17,899 - INFO - Created page PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01318_page_39.pdf - app - extract_text - 95 - MainThread
+2025-10-07 18:47:17,912 - INFO - Reference text: N° de Sécurité Sociale, number of chars: 5 - app - extract_text - 65 - MainThread
+2025-10-07 18:47:17,914 - INFO - Page 40: Found matricule '01552' - app - extract_text - 73 - MainThread
+2025-10-07 18:47:17,916 - INFO - Destination PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01552_page_40.pdf - app - extract_text - 87 - MainThread
+2025-10-07 18:47:17,919 - INFO - Created page PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01552_page_40.pdf - app - extract_text - 95 - MainThread
+2025-10-07 18:47:17,934 - INFO - Reference text: N° de Sécurité Sociale, number of chars: 5 - app - extract_text - 65 - MainThread
+2025-10-07 18:47:17,935 - INFO - Page 41: Found matricule '01553' - app - extract_text - 73 - MainThread
+2025-10-07 18:47:17,937 - INFO - Destination PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01553_page_41.pdf - app - extract_text - 87 - MainThread
+2025-10-07 18:47:17,939 - INFO - Created page PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01553_page_41.pdf - app - extract_text - 95 - MainThread
+2025-10-07 18:47:17,956 - INFO - Reference text: N° de Sécurité Sociale, number of chars: 5 - app - extract_text - 65 - MainThread
+2025-10-07 18:47:17,957 - INFO - Page 42: Found matricule '01554' - app - extract_text - 73 - MainThread
+2025-10-07 18:47:17,961 - INFO - Destination PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01554_page_42.pdf - app - extract_text - 87 - MainThread
+2025-10-07 18:47:17,964 - INFO - Created page PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01554_page_42.pdf - app - extract_text - 95 - MainThread
+2025-10-07 18:47:17,981 - INFO - Reference text: N° de Sécurité Sociale, number of chars: 5 - app - extract_text - 65 - MainThread
+2025-10-07 18:47:17,982 - INFO - Page 43: Found matricule '00386' - app - extract_text - 73 - MainThread
+2025-10-07 18:47:17,984 - INFO - Destination PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\00386_page_43.pdf - app - extract_text - 87 - MainThread
+2025-10-07 18:47:17,986 - INFO - Created page PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\00386_page_43.pdf - app - extract_text - 95 - MainThread
+2025-10-07 18:47:18,001 - INFO - Reference text: N° de Sécurité Sociale, number of chars: 5 - app - extract_text - 65 - MainThread
+2025-10-07 18:47:18,001 - INFO - Page 44: Found matricule '00408' - app - extract_text - 73 - MainThread
+2025-10-07 18:47:18,003 - INFO - Destination PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\00408_page_44.pdf - app - extract_text - 87 - MainThread
+2025-10-07 18:47:18,005 - INFO - Created page PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\00408_page_44.pdf - app - extract_text - 95 - MainThread
+2025-10-07 18:47:18,022 - INFO - Reference text: N° de Sécurité Sociale, number of chars: 5 - app - extract_text - 65 - MainThread
+2025-10-07 18:47:18,027 - INFO - Page 45: Found matricule '00409' - app - extract_text - 73 - MainThread
+2025-10-07 18:47:18,030 - INFO - Destination PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\00409_page_45.pdf - app - extract_text - 87 - MainThread
+2025-10-07 18:47:18,033 - INFO - Created page PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\00409_page_45.pdf - app - extract_text - 95 - MainThread
+2025-10-07 18:47:18,060 - INFO - Reference text: N° de Sécurité Sociale, number of chars: 5 - app - extract_text - 65 - MainThread
+2025-10-07 18:47:18,061 - INFO - Page 46: Found matricule '00453' - app - extract_text - 73 - MainThread
+2025-10-07 18:47:18,063 - INFO - Destination PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\00453_page_46.pdf - app - extract_text - 87 - MainThread
+2025-10-07 18:47:18,065 - INFO - Created page PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\00453_page_46.pdf - app - extract_text - 95 - MainThread
+2025-10-07 18:47:18,131 - INFO - Reference text: N° de Sécurité Sociale, number of chars: 5 - app - extract_text - 65 - MainThread
+2025-10-07 18:47:18,219 - INFO - Page 47: Found matricule '00465' - app - extract_text - 73 - MainThread
+2025-10-07 18:47:18,270 - INFO - Destination PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\00465_page_47.pdf - app - extract_text - 87 - MainThread
+2025-10-07 18:47:18,310 - INFO - Created page PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\00465_page_47.pdf - app - extract_text - 95 - MainThread
+2025-10-07 18:47:18,370 - INFO - Reference text: N° de Sécurité Sociale, number of chars: 5 - app - extract_text - 65 - MainThread
+2025-10-07 18:47:18,370 - INFO - Page 48: Found matricule '00508' - app - extract_text - 73 - MainThread
+2025-10-07 18:47:18,372 - INFO - Destination PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\00508_page_48.pdf - app - extract_text - 87 - MainThread
+2025-10-07 18:47:18,375 - INFO - Created page PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\00508_page_48.pdf - app - extract_text - 95 - MainThread
+2025-10-07 18:47:18,389 - INFO - Reference text: N° de Sécurité Sociale, number of chars: 5 - app - extract_text - 65 - MainThread
+2025-10-07 18:47:18,390 - INFO - Page 49: Found matricule '00929' - app - extract_text - 73 - MainThread
+2025-10-07 18:47:18,394 - INFO - Destination PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\00929_page_49.pdf - app - extract_text - 87 - MainThread
+2025-10-07 18:47:18,400 - INFO - Created page PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\00929_page_49.pdf - app - extract_text - 95 - MainThread
+2025-10-07 18:47:18,412 - INFO - Reference text: N° de Sécurité Sociale, number of chars: 5 - app - extract_text - 65 - MainThread
+2025-10-07 18:47:18,413 - INFO - Page 50: Found matricule '01562' - app - extract_text - 73 - MainThread
+2025-10-07 18:47:18,416 - INFO - Destination PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01562_page_50.pdf - app - extract_text - 87 - MainThread
+2025-10-07 18:47:18,419 - INFO - Created page PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01562_page_50.pdf - app - extract_text - 95 - MainThread
+2025-10-07 18:47:18,438 - INFO - Reference text: N° de Sécurité Sociale, number of chars: 5 - app - extract_text - 65 - MainThread
+2025-10-07 18:47:18,438 - INFO - Page 51: Found matricule '01563' - app - extract_text - 73 - MainThread
+2025-10-07 18:47:18,440 - INFO - Destination PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01563_page_51.pdf - app - extract_text - 87 - MainThread
+2025-10-07 18:47:18,447 - INFO - Created page PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01563_page_51.pdf - app - extract_text - 95 - MainThread
+2025-10-07 18:47:18,470 - INFO - Reference text: N° de Sécurité Sociale, number of chars: 5 - app - extract_text - 65 - MainThread
+2025-10-07 18:47:18,471 - INFO - Page 52: Found matricule '01564' - app - extract_text - 73 - MainThread
+2025-10-07 18:47:18,473 - INFO - Destination PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01564_page_52.pdf - app - extract_text - 87 - MainThread
+2025-10-07 18:47:18,477 - INFO - Created page PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01564_page_52.pdf - app - extract_text - 95 - MainThread
+2025-10-07 18:47:18,492 - INFO - Reference text: N° de Sécurité Sociale, number of chars: 5 - app - extract_text - 65 - MainThread
+2025-10-07 18:47:18,494 - INFO - Page 53: Found matricule '01565' - app - extract_text - 73 - MainThread
+2025-10-07 18:47:18,499 - INFO - Destination PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01565_page_53.pdf - app - extract_text - 87 - MainThread
+2025-10-07 18:47:18,503 - INFO - Created page PDF: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07\01565_page_53.pdf - app - extract_text - 95 - MainThread
+2025-10-07 18:47:18,606 - INFO - Archive path: E:\Dossier du fichier a traiter\Base1\Archieve\2025-10-07 - app - extract_text - 119 - MainThread
+2025-10-07 18:47:18,616 - INFO - Successfully processed 53 pages from E:\Dossier du fichier a traiter\Base1\BULLETINS DE PAIE YOSSI.pdf - app - extract_text - 120 - MainThread
+2025-10-07 18:47:18,630 - INFO - matricules: ['00679', '00992', '01189', '01271', '01301', '01337', '01344', '01445', '01447', '01488', '01492', '00381', '00925', '00983', '01004', '01047', '01050', '01093', '01146', '01437', '01452', '01486', '01491', '00969', '01022', '01205', '01231', '01342', '01345', '01528', '01529', '01533', '01576', '00460', '00462', '01221', '01223', '01308', '01318', '01552', '01553', '01554', '00386', '00408', '00409', '00453', '00465', '00508', '00929', '01562', '01563', '01564', '01565'] - app.routes.run_automation - event_stream - 101 - MainThread
+2025-10-07 18:47:18,634 - INFO - ====>Database: PAIETEST - test - connect_to_database - 46 - MainThread
+2025-10-07 18:47:18,635 - INFO - Connecting using Windows Authentication. DSN: demo2 - test - connect_to_database - 52 - MainThread
+2025-10-07 18:47:18,636 - INFO -  Connectioni string: DSN=demo2;DATABASE=PAIETEST;Trusted_Connection=yes;  - test - connect_to_database - 55 - MainThread
+2025-10-07 18:47:34,493 - ERROR - Database connection error: ('08001', "[08001] [Microsoft][ODBC Driver 17 for SQL Server]Fournisseur de canaux nommés : Impossible d'ouvrir une connexion à SQL Server [2].  (2) (SQLDriverConnect); [08001] [Microsoft][ODBC Driver 17 for SQL Server]Délai d'attente de connexion expiré (0); [08001] [Microsoft][ODBC Driver 17 for SQL Server]Une erreur liée au réseau ou spécifique à l'instance s'est produite lors de l'établissement d'une connexion à SQL Server. Le serveur est introuvable ou n'est pas accessible. Vérifiez si le nom de l'instance est correct et si SQL Server est configuré pour autoriser les connexions distantes. Pour plus d'informations, consultez la documentation en ligne de SQL Server. (2)") - test - connect_to_database - 67 - MainThread

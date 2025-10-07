@@ -22,6 +22,25 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+def move_file(source_path, destination_folder):
+    # Ensure the destination folder exists
+    os.makedirs(destination_folder, exist_ok=True)
+    
+    # Build the destination path
+    destination_path = os.path.join(destination_folder, os.path.basename(source_path))
+    
+    try:
+        shutil.move(source_path, destination_path)
+        logger.info(f"✅ File moved successfully to: {destination_path}")
+    except FileNotFoundError:
+        logger.warning("❌ Source file not found.")
+        raise Exception("Source file not found.")
+    except PermissionError:
+        logger.warning("❌ Permission denied. Try running as admin or check file access.")
+        raise Exception("Permission denied. Try running as admin or check file access.")
+    except Exception as e:
+        logger.warning(f"⚠️ Unexpected error: {e}")
+        raise Exception(f"Unexpected error: {e}")
 
 
 def extract_text(file_path, reference, num_chars, archive_path, journal_dir, archive_file_dir):
@@ -219,3 +238,22 @@ def archive_original_file(file_path, archive_file_dir):
     except Exception as e:
         logger.error(f"Error archiving file {file_path}: {e}")
         return False
+
+
+
+
+    # Ensure the destination folder exists
+    os.makedirs(destination_folder, exist_ok=True)
+    
+    # Build the destination path
+    destination_path = os.path.join(destination_folder, os.path.basename(source_path))
+    
+    try:
+        shutil.move(source_path, destination_path)
+        print(f"✅ File moved successfully to: {destination_path}")
+    except FileNotFoundError:
+        print("❌ Source file not found.")
+    except PermissionError:
+        print("❌ Permission denied. Try running as admin or check file access.")
+    except Exception as e:
+        print(f"⚠️ Unexpected error: {e}")
