@@ -71,20 +71,16 @@ async def distribution_automation(db: Session = Depends(get_db)):
                 if server_info.connection_type != "odbc":
                     continue
 
-                conn = connect_to_database(
-                    dsn=server_info.odbc_source,
-                    database=subfolder.link_database,
-                    username=server_info.db_username,
-                    password=server_info.db_password,
-                    tablename=subfolder.tablename,
-                    email_field=subfolder.email_field
-                )
+                
 
                 today = datetime.date.today().isoformat()
                 base_dir = os.path.join(subfolder.main_folder, subfolder.subfolder_name)
                 archive_dir = os.path.join(subfolder.main_folder, subfolder.subfolder_name,subfolder.archive_folder, today)
                 journal_dir = os.path.join(subfolder.main_folder, subfolder.subfolder_name, subfolder.log_folder, today)
                 # file_path = ensure_pdf_exists(base_dir)
+                logger.info(f"Base dir: {base_dir}")
+                logger.info(f"Archive dir: {archive_dir}")
+                logger.info(f"Journal dir: {journal_dir}")
 
                 try:
                     file_path = ensure_pdf_exists(base_dir)
@@ -109,8 +105,16 @@ async def distribution_automation(db: Session = Depends(get_db)):
                         async for msg in emit_progress(error="Limite de licence atteinte."):
                             yield msg
                         return
-
+            
                     number_process -= 1
+                    conn = connect_to_database(
+                    dsn=server_info.odbc_source,
+                    database=subfolder.link_database,
+                    username=server_info.db_username,
+                    password=server_info.db_password,
+                    tablename=subfolder.tablename,
+                    email_field=subfolder.email_field
+                )
                     result = fetch_by_matricule(
                         conn=conn,
                         database_name=subfolder.link_database,
