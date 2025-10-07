@@ -135,6 +135,11 @@ def extract_text(file_path, reference, num_chars, archive_path, journal_dir, arc
         # Give the system a moment to release file handles
         time.sleep(0.1)
 
+
+    move_file(
+        source_path=file_path,
+        destination_folder=archive_path
+    )
     logger.info(f"Archive path: {archive_path}")
     logger.info(f"Successfully processed {len(pages_matricules)} pages from {file_path}")
     return pages_matricules, matricule_with_path
