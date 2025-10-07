@@ -6,7 +6,8 @@ from app.db.session import get_db
 from app.secret_generator import SECRET, decode_license_key
 
 license_router = APIRouter(
-    prefix="/license"
+    prefix="/license",
+    tags=["license"]
 )
 
 def verify_license_key(key: str, secret: str = SECRET) -> bool:

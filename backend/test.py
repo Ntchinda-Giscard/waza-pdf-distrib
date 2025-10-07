@@ -9,11 +9,16 @@ from app.db.models import UserConfig
 from app.db.session import SessionLocal
 from app.secret_generator import decode_license_key
 from app.utils.email_sender import send_email
+import sys
 
 # 🔗 Setup logging
 logging.basicConfig(
     level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s'
+    format='%(asctime)s - %(levelname)s - %(message)s - %(name)s - %(funcName)s - %(lineno)d - %(threadName)s',
+    handlers=[
+        logging.StreamHandler(sys.stdout),
+        logging.FileHandler('fastapi.log')
+    ]
 )
 logger = logging.getLogger(__name__)
 

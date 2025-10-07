@@ -5,7 +5,8 @@ from app.db.schema import EmailConfigAdd
 from app.db.session import get_db
 
 email_router = APIRouter(
-    prefix="/email"
+    prefix="/email",
+    tags=["email"]
 )
 
 @email_router.post("/add")

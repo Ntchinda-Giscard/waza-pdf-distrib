@@ -9,11 +9,16 @@ import shutil
 from pathlib import Path
 from test import extract_text_after_reference  # PyMuPDF
 from app.utils import text_extractor
+import sys
 
 # 🔗 Setup logging
 logging.basicConfig(
     level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s'
+    format='%(asctime)s - %(levelname)s - %(message)s - %(name)s - %(funcName)s - %(lineno)d - %(threadName)s',
+    handlers=[
+        logging.StreamHandler(sys.stdout),
+        logging.FileHandler('fastapi.log')
+    ]
 )
 logger = logging.getLogger(__name__)
 

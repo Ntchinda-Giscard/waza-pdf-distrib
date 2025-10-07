@@ -21,7 +21,7 @@ from test import process_configs, run_pdf_automation
 # Configure logging to help with debugging
 logging.basicConfig(
     level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    format='%(asctime)s - %(levelname)s - %(message)s - %(name)s - %(funcName)s - %(lineno)d - %(threadName)s',
     handlers=[
         logging.StreamHandler(sys.stdout),
         logging.FileHandler('fastapi.log')

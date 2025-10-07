@@ -12,14 +12,20 @@ import json
 from app.secret_generator import decode_license_key
 from app.utils.email_sender import send_email
 from test import connect_to_database, ensure_pdf_exists, fetch_by_matricule
+import sys
 
 run_router = APIRouter(
-    prefix="/run"
+    prefix="/run",
+    tags=["run"]
 )
 
 logging.basicConfig(
     level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s'
+    format='%(asctime)s - %(levelname)s - %(message)s - %(name)s - %(funcName)s - %(lineno)d - %(threadName)s',
+    handlers=[
+        logging.StreamHandler(sys.stdout),
+        logging.FileHandler('fastapi.log')
+    ]
 )
 logger = logging.getLogger(__name__)
 

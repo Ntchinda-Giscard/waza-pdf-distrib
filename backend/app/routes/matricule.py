@@ -5,7 +5,8 @@ from app.db.schema import MatriculeConfigAdd
 from app.db.session import get_db
 
 matricule_router = APIRouter(
-    prefix="/matricule"
+    prefix="/matricule",
+    tags=["matricule"]
 )
 
 @matricule_router.post("/add")

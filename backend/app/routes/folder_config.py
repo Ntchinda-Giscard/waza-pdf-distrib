@@ -7,7 +7,8 @@ from app.db.session import get_db
 
 
 folder_router = APIRouter(
-    prefix="/folder-config"
+    prefix="/folder-config",
+    tags=["folder-config"]
 )
 
 @folder_router.post("/add")

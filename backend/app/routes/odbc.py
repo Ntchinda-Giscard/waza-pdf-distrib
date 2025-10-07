@@ -6,7 +6,8 @@ from app.db.schema import DatabaseServerAdd
 from app.db.session import get_db
 
 odbc_router = APIRouter(
-    prefix="/odbc"
+    prefix="/odbc",
+    tags=["odbc"]
 )
 
 def get_odbc_source_names():
