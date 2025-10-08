@@ -1,4 +1,12 @@
-const { app, BrowserWindow, dialog, ipcMain, shell } = require("electron");
+const {
+  app,
+  BrowserWindow,
+  dialog,
+  ipcMain,
+  shell,
+  Menu,
+  autoUpdater,
+} = require("electron");
 const { spawn, exec } = require("child_process");
 const fs = require("fs");
 const fsPromises = require("fs").promises; // For async operations like stat, readdir
@@ -6,6 +14,12 @@ const path = require("path"); // This is for handling file paths
 const http = require("http");
 const net = require("net");
 const os = require("os");
+const log = require("electron-log");
+
+const isMac = process.platform === "darwin";
+
+autoUpdater.logger = log;
+autoUpdater.logger.transports.file.level = "info";
 
 // Enhanced development mode detection
 const isDev =
@@ -491,6 +505,38 @@ async function ensureNodeJs() {
 
   return true;
 }
+
+const template = [
+  {
+    label: "File",
+    submenu: [
+      { label: "New", click: () => console.log("New file clicked!") },
+      { type: "separator" },
+      isMac ? { role: "close" } : { role: "quit" },
+    ],
+  },
+  {
+    label: "Edit",
+    submenu: [
+      { role: "undo" },
+      { role: "redo" },
+      { type: "separator" },
+      { role: "cut" },
+      { role: "copy" },
+      { role: "paste" },
+    ],
+  },
+  {
+    label: "Custom Action",
+    click: () => {
+      // Send a message to the renderer process to perform a React-specific action
+      mainWindow.webContents.send(
+        "custom-menu-action",
+        "Hello from main process!"
+      );
+    },
+  },
+];
 
 function createWindow() {
   log("info", "Creating main window");
@@ -1058,6 +1104,8 @@ app.whenReady().then(async () => {
 
     log("info", "Step 5: Creating main window");
     createWindow();
+    const menu = Menu.buildFromTemplate(template);
+    Menu.setApplicationMenu(menu);
   } catch (error) {
     log("error", "Application startup failed", error);
 

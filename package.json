@@ -61,7 +61,16 @@
     "nsis": {
       "oneClick": false,
       "allowToChangeInstallationDirectory": true,
-      "license": "LICENSE.txt"
+      "license": "LICENSE.txt",
+      "allowElevation": true,
+      "installerIcon": "build/installer.ico",
+      "uninstallerIcon": "build/uninstaller.ico",
+      "installerHeaderIcon": "build/header.ico",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Your App",
+      "include": "build/installer.nsh",
+      "warningsAsErrors": false
     }
   }
 }
