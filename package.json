@@ -1,5 +1,5 @@
 {
-  "name": "portail-paie",
+  "name": "e-bulletin",
   "version": "1.0.0",
   "main": "electron/main.js",
   "scripts": {
@@ -20,8 +20,8 @@
     "fs-extra": "^11.0.0"
   },
   "build": {
-    "appId": "com.wazasolution.portailpaie",
-    "productName": "Portail Paie",
+    "appId": "com.wazasolution.ebulletin",
+    "productName": "eBulletin",
     "directories": {
       "output": "dist"
     },
@@ -61,14 +61,14 @@
     "nsis": {
       "oneClick": false,
       "allowToChangeInstallationDirectory": true,
-      "license": "LICENSE.txt",
+      "license": "LICENSE.rtf",
       "allowElevation": true,
       "installerIcon": "build/installer.ico",
       "uninstallerIcon": "build/uninstaller.ico",
       "installerHeaderIcon": "build/header.ico",
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
-      "shortcutName": "Your App",
+      "shortcutName": "eBulletin",
       "include": "build/installer.nsh",
       "warningsAsErrors": false
     }
