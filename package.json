@@ -1,5 +1,5 @@
 {
-  "name": "waza-distribution",
+  "name": "portail-paie",
   "version": "1.0.0",
   "main": "electron/main.js",
   "scripts": {
@@ -20,8 +20,8 @@
     "fs-extra": "^11.0.0"
   },
   "build": {
-    "appId": "com.yourcompany.yourapp",
-    "productName": "Waza paie",
+    "appId": "com.wazasolution.portailpaie",
+    "productName": "Portail Paie",
     "directories": {
       "output": "dist"
     },
@@ -61,7 +61,7 @@
     "nsis": {
       "oneClick": false,
       "allowToChangeInstallationDirectory": true,
-      "license": "LICENSE.md"
+      "license": "LICENSE.txt"
     }
   }
 }
