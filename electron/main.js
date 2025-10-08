@@ -1104,8 +1104,7 @@ app.whenReady().then(async () => {
 
     log("info", "Step 5: Creating main window");
     createWindow();
-    const menu = Menu.buildFromTemplate(template);
-    Menu.setApplicationMenu(menu);
+    mainWindow.setMenuBarVisibility(false);
   } catch (error) {
     log("error", "Application startup failed", error);
 
@@ -1148,6 +1147,21 @@ app.on("before-quit", async (event) => {
       app.exit(1);
     }
   }
+});
+
+app.on("ready", () => {
+  if (process.env.NODE_ENV === "production") {
+    autoUpdater.checkForUpdatesAndNotify();
+  }
+});
+
+autoUpdater.on("update-available", () => {
+  dialog.showMessageBox({
+    type: "info",
+    title: "Update Available",
+    message:
+      "A new version is available. It will be downloaded in the background.",
+  });
 });
 
 // Enhanced signal handlers with proper cleanup
