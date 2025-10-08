@@ -22,6 +22,7 @@
   "build": {
     "appId": "com.wazasolution.ebulletin",
     "productName": "eBulletin",
+    "copyright": "Copyright © 2025 Waza solutions",
     "directories": {
       "output": "dist"
     },
