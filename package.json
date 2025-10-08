@@ -48,8 +48,10 @@
       }
     ],
     "win": {
-      "target": "nsis",
-      "icon": "assets/icon.png"
+      "icon": "assets/icon.png",
+      "target": [
+        "nsis"
+      ]
     },
     "mac": {
       "target": "dmg",
@@ -61,17 +63,14 @@
     },
     "nsis": {
       "oneClick": false,
-      "allowToChangeInstallationDirectory": true,
-      "license": "LICENSE.rtf",
+      "perMachine": true,
       "allowElevation": true,
-      "installerIcon": "build/installer.ico",
-      "uninstallerIcon": "build/uninstaller.ico",
-      "installerHeaderIcon": "build/header.ico",
-      "createDesktopShortcut": true,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": false,
       "createStartMenuShortcut": true,
-      "shortcutName": "eBulletin",
+      "license": "LICENSE.rtf",
       "include": "build/installer.nsh",
-      "warningsAsErrors": false
+      "runAfterFinish": true
     }
   }
 }
