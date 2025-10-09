@@ -124,7 +124,9 @@ export function TestMatriculeModal({
               <Button
                 onClick={handleUpload}
                 disabled={!selectedFile || isLoading}
-                size="sm"
+                variant="outline"
+                className="border-gray-700 text-gray-200 hover:bg-gray-800 bg-transparent"
+                size={"sm"}
               >
                 {isLoading ? (
                   <>

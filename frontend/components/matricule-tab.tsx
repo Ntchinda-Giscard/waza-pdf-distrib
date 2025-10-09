@@ -74,10 +74,10 @@ export function MatriculeTab() {
           <Button
             onClick={() => setIsModalOpen(true)}
             variant="outline"
-            className="border-blue-700 text-blue-700 hover:bg-blue-600 hover:text-white"
-            size="sm"
+            className="border-gray-700 text-gray-200 hover:bg-gray-800 bg-transparent"
+            size={"sm"}
           >
-            <TestTubeDiagonal className="w-5 h-5 text-blue-700 hover:bg-blue-600" />
+            <TestTubeDiagonal className="w-5 h-5 text-white " />
             Tester et trouver le matricule
           </Button>
           <div className="grid grid-cols-2 gap-6">
