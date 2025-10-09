@@ -16,7 +16,6 @@ import { Label } from "@/components/ui/label";
 import { Spinner } from "@/components/ui/spinner";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Upload, FileText } from "lucide-react";
-import { Input } from "./ui/input";
 
 interface TestMatriculeModalProps {
   open: boolean;
@@ -57,7 +56,7 @@ export function TestMatriculeModal({
       formData.append("file", selectedFile);
 
       // Replace with your actual FastAPI backend URL
-      const response = await fetch("http://localhost:8000/api/extract-text", {
+      const response = await fetch("http://127.0.0.1:8000/matricule/test", {
         method: "POST",
         body: formData,
       });
@@ -84,7 +83,7 @@ export function TestMatriculeModal({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-2xl max-h-[80vh] bg-gray-900 overflow-y-auto">
+      <DialogContent className="max-w-2xl max-h-[80vh] bg-gray-900 overflow-y-auto border border-gray-800 ">
         <DialogHeader>
           <DialogTitle className="text-white">
             Test Matricule Extraction
@@ -107,17 +106,17 @@ export function TestMatriculeModal({
                 htmlFor="pdf-upload"
                 className="flex h-10 flex-1 cursor-pointer items-center gap-2 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background hover:bg-accent hover:text-accent-foreground"
               >
-                <Upload className="h-4 w-4 bg-gray-800 border-gray-700 text-white" />
+                <Upload className="h-4 w-4" />
                 <span className="text-muted-foreground">
                   {selectedFile ? selectedFile.name : "Choose a PDF file..."}
                 </span>
               </label>
-              <Input
+              <input
                 id="pdf-upload"
                 type="file"
                 accept="application/pdf"
                 onChange={handleFileChange}
-                className="sr-only bg-gray-800 border-gray-700 text-white"
+                className="sr-only"
               />
               <Button
                 onClick={handleUpload}
@@ -146,8 +145,8 @@ export function TestMatriculeModal({
           {/* Extracted Text Display */}
           {extractedText && (
             <div className="space-y-2">
-              <Label>Extracted Text</Label>
-              <div className="rounded-md border bg-muted p-4">
+              <Label className="text-white">Extracted Text</Label>
+              <div className="rounded-md border bg-muted p-4 max-h-[250px] overflow-y-auto">
                 <div className="flex items-start gap-2">
                   <FileText className="mt-1 h-4 w-4 text-muted-foreground" />
                   <p className="text-sm leading-relaxed whitespace-pre-wrap">
@@ -158,10 +157,10 @@ export function TestMatriculeModal({
 
               <Alert>
                 <AlertDescription className="text-pretty">
-                  <strong>Instructions:</strong> Please copy the last word or
-                  sentence that appears <strong>before</strong> the matricule
-                  number in the text above. You'll paste this as the reference
-                  text in the main form.
+                  <strong>Instructions:</strong> Veuillez copier le dernier mot
+                  ou la dernière phrase <strong>précédant </strong>le numéro de
+                  matricule dans le texte ci-dessus. Vous le collerez comme
+                  texte de référence dans le formulaire principal.
                 </AlertDescription>
               </Alert>
             </div>
@@ -169,7 +168,10 @@ export function TestMatriculeModal({
         </div>
 
         <DialogFooter>
-          <Button onClick={handleClose} variant="outline">
+          <Button
+            className="bg-blue-600 hover:bg-blue-700 text-white"
+            onClick={handleClose}
+          >
             Finish
           </Button>
         </DialogFooter>
