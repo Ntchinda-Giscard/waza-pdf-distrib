@@ -109,7 +109,9 @@ export function TestMatriculeModal({
               >
                 <Upload className="h-4 w-4" />
                 <span className="text-muted-foreground">
-                  {selectedFile ? selectedFile.name : "Choose a PDF file..."}
+                  {selectedFile
+                    ? selectedFile.name
+                    : "Choisissez un fichier PDF..."}
                 </span>
               </label>
               <input
@@ -127,10 +129,10 @@ export function TestMatriculeModal({
                 {isLoading ? (
                   <>
                     <Spinner className="mr-2 h-4 w-4" />
-                    Processing...
+                    Traitement...
                   </>
                 ) : (
-                  "Extract Text"
+                  "Extraire le texte"
                 )}
               </Button>
             </div>
@@ -146,7 +148,7 @@ export function TestMatriculeModal({
           {/* Extracted Text Display */}
           {extractedText && (
             <div className="space-y-2">
-              <Label className="text-white">Extracted Text</Label>
+              <Label className="text-white">Texte extrait</Label>
               <div className="rounded-md border bg-muted p-4 max-h-[150px] overflow-y-auto">
                 <div className="flex items-start gap-2">
                   <FileText className="mt-1 h-4 w-4 text-muted-foreground" />
@@ -173,7 +175,7 @@ export function TestMatriculeModal({
             className="bg-blue-600 hover:bg-blue-700 text-white"
             onClick={handleClose}
           >
-            Finish
+            Fin
           </Button>
         </DialogFooter>
       </DialogContent>
