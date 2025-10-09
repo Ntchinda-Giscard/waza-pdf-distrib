@@ -16,6 +16,7 @@ import { Label } from "@/components/ui/label";
 import { Spinner } from "@/components/ui/spinner";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Upload, FileText } from "lucide-react";
+import { Input } from "./ui/input";
 
 interface TestMatriculeModalProps {
   open: boolean;
@@ -106,17 +107,17 @@ export function TestMatriculeModal({
                 htmlFor="pdf-upload"
                 className="flex h-10 flex-1 cursor-pointer items-center gap-2 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background hover:bg-accent hover:text-accent-foreground"
               >
-                <Upload className="h-4 w-4" />
+                <Upload className="h-4 w-4 bg-gray-800 border-gray-700 text-white" />
                 <span className="text-muted-foreground">
                   {selectedFile ? selectedFile.name : "Choose a PDF file..."}
                 </span>
               </label>
-              <input
+              <Input
                 id="pdf-upload"
                 type="file"
                 accept="application/pdf"
                 onChange={handleFileChange}
-                className="sr-only"
+                className="sr-only bg-gray-800 border-gray-700 text-white"
               />
               <Button
                 onClick={handleUpload}
