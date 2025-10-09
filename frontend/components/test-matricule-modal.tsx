@@ -86,11 +86,12 @@ export function TestMatriculeModal({
       <DialogContent className="max-w-2xl max-h-[80vh] bg-gray-900 overflow-y-auto border border-gray-800 ">
         <DialogHeader>
           <DialogTitle className="text-white">
-            Test Matricule Extraction
+            Extraction du matricule de test
           </DialogTitle>
           <DialogDescription>
             <p className="text-sm text-gray-400">
-              Upload an example PDF document to test the matricule extraction
+              Téléchargez un exemple de document PDF pour tester l'extraction du
+              matricule
             </p>
           </DialogDescription>
         </DialogHeader>
@@ -99,7 +100,7 @@ export function TestMatriculeModal({
           {/* File Picker */}
           <div className="space-y-2">
             <Label htmlFor="pdf-upload" className="text-white">
-              Upload Example PDF
+              Télécharger un exemple de PDF
             </Label>
             <div className="flex items-center gap-2">
               <label
@@ -146,7 +147,7 @@ export function TestMatriculeModal({
           {extractedText && (
             <div className="space-y-2">
               <Label className="text-white">Extracted Text</Label>
-              <div className="rounded-md border bg-muted p-4 max-h-[250px] overflow-y-auto">
+              <div className="rounded-md border bg-muted p-4 max-h-[150px] overflow-y-auto">
                 <div className="flex items-start gap-2">
                   <FileText className="mt-1 h-4 w-4 text-muted-foreground" />
                   <p className="text-sm leading-relaxed whitespace-pre-wrap">
