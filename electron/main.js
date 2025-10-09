@@ -5,7 +5,6 @@ const {
   ipcMain,
   shell,
   Menu,
-  autoUpdater,
 } = require("electron");
 const { spawn, exec } = require("child_process");
 const fs = require("fs");
@@ -14,12 +13,8 @@ const path = require("path"); // This is for handling file paths
 const http = require("http");
 const net = require("net");
 const os = require("os");
-const log = require("electron-log");
 
 const isMac = process.platform === "darwin";
-
-autoUpdater.logger = log;
-autoUpdater.logger.transports.file.level = "info";
 
 // Enhanced development mode detection
 const isDev =
@@ -547,7 +542,7 @@ function createWindow() {
     webPreferences: {
       contextIsolation: true,
       nodeIntegration: false,
-      devTools: true,
+      devTools: false,
       preload: path.join(__dirname, "preload.js"),
     },
     icon: path.join(__dirname, "icons", "icon.png"),
@@ -1049,6 +1044,32 @@ function waitForHttpServer(port, maxAttempts = 30, intervalMs = 1000) {
   });
 }
 
+const gotTheLock = app.requestSingleInstanceLock();
+
+if (!gotTheLock) {
+  // Another instance is already running
+  dialog.showErrorBox(
+    "Already Running",
+    "Another instance of eBulletin is already open."
+  );
+  app.quit(); // Exit this second instance immediately
+} else {
+  // Handle case where the user tries to open again
+  app.on("second-instance", (event, commandLine, workingDirectory) => {
+    // Focus the main window if available
+    if (mainWindow) {
+      if (mainWindow.isMinimized()) mainWindow.restore();
+      mainWindow.focus();
+      mainWindow.show();
+
+      // Optional: Show message in the main process log
+      console.log(
+        "User tried to open a second instance — focusing main window."
+      );
+    }
+  });
+}
+
 // Main application startup sequence
 app.whenReady().then(async () => {
   log("info", "Electron app ready, starting initialization", {
@@ -1147,21 +1168,6 @@ app.on("before-quit", async (event) => {
       app.exit(1);
     }
   }
-});
-
-app.on("ready", () => {
-  if (process.env.NODE_ENV === "production") {
-    autoUpdater.checkForUpdatesAndNotify();
-  }
-});
-
-autoUpdater.on("update-available", () => {
-  dialog.showMessageBox({
-    type: "info",
-    title: "Update Available",
-    message:
-      "A new version is available. It will be downloaded in the background.",
-  });
 });
 
 // Enhanced signal handlers with proper cleanup
