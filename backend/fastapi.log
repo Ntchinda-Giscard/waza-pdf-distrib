@@ -1199,3 +1199,12 @@
 2025-10-07 19:04:26,647 - INFO - Connecting using Windows Authentication. DSN: demo2 - test - connect_to_database - 52 - MainThread
 2025-10-07 19:04:26,658 - INFO -  Connectioni string: DSN=demo2;DATABASE=PAIETEST;Trusted_Connection=yes;  - test - connect_to_database - 55 - MainThread
 2025-10-07 19:04:42,510 - ERROR - Database connection error: ('08001', "[08001] [Microsoft][ODBC Driver 17 for SQL Server]Fournisseur de canaux nommés : Impossible d'ouvrir une connexion à SQL Server [2].  (2) (SQLDriverConnect); [08001] [Microsoft][ODBC Driver 17 for SQL Server]Délai d'attente de connexion expiré (0); [08001] [Microsoft][ODBC Driver 17 for SQL Server]Une erreur liée au réseau ou spécifique à l'instance s'est produite lors de l'établissement d'une connexion à SQL Server. Le serveur est introuvable ou n'est pas accessible. Vérifiez si le nom de l'instance est correct et si SQL Server est configuré pour autoriser les connexions distantes. Pour plus d'informations, consultez la documentation en ligne de SQL Server. (2)") - test - connect_to_database - 67 - MainThread
+2025-10-09 15:25:18,893 - ERROR - Form data requires "python-multipart" to be installed. 
+You can install "python-multipart" with: 
+
+pip install python-multipart
+ - fastapi - ensure_multipart_is_installed - 114 - MainThread
+2025-10-09 15:27:06,611 - INFO - Creating app.db... - __main__ - <module> - 33 - MainThread
+2025-10-09 15:27:06,801 - INFO - Created app.db - __main__ - <module> - 35 - MainThread
+2025-10-09 15:29:37,588 - INFO - Creating app.db... - __main__ - <module> - 33 - MainThread
+2025-10-09 15:29:37,592 - INFO - Created app.db - __main__ - <module> - 35 - MainThread
