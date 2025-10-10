@@ -1,4 +1,5 @@
 import smtplib
+from typing import Optional
 import unicodedata
 import ssl
 import mimetypes
@@ -31,7 +32,7 @@ def send_email(
     email_sender: str,
     email_password: str,
     security: str = "tls",  # "ssl", "tls" ou "both"
-    attachments: list[str] = None
+    attachments: Optional[list[str]] = None
 ):
     # Vérification du paramètre security
     mode = security.lower()

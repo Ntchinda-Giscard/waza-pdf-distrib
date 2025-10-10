@@ -1,31 +1,37 @@
-"use client"
+"use client";
 
-import type React from "react"
-import { useState, useRef, useEffect } from "react"
-import { FolderOpen, Trash2, Edit, Plus, AlertTriangle } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { Alert, AlertDescription } from "@/components/ui/alert"
-import { useAppStore, type FolderDatabaseLink } from "@/lib/store"
-import { toast } from "sonner"
+import type React from "react";
+import { useState, useRef, useEffect } from "react";
+import { FolderOpen, Trash2, Edit, Plus, AlertTriangle } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { useAppStore, type FolderDatabaseLink } from "@/lib/store";
+import { toast } from "sonner";
 
 // Extend the Window interface to include electronAPI
 declare global {
   interface Window {
-    electronAPI?: any
+    electronAPI?: any;
   }
 }
 
 // Enhanced duplicate detection system
 class FolderDuplicateDetector {
-  private existingLinks: FolderDatabaseLink[]
+  private existingLinks: FolderDatabaseLink[];
 
   constructor(existingLinks: FolderDatabaseLink[]) {
-    this.existingLinks = existingLinks
+    this.existingLinks = existingLinks;
   }
 
   // Normalize path for comparison (handle different separators and case)
@@ -33,137 +39,168 @@ class FolderDuplicateDetector {
     return path
       .toLowerCase()
       .replace(/[\\/]+/g, "/")
-      .replace(/\/$/, "")
+      .replace(/\/$/, "");
   }
 
   // Extract all folder segments from a path
-  private extractFolderSegments(mainFolder: string, subFolder: string): string[] {
-    const normalizedMain = this.normalizePath(mainFolder)
-    const normalizedSub = this.normalizePath(subFolder)
+  private extractFolderSegments(
+    mainFolder: string,
+    subFolder: string
+  ): string[] {
+    const normalizedMain = this.normalizePath(mainFolder);
+    const normalizedSub = this.normalizePath(subFolder);
 
     // Split subfolder path into segments
-    const subSegments = normalizedSub.split("/").filter((segment) => segment.length > 0)
+    const subSegments = normalizedSub
+      .split("/")
+      .filter((segment) => segment.length > 0);
 
     // Return all possible folder combinations
-    const segments: string[] = []
+    const segments: string[] = [];
 
     // Add the main folder
-    segments.push(normalizedMain)
+    segments.push(normalizedMain);
 
     // Add each level of subfolder
-    let currentPath = normalizedMain
+    let currentPath = normalizedMain;
     for (const segment of subSegments) {
-      currentPath += "/" + segment
-      segments.push(currentPath)
+      currentPath += "/" + segment;
+      segments.push(currentPath);
     }
 
-    return segments
+    return segments;
   }
 
   // Check for exact path duplicates
-  private checkExactDuplicate(mainFolder: string, subFolder: string, excludeId?: string): FolderDatabaseLink | null {
-    const normalizedMain = this.normalizePath(mainFolder)
-    const normalizedSub = this.normalizePath(subFolder)
+  private checkExactDuplicate(
+    mainFolder: string,
+    subFolder: string,
+    excludeId?: string
+  ): FolderDatabaseLink | null {
+    const normalizedMain = this.normalizePath(mainFolder);
+    const normalizedSub = this.normalizePath(subFolder);
 
     return (
       this.existingLinks.find((link) => {
-        if (excludeId && link.id === excludeId) return false
+        if (excludeId && link.id === excludeId) return false;
 
-        const existingMain = this.normalizePath(link.mainFolder)
-        const existingSub = this.normalizePath(link.subFolder)
+        const existingMain = this.normalizePath(link.mainFolder);
+        const existingSub = this.normalizePath(link.subFolder);
 
-        return existingMain === normalizedMain && existingSub === normalizedSub
+        return existingMain === normalizedMain && existingSub === normalizedSub;
       }) || null
-    )
+    );
   }
 
   // Check for folder name conflicts within the same main folder
   private checkFolderNameConflict(
     mainFolder: string,
     subFolder: string,
-    excludeId?: string,
+    excludeId?: string
   ): FolderDatabaseLink | null {
-    const normalizedMain = this.normalizePath(mainFolder)
-    const subFolderName = this.normalizePath(subFolder).split("/").pop() || ""
+    const normalizedMain = this.normalizePath(mainFolder);
+    const subFolderName = this.normalizePath(subFolder).split("/").pop() || "";
 
     return (
       this.existingLinks.find((link) => {
-        if (excludeId && link.id === excludeId) return false
+        if (excludeId && link.id === excludeId) return false;
 
-        const existingMain = this.normalizePath(link.mainFolder)
-        if (existingMain !== normalizedMain) return false
+        const existingMain = this.normalizePath(link.mainFolder);
+        if (existingMain !== normalizedMain) return false;
 
-        const existingSubFolderName = this.normalizePath(link.subFolder).split("/").pop() || ""
-        return existingSubFolderName === subFolderName
+        const existingSubFolderName =
+          this.normalizePath(link.subFolder).split("/").pop() || "";
+        return existingSubFolderName === subFolderName;
       }) || null
-    )
+    );
   }
 
   // Check for nested path conflicts
-  private checkNestedConflict(mainFolder: string, subFolder: string, excludeId?: string): FolderDatabaseLink | null {
-    const newSegments = this.extractFolderSegments(mainFolder, subFolder)
+  private checkNestedConflict(
+    mainFolder: string,
+    subFolder: string,
+    excludeId?: string
+  ): FolderDatabaseLink | null {
+    const newSegments = this.extractFolderSegments(mainFolder, subFolder);
 
     return (
       this.existingLinks.find((link) => {
-        if (excludeId && link.id === excludeId) return false
+        if (excludeId && link.id === excludeId) return false;
 
-        const existingSegments = this.extractFolderSegments(link.mainFolder, link.subFolder)
+        const existingSegments = this.extractFolderSegments(
+          link.mainFolder,
+          link.subFolder
+        );
 
         // Check if any segment overlaps
         return newSegments.some((newSeg) =>
           existingSegments.some(
             (existingSeg) =>
-              newSeg === existingSeg || newSeg.startsWith(existingSeg + "/") || existingSeg.startsWith(newSeg + "/"),
-          ),
-        )
+              newSeg === existingSeg ||
+              newSeg.startsWith(existingSeg + "/") ||
+              existingSeg.startsWith(newSeg + "/")
+          )
+        );
       }) || null
-    )
+    );
   }
 
   // Main validation method
   validateNewConfiguration(
     mainFolder: string,
     subFolder: string,
-    excludeId?: string,
+    excludeId?: string
   ): {
-    isValid: boolean
-    errorType: "exact" | "name_conflict" | "nested_conflict" | null
-    conflictingLink: FolderDatabaseLink | null
-    errorMessage: string
+    isValid: boolean;
+    errorType: "exact" | "name_conflict" | "nested_conflict" | null;
+    conflictingLink: FolderDatabaseLink | null;
+    errorMessage: string;
   } {
     // Check for exact duplicate
-    const exactDuplicate = this.checkExactDuplicate(mainFolder, subFolder, excludeId)
+    const exactDuplicate = this.checkExactDuplicate(
+      mainFolder,
+      subFolder,
+      excludeId
+    );
     if (exactDuplicate) {
       return {
         isValid: false,
         errorType: "exact",
         conflictingLink: exactDuplicate,
         errorMessage: `Cette configuration existe déjà. Dossier principal: "${exactDuplicate.mainFolder}", Sous-dossier: "${exactDuplicate.subFolder}"`,
-      }
+      };
     }
 
     // Check for folder name conflicts within same main folder
-    const nameConflict = this.checkFolderNameConflict(mainFolder, subFolder, excludeId)
+    const nameConflict = this.checkFolderNameConflict(
+      mainFolder,
+      subFolder,
+      excludeId
+    );
     if (nameConflict) {
-      const conflictingName = nameConflict.subFolder.split("/").pop()
-      const newName = subFolder.split("/").pop()
+      const conflictingName = nameConflict.subFolder.split("/").pop();
+      const newName = subFolder.split("/").pop();
       return {
         isValid: false,
         errorType: "name_conflict",
         conflictingLink: nameConflict,
         errorMessage: `Le nom de dossier "${newName}" existe déjà dans ce dossier principal. Conflit avec: "${nameConflict.subFolder}"`,
-      }
+      };
     }
 
     // Check for nested path conflicts
-    const nestedConflict = this.checkNestedConflict(mainFolder, subFolder, excludeId)
+    const nestedConflict = this.checkNestedConflict(
+      mainFolder,
+      subFolder,
+      excludeId
+    );
     if (nestedConflict) {
       return {
         isValid: false,
         errorType: "nested_conflict",
         conflictingLink: nestedConflict,
         errorMessage: `Conflit de chemin détecté. Le chemin "${mainFolder}/${subFolder}" entre en conflit avec la configuration existante: "${nestedConflict.mainFolder}/${nestedConflict.subFolder}"`,
-      }
+      };
     }
 
     return {
@@ -171,7 +208,7 @@ class FolderDuplicateDetector {
       errorType: null,
       conflictingLink: null,
       errorMessage: "",
-    }
+    };
   }
 }
 
@@ -182,9 +219,9 @@ export function FoldersTab() {
     addFolderDatabaseLink,
     updateFolderDatabaseLink,
     removeFolderDatabaseLink,
-  } = useAppStore()
+  } = useAppStore();
 
-  const [isEditing, setIsEditing] = useState<string | null>(null)
+  const [isEditing, setIsEditing] = useState<string | null>(null);
   const [formData, setFormData] = useState<Partial<FolderDatabaseLink>>({
     mainFolder: "",
     subFolder: "",
@@ -195,155 +232,168 @@ export function FoldersTab() {
     matriculeField: "MatriculeSalarie",
     emailField: "EMail",
     isSageDatabase: false,
-  })
-  const [availableSubfolders, setAvailableSubfolders] = useState<string[]>([])
-  const [isScanning, setIsScanning] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
-  const [isElectronAvailable, setIsElectronAvailable] = useState(false)
-  const [validationError, setValidationError] = useState<string>("")
+  });
+  const [availableSubfolders, setAvailableSubfolders] = useState<string[]>([]);
+  const [isScanning, setIsScanning] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isElectronAvailable, setIsElectronAvailable] = useState(false);
+  const [validationError, setValidationError] = useState<string>("");
 
   // Check if Electron API is available when component mounts
   useEffect(() => {
     if (typeof window !== "undefined" && window.electronAPI) {
-      setIsElectronAvailable(true)
-      console.log("Frontend: Electron API is available")
+      setIsElectronAvailable(true);
+      console.log("Frontend: Electron API is available");
     } else {
-      setIsElectronAvailable(false)
-      console.log("Frontend: Running in web browser mode")
+      setIsElectronAvailable(false);
+      console.log("Frontend: Running in web browser mode");
     }
-  }, [])
+  }, []);
 
   // Validate configuration whenever form data changes
   useEffect(() => {
     if (formData.mainFolder && formData.subFolder) {
-      const detector = new FolderDuplicateDetector(folderDatabaseLinks)
+      const detector = new FolderDuplicateDetector(folderDatabaseLinks);
       const validation = detector.validateNewConfiguration(
         formData.mainFolder,
         formData.subFolder,
-        isEditing || undefined,
-      )
+        isEditing || undefined
+      );
 
       if (!validation.isValid) {
-        setValidationError(validation.errorMessage)
+        setValidationError(validation.errorMessage);
       } else {
-        setValidationError("")
+        setValidationError("");
       }
     } else {
-      setValidationError("")
+      setValidationError("");
     }
-  }, [formData.mainFolder, formData.subFolder, folderDatabaseLinks, isEditing])
+  }, [formData.mainFolder, formData.subFolder, folderDatabaseLinks, isEditing]);
 
   // Refs for hidden file inputs
-  const mainFolderInputRef = useRef<HTMLInputElement>(null)
-  const archiveFolderInputRef = useRef<HTMLInputElement>(null)
-  const logFolderInputRef = useRef<HTMLInputElement>(null)
+  const mainFolderInputRef = useRef<HTMLInputElement>(null);
+  const archiveFolderInputRef = useRef<HTMLInputElement>(null);
+  const logFolderInputRef = useRef<HTMLInputElement>(null);
 
   const handleFolderSelection = async () => {
     if (!isElectronAvailable) {
-      alert("Folder picker is only available in the desktop app")
-      return
+      alert("Folder picker is only available in the desktop app");
+      return;
     }
 
     try {
-      setIsLoading(true)
-      console.log("Frontend: Requesting folder picker...")
+      setIsLoading(true);
+      console.log("Frontend: Requesting folder picker...");
 
-      const result = await window.electronAPI.openFolderPicker()
-      console.log("Frontend: Received result from Electron:", result)
+      const result = await window.electronAPI.openFolderPicker();
+      console.log("Frontend: Received result from Electron:", result);
 
       if (result.success && result.path) {
         setFormData((prev) => ({
           ...prev,
           mainFolder: result.path,
           subFolder: "",
-        }))
+        }));
 
-        const subfolders = await window.electronAPI.scanSubFolders(result.path)
-        setAvailableSubfolders(subfolders)
-        console.log("Frontend: User selected folder:", result.path)
+        const subfolders = await window.electronAPI.scanSubFolders(result.path);
+        setAvailableSubfolders(subfolders);
+        console.log("Frontend: User selected folder:", result.path);
       } else if (result.success === false && result.message) {
-        console.log("Frontend: Folder selection canceled or failed:", result.message)
+        console.log(
+          "Frontend: Folder selection canceled or failed:",
+          result.message
+        );
       }
     } catch (error) {
-      console.error("Frontend: Error during folder selection:", error)
-      alert("An error occurred while selecting the folder")
+      console.error("Frontend: Error during folder selection:", error);
+      alert("An error occurred while selecting the folder");
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }
+  };
 
   const handleSelectArchive = async () => {
     if (!isElectronAvailable) {
-      alert("Folder picker is only available in the desktop app")
-      return
+      alert("Folder picker is only available in the desktop app");
+      return;
     }
 
     try {
-      console.log("Frontend: Requesting folder picker...")
-      const result = await window.electronAPI.openFolderPicker()
-      console.log("Frontend: Received result from Electron:", result)
+      console.log("Frontend: Requesting folder picker...");
+      const result = await window.electronAPI.openFolderPicker();
+      console.log("Frontend: Received result from Electron:", result);
 
       if (result.success && result.path) {
         setFormData((prev) => ({
           ...prev,
           archiveFolder: result.path,
-        }))
-        console.log("Frontend: User selected archive folder:", result.path)
+        }));
+        console.log("Frontend: User selected archive folder:", result.path);
       } else if (result.success === false && result.message) {
-        console.log("Frontend: Folder selection canceled or failed:", result.message)
+        console.log(
+          "Frontend: Folder selection canceled or failed:",
+          result.message
+        );
       }
     } catch (error) {
-      console.error("Frontend: Error during folder selection:", error)
-      alert("An error occurred while selecting the folder")
+      console.error("Frontend: Error during folder selection:", error);
+      alert("An error occurred while selecting the folder");
     }
-  }
+  };
 
   const handleSelectJournal = async () => {
     if (!isElectronAvailable) {
-      alert("Folder picker is only available in the desktop app")
-      return
+      alert("Folder picker is only available in the desktop app");
+      return;
     }
 
     try {
-      console.log("Frontend: Requesting folder picker...")
-      const result = await window.electronAPI.openFolderPicker()
-      console.log("Frontend: Received result from Electron:", result)
+      console.log("Frontend: Requesting folder picker...");
+      const result = await window.electronAPI.openFolderPicker();
+      console.log("Frontend: Received result from Electron:", result);
 
       if (result.success && result.path) {
         setFormData((prev) => ({
           ...prev,
           logFolder: result.path,
-        }))
-        console.log("Frontend: User selected log folder:", result.path)
+        }));
+        console.log("Frontend: User selected log folder:", result.path);
       } else if (result.success === false && result.message) {
-        console.log("Frontend: Folder selection canceled or failed:", result.message)
+        console.log(
+          "Frontend: Folder selection canceled or failed:",
+          result.message
+        );
       }
     } catch (error) {
-      console.error("Frontend: Error during folder selection:", error)
-      alert("An error occurred while selecting the folder")
+      console.error("Frontend: Error during folder selection:", error);
+      alert("An error occurred while selecting the folder");
     }
-  }
+  };
 
   const handleSubmit = async () => {
-    console.log("Submitting form data:", formData)
+    console.log("Submitting form data:", formData);
 
     // Basic validation
-    if (!formData.mainFolder || !formData.subFolder || !formData.linkedDatabase) {
-      toast.error("Veuillez remplir tous les champs obligatoires")
-      return
+    if (
+      !formData.mainFolder ||
+      !formData.subFolder ||
+      !formData.linkedDatabase
+    ) {
+      toast.error("Veuillez remplir tous les champs obligatoires");
+      return;
     }
 
     // Enhanced duplicate validation
-    const detector = new FolderDuplicateDetector(folderDatabaseLinks)
+    const detector = new FolderDuplicateDetector(folderDatabaseLinks);
     const validation = detector.validateNewConfiguration(
       formData.mainFolder,
       formData.subFolder,
-      isEditing || undefined,
-    )
+      isEditing || undefined
+    );
 
     if (!validation.isValid) {
-      toast.error(validation.errorMessage)
-      return
+      toast.error(validation.errorMessage);
+      return;
     }
 
     const data = {
@@ -355,48 +405,56 @@ export function FoldersTab() {
       tablename: formData.tableName,
       matricule_field: formData.matriculeField,
       email_field: formData.emailField,
-    }
+    };
 
     try {
       if (isEditing) {
-        updateFolderDatabaseLink(isEditing, formData)
-        const response = await fetch("http://127.0.0.1:8000/folder-config/update", {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        })
+        updateFolderDatabaseLink(isEditing, formData);
+        const response = await fetch(
+          "http://127.0.0.1:8000/folder-config/update",
+          {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          }
+        );
 
         if (!response.ok) {
-          const errorData = await response.json()
-          const errorMessage = errorData.detail || "Erreur inconnue"
-          toast.error(`Échec de la mise à jour: ${errorMessage}`)
-          console.error("Failed to update folder database link:", errorData)
-          return
+          const errorData = await response.json();
+          const errorMessage = errorData.detail || "Erreur inconnue";
+          toast.error(`Échec de la mise à jour: ${errorMessage}`);
+          console.error("Failed to update folder database link:", errorData);
+          return;
         }
 
-        toast.success(`Configuration mise à jour avec succès: (${formData.mainFolder})`)
-        setIsEditing(null)
+        toast.success(
+          `Configuration mise à jour avec succès: (${formData.mainFolder})`
+        );
+        setIsEditing(null);
       } else {
-        const response = await fetch("http://127.0.0.1:8000/folder-config/add", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        })
+        const response = await fetch(
+          "http://127.0.0.1:8000/folder-config/add",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          }
+        );
 
         if (!response.ok) {
-          const errorData = await response.json()
-          const errorMessage = errorData.detail || "Erreur inconnue"
-          toast.error(`Échec de l'ajout: ${errorMessage}`)
-          console.error("Failed to add folder database link:", errorData)
-          return
+          const errorData = await response.json();
+          const errorMessage = errorData.detail || "Erreur inconnue";
+          toast.error(`Échec de l'ajout: ${errorMessage}`);
+          console.error("Failed to add folder database link:", errorData);
+          return;
         }
 
-        addFolderDatabaseLink(formData as Omit<FolderDatabaseLink, "id">)
-        toast.success(`Liaison ajoutée avec succès`)
+        addFolderDatabaseLink(formData as Omit<FolderDatabaseLink, "id">);
+        toast.success(`Liaison ajoutée avec succès`);
       }
 
       // Reset only database-specific fields, keep folder paths for easy re-use
@@ -407,24 +465,24 @@ export function FoldersTab() {
         tableName: "",
         matriculeField: "",
         emailField: "",
-      }))
-      setValidationError("")
+      }));
+      setValidationError("");
     } catch (error) {
-      console.error("Error submitting form:", error)
-      toast.error("Erreur lors de la soumission du formulaire")
+      console.error("Error submitting form:", error);
+      toast.error("Erreur lors de la soumission du formulaire");
     }
-  }
+  };
 
   const handleEdit = (link: FolderDatabaseLink) => {
-    setFormData(link)
-    setIsEditing(link.id)
+    setFormData(link);
+    setIsEditing(link.id);
     if (link.mainFolder) {
-      setAvailableSubfolders([])
+      setAvailableSubfolders([]);
     }
-  }
+  };
 
   const handleCancel = () => {
-    setIsEditing(null)
+    setIsEditing(null);
     setFormData({
       mainFolder: "",
       subFolder: "",
@@ -432,10 +490,10 @@ export function FoldersTab() {
       archiveFolder: "",
       logFolder: "",
       isSageDatabase: false,
-    })
-    setAvailableSubfolders([])
-    setValidationError("")
-  }
+    });
+    setAvailableSubfolders([]);
+    setValidationError("");
+  };
 
   const handleClearAll = () => {
     setFormData({
@@ -445,161 +503,170 @@ export function FoldersTab() {
       archiveFolder: "",
       logFolder: "",
       isSageDatabase: false,
-    })
-    setAvailableSubfolders([])
-    setValidationError("")
-  }
+    });
+    setAvailableSubfolders([]);
+    setValidationError("");
+  };
 
   const handleDelete = async (subFolder: string) => {
     try {
-      const response = await fetch("http://127.0.0.1:8000/folder-config/delete", {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ subfolder_name: subFolder }),
-      })
+      const response = await fetch(
+        "http://127.0.0.1:8000/folder-config/delete",
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ subfolder_name: subFolder }),
+        }
+      );
 
       if (!response.ok) {
-        throw new Error("Delete failed")
+        throw new Error("Delete failed");
       }
 
-      toast.success(`Liaison supprimée avec succès`)
+      toast.success(`Liaison supprimée avec succès`);
     } catch (error) {
-      toast.error(`Suppression impossible`)
+      toast.error(`Suppression impossible`);
     }
-  }
+  };
 
   // Function to construct absolute path from file path
   const getAbsolutePath = (file: File): string => {
-    const relativePath = file.webkitRelativePath
-    const mainFolderName = relativePath.split("/")[0]
-    let absolutePath = ""
+    const relativePath = file.webkitRelativePath;
+    const mainFolderName = relativePath.split("/")[0];
+    let absolutePath = "";
 
     if (file.name && (file as any).path) {
-      const fullPath = (file as any).path
+      const fullPath = (file as any).path;
       if (fullPath) {
-        const pathParts = fullPath.split(/[/\\]/)
-        const mainFolderIndex = pathParts.findIndex((part: string) => part === mainFolderName)
+        const pathParts = fullPath.split(/[/\\]/);
+        const mainFolderIndex = pathParts.findIndex(
+          (part: string) => part === mainFolderName
+        );
         if (mainFolderIndex > 0) {
-          absolutePath = pathParts.slice(0, mainFolderIndex + 1).join("/")
+          absolutePath = pathParts.slice(0, mainFolderIndex + 1).join("/");
         }
       }
     }
 
     if (!absolutePath) {
-      absolutePath = `C:/Users/Documents/${mainFolderName}`
+      absolutePath = `C:/Users/Documents/${mainFolderName}`;
     }
 
-    return absolutePath
-  }
+    return absolutePath;
+  };
 
   // Function to extract all unique subfolders from file list
   const extractSubfolders = (files: FileList): string[] => {
-    const subfolders = new Set<string>()
+    const subfolders = new Set<string>();
 
     Array.from(files).forEach((file) => {
-      const pathParts = file.webkitRelativePath.split("/")
+      const pathParts = file.webkitRelativePath.split("/");
 
       if (pathParts.length >= 3) {
-        subfolders.add(pathParts[1])
+        subfolders.add(pathParts[1]);
       }
 
       for (let i = 1; i < pathParts.length - 1; i++) {
         if (pathParts[i] && pathParts[i] !== pathParts[0]) {
-          const subfolderPath = pathParts.slice(1, i + 1).join("/")
-          subfolders.add(subfolderPath)
+          const subfolderPath = pathParts.slice(1, i + 1).join("/");
+          subfolders.add(subfolderPath);
         }
       }
-    })
+    });
 
-    return Array.from(subfolders).sort()
-  }
+    return Array.from(subfolders).sort();
+  };
 
-  const handleMainFolderSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const files = event.target.files
+  const handleMainFolderSelect = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const files = event.target.files;
     if (files && files.length > 0) {
-      setIsScanning(true)
+      setIsScanning(true);
 
       try {
-        const firstFile = files[0]
-        const absolutePath = getAbsolutePath(firstFile)
-        const subfolders = extractSubfolders(files)
+        const firstFile = files[0];
+        const absolutePath = getAbsolutePath(firstFile);
+        const subfolders = extractSubfolders(files);
 
         console.log("Folder scan results:", {
           absolutePath,
           subfolders,
           totalFiles: files.length,
-        })
+        });
 
         setFormData((prev) => ({
           ...prev,
           mainFolder: absolutePath,
           subFolder: "",
-        }))
+        }));
 
-        setAvailableSubfolders(subfolders)
+        setAvailableSubfolders(subfolders);
       } catch (error) {
-        console.error("Error scanning folder:", error)
-        const firstFile = files[0]
-        const relativePath = firstFile.webkitRelativePath
-        const mainFolderName = relativePath.split("/")[0]
+        console.error("Error scanning folder:", error);
+        const firstFile = files[0];
+        const relativePath = firstFile.webkitRelativePath;
+        const mainFolderName = relativePath.split("/")[0];
 
         setFormData((prev) => ({
           ...prev,
           mainFolder: mainFolderName,
           subFolder: "",
-        }))
-        setAvailableSubfolders([])
+        }));
+        setAvailableSubfolders([]);
       } finally {
-        setIsScanning(false)
+        setIsScanning(false);
       }
     }
 
-    event.target.value = ""
-  }
+    event.target.value = "";
+  };
 
-  const handleFolderSelect = (field: string, event: React.ChangeEvent<HTMLInputElement>) => {
-    const files = event.target.files
+  const handleFolderSelect = (
+    field: string,
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const files = event.target.files;
     if (files && files.length > 0) {
-      const firstFile = files[0]
-      const absolutePath = getAbsolutePath(firstFile)
-      setFormData((prev) => ({ ...prev, [field]: absolutePath }))
+      const firstFile = files[0];
+      const absolutePath = getAbsolutePath(firstFile);
+      setFormData((prev) => ({ ...prev, [field]: absolutePath }));
     }
-    event.target.value = ""
-  }
+    event.target.value = "";
+  };
 
   const openFolderPicker = (field: string) => {
     switch (field) {
       case "mainFolder":
-        mainFolderInputRef.current?.click()
-        break
+        mainFolderInputRef.current?.click();
+        break;
       case "archiveFolder":
-        archiveFolderInputRef.current?.click()
-        break
+        archiveFolderInputRef.current?.click();
+        break;
       case "logFolder":
-        logFolderInputRef.current?.click()
-        break
+        logFolderInputRef.current?.click();
+        break;
     }
-  }
+  };
 
   // Group links by main folder and subfolder for better display
-  const groupedLinks = folderDatabaseLinks.reduce(
-    (acc, link) => {
-      const key = `${link.mainFolder}/${link.subFolder}`
-      if (!acc[key]) {
-        acc[key] = []
-      }
-      acc[key].push(link)
-      return acc
-    },
-    {} as Record<string, FolderDatabaseLink[]>,
-  )
+  const groupedLinks = folderDatabaseLinks.reduce((acc, link) => {
+    const key = `${link.mainFolder}/${link.subFolder}`;
+    if (!acc[key]) {
+      acc[key] = [];
+    }
+    acc[key].push(link);
+    return acc;
+  }, {} as Record<string, FolderDatabaseLink[]>);
 
   return (
     <div className="p-6 space-y-6">
       <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold text-white">Liaison Dossiers / Bases de Données</h2>
+        <h2 className="text-2xl font-bold text-white">
+          Liaison Dossiers / Bases de Données
+        </h2>
         <Button
           onClick={handleClearAll}
           variant="outline"
@@ -645,7 +712,9 @@ export function FoldersTab() {
           {validationError && (
             <Alert className="border-red-700 bg-red-900/20">
               <AlertTriangle className="h-4 w-4 text-red-400" />
-              <AlertDescription className="text-red-300">{validationError}</AlertDescription>
+              <AlertDescription className="text-red-300">
+                {validationError}
+              </AlertDescription>
             </Alert>
           )}
 
@@ -656,10 +725,17 @@ export function FoldersTab() {
               <Input
                 value={formData.mainFolder || ""}
                 onChange={(e) => {
-                  setFormData((prev) => ({ ...prev, mainFolder: e.target.value }))
+                  setFormData((prev) => ({
+                    ...prev,
+                    mainFolder: e.target.value,
+                  }));
                   if (e.target.value !== formData.mainFolder) {
-                    setAvailableSubfolders([])
-                    setFormData((prev) => ({ ...prev, mainFolder: e.target.value, subFolder: "" }))
+                    setAvailableSubfolders([]);
+                    setFormData((prev) => ({
+                      ...prev,
+                      mainFolder: e.target.value,
+                      subFolder: "",
+                    }));
                   }
                 }}
                 className="bg-gray-800 border-gray-700 text-white flex-1"
@@ -692,7 +768,9 @@ export function FoldersTab() {
             <Label className="text-gray-200">Sous-dossier</Label>
             <Select
               value={formData.subFolder || ""}
-              onValueChange={(value) => setFormData((prev) => ({ ...prev, subFolder: value }))}
+              onValueChange={(value) =>
+                setFormData((prev) => ({ ...prev, subFolder: value }))
+              }
               disabled={availableSubfolders.length === 0 || isLoading}
             >
               <SelectTrigger className="bg-gray-800 border-gray-700 text-white">
@@ -701,14 +779,18 @@ export function FoldersTab() {
                     isLoading
                       ? "Analyse en cours..."
                       : availableSubfolders.length === 0
-                        ? "Sélectionnez d'abord un dossier principal"
-                        : "Sélectionner un sous-dossier"
+                      ? "Sélectionnez d'abord un dossier principal"
+                      : "Sélectionner un sous-dossier"
                   }
                 />
               </SelectTrigger>
               <SelectContent className="bg-gray-800 border-gray-700">
                 {availableSubfolders.map((folder) => (
-                  <SelectItem key={folder} value={folder} className="text-white hover:bg-gray-700">
+                  <SelectItem
+                    key={folder}
+                    value={folder}
+                    className="text-white hover:bg-gray-700"
+                  >
                     📁 {folder}
                   </SelectItem>
                 ))}
@@ -718,8 +800,8 @@ export function FoldersTab() {
               {isLoading
                 ? "Recherche des sous-dossiers..."
                 : availableSubfolders.length > 0
-                  ? `${availableSubfolders.length} sous-dossier(s) trouvé(s) dans le dossier principal`
-                  : "Aucun sous-dossier détecté - sélectionnez un dossier principal contenant des sous-dossiers"}
+                ? `${availableSubfolders.length} sous-dossier(s) trouvé(s) dans le dossier principal`
+                : "Aucun sous-dossier détecté - sélectionnez un dossier principal contenant des sous-dossiers"}
             </p>
           </div>
 
@@ -728,11 +810,19 @@ export function FoldersTab() {
             <Label className="text-gray-200">Base de Données Liée</Label>
             <Input
               value={formData.linkedDatabase || ""}
-              onChange={(e) => setFormData((prev) => ({ ...prev, linkedDatabase: e.target.value }))}
+              onChange={(e) =>
+                setFormData((prev) => ({
+                  ...prev,
+                  linkedDatabase: e.target.value,
+                }))
+              }
               className="bg-gray-800 border-gray-700 text-white"
               placeholder="Entrer le nom de la base de données"
             />
-            <p className="text-xs text-gray-400">Chaque sous-dossier ne peut avoir qu'une seule base de données liée</p>
+            <p className="text-xs text-gray-400">
+              Chaque sous-dossier ne peut avoir qu'une seule base de données
+              liée
+            </p>
           </div>
 
           {/* Archive and Log Folders */}
@@ -742,7 +832,12 @@ export function FoldersTab() {
               <div className="flex space-x-2">
                 <Input
                   value={formData.archiveFolder || ""}
-                  onChange={(e) => setFormData((prev) => ({ ...prev, archiveFolder: e.target.value }))}
+                  onChange={(e) =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      archiveFolder: e.target.value,
+                    }))
+                  }
                   className="bg-gray-800 border-gray-700 text-white flex-1"
                   placeholder="Chemin absolu du dossier d'archivage"
                 />
@@ -757,14 +852,21 @@ export function FoldersTab() {
                   <FolderOpen className="w-4 h-4" />
                 </Button>
               </div>
-              <p className="text-xs text-gray-400">Chemin absolu pour l'archivage</p>
+              <p className="text-xs text-gray-400">
+                Chemin absolu pour l'archivage
+              </p>
             </div>
             <div className="space-y-2">
               <Label className="text-gray-200">Dossier de Journalisation</Label>
               <div className="flex space-x-2">
                 <Input
                   value={formData.logFolder || ""}
-                  onChange={(e) => setFormData((prev) => ({ ...prev, logFolder: e.target.value }))}
+                  onChange={(e) =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      logFolder: e.target.value,
+                    }))
+                  }
                   className="bg-gray-800 border-gray-700 text-white flex-1"
                   placeholder="Chemin absolu du dossier de logs"
                 />
@@ -779,7 +881,9 @@ export function FoldersTab() {
                   <FolderOpen className="w-4 h-4" />
                 </Button>
               </div>
-              <p className="text-xs text-gray-400">Chemin absolu pour la journalisation</p>
+              <p className="text-xs text-gray-400">
+                Chemin absolu pour la journalisation
+              </p>
             </div>
           </div>
 
@@ -788,22 +892,37 @@ export function FoldersTab() {
             <Label className="text-gray-200">Type de Base de Données</Label>
             <RadioGroup
               value={formData.isSageDatabase ? "sage" : "other"}
-              onValueChange={(value) => setFormData((prev) => ({ ...prev, isSageDatabase: value === "sage" }))}
+              onValueChange={(value) =>
+                setFormData((prev) => ({
+                  ...prev,
+                  isSageDatabase: value === "sage",
+                }))
+              }
             >
               <div className="flex items-center space-x-2">
-                <RadioGroupItem className="bg-blue-900" value="sage" id="sage" />
+                <RadioGroupItem
+                  className="bg-blue-900"
+                  value="sage"
+                  id="sage"
+                />
                 <Label htmlFor="sage" className="text-gray-300">
                   Base SAGE
                 </Label>
               </div>
               <div className="flex items-center space-x-2">
-                <RadioGroupItem className="bg-blue-900" value="other" id="other" />
+                <RadioGroupItem
+                  className="bg-blue-900"
+                  value="other"
+                  id="other"
+                />
                 <Label htmlFor="other" className="text-gray-300">
                   Autre Base de Données
                 </Label>
               </div>
             </RadioGroup>
-            <p className="text-xs text-gray-400">Chaque liaison peut avoir un type de base différent</p>
+            <p className="text-xs text-gray-400">
+              Chaque liaison peut avoir un type de base différent
+            </p>
           </div>
 
           {/* Conditional Fields for Non-SAGE Databases */}
@@ -813,7 +932,12 @@ export function FoldersTab() {
                 <Label className="text-gray-200">Nom de la Table</Label>
                 <Input
                   value={formData.tableName || ""}
-                  onChange={(e) => setFormData((prev) => ({ ...prev, tableName: e.target.value }))}
+                  onChange={(e) =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      tableName: e.target.value,
+                    }))
+                  }
                   className="bg-gray-800 border-gray-700 text-white"
                   placeholder="Nom de la table"
                 />
@@ -823,7 +947,12 @@ export function FoldersTab() {
                   <Label className="text-gray-200">Champ Matricule</Label>
                   <Input
                     value={formData.matriculeField || ""}
-                    onChange={(e) => setFormData((prev) => ({ ...prev, matriculeField: e.target.value }))}
+                    onChange={(e) =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        matriculeField: e.target.value,
+                      }))
+                    }
                     className="bg-gray-800 border-gray-700 text-white"
                     placeholder="Nom du champ matricule"
                   />
@@ -832,7 +961,12 @@ export function FoldersTab() {
                   <Label className="text-gray-200">Champ Email</Label>
                   <Input
                     value={formData.emailField || ""}
-                    onChange={(e) => setFormData((prev) => ({ ...prev, emailField: e.target.value }))}
+                    onChange={(e) =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        emailField: e.target.value,
+                      }))
+                    }
                     className="bg-gray-800 border-gray-700 text-white"
                     placeholder="Nom du champ email"
                   />
@@ -851,7 +985,11 @@ export function FoldersTab() {
               {isEditing ? "Mettre à Jour" : "Ajouter cette Liaison"}
             </Button>
             {isEditing && (
-              <Button onClick={handleCancel} variant="outline" className="border-gray-700 bg-transparent">
+              <Button
+                onClick={handleCancel}
+                variant="outline"
+                className="border-gray-700 bg-transparent"
+              >
                 Annuler
               </Button>
             )}
@@ -861,7 +999,9 @@ export function FoldersTab() {
 
       {/* Links List - Grouped by Folder/Subfolder */}
       <div className="space-y-4">
-        <h3 className="text-lg font-semibold text-white">Liaisons Configurées</h3>
+        <h3 className="text-lg font-semibold text-white">
+          Liaisons Configurées
+        </h3>
         {folderDatabaseLinks.length === 0 ? (
           <Card className="bg-gray-900 border-gray-800">
             <CardContent className="p-6 text-center">
@@ -871,7 +1011,7 @@ export function FoldersTab() {
           </Card>
         ) : (
           Object.entries(groupedLinks).map(([folderKey, links]) => {
-            const [mainFolder, subFolder] = folderKey.split("/")
+            const [mainFolder, subFolder] = folderKey.split("/");
             return (
               <Card key={folderKey} className="bg-gray-900 border-gray-800">
                 <CardHeader className="pb-3">
@@ -886,21 +1026,31 @@ export function FoldersTab() {
                 </CardHeader>
                 <CardContent className="space-y-3">
                   {links.map((link, index) => (
-                    <div key={link.id} className="p-3 bg-gray-800 rounded-lg border border-gray-700">
+                    <div
+                      key={link.id}
+                      className="p-3 bg-gray-800 rounded-lg border border-gray-700"
+                    >
                       <div className="flex items-center justify-between">
                         <div className="space-y-1">
                           <div className="flex items-center space-x-2">
-                            <span className="font-medium text-white">Base: {link.linkedDatabase}</span>
+                            <span className="font-medium text-white">
+                              Base: {link.linkedDatabase}
+                            </span>
                             {link.isSageDatabase && (
-                              <span className="px-2 py-1 bg-blue-900 text-blue-300 text-xs rounded">SAGE</span>
+                              <span className="px-2 py-1 bg-blue-900 text-blue-300 text-xs rounded">
+                                SAGE
+                              </span>
                             )}
                           </div>
                           <div className="text-sm text-gray-400 space-y-1">
-                            {link.archiveFolder && <p>Archive: {link.archiveFolder}</p>}
+                            {link.archiveFolder && (
+                              <p>Archive: {link.archiveFolder}</p>
+                            )}
                             {link.logFolder && <p>Logs: {link.logFolder}</p>}
                             {!link.isSageDatabase && link.tableName && (
                               <p>
-                                Table: {link.tableName} | Matricule: {link.matriculeField} | Email: {link.emailField}
+                                Table: {link.tableName} | Matricule:{" "}
+                                {link.matriculeField} | Email: {link.emailField}
                               </p>
                             )}
                           </div>
@@ -918,8 +1068,8 @@ export function FoldersTab() {
                             size="sm"
                             variant="outline"
                             onClick={() => {
-                              handleDelete(link.subFolder)
-                              removeFolderDatabaseLink(link.id)
+                              handleDelete(link.subFolder);
+                              removeFolderDatabaseLink(link.id);
                             }}
                             className="border-red-700 text-red-400 hover:bg-red-900"
                           >
@@ -931,10 +1081,10 @@ export function FoldersTab() {
                   ))}
                 </CardContent>
               </Card>
-            )
+            );
           })
         )}
       </div>
     </div>
-  )
+  );
 }
