@@ -24,7 +24,7 @@ const isDev =
 
 // Port configuration - using different ports for dev vs production
 const FRONTEND_PORT = isDev ? 3000 : 3002;
-const BACKEND_PORT = isDev ? 7626 : 7626;
+const BACKEND_PORT = isDev ? 8000 : 8000;
 
 let backendProcess;
 let frontendProcess;
