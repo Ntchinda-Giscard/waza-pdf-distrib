@@ -1,16 +1,17 @@
-"use client"
-import { Mail } from "lucide-react"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Checkbox } from "@/components/ui/checkbox"
-import { useAppStore } from "@/lib/store"
-import { Button } from "./ui/button"
-import { useState } from "react"
-import { toast } from "sonner"
+"use client";
+import { Mail } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Checkbox } from "@/components/ui/checkbox";
+import { useAppStore } from "@/lib/store";
+import { Button } from "./ui/button";
+import { useState } from "react";
+import { toast } from "sonner";
+import { Textarea } from "./ui/textarea";
 
 export function EmailTab() {
-  const { emailConfig, setEmailConfig } = useAppStore()
+  const { emailConfig, setEmailConfig } = useAppStore();
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async () => {
@@ -21,7 +22,9 @@ export function EmailTab() {
       password: emailConfig.senderPassword,
       ssl: emailConfig.useSSL,
       tls: emailConfig.useTLS,
-    }
+      subject: emailConfig.subject,
+      message: emailConfig.message,
+    };
     // Handle form submission
     setIsLoading(true);
     const response = await fetch("http://127.0.0.1:8000/email/add", {
@@ -30,21 +33,21 @@ export function EmailTab() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
-    })
+    });
 
     if (!response.ok) {
       // Handle error
-      toast.error("Échec de la mise à jour de la configuration email")
-      console.error("Failed to update email config:", response.statusText)
-      setIsLoading(false)
-      throw new Error("Failed to update email config")
+      toast.error("Échec de la mise à jour de la configuration email");
+      console.error("Failed to update email config:", response.statusText);
+      setIsLoading(false);
+      throw new Error("Failed to update email config");
     }
-    toast.success("Configuration email mise à jour avec succès")
-    setIsLoading(false)
+    toast.success("Configuration email mise à jour avec succès");
+    setIsLoading(false);
 
     // Handle success
-    console.log("Email config updated successfully")
-  }
+    console.log("Email config updated successfully");
+  };
 
   return (
     <div className="p-6 space-y-6">
@@ -76,7 +79,11 @@ export function EmailTab() {
               <Input
                 type="number"
                 value={emailConfig.smtpPort}
-                onChange={(e) => setEmailConfig({ smtpPort: Number.parseInt(e.target.value) || 587 })}
+                onChange={(e) =>
+                  setEmailConfig({
+                    smtpPort: Number.parseInt(e.target.value) || 587,
+                  })
+                }
                 className="bg-gray-800 border-gray-700 text-white"
                 placeholder="587"
               />
@@ -89,7 +96,9 @@ export function EmailTab() {
               <Input
                 type="email"
                 value={emailConfig.senderEmail}
-                onChange={(e) => setEmailConfig({ senderEmail: e.target.value })}
+                onChange={(e) =>
+                  setEmailConfig({ senderEmail: e.target.value })
+                }
                 className="bg-gray-800 border-gray-700 text-white"
                 placeholder="noreply@company.com"
               />
@@ -99,7 +108,9 @@ export function EmailTab() {
               <Input
                 type="password"
                 value={emailConfig.senderPassword}
-                onChange={(e) => setEmailConfig({ senderPassword: e.target.value })}
+                onChange={(e) =>
+                  setEmailConfig({ senderPassword: e.target.value })
+                }
                 className="bg-gray-800 border-gray-700 text-white"
                 placeholder="••••••••"
               />
@@ -113,7 +124,9 @@ export function EmailTab() {
                 <Checkbox
                   id="ssl"
                   checked={emailConfig.useSSL}
-                  onCheckedChange={(checked) => setEmailConfig({ useSSL: checked as boolean })}
+                  onCheckedChange={(checked) =>
+                    setEmailConfig({ useSSL: checked as boolean })
+                  }
                 />
                 <Label htmlFor="ssl" className="text-gray-300">
                   Utiliser SSL
@@ -123,7 +136,9 @@ export function EmailTab() {
                 <Checkbox
                   id="tls"
                   checked={emailConfig.useTLS}
-                  onCheckedChange={(checked) => setEmailConfig({ useTLS: checked as boolean })}
+                  onCheckedChange={(checked) =>
+                    setEmailConfig({ useTLS: checked as boolean })
+                  }
                 />
                 <Label htmlFor="tls" className="text-gray-300">
                   Utiliser TLS
@@ -131,7 +146,28 @@ export function EmailTab() {
               </div>
             </div>
           </div>
-          <Button 
+
+          <div className="flex flex-col gap-4">
+            <div className="space-y-2">
+              <Label className="text-gray-200">Objet</Label>
+              <Input
+                value={emailConfig.subject}
+                onChange={(e) => setEmailConfig({ subject: e.target.value })}
+                className="bg-gray-800 border-gray-700 text-white"
+                placeholder="Objet de l'email"
+              />
+            </div>
+            <div className="space-y-2">
+              <Label className="text-gray-200">Message</Label>
+              <Textarea
+                value={emailConfig.message}
+                onChange={(e) => setEmailConfig({ message: e.target.value })}
+                className="bg-gray-800 border-gray-700 text-white"
+                placeholder="Contenu de l'email"
+              />
+            </div>
+          </div>
+          <Button
             disabled={isLoading}
             className="bg-blue-600 hover:bg-blue-700"
             onClick={() => {
@@ -139,10 +175,10 @@ export function EmailTab() {
               handleSubmit();
             }}
           >
-              Sauvegarder
+            Sauvegarder
           </Button>
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }

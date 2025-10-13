@@ -1,106 +1,119 @@
-import { create } from "zustand"
-import { persist } from "zustand/middleware"
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
-export type ConnectionType = "odbc" | "native"
-export type DatabaseType = "postgresql" | "mysql" | "mssql"
-export type TabType = "home" | "parametres"
-export type ParametreTabType = "database" | "folders" | "matricule" | "email" | "settings"
+export type ConnectionType = "odbc" | "native";
+export type DatabaseType = "postgresql" | "mysql" | "mssql";
+export type TabType = "home" | "parametres";
+export type ParametreTabType =
+  | "database"
+  | "folders"
+  | "matricule"
+  | "email"
+  | "settings";
 
 export interface OdbcSource {
-  name: string
-  driver: string
-  description?: string
+  name: string;
+  driver: string;
+  description?: string;
 }
 
 export interface DatabaseConnection {
-  id: string
-  connectionType: ConnectionType
-  odbcSource?: string
-  databaseType?: DatabaseType
-  serverName?: string
-  username: string
-  password: string
+  id: string;
+  connectionType: ConnectionType;
+  odbcSource?: string;
+  databaseType?: DatabaseType;
+  serverName?: string;
+  username: string;
+  password: string;
 }
 
 export interface FolderDatabaseLink {
-  id: string
-  mainFolder: string
-  subFolder: string
-  linkedDatabase: string
-  archiveFolder?: string
-  logFolder?: string
-  isSageDatabase: boolean
-  tableName?: string
-  matriculeField?: string
-  emailField?: string
+  id: string;
+  mainFolder: string;
+  subFolder: string;
+  linkedDatabase: string;
+  archiveFolder?: string;
+  logFolder?: string;
+  isSageDatabase: boolean;
+  tableName?: string;
+  matriculeField?: string;
+  emailField?: string;
 }
 
 export interface MatriculeConfig {
-  numberOfCharacters: number
-  referenceText: string
-  detectionPattern?: string
+  numberOfCharacters: number;
+  referenceText: string;
+  detectionPattern?: string;
 }
 
 export interface EmailConfig {
-  smtpServer: string
-  smtpPort: number
-  senderEmail: string
-  senderPassword: string
-  useSSL: boolean
-  useTLS: boolean
-  timeout: number
-  retryAttempts: number
+  smtpServer: string;
+  smtpPort: number;
+  senderEmail: string;
+  senderPassword: string;
+  useSSL: boolean;
+  useTLS: boolean;
+  timeout: number;
+  retryAttempts: number;
+  subject?: string;
+  message?: string;
 }
 
 interface AppState {
   // Tab management
-  activeTab: TabType
-  activeParametreTab: ParametreTabType
-  setActiveTab: (tab: TabType) => void
-  setActiveParametreTab: (tab: ParametreTabType) => void
+  activeTab: TabType;
+  activeParametreTab: ParametreTabType;
+  setActiveTab: (tab: TabType) => void;
+  setActiveParametreTab: (tab: ParametreTabType) => void;
 
   // License management
-  licenseKey: string
-  isLicenseActive: boolean
-  showLicenseModal: boolean
-  setLicenseKey: (key: string) => void
-  setShowLicenseModal: (show: boolean) => void
-  activateLicense: () => void
+  licenseKey: string;
+  isLicenseActive: boolean;
+  showLicenseModal: boolean;
+  setLicenseKey: (key: string) => void;
+  setShowLicenseModal: (show: boolean) => void;
+  activateLicense: () => void;
 
   // Database connections
-  databaseConnections: DatabaseConnection[]
-  odbcSources: OdbcSource[]
-  isLoadingOdbcSources: boolean
-  odbcSourcesError: string | null
-  addDatabaseConnection: (connection: Omit<DatabaseConnection, "id">) => void
-  updateDatabaseConnection: (id: string, updates: Partial<DatabaseConnection>) => void
-  removeDatabaseConnection: (id: string) => void
-  fetchOdbcSources: () => Promise<void>
+  databaseConnections: DatabaseConnection[];
+  odbcSources: OdbcSource[];
+  isLoadingOdbcSources: boolean;
+  odbcSourcesError: string | null;
+  addDatabaseConnection: (connection: Omit<DatabaseConnection, "id">) => void;
+  updateDatabaseConnection: (
+    id: string,
+    updates: Partial<DatabaseConnection>
+  ) => void;
+  removeDatabaseConnection: (id: string) => void;
+  fetchOdbcSources: () => Promise<void>;
 
   // Folder database links
-  folderDatabaseLinks: FolderDatabaseLink[]
-  addFolderDatabaseLink: (link: Omit<FolderDatabaseLink, "id">) => void
-  updateFolderDatabaseLink: (id: string, updates: Partial<FolderDatabaseLink>) => void
-  removeFolderDatabaseLink: (id: string) => void
+  folderDatabaseLinks: FolderDatabaseLink[];
+  addFolderDatabaseLink: (link: Omit<FolderDatabaseLink, "id">) => void;
+  updateFolderDatabaseLink: (
+    id: string,
+    updates: Partial<FolderDatabaseLink>
+  ) => void;
+  removeFolderDatabaseLink: (id: string) => void;
 
   // Matricule configuration
-  matriculeConfig: MatriculeConfig
-  setMatriculeConfig: (config: Partial<MatriculeConfig>) => void
+  matriculeConfig: MatriculeConfig;
+  setMatriculeConfig: (config: Partial<MatriculeConfig>) => void;
 
   // Email configuration
-  emailConfig: EmailConfig
-  setEmailConfig: (config: Partial<EmailConfig>) => void
-  testEmailConfiguration: () => Promise<boolean>
+  emailConfig: EmailConfig;
+  setEmailConfig: (config: Partial<EmailConfig>) => void;
+  testEmailConfiguration: () => Promise<boolean>;
 
   // Payroll process
-  startPayrollDistribution: () => void
+  startPayrollDistribution: () => void;
 }
 
 const defaultMatriculeConfig: MatriculeConfig = {
   numberOfCharacters: 6,
   referenceText: "MAT",
   detectionPattern: "",
-}
+};
 
 const defaultEmailConfig: EmailConfig = {
   smtpServer: "",
@@ -111,7 +124,10 @@ const defaultEmailConfig: EmailConfig = {
   useTLS: true,
   timeout: 30,
   retryAttempts: 3,
-}
+  subject: "Votre bulletin de paie",
+  message:
+    "Veuillez trouver en piece jointe votre bulletin de paie pour le mois",
+};
 
 export const useAppStore = create<AppState>()(
   persist(
@@ -129,12 +145,12 @@ export const useAppStore = create<AppState>()(
       setLicenseKey: (key) => set({ licenseKey: key }),
       setShowLicenseModal: (show) => set({ showLicenseModal: show }),
       activateLicense: () => {
-        const { licenseKey } = get()
+        const { licenseKey } = get();
         if (licenseKey.trim()) {
           set({
             isLicenseActive: true,
             showLicenseModal: false,
-          })
+          });
         }
       },
 
@@ -148,38 +164,45 @@ export const useAppStore = create<AppState>()(
         const newConnection = {
           ...connection,
           id: Date.now().toString(),
-        }
+        };
         set((state) => ({
           // databaseConnections: [...state.databaseConnections, newConnection],
           databaseConnections: [newConnection],
-        }))
+        }));
       },
 
       updateDatabaseConnection: (id, updates) => {
         set((state) => ({
           databaseConnections: state.databaseConnections.map((conn) =>
-            conn.id === id ? { ...conn, ...updates } : conn,
+            conn.id === id ? { ...conn, ...updates } : conn
           ),
-        }))
+        }));
       },
 
       removeDatabaseConnection: (id) => {
         set((state) => ({
-          databaseConnections: state.databaseConnections.filter((conn) => conn.id !== id),
-        }))
+          databaseConnections: state.databaseConnections.filter(
+            (conn) => conn.id !== id
+          ),
+        }));
       },
 
       fetchOdbcSources: async () => {
-        set({ isLoadingOdbcSources: true, odbcSourcesError: null })
+        set({ isLoadingOdbcSources: true, odbcSourcesError: null });
         try {
-          const response = await fetch("http://127.0.0.1:8000/odbc/odbc-sources")
-          console.log(response)
+          const response = await fetch(
+            "http://127.0.0.1:8000/odbc/odbc-sources"
+          );
+          console.log(response);
           if (response.ok) {
-            const sources = await response.json()
-            console.log(sources)
-            set({ odbcSources: sources.odbc_sources, isLoadingOdbcSources: false })
+            const sources = await response.json();
+            console.log(sources);
+            set({
+              odbcSources: sources.odbc_sources,
+              isLoadingOdbcSources: false,
+            });
           } else {
-            throw new Error("Failed to fetch ODBC sources")
+            throw new Error("Failed to fetch ODBC sources");
           }
         } catch (error: any) {
           // Fallback to mock data if server is not available
@@ -194,7 +217,11 @@ export const useAppStore = create<AppState>()(
               driver: "PostgreSQL Unicode",
               description: "PostgreSQL ODBC Driver with Unicode support",
             },
-            { name: "MySQL ODBC 8.0 Driver", driver: "MySQL ODBC 8.0 Driver", description: "MySQL Connector/ODBC 8.0" },
+            {
+              name: "MySQL ODBC 8.0 Driver",
+              driver: "MySQL ODBC 8.0 Driver",
+              description: "MySQL Connector/ODBC 8.0",
+            },
             {
               name: "Microsoft Access Driver",
               driver: "Microsoft Access Driver (*.mdb, *.accdb)",
@@ -205,13 +232,17 @@ export const useAppStore = create<AppState>()(
               driver: "Oracle in OraClient19Home1",
               description: "Oracle Database ODBC Driver",
             },
-            { name: "SQLite3 ODBC Driver", driver: "SQLite3 ODBC Driver", description: "SQLite ODBC Driver" },
-          ]
+            {
+              name: "SQLite3 ODBC Driver",
+              driver: "SQLite3 ODBC Driver",
+              description: "SQLite ODBC Driver",
+            },
+          ];
           set({
             odbcSources: mockOdbcSources,
             odbcSourcesError: "Using offline ODBC sources (server unavailable)",
             isLoadingOdbcSources: false,
-          })
+          });
         }
       },
 
@@ -222,24 +253,26 @@ export const useAppStore = create<AppState>()(
         const newLink = {
           ...link,
           id: Date.now().toString(),
-        }
+        };
         set((state) => ({
           folderDatabaseLinks: [...state.folderDatabaseLinks, newLink],
-        }))
+        }));
       },
 
       updateFolderDatabaseLink: (id, updates) => {
         set((state) => ({
           folderDatabaseLinks: state.folderDatabaseLinks.map((link) =>
-            link.id === id ? { ...link, ...updates } : link,
+            link.id === id ? { ...link, ...updates } : link
           ),
-        }))
+        }));
       },
 
       removeFolderDatabaseLink: (id) => {
         set((state) => ({
-          folderDatabaseLinks: state.folderDatabaseLinks.filter((link) => link.id !== id),
-        }))
+          folderDatabaseLinks: state.folderDatabaseLinks.filter(
+            (link) => link.id !== id
+          ),
+        }));
       },
 
       // Matricule configuration
@@ -247,7 +280,7 @@ export const useAppStore = create<AppState>()(
       setMatriculeConfig: (config) => {
         set((state) => ({
           matriculeConfig: { ...state.matriculeConfig, ...config },
-        }))
+        }));
       },
 
       // Email configuration
@@ -255,58 +288,64 @@ export const useAppStore = create<AppState>()(
       setEmailConfig: (config) => {
         set((state) => ({
           emailConfig: { ...state.emailConfig, ...config },
-        }))
+        }));
       },
 
       testEmailConfiguration: async () => {
-        const { emailConfig } = get()
+        const { emailConfig } = get();
         try {
           // Simulate email test - in real app, this would test SMTP connection
-          console.log("Testing email configuration:", emailConfig)
-          await new Promise((resolve) => setTimeout(resolve, 2000))
-          return true
+          console.log("Testing email configuration:", emailConfig);
+          await new Promise((resolve) => setTimeout(resolve, 2000));
+          return true;
         } catch (error) {
-          console.error("Email test failed:", error)
-          return false
+          console.error("Email test failed:", error);
+          return false;
         }
       },
 
       // Payroll process
       startPayrollDistribution: () => {
-        const { isLicenseActive, databaseConnections, folderDatabaseLinks, matriculeConfig, emailConfig } = get()
+        const {
+          isLicenseActive,
+          databaseConnections,
+          folderDatabaseLinks,
+          matriculeConfig,
+          emailConfig,
+        } = get();
 
         if (!isLicenseActive) {
-          console.log("License activation required before continuing.")
-          set({ showLicenseModal: true })
-          return
+          console.log("License activation required before continuing.");
+          set({ showLicenseModal: true });
+          return;
         }
 
         if (databaseConnections.length === 0) {
-          console.log("At least one database must be configured.")
-          set({ activeTab: "parametres", activeParametreTab: "database" })
-          return
+          console.log("At least one database must be configured.");
+          set({ activeTab: "parametres", activeParametreTab: "database" });
+          return;
         }
 
         if (folderDatabaseLinks.length === 0) {
-          console.log("At least one folder/database link must be configured.")
-          set({ activeTab: "parametres", activeParametreTab: "folders" })
-          return
+          console.log("At least one folder/database link must be configured.");
+          set({ activeTab: "parametres", activeParametreTab: "folders" });
+          return;
         }
 
         if (!emailConfig.smtpServer || !emailConfig.senderEmail) {
-          console.log("Email configuration required.")
-          set({ activeTab: "parametres", activeParametreTab: "email" })
-          return
+          console.log("Email configuration required.");
+          set({ activeTab: "parametres", activeParametreTab: "email" });
+          return;
         }
 
         // Start the payroll distribution process
-        console.log("Starting payroll distribution process...")
+        console.log("Starting payroll distribution process...");
         console.log("Configuration:", {
           databases: databaseConnections.length,
           links: folderDatabaseLinks.length,
           matriculeConfig,
           emailConfig: { ...emailConfig, senderPassword: "[REDACTED]" },
-        })
+        });
       },
     }),
     {
@@ -320,9 +359,9 @@ export const useAppStore = create<AppState>()(
         matriculeConfig: state.matriculeConfig,
         emailConfig: state.emailConfig,
       }),
-    },
-  ),
-)
+    }
+  )
+);
 
 // Also export the connection store for backward compatibility
-export const useConnectionStore = useAppStore
+export const useConnectionStore = useAppStore;

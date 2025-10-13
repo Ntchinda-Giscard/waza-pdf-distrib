@@ -34,179 +34,28 @@ class FolderDuplicateDetector {
     this.existingLinks = existingLinks;
   }
 
-  // Normalize path for comparison (handle different separators and case)
-  private normalizePath(path: string): string {
-    return path
-      .toLowerCase()
-      .replace(/[\\/]+/g, "/")
-      .replace(/\/$/, "");
-  }
-
-  // Extract all folder segments from a path
-  private extractFolderSegments(
-    mainFolder: string,
-    subFolder: string
-  ): string[] {
-    const normalizedMain = this.normalizePath(mainFolder);
-    const normalizedSub = this.normalizePath(subFolder);
-
-    // Split subfolder path into segments
-    const subSegments = normalizedSub
-      .split("/")
-      .filter((segment) => segment.length > 0);
-
-    // Return all possible folder combinations
-    const segments: string[] = [];
-
-    // Add the main folder
-    segments.push(normalizedMain);
-
-    // Add each level of subfolder
-    let currentPath = normalizedMain;
-    for (const segment of subSegments) {
-      currentPath += "/" + segment;
-      segments.push(currentPath);
-    }
-
-    return segments;
-  }
-
-  // Check for exact path duplicates
-  private checkExactDuplicate(
-    mainFolder: string,
-    subFolder: string,
-    excludeId?: string
-  ): FolderDatabaseLink | null {
-    const normalizedMain = this.normalizePath(mainFolder);
-    const normalizedSub = this.normalizePath(subFolder);
-
-    return (
-      this.existingLinks.find((link) => {
-        if (excludeId && link.id === excludeId) return false;
-
-        const existingMain = this.normalizePath(link.mainFolder);
-        const existingSub = this.normalizePath(link.subFolder);
-
-        return existingMain === normalizedMain && existingSub === normalizedSub;
-      }) || null
-    );
-  }
-
-  // Check for folder name conflicts within the same main folder
-  private checkFolderNameConflict(
-    mainFolder: string,
-    subFolder: string,
-    excludeId?: string
-  ): FolderDatabaseLink | null {
-    const normalizedMain = this.normalizePath(mainFolder);
-    const subFolderName = this.normalizePath(subFolder).split("/").pop() || "";
-
-    return (
-      this.existingLinks.find((link) => {
-        if (excludeId && link.id === excludeId) return false;
-
-        const existingMain = this.normalizePath(link.mainFolder);
-        if (existingMain !== normalizedMain) return false;
-
-        const existingSubFolderName =
-          this.normalizePath(link.subFolder).split("/").pop() || "";
-        return existingSubFolderName === subFolderName;
-      }) || null
-    );
-  }
-
-  // Check for nested path conflicts
-  private checkNestedConflict(
-    mainFolder: string,
-    subFolder: string,
-    excludeId?: string
-  ): FolderDatabaseLink | null {
-    const newSegments = this.extractFolderSegments(mainFolder, subFolder);
-
-    return (
-      this.existingLinks.find((link) => {
-        if (excludeId && link.id === excludeId) return false;
-
-        const existingSegments = this.extractFolderSegments(
-          link.mainFolder,
-          link.subFolder
-        );
-
-        // Check if any segment overlaps
-        return newSegments.some((newSeg) =>
-          existingSegments.some(
-            (existingSeg) =>
-              newSeg === existingSeg ||
-              newSeg.startsWith(existingSeg + "/") ||
-              existingSeg.startsWith(newSeg + "/")
-          )
-        );
-      }) || null
-    );
-  }
-
-  // Main validation method
   validateNewConfiguration(
     mainFolder: string,
     subFolder: string,
     excludeId?: string
   ): {
     isValid: boolean;
-    errorType: "exact" | "name_conflict" | "nested_conflict" | null;
-    conflictingLink: FolderDatabaseLink | null;
     errorMessage: string;
   } {
-    // Check for exact duplicate
-    const exactDuplicate = this.checkExactDuplicate(
-      mainFolder,
-      subFolder,
-      excludeId
-    );
-    if (exactDuplicate) {
-      return {
-        isValid: false,
-        errorType: "exact",
-        conflictingLink: exactDuplicate,
-        errorMessage: `Cette configuration existe déjà. Dossier principal: "${exactDuplicate.mainFolder}", Sous-dossier: "${exactDuplicate.subFolder}"`,
-      };
-    }
+    const isDuplicate = this.existingLinks.some((link) => {
+      if (excludeId && link.id === excludeId) return false;
+      return link.mainFolder === mainFolder && link.subFolder === subFolder;
+    });
 
-    // Check for folder name conflicts within same main folder
-    const nameConflict = this.checkFolderNameConflict(
-      mainFolder,
-      subFolder,
-      excludeId
-    );
-    if (nameConflict) {
-      const conflictingName = nameConflict.subFolder.split("/").pop();
-      const newName = subFolder.split("/").pop();
+    if (isDuplicate) {
       return {
         isValid: false,
-        errorType: "name_conflict",
-        conflictingLink: nameConflict,
-        errorMessage: `Le nom de dossier "${newName}" existe déjà dans ce dossier principal. Conflit avec: "${nameConflict.subFolder}"`,
-      };
-    }
-
-    // Check for nested path conflicts
-    const nestedConflict = this.checkNestedConflict(
-      mainFolder,
-      subFolder,
-      excludeId
-    );
-    if (nestedConflict) {
-      return {
-        isValid: false,
-        errorType: "nested_conflict",
-        conflictingLink: nestedConflict,
-        errorMessage: `Conflit de chemin détecté. Le chemin "${mainFolder}/${subFolder}" entre en conflit avec la configuration existante: "${nestedConflict.mainFolder}/${nestedConflict.subFolder}"`,
+        errorMessage: `Cette configuration existe déjà.`,
       };
     }
 
     return {
       isValid: true,
-      errorType: null,
-      conflictingLink: null,
       errorMessage: "",
     };
   }
