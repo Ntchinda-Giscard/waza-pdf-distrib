@@ -383,16 +383,17 @@ export function FoldersTab() {
       return;
     }
 
-    // Enhanced duplicate validation
-    const detector = new FolderDuplicateDetector(folderDatabaseLinks);
-    const validation = detector.validateNewConfiguration(
-      formData.mainFolder,
-      formData.subFolder,
-      isEditing || undefined
-    );
+    // Simple duplicate check
+    const isDuplicate = folderDatabaseLinks.some((link) => {
+      if (isEditing && link.id === isEditing) return false;
+      return (
+        link.mainFolder === formData.mainFolder &&
+        link.subFolder === formData.subFolder
+      );
+    });
 
-    if (!validation.isValid) {
-      toast.error(validation.errorMessage);
+    if (isDuplicate) {
+      toast.error("Cette configuration existe déjà");
       return;
     }
 
@@ -979,7 +980,7 @@ export function FoldersTab() {
             <Button
               onClick={handleSubmit}
               className="bg-blue-600 hover:bg-blue-700"
-              disabled={isScanning || !!validationError}
+              disabled={isScanning}
             >
               <Plus className="w-4 h-4 mr-2" />
               {isEditing ? "Mettre à Jour" : "Ajouter cette Liaison"}
