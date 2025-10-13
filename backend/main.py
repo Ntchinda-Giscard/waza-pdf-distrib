@@ -1,6 +1,6 @@
 # main.py or routers/config.py
 import sys
-from fastapi import FastAPI, Depends, HTTPException, logger
+from fastapi import FastAPI, Depends, HTTPException
 from sqlalchemy.orm import Session
 from app.crud.insert_config import add_config_user, create_or_update_user_config
 from app.db.schema import UserConfigAdd, UserConfigCreate
