@@ -145,7 +145,9 @@ async def distribution_automation(db: Session = Depends(get_db)):
                         email_password=email_config.password,
                         server=email_config.smtp_server,
                         port=email_config.port,
-                        security=security
+                        security=security,
+                        subject=email_config.subject,
+                        message=email_config.message
                     )
 
                     async for msg in emit_progress(matricule=matricule, email=result):

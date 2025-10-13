@@ -32,17 +32,19 @@ def send_email(
     email_sender: str,
     email_password: str,
     security: str = "tls",  # "ssl", "tls" ou "both"
-    attachments: Optional[list[str]] = None
+    attachments: Optional[list[str]] = None,
+    subject: Optional[str] = None,
+    message: Optional[str] = None
 ):
     # Vérification du paramètre security
     mode = security.lower()
     if mode not in ("ssl", "tls", "both"):
         raise ValueError(f"Paramètre 'security' invalide : {security}. Attendu : 'ssl', 'tls' ou 'both'.")
 
-    subject = "Votre bulletin de paie"
+    subject = subject or "Votre bulletin de paie"
     # The issue is in this body text - there are invisible non-breaking spaces (\xa0)
     # Let's clean them up while preserving the text content
-    body = "Veuillez trouver en piece jointe votre bulletin de paie pour le mois"
+    body = message or "Veuillez trouver en piece jointe votre bulletin de paie pour le mois"
 
     # Création du message with explicit UTF-8 encoding
     em = EmailMessage()

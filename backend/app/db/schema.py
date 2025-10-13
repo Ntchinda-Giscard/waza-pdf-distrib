@@ -59,6 +59,8 @@ class EmailConfigAdd(BaseModel):
     port: Optional[int]
     tls: Optional[bool]
     ssl: Optional[bool]
+    subject: Optional[str] = None
+    message: Optional[str] = None
 
 
 class LicenseConfigAdd(BaseModel):

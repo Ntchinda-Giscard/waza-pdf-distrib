@@ -19,7 +19,9 @@ async def add_email(input: EmailConfigAdd, db: Session = Depends(get_db)):
         password=input.password,
         port=input.port,
         tls=input.tls,
-        ssl=input.ssl
+        ssl=input.ssl,
+        subject=input.subject,
+        message=input.message
     )
     db.add(new)
     db.commit()

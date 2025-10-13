@@ -77,6 +77,8 @@ class EmailConfig(Base):
     port = Column(Integer, nullable=True)
     tls = Column(Boolean, nullable=True)
     ssl = Column(Boolean, nullable=True)
+    subject = Column(String, nullable=True)
+    message = Column(String, nullable=True)
 
 class License(Base):
     __tablename__ = "licenses"

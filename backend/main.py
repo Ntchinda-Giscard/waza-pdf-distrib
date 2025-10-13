@@ -66,10 +66,7 @@ async def health_check():
 async def root():
     return {"message": "FastAPI backend is running", "version": "1.0.0"}
 
-# Add your other endpoints here
-@app.get("/api/test")
-async def test_endpoint():
-    return {"message": "Test endpoint working"}
+
 
 
 
@@ -97,7 +94,7 @@ def test_endpoint():
     try:
         run_pdf_automation()
     except Exception as e:
-        logger.error(f"❌ Error occurred in test_endpoint: {e}")
+        logger.error(f" Error occurred in test_endpoint: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.get("/")
