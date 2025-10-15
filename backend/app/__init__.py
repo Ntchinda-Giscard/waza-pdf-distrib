@@ -31,15 +31,15 @@ def move_file(source_path, destination_folder):
     
     try:
         shutil.move(source_path, destination_path)
-        logger.info(f"✅ File moved successfully to: {destination_path}")
+        logger.info(f"File moved successfully to: {destination_path}")
     except FileNotFoundError:
-        logger.warning("❌ Source file not found.")
+        logger.warning("Source file not found.")
         raise Exception("Source file not found.")
     except PermissionError:
-        logger.warning("❌ Permission denied. Try running as admin or check file access.")
+        logger.warning("Permission denied. Try running as admin or check file access.")
         raise Exception("Permission denied. Try running as admin or check file access.")
     except Exception as e:
-        logger.warning(f"⚠️ Unexpected error: {e}")
+        logger.warning(f"Unexpected error: {e}")
         raise Exception(f"Unexpected error: {e}")
 
 

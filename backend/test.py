@@ -56,6 +56,7 @@ def connect_to_database(dsn, database, tablename, email_field, username=None, pa
         conn = pyodbc.connect(connection_str)
         cursor = conn.cursor()
         sql = f"SELECT {email_field} FROM {tablename}"
+        logger.info(f"sql: {sql}")
         cursor.execute(sql)
         rows = cursor.fetchall()
     
