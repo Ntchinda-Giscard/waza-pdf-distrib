@@ -66,10 +66,9 @@
       "perMachine": true,
       "allowElevation": true,
       "allowToChangeInstallationDirectory": true,
-      "createDesktopShortcut": false,
+      "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
       "license": "LICENSE.rtf",
-      "include": "build/installer.nsh",
       "runAfterFinish": true
     }
   }

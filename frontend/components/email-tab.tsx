@@ -152,6 +152,7 @@ export function EmailTab() {
               <Label className="text-gray-200">Objet</Label>
               <Input
                 value={emailConfig.subject}
+                defaultValue={emailConfig.subject}
                 onChange={(e) => setEmailConfig({ subject: e.target.value })}
                 className="bg-gray-800 border-gray-700 text-white"
                 placeholder="Objet de l'email"
@@ -161,6 +162,7 @@ export function EmailTab() {
               <Label className="text-gray-200">Message</Label>
               <Textarea
                 value={emailConfig.message}
+                defaultValue={emailConfig.message}
                 onChange={(e) => setEmailConfig({ message: e.target.value })}
                 className="bg-gray-800 border-gray-700 text-white"
                 placeholder="Contenu de l'email"

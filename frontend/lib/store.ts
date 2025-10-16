@@ -129,6 +129,12 @@ const defaultEmailConfig: EmailConfig = {
     "Veuillez trouver en piece jointe votre bulletin de paie pour le mois",
 };
 
+const defaultFolderDatabaseLink: Partial<FolderDatabaseLink> = {
+  tableName: "T_SAL",
+  matriculeField: "MatriculeSalarie",
+  emailField: "EMail",
+};
+
 export const useAppStore = create<AppState>()(
   persist(
     (set, get) => ({
@@ -251,6 +257,7 @@ export const useAppStore = create<AppState>()(
 
       addFolderDatabaseLink: (link) => {
         const newLink = {
+          ...defaultFolderDatabaseLink,
           ...link,
           id: Date.now().toString(),
         };

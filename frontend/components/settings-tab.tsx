@@ -1,14 +1,14 @@
-"use client"
+"use client";
 
-import { Settings, Key } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { useAppStore } from "@/lib/store"
+import { Settings, Key } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useAppStore } from "@/lib/store";
 
 export function SettingsTab() {
-  const { licenseKey, setLicenseKey, setShowLicenseModal } = useAppStore()
+  const { licenseKey, setLicenseKey, setShowLicenseModal } = useAppStore();
 
   return (
     <div className="p-6 space-y-6">
@@ -48,7 +48,7 @@ export function SettingsTab() {
       </Card>
 
       {/* Application Settings */}
-      {/* <Card className="bg-gray-900 border-gray-800">
+      <Card className="bg-gray-900 border-gray-800">
         <CardHeader>
           <CardTitle className="text-white flex items-center">
             <Settings className="w-5 h-5 mr-2" />
@@ -58,15 +58,23 @@ export function SettingsTab() {
         <CardContent className="space-y-4">
           <div className="space-y-2">
             <Label className="text-gray-200">Délai d'Attente (secondes)</Label>
-            <Input type="number" className="bg-gray-800 border-gray-700 text-white" placeholder="30" />
+            <Input
+              type="number"
+              className="bg-gray-800 border-gray-700 text-white"
+              placeholder="30"
+            />
           </div>
           <div className="space-y-2">
             <Label className="text-gray-200">Nombre de Tentatives</Label>
-            <Input type="number" className="bg-gray-800 border-gray-700 text-white" placeholder="3" />
+            <Input
+              type="number"
+              className="bg-gray-800 border-gray-700 text-white"
+              placeholder="3"
+            />
           </div>
           <Button className="bg-blue-600 hover:bg-blue-700">Sauvegarder</Button>
         </CardContent>
-      </Card> */}
+      </Card>
     </div>
-  )
+  );
 }
