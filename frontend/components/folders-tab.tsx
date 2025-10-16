@@ -307,14 +307,11 @@ export function FoldersTab() {
         toast.success(`Liaison ajoutée avec succès`);
       }
 
-      // Reset only database-specific fields, keep folder paths for easy re-use
+      // Reset only linkedDatabase, keep other fields for re-use
       setFormData((prev) => ({
         ...prev,
         linkedDatabase: "",
         isSageDatabase: false,
-        tableName: "",
-        matriculeField: "",
-        emailField: "",
       }));
       setValidationError("");
     } catch (error) {
@@ -517,13 +514,13 @@ export function FoldersTab() {
         <h2 className="text-2xl font-bold text-white">
           Liaison Dossiers / Bases de Données
         </h2>
-        <Button
+        {/* <Button
           onClick={handleClearAll}
           variant="outline"
           className="border-gray-700 text-gray-300 hover:bg-gray-800 bg-transparent"
         >
           Effacer Tout
-        </Button>
+        </Button> */}
       </div>
 
       {/* Hidden file inputs for folder selection */}
