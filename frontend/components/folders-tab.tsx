@@ -349,6 +349,9 @@ export function FoldersTab() {
       linkedDatabase: "",
       archiveFolder: "",
       logFolder: "",
+      tableName: "T_SAL",
+      matriculeField: "MatriculeSalarie",
+      emailField: "EMail",
       isSageDatabase: false,
     });
     setAvailableSubfolders([]);
@@ -514,13 +517,13 @@ export function FoldersTab() {
         <h2 className="text-2xl font-bold text-white">
           Liaison Dossiers / Bases de Données
         </h2>
-        {/* <Button
+        <Button
           onClick={handleClearAll}
           variant="outline"
           className="border-gray-700 text-gray-300 hover:bg-gray-800 bg-transparent"
         >
           Effacer Tout
-        </Button> */}
+        </Button>
       </div>
 
       {/* Hidden file inputs for folder selection */}
