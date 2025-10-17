@@ -37,7 +37,9 @@ async def add_license(input: LicenseConfigAdd, db: Session = Depends(get_db)):
         db.add(new)
         db.commit()
         db.refresh(new)
+        db.close()
     except Exception as e:
         db.rollback()
+        db.close()
         raise HTTPException(status_code=400, detail=f"Erreur lors de l'activation de la licence : {e}")
     return new

@@ -54,6 +54,7 @@ async def add_folder_config(input: DatabaseConfigAdd, db: Session = Depends(get_
         
         # Refresh the new object to get any database-generated fields
         db.refresh(new_config)
+        db.close()
         
         return {
             "message": "Folder configuration added successfully",
@@ -63,6 +64,7 @@ async def add_folder_config(input: DatabaseConfigAdd, db: Session = Depends(get_
     except Exception as e:
         # Rollback any partial changes
         db.rollback()
+        db.close()
         raise HTTPException(
             status_code=500, 
             detail=f"Failed to add folder configuration: {str(e)}"
@@ -86,6 +88,7 @@ async def update_folder_config(input: DatabaseConfigAdd, db: Session = Depends(g
         
         db.commit()
         db.refresh(folder_config)
+        db.close()
         return folder_config
 
     return {"message": "No folder configuration found."}
@@ -100,6 +103,7 @@ async def delete_folder_config(input: DatabaseConfigDelete, db: Session = Depend
     if folder_config:
         db.delete(folder_config)
         db.commit()
+        db.close()
         return {"message": "Folder configuration deleted successfully."}
 
     return {"message": "No folder configuration found."}

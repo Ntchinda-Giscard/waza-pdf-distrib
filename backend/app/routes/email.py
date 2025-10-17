@@ -26,4 +26,6 @@ async def add_email(input: EmailConfigAdd, db: Session = Depends(get_db)):
     db.add(new)
     db.commit()
     db.refresh(new)
+    db.close()
+
     return new

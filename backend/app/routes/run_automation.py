@@ -155,8 +155,10 @@ async def distribution_automation(db: Session = Depends(get_db)):
 
             # Final message
             yield (json.dumps({"progress": 100, "message": "Terminé"}) + "\n").encode("utf-8")
+            db.close()
 
         except Exception as e:
+            db.close()
             yield (json.dumps({"error": f"Erreur lors de l'automatisation : {str(e)}"}) + "\n").encode("utf-8")
 
     return StreamingResponse(event_stream(), media_type="application/x-ndjson")

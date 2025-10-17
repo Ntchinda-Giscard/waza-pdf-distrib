@@ -28,6 +28,7 @@ async def add_matricule(input: MatriculeConfigAdd, db: Session = Depends(get_db)
     db.add(new)
     db.commit()
     db.refresh(new)
+    db.close()
     return new
 
 

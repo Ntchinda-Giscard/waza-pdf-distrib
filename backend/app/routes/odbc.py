@@ -61,6 +61,7 @@ def add_database_server(input: DatabaseServerAdd, db: Session):
     db.add(new)
     db.commit()
     db.refresh(new)
+    db.close()
     return new
 
 @odbc_router.get("/odbc-sources")
@@ -73,6 +74,7 @@ async def list_odbc_sources():
 async def delete_odbc_source(db: Session = Depends(get_db)):
     db.query(DatabaseServer).delete()
     db.commit()
+    db.close()
 
 @odbc_router.post("/add-odbc")
 async def add_database(input: DatabaseServerAdd, db: Session = Depends(get_db)):
