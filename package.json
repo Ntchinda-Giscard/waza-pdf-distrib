@@ -1,56 +1,77 @@
 {
   "name": "e-bulletin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "electron/main.js",
+  "description": "Logiciel d'envoir des bulletins de paye de SAGE 100 Paie via email.",
+  "author": "Your Name",
+  "license": "MIT",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development electron .",
-    "build": "npm run build:prepare && electron-builder",
-    "build:prepare": "npm run build:frontend && npm run copy:assets",
-    "build:frontend": "cd frontend && npm run build",
-    "copy:assets": "node scripts/copy-assets.js",
-    "dist": "npm run build",
-    "debug": "cross-env NODE_ENV=production electron .",
-    "clean": "rimraf dist resources"
+    "dev:next": "cd frontend && npm run dev",
+    "dev:electron": "electron .",
+    "dev": "concurrently \"npm run dev:next\" \"wait-on http://localhost:3000 && npm run dev:electron\"",
+    "build:next": "cd frontend && npm run build",
+    "build:backend": "node build-backend.js",
+    "prebuild:electron": "node -e \"console.log('Files before build:'); const fs = require('fs'); console.log('electron/main.js exists:', fs.existsSync('electron/main.js')); console.log('frontend/out exists:', fs.existsSync('frontend/out'));\"",
+    "build": "npm run build:next && npm run build:electron",
+    "build:electron": "electron-builder --dir",
+    "dist": "npm run build:next && electron-builder",
+    "dist:win": "npm run build:next && electron-builder --win",
+    "postinstall": "electron-builder install-app-deps"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
-    "electron": "latest",
-    "electron-builder": "^24.0.0",
+    "concurrently": "^8.2.2",
+    "electron": "^38.3.0",
+    "electron-builder": "^26.0.12",
+    "wait-on": "^7.2.0",
     "rimraf": "^3.0.2",
     "fs-extra": "^11.0.0"
+  },
+  "dependencies": {
+    "electron-is-dev": "^2.0.0"
   },
   "build": {
     "appId": "com.wazasolution.ebulletin",
     "productName": "eBulletin",
     "copyright": "Copyright © 2025 Waza solutions",
     "directories": {
-      "output": "dist"
+      "output": "release",
+      "buildResources": "build"
     },
     "files": [
       "electron/**/*",
-      "!electron/node_modules/**/*",
-      "!**/node_modules/**/*"
+      "frontend/out/**/*",
+      "package.json"
     ],
     "extraResources": [
       {
-        "from": "resources/frontend",
-        "to": "frontend",
+        "from": "backend/dist/api.exe",
+        "to": "backend/api.exe",
         "filter": [
           "**/*"
         ]
       },
       {
-        "from": "resources/backend",
-        "to": "backend",
+        "from": "windows-service",
+        "to": "windows-service",
         "filter": [
-          "**/*"
+          "**/*",
+          "!__pycache__"
         ]
       }
     ],
+    "asarUnpack": [
+      "frontend/out/**/*",
+      "backend/**/*"
+    ],
     "win": {
-      "icon": "assets/icon.ico",
       "target": [
-        "nsis"
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
       ]
     },
     "mac": {
