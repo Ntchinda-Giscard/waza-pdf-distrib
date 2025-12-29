@@ -1,44 +1,26 @@
-const {
-  app,
-  BrowserWindow,
-  dialog,
-  ipcMain,
-  shell,
-  Menu,
-} = require("electron");
-const { spawn, exec } = require("child_process");
+// main.js - Electron Main Process
+const { app, BrowserWindow, ipcMain, dialog } = require("electron");
+const { spawn, exec } = require("child_process"); // ADD exec HERE
+const path = require("path");
 const fs = require("fs");
-const fsPromises = require("fs").promises; // For async operations like stat, readdir
-const path = require("path"); // This is for handling file paths
-const http = require("http");
-const net = require("net");
-const os = require("os");
+const isDev = require("electron-is-dev");
+const isWindows = process.platform === "win32";
+const backendDir = path.join(__dirname, "..", "backend");
 
-const isMac = process.platform === "darwin";
-
-// Enhanced development mode detection
-const isDev =
-  process.env.NODE_ENV === "development" ||
-  process.env.ELECTRON_IS_DEV === "1" ||
-  !app.isPackaged;
-
-// Port configuration - using different ports for dev vs production
-const BACKEND_PORT = isDev ? 8000 : 8000;
-
-let backendProcess;
-let frontendProcess;
 let mainWindow;
+let backendProcess = null;
+let frontendProcess = null;
 let isShuttingDown = false;
 let cleanupInProgress = false;
-
-// Enhanced process tracking with cleanup callbacks
-const trackedProcesses = new Map(); // pid -> { process, cleanup }
+const trackedProcesses = new Map();
 
 // Enhanced logging system
 const logFile = path.join(
   isDev ? __dirname : path.dirname(app.getPath("exe")),
   "debug.log"
 );
+
+const BACKEND_PORT = isDev ? 7626 : 7626;
 
 function log(level, message, data = null) {
   const timestamp = new Date().toISOString();
@@ -61,84 +43,51 @@ function log(level, message, data = null) {
   }
 }
 
-// Enhanced process termination with better cross-platform support
-function terminateProcess(process, timeout = 10000) {
+function getResourcePath(relativePath) {
+  if (isDev) {
+    return path.join(__dirname, "..", relativePath);
+  }
+  return path.join(process.resourcesPath, relativePath);
+}
+
+// Terminate process with timeout
+function terminateProcess(proc, timeout = 5000) {
   return new Promise((resolve) => {
-    if (!process || process.killed) {
+    if (!proc || proc.killed) {
       resolve();
       return;
     }
 
-    let resolved = false;
-    const resolveOnce = () => {
-      if (!resolved) {
-        resolved = true;
-        resolve();
+    const timer = setTimeout(() => {
+      try {
+        proc.kill("SIGKILL");
+      } catch (err) {
+        log("warn", `Failed to force kill process: ${err.message}`);
       }
-    };
+      resolve();
+    }, timeout);
 
-    // Listen for process exit
-    process.once("exit", resolveOnce);
-    process.once("close", resolveOnce);
-
-    const isWindows = process.platform === "win32";
+    proc.once("exit", () => {
+      clearTimeout(timer);
+      resolve();
+    });
 
     try {
-      if (isWindows) {
-        // Windows: Use taskkill for more reliable termination
-        exec(`taskkill /PID ${process.pid} /T /F`, (error) => {
-          if (error) {
-            log(
-              "warn",
-              `Failed to taskkill process ${process.pid}: ${error.message}`
-            );
-          } else {
-            log(
-              "info",
-              `Successfully terminated process ${process.pid} with taskkill`
-            );
-          }
-          setTimeout(resolveOnce, 1000);
-        });
-      } else {
-        // Unix-like: Try graceful termination first
-        process.kill("SIGTERM");
-
-        // Force kill after timeout
-        setTimeout(() => {
-          if (!process.killed && !resolved) {
-            try {
-              process.kill("SIGKILL");
-              log("info", `Force killed process ${process.pid}`);
-            } catch (killError) {
-              log(
-                "warn",
-                `Failed to force kill process ${process.pid}: ${killError.message}`
-              );
-            }
-          }
-          setTimeout(resolveOnce, 1000);
-        }, timeout / 2);
-      }
-    } catch (error) {
-      log("warn", `Error terminating process ${process.pid}: ${error.message}`);
-      setTimeout(resolveOnce, 1000);
+      proc.kill("SIGTERM");
+    } catch (err) {
+      log("warn", `Failed to terminate process: ${err.message}`);
+      clearTimeout(timer);
+      resolve();
     }
-
-    // Final timeout
-    setTimeout(resolveOnce, timeout);
   });
 }
 
-// Kill processes on specific ports with improved reliability
+// Kill processes on specific ports
 function killProcessOnPort(port) {
   return new Promise((resolve) => {
-    const isWindows = process.platform === "win32";
-
     log("info", `Attempting to kill processes on port ${port}`);
 
     if (isWindows) {
-      // Windows: Use netstat and taskkill with tree kill
       exec(`netstat -ano | findstr :${port}`, (error, stdout) => {
         if (error || !stdout) {
           log("debug", `No process found on port ${port}`);
@@ -167,10 +116,9 @@ function killProcessOnPort(port) {
           `Killing processes on port ${port}: ${Array.from(pids).join(", ")}`
         );
 
-        // Use taskkill with /T flag to kill process tree
         const killPromises = Array.from(pids).map((pid) => {
           return new Promise((pidResolve) => {
-            exec(`taskkill /PID ${pid} /T /F`, (killError, stdout, stderr) => {
+            exec(`taskkill /PID ${pid} /T /F`, (killError) => {
               if (killError) {
                 log(
                   "warn",
@@ -185,12 +133,10 @@ function killProcessOnPort(port) {
         });
 
         Promise.all(killPromises).then(() => {
-          // Wait a bit for processes to actually terminate
           setTimeout(resolve, 2000);
         });
       });
     } else {
-      // Unix/Linux/Mac: Use lsof and kill with process group
       exec(`lsof -ti:${port}`, (error, stdout) => {
         if (error || !stdout) {
           log("debug", `No process found on port ${port}`);
@@ -202,6 +148,7 @@ function killProcessOnPort(port) {
           .trim()
           .split("\n")
           .filter((pid) => pid && pid !== "0");
+
         if (pids.length === 0) {
           resolve();
           return;
@@ -209,24 +156,18 @@ function killProcessOnPort(port) {
 
         log("info", `Killing processes on port ${port}: ${pids.join(", ")}`);
 
-        // Try graceful termination first
         exec(`kill -TERM ${pids.join(" ")}`, (termError) => {
           if (termError) {
             log("warn", `SIGTERM failed, trying SIGKILL: ${termError.message}`);
           }
 
-          // Wait a bit, then force kill if needed
           setTimeout(() => {
             exec(`kill -9 ${pids.join(" ")} 2>/dev/null`, (killError) => {
               if (killError) {
-                log(
-                  "debug",
-                  `SIGKILL completed (some processes may have already exited)`
-                );
+                log("debug", `SIGKILL completed`);
               } else {
                 log("info", `Force killed remaining processes on port ${port}`);
               }
-              // Wait for processes to actually terminate
               setTimeout(resolve, 2000);
             });
           }, 3000);
@@ -236,7 +177,7 @@ function killProcessOnPort(port) {
   });
 }
 
-// Enhanced process cleanup with better error handling and sequencing
+// Enhanced process cleanup
 async function cleanupProcesses() {
   if (cleanupInProgress) {
     log("debug", "Cleanup already in progress, skipping");
@@ -251,25 +192,21 @@ async function cleanupProcesses() {
   try {
     const cleanupPromises = [];
 
-    // Step 1: Terminate our spawned processes gracefully
     if (backendProcess && !backendProcess.killed) {
       log("info", "Terminating backend process gracefully");
-      cleanupPromises.push(terminateProcess(backendProcess, 8000));
+      cleanupPromises.push(terminateProcess(backendProcess, 5000));
     }
 
     if (frontendProcess && !frontendProcess.killed) {
       log("info", "Terminating frontend process gracefully");
-      cleanupPromises.push(terminateProcess(frontendProcess, 8000));
+      cleanupPromises.push(terminateProcess(frontendProcess, 5000));
     }
 
-    // Wait for graceful termination
     await Promise.all(cleanupPromises);
 
-    // Step 2: Kill any remaining processes on our ports
     log("info", "Cleaning up processes on ports");
-    await Promise.all([killProcessOnPort(BACKEND_PORT)]);
+    await killProcessOnPort(BACKEND_PORT);
 
-    // Step 3: Clean up any tracked processes
     if (trackedProcesses.size > 0) {
       log("info", `Cleaning up ${trackedProcesses.size} tracked processes`);
       const trackedCleanup = Array.from(trackedProcesses.entries()).map(
@@ -280,7 +217,6 @@ async function cleanupProcesses() {
                 data.cleanup();
               }
 
-              // Try to kill the process if it still exists
               if (data.process && !data.process.killed) {
                 terminateProcess(data.process, 5000).then(resolve);
               } else {
@@ -301,9 +237,8 @@ async function cleanupProcesses() {
       trackedProcesses.clear();
     }
 
-    // Step 4: Final port cleanup to ensure everything is clear
     log("info", "Final port cleanup verification");
-    await Promise.all([killProcessOnPort(BACKEND_PORT)]);
+    await killProcessOnPort(BACKEND_PORT);
 
     log("info", "Enhanced process cleanup completed successfully");
   } catch (error) {
@@ -313,82 +248,208 @@ async function cleanupProcesses() {
   }
 }
 
-const template = [
-  {
-    label: "File",
-    submenu: [
-      { label: "New", click: () => console.log("New file clicked!") },
-      { type: "separator" },
-      isMac ? { role: "close" } : { role: "quit" },
-    ],
-  },
-  {
-    label: "Edit",
-    submenu: [
-      { role: "undo" },
-      { role: "redo" },
-      { type: "separator" },
-      { role: "cut" },
-      { role: "copy" },
-      { role: "paste" },
-    ],
-  },
-  {
-    label: "Custom Action",
-    click: () => {
-      // Send a message to the renderer process to perform a React-specific action
-      mainWindow.webContents.send(
-        "custom-menu-action",
-        "Hello from main process!"
-      );
-    },
-  },
-];
-
+// Create main window
 function createWindow() {
-  log("info", "Creating main window");
-
   mainWindow = new BrowserWindow({
     width: 1200,
     height: 800,
     webPreferences: {
-      contextIsolation: true,
       nodeIntegration: false,
-      devTools: false,
+      contextIsolation: true,
       preload: path.join(__dirname, "preload.js"),
     },
-    icon: path.join(__dirname, "icons", "icon.png"),
-    backgroundColor: "#ffffff",
-    show: false,
   });
 
-  // Enhanced error handling for window loading
+  if (isDev) {
+    mainWindow.loadURL("http://localhost:3000").catch((err) => {
+      log("error", "Failed to load dev URL", err);
+      console.error(
+        "❌ Failed to load dev URL. Is your Next.js dev server running?"
+      );
+      console.error("Run: npm run dev:next");
+    });
+    mainWindow.webContents.openDevTools();
+  } else {
+    const possiblePaths = [
+      path.join(__dirname, "frontend", "out", "index.html"),
+      path.join(__dirname, "..", "frontend", "out", "index.html"),
+      path.join(process.resourcesPath, "frontend", "out", "index.html"),
+      path.join(process.resourcesPath, "app", "frontend", "out", "index.html"),
+    ];
+
+    let indexPath = null;
+    for (const p of possiblePaths) {
+      log("info", "Checking path: " + p);
+      if (fs.existsSync(p)) {
+        indexPath = p;
+        log("info", "Found index.html at: " + indexPath);
+        break;
+      }
+    }
+
+    if (indexPath) {
+      mainWindow.loadFile(indexPath).catch((err) => {
+        log("error", "Failed to load file", err);
+      });
+    } else {
+      log("error", "index.html not found in any expected location");
+      mainWindow.loadURL(`data:text/html,
+        <html>
+          <body style="font-family: Arial; padding: 40px; background: #1a1a1a; color: #fff;">
+            <h1>❌ Error: Frontend not found</h1>
+            <p>index.html not found in expected locations</p>
+            <p>Make sure you built the Next.js app with: <code>npm run build:next</code></p>
+            <h3>Checked paths:</h3>
+            <ul>${possiblePaths
+              .map((p) => `<li><code>${p}</code></li>`)
+              .join("")}</ul>
+          </body>
+        </html>
+      `);
+    }
+  }
+
   mainWindow.webContents.on(
     "did-fail-load",
-    (event, errorCode, errorDescription, validatedURL) => {
-      dialog.showErrorBox(
-        "Loading Error",
-        `Failed to load application:\n\nError: ${errorDescription}\nURL: ${validatedURL}\n\nCheck ${logFile} for more details.`
-      );
-    }
-  );
-
-  mainWindow.webContents.once("did-finish-load", () => {
-    log("info", "Window loaded successfully");
-    mainWindow.show();
-
-    if (isDev) {
-      mainWindow.webContents.openDevTools();
-    }
-  });
-
-  mainWindow.webContents.on(
-    "console-message",
-    (event, level, message, line, sourceId) => {
-      log("renderer", `Console [${level}]: ${message} (${sourceId}:${line})`);
+    (event, errorCode, errorDescription) => {
+      log("error", `Page failed to load: ${errorCode} - ${errorDescription}`);
     }
   );
 }
+
+function startBackend() {
+  return new Promise((resolve, reject) => {
+    log("info", "Starting backend server");
+
+    if (isDev) {
+      log(
+        "info",
+        "Development mode: start backend manually with 'cd backend && venv\\Scripts\\activate && python api.py'"
+      );
+      resolve();
+      return;
+    }
+
+    const exePath = getResourcePath(path.join("backend", "api.exe"));
+    log("info", `Backend executable path: ${exePath}`);
+
+    if (!fs.existsSync(exePath)) {
+      const error = `Backend executable not found at: ${exePath}`;
+      log("error", error);
+      reject(new Error(error));
+      return;
+    }
+
+    log("info", "Starting backend process");
+
+    backendProcess = spawn(exePath, [], {
+      cwd: path.dirname(exePath),
+      stdio: ["pipe", "pipe", "pipe"],
+      detached: false,
+      windowsHide: true,
+      env: {
+        ...process.env,
+        PORT: BACKEND_PORT.toString(),
+        HOST: "127.0.0.1",
+      },
+    });
+
+    trackedProcesses.set(backendProcess.pid, {
+      process: backendProcess,
+      cleanup: () => {
+        log("info", "Cleaning up backend process");
+      },
+    });
+
+    backendProcess.stdout.on("data", (data) => {
+      log("backend", data.toString().trim());
+    });
+
+    backendProcess.stderr.on("data", (data) => {
+      log("backend-err", data.toString().trim());
+    });
+
+    backendProcess.on("error", (err) => {
+      log("error", "Backend process error", err);
+      trackedProcesses.delete(backendProcess.pid);
+      reject(err);
+    });
+
+    backendProcess.on("exit", (code, signal) => {
+      log(
+        "warn",
+        `Backend process exited with code ${code}, signal: ${signal}`
+      );
+      trackedProcesses.delete(backendProcess.pid);
+    });
+
+    setTimeout(() => {
+      log("info", "Backend startup timeout reached, assuming ready");
+      resolve();
+    }, 5000);
+  });
+}
+
+// App lifecycle
+app.whenReady().then(async () => {
+  log("info", "Electron app ready");
+
+  try {
+    await killProcessOnPort(BACKEND_PORT);
+    await new Promise((resolve) => setTimeout(resolve, 3000));
+
+    if (!isDev) {
+      await startBackend();
+    }
+  } catch (error) {
+    log("error", "Application startup failed", error);
+    dialog.showErrorBox(
+      "Startup Failed",
+      `Application failed to start:\n\n${error.message}\n\nPlease check ${logFile} for detailed logs.`
+    );
+  }
+
+  createWindow();
+
+  app.on("activate", () => {
+    if (BrowserWindow.getAllWindows().length === 0) {
+      createWindow();
+    }
+  });
+});
+
+app.on("window-all-closed", async () => {
+  log("info", "All windows closed, cleaning up");
+  await cleanupProcesses();
+  if (process.platform !== "darwin") {
+    app.quit();
+  }
+});
+
+app.on("before-quit", async (event) => {
+  if (!isShuttingDown && !cleanupInProgress) {
+    log("info", "Application shutting down");
+    event.preventDefault();
+
+    try {
+      await cleanupProcesses();
+      app.exit(0);
+    } catch (error) {
+      log("error", "Error during shutdown cleanup", error);
+      app.exit(1);
+    }
+  }
+});
+
+ipcMain.handle("select-folder", async () => {
+  const result = await dialog.showOpenDialog(mainWindow, {
+    properties: ["openDirectory"],
+  });
+  if (!result.canceled && result.filePaths.length > 0) {
+    return result.filePaths[0];
+  }
+  return null;
+});
 
 ipcMain.handle("open-folder-picker", async () => {
   try {
@@ -511,291 +572,6 @@ ipcMain.handle("open-folder", async (event, folderPath) => {
   }
 });
 
-function getResourcePath(relativePath) {
-  if (isDev) {
-    return path.join(__dirname, "..", relativePath);
-  }
-  return path.join(process.resourcesPath, relativePath);
-}
-
-function startBackend() {
-  return new Promise((resolve, reject) => {
-    log("info", "Starting backend server");
-
-    if (isDev) {
-      log("info", "Development mode: assuming backend is running separately");
-      resolve();
-      return;
-    }
-
-    const exePath = getResourcePath(path.join("backend", "main.exe"));
-    log("info", `Backend executable path: ${exePath}`);
-
-    if (!fs.existsSync(exePath)) {
-      const error = `Backend executable not found at: ${exePath}`;
-      log("error", error);
-      reject(new Error(error));
-      return;
-    }
-
-    log("info", "Starting backend process");
-
-    // Enhanced spawn options for better process management
-    backendProcess = spawn(exePath, [], {
-      cwd: path.dirname(exePath),
-      stdio: ["pipe", "pipe", "pipe"],
-      detached: false, // Keep attached for better cleanup
-      windowsHide: true, // Hide console window on Windows
-      env: {
-        ...process.env,
-        PORT: BACKEND_PORT.toString(),
-        HOST: "127.0.0.1",
-      },
-    });
-
-    // Enhanced process tracking
-    trackedProcesses.set(backendProcess.pid, {
-      process: backendProcess,
-      cleanup: () => {
-        log("info", "Cleaning up backend process");
-      },
-    });
-
-    backendProcess.stdout.on("data", (data) => {
-      log("backend", data.toString().trim());
-    });
-
-    backendProcess.stderr.on("data", (data) => {
-      log("backend-err", data.toString().trim());
-    });
-
-    backendProcess.on("error", (err) => {
-      log("error", "Backend process error", err);
-      trackedProcesses.delete(backendProcess.pid);
-      reject(err);
-    });
-
-    backendProcess.on("exit", (code, signal) => {
-      log(
-        "warn",
-        `Backend process exited with code ${code}, signal: ${signal}`
-      );
-      trackedProcesses.delete(backendProcess.pid);
-    });
-
-    // Improved startup detection
-    setTimeout(() => {
-      log("info", "Backend startup timeout reached, assuming ready");
-      resolve();
-    }, 5000);
-  });
-}
-
-function waitForServer(port, maxAttempts = 60, intervalMs = 1000) {
-  return new Promise((resolve, reject) => {
-    let attempts = 0;
-
-    function checkServer() {
-      attempts++;
-      log("debug", `Health check attempt ${attempts} for port ${port}`);
-
-      const socket = new net.Socket();
-
-      const timeout = setTimeout(() => {
-        socket.destroy();
-        log("debug", `Health check timeout for port ${port}`);
-
-        if (attempts < maxAttempts) {
-          setTimeout(checkServer, intervalMs);
-        } else {
-          log(
-            "error",
-            `Server health check failed after ${maxAttempts} attempts`
-          );
-          reject(
-            new Error(
-              `Server not responding on port ${port} after ${maxAttempts} attempts`
-            )
-          );
-        }
-      }, 3000);
-
-      socket.connect(port, "127.0.0.1", () => {
-        clearTimeout(timeout);
-        socket.destroy();
-        log("info", `Server health check successful for port ${port}`);
-        resolve();
-      });
-
-      socket.on("error", (err) => {
-        clearTimeout(timeout);
-        socket.destroy();
-        log("debug", `Health check failed for port ${port}: ${err.message}`);
-
-        if (attempts < maxAttempts) {
-          setTimeout(checkServer, intervalMs);
-        } else {
-          log(
-            "error",
-            `Server health check failed after ${maxAttempts} attempts`
-          );
-          reject(
-            new Error(
-              `Server not responding on port ${port} after ${maxAttempts} attempts: ${err.message}`
-            )
-          );
-        }
-      });
-    }
-
-    checkServer();
-  });
-}
-
-function waitForHttpServer(port, maxAttempts = 30, intervalMs = 1000) {
-  return new Promise((resolve, reject) => {
-    let attempts = 0;
-
-    function checkServer() {
-      attempts++;
-      log("debug", `HTTP health check attempt ${attempts} for port ${port}`);
-
-      const req = http.request(
-        {
-          hostname: "127.0.0.1",
-          port: port,
-          path: "/",
-          method: "GET",
-          timeout: 3000,
-        },
-        (res) => {
-          log(
-            "info",
-            `HTTP health check successful for port ${port} (status: ${res.statusCode})`
-          );
-          resolve();
-        }
-      );
-
-      req.on("error", (err) => {
-        log(
-          "debug",
-          `HTTP health check failed for port ${port}: ${err.message}`
-        );
-
-        if (attempts < maxAttempts) {
-          setTimeout(checkServer, intervalMs);
-        } else {
-          log(
-            "error",
-            `HTTP server health check failed after ${maxAttempts} attempts`
-          );
-          reject(
-            new Error(
-              `HTTP server not responding on port ${port} after ${maxAttempts} attempts`
-            )
-          );
-        }
-      });
-
-      req.on("timeout", () => {
-        log("debug", `HTTP health check timeout for port ${port}`);
-        req.destroy();
-      });
-
-      req.end();
-    }
-
-    checkServer();
-  });
-}
-
-const gotTheLock = app.requestSingleInstanceLock();
-
-if (!gotTheLock) {
-  // Another instance is already running
-  dialog.showErrorBox(
-    "Already Running",
-    "Another instance of eBulletin is already open."
-  );
-  app.quit(); // Exit this second instance immediately
-} else {
-  // Handle case where the user tries to open again
-  app.on("second-instance", (event, commandLine, workingDirectory) => {
-    // Focus the main window if available
-    if (mainWindow) {
-      if (mainWindow.isMinimized()) mainWindow.restore();
-      mainWindow.focus();
-      mainWindow.show();
-
-      // Optional: Show message in the main process log
-      console.log(
-        "User tried to open a second instance — focusing main window."
-      );
-    }
-  });
-}
-
-// Main application startup sequence
-app.whenReady().then(async () => {
-  log("info", "Electron app ready");
-
-  try {
-    await killProcessOnPort(BACKEND_PORT);
-    await new Promise((resolve) => setTimeout(resolve, 3000));
-
-    if (!isDev) {
-      await startBackend();
-    }
-  } catch (error) {
-    log("error", "Application startup failed", error);
-    dialog.showErrorBox(
-      "Startup Failed",
-      `Application failed to start:\n\n${error.message}\n\nPlease check ${logFile} for detailed logs.`
-    );
-  }
-
-  createWindow();
-
-  app.on("activate", () => {
-    if (BrowserWindow.getAllWindows().length === 0) {
-      createWindow();
-    }
-  });
-});
-
-// Enhanced app event handlers with better process cleanup
-app.on("window-all-closed", async () => {
-  log("info", "All windows closed, cleaning up");
-  await cleanupProcesses();
-
-  if (process.platform !== "darwin") {
-    app.quit();
-  }
-});
-
-app.on("activate", () => {
-  if (BrowserWindow.getAllWindows().length === 0) {
-    createWindow();
-  }
-});
-
-app.on("before-quit", async (event) => {
-  if (!isShuttingDown && !cleanupInProgress) {
-    log("info", "Application shutting down");
-    event.preventDefault();
-
-    try {
-      await cleanupProcesses();
-      app.exit(0);
-    } catch (error) {
-      log("error", "Error during shutdown cleanup", error);
-      app.exit(1);
-    }
-  }
-});
-
-// Enhanced signal handlers with proper cleanup
 process.on("SIGINT", async () => {
   log("info", "Received SIGINT, cleaning up...");
   await cleanupProcesses();
@@ -808,7 +584,6 @@ process.on("SIGTERM", async () => {
   process.exit(0);
 });
 
-// Handle uncaught exceptions with cleanup
 process.on("uncaughtException", async (error) => {
   log("error", "Uncaught exception", error);
   await cleanupProcesses();
@@ -820,12 +595,3 @@ process.on("unhandledRejection", async (reason, promise) => {
   await cleanupProcesses();
   process.exit(1);
 });
-
-// Additional Windows-specific cleanup
-if (process.platform === "win32") {
-  process.on("SIGHUP", async () => {
-    log("info", "Received SIGHUP, cleaning up...");
-    await cleanupProcesses();
-    process.exit(0);
-  });
-}
