@@ -3,22 +3,16 @@ from typing import Optional
 import unicodedata
 import ssl
 import mimetypes
-import sys
 from pathlib import Path
 from email.message import EmailMessage
 import logging
 
-# Ensure UTF-8 encoding for stdout/stderr
-if sys.stdout.encoding != 'utf-8':
-    sys.stdout.reconfigure(encoding='utf-8')
-if sys.stderr.encoding != 'utf-8':
-    sys.stderr.reconfigure(encoding='utf-8')
+
 
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s - %(name)s - %(funcName)s - %(lineno)d - %(threadName)s',
     handlers=[
-        logging.StreamHandler(sys.stdout),
         logging.FileHandler('fastapi.log')
     ]
 )
