@@ -23,7 +23,6 @@ const isDev =
   !app.isPackaged;
 
 // Port configuration - using different ports for dev vs production
-const FRONTEND_PORT = isDev ? 3000 : 3002;
 const BACKEND_PORT = isDev ? 8000 : 8000;
 
 let backendProcess;
@@ -268,10 +267,7 @@ async function cleanupProcesses() {
 
     // Step 2: Kill any remaining processes on our ports
     log("info", "Cleaning up processes on ports");
-    await Promise.all([
-      killProcessOnPort(FRONTEND_PORT),
-      killProcessOnPort(BACKEND_PORT),
-    ]);
+    await Promise.all([killProcessOnPort(BACKEND_PORT)]);
 
     // Step 3: Clean up any tracked processes
     if (trackedProcesses.size > 0) {
@@ -307,10 +303,7 @@ async function cleanupProcesses() {
 
     // Step 4: Final port cleanup to ensure everything is clear
     log("info", "Final port cleanup verification");
-    await Promise.all([
-      killProcessOnPort(FRONTEND_PORT),
-      killProcessOnPort(BACKEND_PORT),
-    ]);
+    await Promise.all([killProcessOnPort(BACKEND_PORT)]);
 
     log("info", "Enhanced process cleanup completed successfully");
   } catch (error) {
@@ -318,187 +311,6 @@ async function cleanupProcesses() {
   } finally {
     cleanupInProgress = false;
   }
-}
-
-// Check if Node.js is installed and get version
-function checkNodeJs() {
-  return new Promise((resolve) => {
-    exec("node --version", (error, stdout) => {
-      if (error) {
-        log("warn", "Node.js not found in PATH");
-        resolve({ installed: false, version: null });
-      } else {
-        const version = stdout.trim();
-        log("info", `Node.js found: ${version}`);
-        resolve({ installed: true, version });
-      }
-    });
-  });
-}
-
-// Download and install Node.js
-async function installNodeJs() {
-  return new Promise((resolve, reject) => {
-    const platform = os.platform();
-    const arch = os.arch();
-
-    log("info", `Installing Node.js for ${platform} ${arch}`);
-
-    let downloadUrl;
-    let filename;
-
-    // Determine download URL based on platform
-    const nodeVersion = "v20.11.0"; // LTS version
-
-    switch (platform) {
-      case "win32":
-        if (arch === "x64") {
-          downloadUrl = `https://nodejs.org/dist/${nodeVersion}/node-${nodeVersion}-x64.msi`;
-          filename = `node-${nodeVersion}-x64.msi`;
-        } else {
-          downloadUrl = `https://nodejs.org/dist/${nodeVersion}/node-${nodeVersion}-x86.msi`;
-          filename = `node-${nodeVersion}-x86.msi`;
-        }
-        break;
-      case "darwin":
-        downloadUrl = `https://nodejs.org/dist/${nodeVersion}/node-${nodeVersion}.pkg`;
-        filename = `node-${nodeVersion}.pkg`;
-        break;
-      case "linux":
-        downloadUrl = `https://nodejs.org/dist/${nodeVersion}/node-${nodeVersion}-linux-x64.tar.xz`;
-        filename = `node-${nodeVersion}-linux-x64.tar.xz`;
-        break;
-      default:
-        reject(new Error(`Unsupported platform: ${platform}`));
-        return;
-    }
-
-    const tempDir = os.tmpdir();
-    const installerPath = path.join(tempDir, filename);
-
-    log("info", `Downloading Node.js from: ${downloadUrl}`);
-
-    // Download the installer
-    const https = require("https");
-    const file = fs.createWriteStream(installerPath);
-
-    https
-      .get(downloadUrl, (response) => {
-        response.pipe(file);
-
-        file.on("finish", () => {
-          file.close();
-          log("info", `Node.js installer downloaded to: ${installerPath}`);
-
-          // Install Node.js
-          let installCommand;
-
-          switch (platform) {
-            case "win32":
-              installCommand = `msiexec /i "${installerPath}" /quiet /norestart`;
-              break;
-            case "darwin":
-              installCommand = `sudo installer -pkg "${installerPath}" -target /`;
-              break;
-            case "linux":
-              // For Linux, we'll extract to a local directory
-              const extractPath = path.join(app.getPath("userData"), "nodejs");
-              installCommand = `mkdir -p "${extractPath}" && tar -xf "${installerPath}" -C "${extractPath}" --strip-components=1`;
-              break;
-          }
-
-          log("info", `Running install command: ${installCommand}`);
-
-          exec(installCommand, (error, stdout, stderr) => {
-            if (error) {
-              log("error", "Node.js installation failed", error);
-              reject(error);
-            } else {
-              log("info", "Node.js installation completed successfully");
-
-              // Clean up installer
-              try {
-                fs.unlinkSync(installerPath);
-              } catch (cleanupError) {
-                log("warn", "Failed to clean up installer", cleanupError);
-              }
-
-              resolve();
-            }
-          });
-        });
-      })
-      .on("error", (error) => {
-        log("error", "Failed to download Node.js installer", error);
-        reject(error);
-      });
-  });
-}
-
-// Enhanced Node.js check with installation prompt
-async function ensureNodeJs() {
-  const nodeCheck = await checkNodeJs();
-
-  if (!nodeCheck.installed) {
-    const response = await dialog.showMessageBox(null, {
-      type: "question",
-      buttons: ["Install Node.js", "Continue without Node.js", "Exit"],
-      defaultId: 0,
-      title: "Node.js Required",
-      message: "Node.js is required to run this application.",
-      detail:
-        "Would you like to install Node.js automatically? This may require administrator privileges.",
-    });
-
-    switch (response.response) {
-      case 0: // Install Node.js
-        try {
-          await installNodeJs();
-
-          // Verify installation
-          const recheckNode = await checkNodeJs();
-          if (!recheckNode.installed) {
-            throw new Error("Node.js installation verification failed");
-          }
-
-          dialog.showMessageBox(null, {
-            type: "info",
-            title: "Installation Complete",
-            message: "Node.js has been installed successfully!",
-            detail: "The application will now continue starting.",
-          });
-        } catch (error) {
-          log("error", "Node.js installation failed", error);
-
-          const retryResponse = await dialog.showMessageBox(null, {
-            type: "error",
-            buttons: ["Retry", "Continue Anyway", "Exit"],
-            defaultId: 1,
-            title: "Installation Failed",
-            message: "Failed to install Node.js automatically.",
-            detail: `Error: ${error.message}\n\nYou can try installing Node.js manually from nodejs.org or continue without it (frontend may not work).`,
-          });
-
-          if (retryResponse.response === 0) {
-            return ensureNodeJs(); // Retry
-          } else if (retryResponse.response === 2) {
-            app.quit();
-            return false;
-          }
-        }
-        break;
-
-      case 1: // Continue without Node.js
-        log("warn", "Continuing without Node.js - frontend may not work");
-        break;
-
-      case 2: // Exit
-        app.quit();
-        return false;
-    }
-  }
-
-  return true;
 }
 
 const template = [
@@ -554,14 +366,6 @@ function createWindow() {
   mainWindow.webContents.on(
     "did-fail-load",
     (event, errorCode, errorDescription, validatedURL) => {
-      log("error", "Window failed to load", {
-        errorCode,
-        errorDescription,
-        validatedURL,
-        isDev,
-        frontendPort: FRONTEND_PORT,
-      });
-
       dialog.showErrorBox(
         "Loading Error",
         `Failed to load application:\n\nError: ${errorDescription}\nURL: ${validatedURL}\n\nCheck ${logFile} for more details.`
@@ -584,27 +388,6 @@ function createWindow() {
       log("renderer", `Console [${level}]: ${message} (${sourceId}:${line})`);
     }
   );
-
-  // Handle window close with improved cleanup
-  mainWindow.on("close", async (event) => {
-    if (!isShuttingDown && !cleanupInProgress) {
-      log("info", "Window close requested, starting cleanup");
-      event.preventDefault();
-
-      try {
-        await cleanupProcesses();
-        mainWindow.destroy();
-      } catch (error) {
-        log("error", "Error during cleanup", error);
-        mainWindow.destroy();
-      }
-    }
-  });
-
-  const appURL = `http://127.0.0.1:${FRONTEND_PORT}`;
-  log("info", `Loading application from: ${appURL}`);
-
-  mainWindow.loadURL(appURL);
 }
 
 ipcMain.handle("open-folder-picker", async () => {
@@ -730,10 +513,9 @@ ipcMain.handle("open-folder", async (event, folderPath) => {
 
 function getResourcePath(relativePath) {
   if (isDev) {
-    return path.join(__dirname, relativePath);
-  } else {
-    return path.join(process.resourcesPath, relativePath);
+    return path.join(__dirname, "..", relativePath);
   }
+  return path.join(process.resourcesPath, relativePath);
 }
 
 function startBackend() {
@@ -806,122 +588,6 @@ function startBackend() {
       log("info", "Backend startup timeout reached, assuming ready");
       resolve();
     }, 5000);
-  });
-}
-
-function startFrontend() {
-  return new Promise((resolve, reject) => {
-    log("info", "Starting frontend server");
-
-    if (isDev) {
-      log("info", "Development mode: assuming frontend dev server is running");
-      resolve();
-      return;
-    }
-
-    const serverJsPath = getResourcePath(path.join("frontend", "server.js"));
-    log("info", `Frontend server.js path: ${serverJsPath}`);
-
-    if (!fs.existsSync(serverJsPath)) {
-      const error = `Frontend server.js not found at: ${serverJsPath}`;
-      log("error", error);
-      reject(new Error(error));
-      return;
-    }
-
-    log("info", "Starting frontend process");
-
-    let resolved = false;
-
-    // Enhanced spawn options for better process management
-    frontendProcess = spawn("node", [serverJsPath], {
-      cwd: path.dirname(serverJsPath),
-      stdio: ["pipe", "pipe", "pipe"],
-      detached: false, // Keep attached for better cleanup
-      windowsHide: true, // Hide console window on Windows
-      env: {
-        ...process.env,
-        PORT: FRONTEND_PORT.toString(),
-        NODE_ENV: "production",
-        HOSTNAME: "127.0.0.1",
-      },
-    });
-
-    // Enhanced process tracking
-    trackedProcesses.set(frontendProcess.pid, {
-      process: frontendProcess,
-      cleanup: () => {
-        log("info", "Cleaning up frontend process");
-      },
-    });
-
-    frontendProcess.stdout.on("data", (data) => {
-      const output = data.toString().trim();
-      log("frontend", output);
-
-      if (
-        !resolved &&
-        (output.includes("Ready in") ||
-          output.includes("started server") ||
-          output.includes("listening on") ||
-          output.includes("Local:") ||
-          (output.includes("✓") && output.includes("Ready")))
-      ) {
-        log("info", "Frontend server detected as ready from output");
-        resolved = true;
-        setTimeout(() => resolve(), 1000);
-      }
-    });
-
-    frontendProcess.stderr.on("data", (data) => {
-      const output = data.toString().trim();
-      log("frontend-err", output);
-
-      if (
-        !resolved &&
-        (output.includes("Ready in") ||
-          output.includes("started server") ||
-          output.includes("listening on"))
-      ) {
-        log("info", "Frontend server detected as ready from stderr");
-        resolved = true;
-        setTimeout(() => resolve(), 1000);
-      }
-    });
-
-    frontendProcess.on("error", (err) => {
-      log("error", "Frontend process error", err);
-      trackedProcesses.delete(frontendProcess.pid);
-      if (!resolved) {
-        resolved = true;
-        reject(err);
-      }
-    });
-
-    frontendProcess.on("exit", (code, signal) => {
-      log(
-        "warn",
-        `Frontend process exited with code ${code}, signal: ${signal}`
-      );
-      trackedProcesses.delete(frontendProcess.pid);
-      if (!resolved) {
-        resolved = true;
-        reject(
-          new Error(`Frontend process exited unexpectedly with code ${code}`)
-        );
-      }
-    });
-
-    setTimeout(() => {
-      if (!resolved) {
-        log(
-          "info",
-          "Frontend startup timeout reached, proceeding with connection test"
-        );
-        resolved = true;
-        resolve();
-      }
-    }, 15000);
   });
 }
 
@@ -1072,71 +738,30 @@ if (!gotTheLock) {
 
 // Main application startup sequence
 app.whenReady().then(async () => {
-  log("info", "Electron app ready, starting initialization", {
-    isDev,
-    frontendPort: FRONTEND_PORT,
-    backendPort: BACKEND_PORT,
-    resourcesPath: process.resourcesPath,
-    appPath: app.getAppPath(),
-  });
+  log("info", "Electron app ready");
 
   try {
-    // Clean up any existing processes on our ports
-    log("info", "Step 0: Cleaning up existing processes");
-    await killProcessOnPort(FRONTEND_PORT);
     await killProcessOnPort(BACKEND_PORT);
-
-    // Wait a bit for cleanup to complete
     await new Promise((resolve) => setTimeout(resolve, 3000));
 
-    // Ensure Node.js is available
-    log("info", "Step 1: Checking Node.js installation");
-    const nodeOk = await ensureNodeJs();
-    if (!nodeOk) return;
-
-    // Start servers in sequence
-    log("info", "Step 2: Starting backend server");
-    await startBackend();
-
-    log("info", "Step 3: Starting frontend server");
-    await startFrontend();
-
-    // Wait for servers to be ready
-    log("info", "Step 4: Waiting for servers to be ready");
-
-    if (isDev) {
-      await Promise.all([
-        waitForServer(FRONTEND_PORT, 30, 2000).catch(async () => {
-          log("warn", "Socket health check failed, trying HTTP check...");
-          return waitForHttpServer(FRONTEND_PORT, 15, 2000);
-        }),
-        waitForServer(BACKEND_PORT, 15, 1000).catch(() => {
-          log("warn", "Backend health check failed, but continuing...");
-        }),
-      ]);
-    } else {
-      try {
-        await waitForServer(FRONTEND_PORT, 60, 1000);
-      } catch (error) {
-        log("warn", "Socket health check failed, trying HTTP method...");
-        await waitForHttpServer(FRONTEND_PORT, 30, 1000);
-      }
+    if (!isDev) {
+      await startBackend();
     }
-
-    log("info", "Step 5: Creating main window");
-    createWindow();
-    mainWindow.setMenuBarVisibility(false);
   } catch (error) {
     log("error", "Application startup failed", error);
-
     dialog.showErrorBox(
       "Startup Failed",
-      `Application failed to start:\n\n${error.message}\n\nPlease check ${logFile} for detailed logs.\n\nThe application will continue to try starting in the background.`
+      `Application failed to start:\n\n${error.message}\n\nPlease check ${logFile} for detailed logs.`
     );
-
-    log("info", "Attempting to create window despite health check failure");
-    createWindow();
   }
+
+  createWindow();
+
+  app.on("activate", () => {
+    if (BrowserWindow.getAllWindows().length === 0) {
+      createWindow();
+    }
+  });
 });
 
 // Enhanced app event handlers with better process cleanup

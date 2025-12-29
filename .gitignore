@@ -3,3 +3,11 @@ node_modules
 resources/
 dist
 build/
+release/
+frontend/.next/
+backend/dist/
+frontend/out/
+frontend/.env.local
+backend/__pycache__/
+windows-service/__pycache__/
+backend/build/
